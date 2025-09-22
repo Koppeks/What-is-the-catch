@@ -1,0 +1,43 @@
+{
+  "name": "web",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.17.1",
+  "engines": {
+    "node": ">=20.11 <21"
+  },
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "next lint",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@prisma/client": "*",
+    "@react-email/render": "*",
+    "diff": "*",
+    "next": "*",
+    "node-cron": "*",
+    "react": "*",
+    "react-dom": "*",
+    "resend": "*",
+    "zod": "*"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "*",
+    "@types/node": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "eslint": "*",
+    "eslint-config-next": "*",
+    "prettier": "*",
+    "prisma": "*",
+    "rimraf": "*",
+    "turbo": "*",
+    "typescript": "*"
+  }
+}

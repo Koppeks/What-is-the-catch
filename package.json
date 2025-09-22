@@ -1,0 +1,39 @@
+{
+  "name": "whats-the-catch",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.17.1",
+  "engines": {
+    "node": ">=20.11 <21"
+  },
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint"
+  },
+  "dependencies": {
+    "@prisma/client": "5.19.1",
+    "@react-email/render": "1.2.3",
+    "diff": "8.0.2",
+    "next": "15.4.2",
+    "node-cron": "3.0.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "resend": "6.1.0",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "3.1.0",
+    "@types/node": "20.14.10",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.5",
+    "eslint": "9.9.0",
+    "eslint-config-next": "15.4.2",
+    "prettier": "3.3.3",
+    "prisma": "5.19.1",
+    "rimraf": "6.0.1",
+    "turbo": "2.5.6",
+    "typescript": "5.5.4"
+  }
+}

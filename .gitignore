@@ -1,0 +1,53 @@
+# Node / pnpm
+node_modules
+.pnpm-debug.log*
+pnpm-debug.log*
+pnpm-lock.yaml
+
+# Turbo
+.turbo
+
+# Next.js
+.next
+out
+dist
+
+# Prisma
+prisma/generated
+*.db-journal
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Typescript
+*.tsbuildinfo
+
+# Coverage / Testing
+coverage
+*.lcov
+
+# Build caches
+.cache
+.eslintcache
+
+# Worker
+apps/worker/dist
+
+# Misc
+*.swp
