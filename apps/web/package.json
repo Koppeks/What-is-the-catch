@@ -11,21 +11,16 @@
     "build": "next build",
     "start": "next start -p 3000",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "lint": "next lint",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:studio": "prisma studio"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "*",
     "@react-email/render": "*",
     "diff": "*",
     "next": "*",
     "node-cron": "*",
     "react": "*",
     "react-dom": "*",
-    "resend": "*",
-    "zod": "*"
+    "resend": "*"
   },
   "devDependencies": {
     "@eslint/eslintrc": "*",
@@ -35,7 +30,6 @@
     "eslint": "*",
     "eslint-config-next": "*",
     "prettier": "*",
-    "prisma": "*",
     "rimraf": "*",
     "turbo": "*",
     "typescript": "*"

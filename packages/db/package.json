@@ -1,0 +1,24 @@
+{
+  "name": "db-prisma",
+  "private": true,
+  "version": "0.0.2",
+  "packageManager": "pnpm@10.17.1",
+  "engines": {
+    "node": ">=20.11 <21"
+  },
+  "scripts": {
+    "prisma:generate": "dotenv -e ../../.env -- prisma generate",
+    "prisma:migrate": "dotenv -e ../../.env -- prisma migrate dev",
+    "prisma:studio": "dotenv -e ../../.env -- prisma studio"
+  },
+  "dependencies": {
+    "@prisma/client": "*",
+    "zod": "*",
+    "zod-prisma-types": "*"
+  },
+  "devDependencies": {
+    "dotenv-cli": "*",
+    "prisma": "*",
+    "typescript": "*"
+  }
+}

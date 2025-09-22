@@ -21,13 +21,15 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "resend": "6.1.0",
-    "zod": "3.23.8"
+    "zod": "3.23.8",
+    "zod-prisma-types": "3.2.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "3.1.0",
     "@types/node": "20.14.10",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.5",
+    "dotenv-cli": "^10.0.0",
     "eslint": "9.9.0",
     "eslint-config-next": "15.4.2",
     "prettier": "3.3.3",
