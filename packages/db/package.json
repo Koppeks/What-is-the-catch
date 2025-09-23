@@ -1,24 +1,27 @@
 {
-  "name": "db-prisma",
+  "name": "@repo/db",
   "private": true,
   "version": "0.0.2",
   "packageManager": "pnpm@10.17.1",
   "engines": {
     "node": ">=20.11 <21"
   },
+  "prisma": { "schema": "./prisma/schema.prisma" },
   "scripts": {
     "prisma:generate": "dotenv -e ../../.env -- prisma generate",
     "prisma:migrate": "dotenv -e ../../.env -- prisma migrate dev",
-    "prisma:studio": "dotenv -e ../../.env -- prisma studio"
+    "prisma:studio": "dotenv -e ../../.env -- prisma studio",
+    "prisma:seed": "pnpm -F @repo/db exec prisma generate && dotenv -e ../../.env -- ts-node ./prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "*",
+    "prisma": "*",
     "zod": "*",
     "zod-prisma-types": "*"
   },
   "devDependencies": {
     "dotenv-cli": "*",
-    "prisma": "*",
+    "ts-node": "*",
     "typescript": "*"
   }
 }

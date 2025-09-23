@@ -1,11 +1,10 @@
 generator prismaClient {
     provider = "prisma-client-js"
-    output   = "../generated/prismaClient"
 }
 
 generator zod {
     provider                  = "zod-prisma-types"
-    output                    = "../generated/prismaZodSchemas"
+    output                    = "prismaZodSchemas"
     writeBarrelFiles          = "false"
     useMultipleFiles          = "true"
     createInputTypes          = "false"
@@ -16,10 +15,139 @@ generator zod {
 }
 
 datasource db {
-    provider  = "postgresql"
-    url       = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
 
-model user{
-  id String @id @default(cuid())
+model user {
+    id                 String        @id @default(cuid())
+    email              String        @unique
+    username           String        @db.VarChar(64)
+    password           String
+    userRole           AvailableRoles  @default(USER)
+    subscriptionStatus AccountStatus @default(FREE)
+    updatedAt          DateTime      @updatedAt
+    createdAt          DateTime      @default(now())
+}
+
+model AnalysisRequest {
+    id        String         @id @default(cuid())
+    type      TypeRequest
+    status    AnalysisStatus @default(PENDING)
+    clauses   Clause[]
+    triggers  Trigger[]
+    sourceUrl String?
+    language  String?
+    updatedAt DateTime       @updatedAt
+    createdAt DateTime       @default(now())
+}
+
+// Representation of a segment of the document
+model Clause {
+    id                String          @id @default(cuid())
+    analysisRequest   AnalysisRequest @relation(fields: [analysisRequestId], references: [id])
+    analysisRequestId String
+    order             Int
+    title             String
+    content           String
+    triggerWarning    String[]
+    severity          Severity
+    riskScore         Int // 0-100
+    categories        String[] // e.g ["DataSharing", "Arbitration"]hits 
+    hits              TriggerHit[] // join with extra metadata
+    createdAt         DateTime        @default(now())
+}
+
+// A normalized “trigger” your analyzer looks for (dictionary)
+model Trigger {
+    id          String   @id @default(cuid())
+    key         String   @unique // e.g., "unilateral_changes_without_notice"
+    label       String // human-friendly name
+    description String? // what it means / why it matters
+    patterns    String[] // regex/keywords used
+
+    source      TriggerSource @default(SYSTEM)   // SYSTEM (fixed lib) vs AI (generated)
+    state       TriggerState  @default(ACTIVE)   // PROPOSED (awaiting review) -> ACTIVE
+    mergedIntoId String?                          
+    mergedInto   Trigger?     @relation("TriggerMerge", fields: [mergedIntoId], references: [id])
+    mergeFrom    Trigger[]    @relation("TriggerMerge")
+    reviewNotes String?
+    promotedAt  DateTime?
+    category    String?       // e.g., "Unilateral Changes", "Data Sharing"
+    defaultSeverity Severity? // optional: show as a warning level
+
+    // reverse relations
+    hits            TriggerHit[]
+    AnalysisRequest AnalysisRequest[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([key, state], map: "uniq_active_key_when_active")
+    @@index([state, source])
+    @@index([mergedIntoId])
+}
+
+model TriggerHit {
+    id String @id @default(cuid())
+
+    clauseId String
+    clause   Clause @relation(fields: [clauseId], references: [id], onDelete: Cascade)
+
+    triggerId String
+    trigger   Trigger @relation(fields: [triggerId], references: [id], onDelete: Cascade)
+
+    confidence Float? // model confidence for this hit
+    //confidence formula
+    //baseValue = 0.0(no match), 0.5(contain some words), 1.0 (exact regex)
+    //aiConfidence = from 0 to 100, turn in to 0.00 to 1.00
+    //confidence = (0.3 * baseValue) + (0.7 * aiConfidence)
+    matches    Json? // spans, matched strings, etc.
+
+    @@unique([clauseId, triggerId]) // one trigger per clause
+}
+
+// --- enums --- 
+enum AccountStatus {
+    FREE
+    PRO
+}
+
+enum TypeRequest {
+    PASTE_TEXT
+    UPLOAD
+    URL_SCRAPE
+    API
+    EMBEDED // From extension
+}
+
+enum AnalysisStatus {
+    PENDING
+    RUNNING
+    DONE
+    FAILED
+}
+
+enum Severity {
+    NONE
+    LOW
+    MEDIUM
+    HIGH
+}
+
+enum TriggerSource { 
+    SYSTEM 
+    AI 
+}
+
+enum TriggerState  { 
+    PROPOSED 
+    ACTIVE 
+    MERGED 
+    DEPRECATED 
+}
+
+enum AvailableRoles {
+    USER
+    ADMIN
 }

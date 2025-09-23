@@ -1,0 +1,18 @@
+{
+  "name": "@repo/server",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "pnpm@10.17.1",
+  "engines": {
+    "node": ">=20.11 <21"
+  },
+  "dependencies": {
+    "bcryptjs": "*"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.ts"
+    }
+  }
+}
