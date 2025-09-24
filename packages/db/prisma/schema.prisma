@@ -20,14 +20,14 @@ datasource db {
 }
 
 model user {
-    id                 String        @id @default(cuid())
-    email              String        @unique
-    username           String        @db.VarChar(64)
+    id                 String         @id @default(cuid())
+    email              String         @unique
+    username           String         @db.VarChar(64)
     password           String
-    userRole           AvailableRoles  @default(USER)
-    subscriptionStatus AccountStatus @default(FREE)
-    updatedAt          DateTime      @updatedAt
-    createdAt          DateTime      @default(now())
+    userRole           AvailableRoles @default(USER)
+    subscriptionStatus AccountStatus  @default(FREE)
+    updatedAt          DateTime       @updatedAt
+    createdAt          DateTime       @default(now())
 }
 
 model AnalysisRequest {
@@ -54,29 +54,27 @@ model Clause {
     severity          Severity
     riskScore         Int // 0-100
     categories        String[] // e.g ["DataSharing", "Arbitration"]hits 
-    hits              TriggerHit[] // join with extra metadata
+    hits              TriggerHit[]
     createdAt         DateTime        @default(now())
 }
 
-// A normalized “trigger” your analyzer looks for (dictionary)
 model Trigger {
     id          String   @id @default(cuid())
     key         String   @unique // e.g., "unilateral_changes_without_notice"
-    label       String // human-friendly name
-    description String? // what it means / why it matters
-    patterns    String[] // regex/keywords used
+    label       String
+    description String?
+    patterns    String[]
 
-    source      TriggerSource @default(SYSTEM)   // SYSTEM (fixed lib) vs AI (generated)
-    state       TriggerState  @default(ACTIVE)   // PROPOSED (awaiting review) -> ACTIVE
-    mergedIntoId String?                          
-    mergedInto   Trigger?     @relation("TriggerMerge", fields: [mergedIntoId], references: [id])
-    mergeFrom    Trigger[]    @relation("TriggerMerge")
-    reviewNotes String?
-    promotedAt  DateTime?
-    category    String?       // e.g., "Unilateral Changes", "Data Sharing"
-    defaultSeverity Severity? // optional: show as a warning level
+    source          TriggerSource @default(SYSTEM)
+    state           TriggerState  @default(ACTIVE)
+    mergedIntoId    String?
+    mergedInto      Trigger?      @relation("TriggerMerge", fields: [mergedIntoId], references: [id])
+    mergeFrom       Trigger[]     @relation("TriggerMerge")
+    reviewNotes     String?
+    promotedAt      DateTime?
+    category        String?
+    defaultSeverity Severity?
 
-    // reverse relations
     hits            TriggerHit[]
     AnalysisRequest AnalysisRequest[]
 
@@ -102,9 +100,87 @@ model TriggerHit {
     //baseValue = 0.0(no match), 0.5(contain some words), 1.0 (exact regex)
     //aiConfidence = from 0 to 100, turn in to 0.00 to 1.00
     //confidence = (0.3 * baseValue) + (0.7 * aiConfidence)
-    matches    Json? // spans, matched strings, etc.
+    matches    Json?
 
-    @@unique([clauseId, triggerId]) // one trigger per clause
+    @@unique([clauseId, triggerId])
+}
+
+model Company {
+    id           String         @id @default(cuid())
+    slug         String         @unique
+    displayName  String
+    websiteUrl   String?
+    countryCode  String?
+    description  String?
+    Service      Service[]
+    CompanyAlias CompanyAlias[]
+    Domain Domain[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Service {
+    id        String  @id @default(cuid())
+    companyId String
+    company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+    slug String
+    name String
+    note String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([companyId, slug])
+    @@index([companyId, name])
+    ServiceDomain ServiceDomain[]
+}
+
+model CompanyAlias {
+    id        String  @id @default(cuid())
+    companyId String
+    company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+    kind      AliasKind
+    value     String // e.g. "Google", "Alphabet Inc.", "YouTube"
+    valueNorm String // lowercase/trimmed for lookup
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([companyId, valueNorm])
+    @@index([valueNorm])
+}
+
+model Domain {
+  id         String   @id @default(cuid())
+  companyId  String
+  company    Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  host       String   @unique    // e.g. "google.com", "spotify.com"
+  note       String?
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([companyId])
+  ServiceDomain ServiceDomain[]
+}
+
+model ServiceDomain {
+  id          String  @id @default(cuid())
+  serviceId   String
+  domainId    String
+  service     Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  domain      Domain  @relation(fields: [domainId], references: [id], onDelete: Cascade)
+
+  // optional: narrow to legal paths (helps when one company has many services)
+  pathPattern String?  // e.g. "^/legal/terms|^/drive/terms"
+
+  @@unique([serviceId, domainId, pathPattern])
+  @@index([domainId])
+  @@index([serviceId])
 }
 
 // --- enums --- 
@@ -124,6 +200,7 @@ enum TypeRequest {
 enum AnalysisStatus {
     PENDING
     RUNNING
+    QUEUED
     DONE
     FAILED
 }
@@ -135,19 +212,25 @@ enum Severity {
     HIGH
 }
 
-enum TriggerSource { 
-    SYSTEM 
-    AI 
+enum TriggerSource {
+    SYSTEM
+    AI
 }
 
-enum TriggerState  { 
-    PROPOSED 
-    ACTIVE 
-    MERGED 
-    DEPRECATED 
+enum TriggerState {
+    PROPOSED
+    ACTIVE
+    MERGED
+    DEPRECATED
 }
 
 enum AvailableRoles {
     USER
     ADMIN
+}
+
+enum AliasKind {
+    BRAND
+    ALIAS
+    LEGAL_ENTITY
 }
