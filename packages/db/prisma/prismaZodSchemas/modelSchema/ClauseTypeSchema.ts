@@ -13,6 +13,8 @@ export const ClauseTypeSchema = z.object({
   defaultScoring: z.number(),
   label: z.string(),
   isActive: z.boolean(),
+  triggerInstruction: z.string(),
+  triggerKeywords: z.string().array(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
 })

@@ -72,8 +72,8 @@ model Trigger {
     mergeFrom       Trigger[]     @relation("TriggerMerge")
     reviewNotes     String?
     promotedAt      DateTime?
-    clauseType ClauseType @relation(fields: [clauseTypeId], references: [id], onDelete: Restrict)
-    clauseTypeId String
+    clauseType      ClauseType    @relation(fields: [clauseTypeId], references: [id], onDelete: Restrict)
+    clauseTypeId    String
     defaultSeverity Severity?
 
     hits            TriggerHit[]
@@ -185,17 +185,18 @@ model ServiceDomain {
 }
 
 model ClauseType {
-    id             String  @id @default(cuid())
-    slug           String  @unique // e.g MODIFICATION_RIGHTS
-    version        String  @default("0.0.1")
-    defaultScoring Float   @default(0.5)
-    label          String // Modification rights
-    isActive       Boolean
+    id                 String    @id @default(cuid())
+    slug               String    @unique // e.g MODIFICATION_RIGHTS
+    version            String    @default("0.0.1")
+    defaultScoring     Float     @default(0.5)
+    label              String // Modification rights
+    isActive           Boolean
+    Trigger            Trigger[]
+    triggerInstruction String
+    triggerKeywords    String[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-
-    Trigger Trigger[]
 }
 
 // --- enums --- 

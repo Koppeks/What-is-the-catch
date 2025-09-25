@@ -1,5 +1,5 @@
 import { z } from 'zod';
 
-export const ClauseTypeScalarFieldEnumSchema = z.enum(['id','slug','version','defaultScoring','label','isActive','createdAt','updatedAt']);
+export const ClauseTypeScalarFieldEnumSchema = z.enum(['id','slug','version','defaultScoring','label','isActive','triggerInstruction','triggerKeywords','createdAt','updatedAt']);
 
 export default ClauseTypeScalarFieldEnumSchema;
