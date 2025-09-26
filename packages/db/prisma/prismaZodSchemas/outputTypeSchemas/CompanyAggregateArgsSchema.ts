@@ -1,0 +1,15 @@
+import { z } from 'zod';
+import type { Prisma } from '@prisma/client';
+import { CompanyWhereInputSchema } from '../inputTypeSchemas/CompanyWhereInputSchema'
+import { CompanyOrderByWithRelationInputSchema } from '../inputTypeSchemas/CompanyOrderByWithRelationInputSchema'
+import { CompanyWhereUniqueInputSchema } from '../inputTypeSchemas/CompanyWhereUniqueInputSchema'
+
+export const CompanyAggregateArgsSchema: z.ZodType<Prisma.CompanyAggregateArgs> = z.object({
+  where: CompanyWhereInputSchema.optional(),
+  orderBy: z.union([ CompanyOrderByWithRelationInputSchema.array(),CompanyOrderByWithRelationInputSchema ]).optional(),
+  cursor: CompanyWhereUniqueInputSchema.optional(),
+  take: z.number().optional(),
+  skip: z.number().optional(),
+}).strict() as z.ZodType<Prisma.CompanyAggregateArgs>;
+
+export default CompanyAggregateArgsSchema;

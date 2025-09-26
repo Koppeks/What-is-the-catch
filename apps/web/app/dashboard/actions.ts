@@ -1,6 +1,10 @@
-"use server";
+﻿"use server";
 
-const util = require('util')
+import { TriggerHit } from "@prisma/client";
+import { ClausePartial, prisma, TriggerWithRelations } from "@repo/db";
+// import type { Trigger as TriggerModel } from "@repo/db";
+
+import util from "util";
 
 type Section = {
   id: string;          // e.g., "2", "2.1", "2.2.3"
@@ -8,6 +12,7 @@ type Section = {
   text: string;        // current content
   children: Section[]; // nested subsections
 };
+
 
 const HEADING_REGEX = /^\s*(\d+(?:\.\d+)*)(?:[.)\-:])?\s+(.+)$/gm;
 
@@ -25,12 +30,12 @@ function parseHierarchical(input: string): Section[] {
 
   const root: Section[] = [];
   const stack: Section[] = [];
-  const MAX_TITLE_LENGHT = 70
-  
+  const MAX_TITLE_LENGHT = 70;
+
   for (const it of items) {
     const level = it.id.split(".").length;
-    let node:Section
-    if(it.title.length > MAX_TITLE_LENGHT) node = { id: it.id, title: "", text: normalize(it.title), children: [] };
+    let node: Section;
+    if (it.title.length > MAX_TITLE_LENGHT) node = { id: it.id, title: "", text: normalize(it.title), children: [] };
     else node = { id: it.id, title: it.title, text: normalize(it.body), children: [] };
     // Pop to parent level
     while (stack.length && depth(stack[stack.length - 1]) >= level) stack.pop();
@@ -44,7 +49,7 @@ function parseHierarchical(input: string): Section[] {
     stack.push(node);
   }
 
-  console.log(util.inspect(root, {showHidden: false, depth: null, colors: true}))
+  console.log(util.inspect(root, { showHidden: false, depth: null, colors: true }));
 
   return root;
 
@@ -54,14 +59,24 @@ function parseHierarchical(input: string): Section[] {
   }
 }
 
-export type FormState = {ok: boolean, error?: string}
+function evaluateTriggerRules(sections: Section[], rules: ClausePartial[]): TriggerHit[] {
+  return []
+} 
 
-export async function analyzeActionForm(prev: FormState, formData:FormData):Promise<FormState>{
-  const text = String(formData.get("text") ?? "").trim()
+export type FormState = { ok: boolean; error?: string; triggers?: TriggerHit[] };
 
-  if(text.length < 20) return {ok:false, error: "Text must be at least 20 characters"}
+export async function analyzeActionForm(prev: FormState, formData: FormData): Promise<FormState> {
+  const text = String(formData.get("text") ?? "").trim();
 
-  const parsed = parseHierarchical(text)
-  // console.log(parsed)
-  return {ok: true}
+  if (text.length < 20) return { ok: false, error: "Text must be at least 20 characters" };
+
+  const parsed = parseHierarchical(text);
+
+  const triggerRules = await prisma.clauseType.findMany({ where: { isActive: true } });
+
+  const currentTriggers = evaluateTriggerRules(parsed, triggerRules);
+
+  console.log(util.inspect(currentTriggers, { showHidden: false, depth: null, colors: true }));
+
+  return { ok: true, triggers: currentTriggers };
 }

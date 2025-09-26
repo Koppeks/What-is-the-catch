@@ -5,9 +5,9 @@ generator prismaClient {
 generator zod {
     provider                  = "zod-prisma-types"
     output                    = "prismaZodSchemas"
-    writeBarrelFiles          = "false"
+    writeBarrelFiles          = "true"
     useMultipleFiles          = "true"
-    createInputTypes          = "false"
+    createInputTypes          = "true"
     createPartialTypes        = "true"
     useTypeAssertions         = "true"
     createRelationValuesTypes = "true"

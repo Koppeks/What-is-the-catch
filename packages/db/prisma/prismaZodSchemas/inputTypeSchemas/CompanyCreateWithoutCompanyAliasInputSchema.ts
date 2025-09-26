@@ -1,0 +1,20 @@
+import type { Prisma } from '@prisma/client';
+
+import { z } from 'zod';
+import { ServiceCreateNestedManyWithoutCompanyInputSchema } from './ServiceCreateNestedManyWithoutCompanyInputSchema';
+import { DomainCreateNestedManyWithoutCompanyInputSchema } from './DomainCreateNestedManyWithoutCompanyInputSchema';
+
+export const CompanyCreateWithoutCompanyAliasInputSchema: z.ZodType<Prisma.CompanyCreateWithoutCompanyAliasInput> = z.object({
+  id: z.string().cuid().optional(),
+  slug: z.string(),
+  displayName: z.string(),
+  websiteUrl: z.string().optional().nullable(),
+  countryCode: z.string().optional().nullable(),
+  description: z.string().optional().nullable(),
+  createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional(),
+  Service: z.lazy(() => ServiceCreateNestedManyWithoutCompanyInputSchema).optional(),
+  Domain: z.lazy(() => DomainCreateNestedManyWithoutCompanyInputSchema).optional()
+}).strict() as z.ZodType<Prisma.CompanyCreateWithoutCompanyAliasInput>;
+
+export default CompanyCreateWithoutCompanyAliasInputSchema;
