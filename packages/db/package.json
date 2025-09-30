@@ -8,7 +8,7 @@
   },
   "scripts": {
     "prisma:migrate": "dotenv -e ../../.env -- prisma migrate dev",
-    "prisma:reset": "dotenv -e ../../.env -- prisma migrate reset --force --skip-seed",
+    "prisma:reset": "dotenv -e ../../.env -- prisma migrate reset --force --skip-seed --schema ./prisma/schema.prisma",
     "prisma:generate": "dotenv -e ../../.env -- prisma generate",
     "prisma:studio": "dotenv -e ../../.env -- prisma studio",
     "prisma:seed": "dotenv -e ../../.env -- tsx ./prisma/seed.ts"
