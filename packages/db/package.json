@@ -11,7 +11,7 @@
     "prisma:reset": "dotenv -e ../../.env -- prisma migrate reset --force --skip-seed",
     "prisma:generate": "dotenv -e ../../.env -- prisma generate",
     "prisma:studio": "dotenv -e ../../.env -- prisma studio",
-    "prisma:seed": "dotenv -e ../../.env -- ts-node ./prisma/seed.ts"
+    "prisma:seed": "dotenv -e ../../.env -- tsx ./prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "*",
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "dotenv-cli": "*",
-    "ts-node": "*",
+    "tsx": "*",
     "typescript": "*"
   }
 }
