@@ -18,7 +18,7 @@ async function main() {
     },
   });
 
-  await prisma.clauseType.createMany({
+  await prisma.clauseCategory.createMany({
     data: [
       {
         slug: "AGE_LIMIT",
@@ -45,7 +45,7 @@ async function main() {
         defaultScoring: 0.5,
         triggerInstruction:
           "Fire when a privacy policy is referenced or linked.",
-        triggerKeywords: ["privacy policy", "/privacy", "data protection"],
+        triggerKeywords: ["privacy policy", "privacy", "data protection"],
         version: "0.0.1",
       },
       {

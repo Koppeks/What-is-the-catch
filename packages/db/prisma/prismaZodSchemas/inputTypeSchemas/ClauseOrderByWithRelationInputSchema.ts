@@ -2,22 +2,29 @@ import type { Prisma } from '@prisma/client';
 
 import { z } from 'zod';
 import { SortOrderSchema } from './SortOrderSchema';
-import { AnalysisRequestOrderByWithRelationInputSchema } from './AnalysisRequestOrderByWithRelationInputSchema';
+import { SortOrderInputSchema } from './SortOrderInputSchema';
+import { DocumentOrderByWithRelationInputSchema } from './DocumentOrderByWithRelationInputSchema';
+import { ClauseOrderByRelationAggregateInputSchema } from './ClauseOrderByRelationAggregateInputSchema';
 import { TriggerHitOrderByRelationAggregateInputSchema } from './TriggerHitOrderByRelationAggregateInputSchema';
+import { ClauseAnalysisOrderByRelationAggregateInputSchema } from './ClauseAnalysisOrderByRelationAggregateInputSchema';
 
 export const ClauseOrderByWithRelationInputSchema: z.ZodType<Prisma.ClauseOrderByWithRelationInput> = z.object({
   id: z.lazy(() => SortOrderSchema).optional(),
-  analysisRequestId: z.lazy(() => SortOrderSchema).optional(),
-  order: z.lazy(() => SortOrderSchema).optional(),
+  documentId: z.lazy(() => SortOrderSchema).optional(),
+  parentId: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  ordinalPath: z.lazy(() => SortOrderSchema).optional(),
   title: z.lazy(() => SortOrderSchema).optional(),
-  content: z.lazy(() => SortOrderSchema).optional(),
-  triggerWarning: z.lazy(() => SortOrderSchema).optional(),
-  severity: z.lazy(() => SortOrderSchema).optional(),
-  riskScore: z.lazy(() => SortOrderSchema).optional(),
-  categories: z.lazy(() => SortOrderSchema).optional(),
+  text: z.lazy(() => SortOrderSchema).optional(),
+  order: z.lazy(() => SortOrderSchema).optional(),
+  depth: z.lazy(() => SortOrderSchema).optional(),
+  meta: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
-  analysisRequest: z.lazy(() => AnalysisRequestOrderByWithRelationInputSchema).optional(),
-  hits: z.lazy(() => TriggerHitOrderByRelationAggregateInputSchema).optional()
+  updatedAt: z.lazy(() => SortOrderSchema).optional(),
+  document: z.lazy(() => DocumentOrderByWithRelationInputSchema).optional(),
+  parent: z.lazy(() => ClauseOrderByWithRelationInputSchema).optional(),
+  children: z.lazy(() => ClauseOrderByRelationAggregateInputSchema).optional(),
+  TriggerHits: z.lazy(() => TriggerHitOrderByRelationAggregateInputSchema).optional(),
+  ClauseAnalysis: z.lazy(() => ClauseAnalysisOrderByRelationAggregateInputSchema).optional()
 }).strict() as z.ZodType<Prisma.ClauseOrderByWithRelationInput>;
 
 export default ClauseOrderByWithRelationInputSchema;

@@ -1,0 +1,30 @@
+import type { Prisma } from '@prisma/client';
+
+import { z } from 'zod';
+import { StringFieldUpdateOperationsInputSchema } from './StringFieldUpdateOperationsInputSchema';
+import { IntFieldUpdateOperationsInputSchema } from './IntFieldUpdateOperationsInputSchema';
+import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSchema';
+import { InputJsonValueSchema } from './InputJsonValueSchema';
+import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
+import { ClauseUpdateOneWithoutChildrenNestedInputSchema } from './ClauseUpdateOneWithoutChildrenNestedInputSchema';
+import { ClauseUpdateManyWithoutParentNestedInputSchema } from './ClauseUpdateManyWithoutParentNestedInputSchema';
+import { TriggerHitUpdateManyWithoutClauseNestedInputSchema } from './TriggerHitUpdateManyWithoutClauseNestedInputSchema';
+import { ClauseAnalysisUpdateManyWithoutClauseNestedInputSchema } from './ClauseAnalysisUpdateManyWithoutClauseNestedInputSchema';
+
+export const ClauseUpdateWithoutDocumentInputSchema: z.ZodType<Prisma.ClauseUpdateWithoutDocumentInput> = z.object({
+  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  ordinalPath: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  title: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  text: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  order: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  depth: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
+  meta: z.union([ z.lazy(() => NullableJsonNullValueInputSchema),InputJsonValueSchema ]).optional(),
+  createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
+  parent: z.lazy(() => ClauseUpdateOneWithoutChildrenNestedInputSchema).optional(),
+  children: z.lazy(() => ClauseUpdateManyWithoutParentNestedInputSchema).optional(),
+  TriggerHits: z.lazy(() => TriggerHitUpdateManyWithoutClauseNestedInputSchema).optional(),
+  ClauseAnalysis: z.lazy(() => ClauseAnalysisUpdateManyWithoutClauseNestedInputSchema).optional()
+}).strict() as z.ZodType<Prisma.ClauseUpdateWithoutDocumentInput>;
+
+export default ClauseUpdateWithoutDocumentInputSchema;

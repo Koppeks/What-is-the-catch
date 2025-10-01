@@ -1,0 +1,40 @@
+import { z } from 'zod';
+import type { Prisma } from '@prisma/client';
+import { DocumentIncludeSchema } from '../inputTypeSchemas/DocumentIncludeSchema'
+import { DocumentWhereUniqueInputSchema } from '../inputTypeSchemas/DocumentWhereUniqueInputSchema'
+import { DocumentCreateInputSchema } from '../inputTypeSchemas/DocumentCreateInputSchema'
+import { DocumentUncheckedCreateInputSchema } from '../inputTypeSchemas/DocumentUncheckedCreateInputSchema'
+import { DocumentUpdateInputSchema } from '../inputTypeSchemas/DocumentUpdateInputSchema'
+import { DocumentUncheckedUpdateInputSchema } from '../inputTypeSchemas/DocumentUncheckedUpdateInputSchema'
+import { ClauseFindManyArgsSchema } from "../outputTypeSchemas/ClauseFindManyArgsSchema"
+import { AnalysisRunFindManyArgsSchema } from "../outputTypeSchemas/AnalysisRunFindManyArgsSchema"
+import { DocumentTriggerFindManyArgsSchema } from "../outputTypeSchemas/DocumentTriggerFindManyArgsSchema"
+import { DocumentCountOutputTypeArgsSchema } from "../outputTypeSchemas/DocumentCountOutputTypeArgsSchema"
+// Select schema needs to be in file to prevent circular imports
+//------------------------------------------------------
+
+export const DocumentSelectSchema: z.ZodType<Prisma.DocumentSelect> = z.object({
+  id: z.boolean().optional(),
+  name: z.boolean().optional(),
+  locale: z.boolean().optional(),
+  kind: z.boolean().optional(),
+  type: z.boolean().optional(),
+  status: z.boolean().optional(),
+  sourceUrl: z.boolean().optional(),
+  updatedAt: z.boolean().optional(),
+  createdAt: z.boolean().optional(),
+  clauses: z.union([z.boolean(),z.lazy(() => ClauseFindManyArgsSchema)]).optional(),
+  runs: z.union([z.boolean(),z.lazy(() => AnalysisRunFindManyArgsSchema)]).optional(),
+  documentRules: z.union([z.boolean(),z.lazy(() => DocumentTriggerFindManyArgsSchema)]).optional(),
+  _count: z.union([z.boolean(),z.lazy(() => DocumentCountOutputTypeArgsSchema)]).optional(),
+}).strict()
+
+export const DocumentUpsertArgsSchema: z.ZodType<Prisma.DocumentUpsertArgs> = z.object({
+  select: DocumentSelectSchema.optional(),
+  include: z.lazy(() => DocumentIncludeSchema).optional(),
+  where: DocumentWhereUniqueInputSchema,
+  create: z.union([ DocumentCreateInputSchema,DocumentUncheckedCreateInputSchema ]),
+  update: z.union([ DocumentUpdateInputSchema,DocumentUncheckedUpdateInputSchema ]),
+}).strict() as z.ZodType<Prisma.DocumentUpsertArgs>;
+
+export default DocumentUpsertArgsSchema;

@@ -14,8 +14,8 @@ import { NullableEnumSeverityFieldUpdateOperationsInputSchema } from './Nullable
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { TriggerUpdateOneWithoutMergeFromNestedInputSchema } from './TriggerUpdateOneWithoutMergeFromNestedInputSchema';
 import { TriggerUpdateManyWithoutMergedIntoNestedInputSchema } from './TriggerUpdateManyWithoutMergedIntoNestedInputSchema';
-import { ClauseTypeUpdateOneRequiredWithoutTriggerNestedInputSchema } from './ClauseTypeUpdateOneRequiredWithoutTriggerNestedInputSchema';
-import { AnalysisRequestUpdateManyWithoutTriggersNestedInputSchema } from './AnalysisRequestUpdateManyWithoutTriggersNestedInputSchema';
+import { ClauseCategoryUpdateOneRequiredWithoutTriggerNestedInputSchema } from './ClauseCategoryUpdateOneRequiredWithoutTriggerNestedInputSchema';
+import { DocumentTriggerUpdateManyWithoutTriggerNestedInputSchema } from './DocumentTriggerUpdateManyWithoutTriggerNestedInputSchema';
 
 export const TriggerUpdateWithoutHitsInputSchema: z.ZodType<Prisma.TriggerUpdateWithoutHitsInput> = z.object({
   id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -32,8 +32,8 @@ export const TriggerUpdateWithoutHitsInputSchema: z.ZodType<Prisma.TriggerUpdate
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   mergedInto: z.lazy(() => TriggerUpdateOneWithoutMergeFromNestedInputSchema).optional(),
   mergeFrom: z.lazy(() => TriggerUpdateManyWithoutMergedIntoNestedInputSchema).optional(),
-  clauseType: z.lazy(() => ClauseTypeUpdateOneRequiredWithoutTriggerNestedInputSchema).optional(),
-  AnalysisRequest: z.lazy(() => AnalysisRequestUpdateManyWithoutTriggersNestedInputSchema).optional()
+  clauseCategory: z.lazy(() => ClauseCategoryUpdateOneRequiredWithoutTriggerNestedInputSchema).optional(),
+  documentRules: z.lazy(() => DocumentTriggerUpdateManyWithoutTriggerNestedInputSchema).optional()
 }).strict() as z.ZodType<Prisma.TriggerUpdateWithoutHitsInput>;
 
 export default TriggerUpdateWithoutHitsInputSchema;

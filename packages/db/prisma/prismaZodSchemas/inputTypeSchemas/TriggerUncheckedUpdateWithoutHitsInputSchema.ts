@@ -13,7 +13,7 @@ import { SeveritySchema } from './SeveritySchema';
 import { NullableEnumSeverityFieldUpdateOperationsInputSchema } from './NullableEnumSeverityFieldUpdateOperationsInputSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { TriggerUncheckedUpdateManyWithoutMergedIntoNestedInputSchema } from './TriggerUncheckedUpdateManyWithoutMergedIntoNestedInputSchema';
-import { AnalysisRequestUncheckedUpdateManyWithoutTriggersNestedInputSchema } from './AnalysisRequestUncheckedUpdateManyWithoutTriggersNestedInputSchema';
+import { DocumentTriggerUncheckedUpdateManyWithoutTriggerNestedInputSchema } from './DocumentTriggerUncheckedUpdateManyWithoutTriggerNestedInputSchema';
 
 export const TriggerUncheckedUpdateWithoutHitsInputSchema: z.ZodType<Prisma.TriggerUncheckedUpdateWithoutHitsInput> = z.object({
   id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -26,12 +26,12 @@ export const TriggerUncheckedUpdateWithoutHitsInputSchema: z.ZodType<Prisma.Trig
   mergedIntoId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   reviewNotes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   promotedAt: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  clauseTypeId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  clauseCategoryId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   defaultSeverity: z.union([ z.lazy(() => SeveritySchema),z.lazy(() => NullableEnumSeverityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   mergeFrom: z.lazy(() => TriggerUncheckedUpdateManyWithoutMergedIntoNestedInputSchema).optional(),
-  AnalysisRequest: z.lazy(() => AnalysisRequestUncheckedUpdateManyWithoutTriggersNestedInputSchema).optional()
+  documentRules: z.lazy(() => DocumentTriggerUncheckedUpdateManyWithoutTriggerNestedInputSchema).optional()
 }).strict() as z.ZodType<Prisma.TriggerUncheckedUpdateWithoutHitsInput>;
 
 export default TriggerUncheckedUpdateWithoutHitsInputSchema;

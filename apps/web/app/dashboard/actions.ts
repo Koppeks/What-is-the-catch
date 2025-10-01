@@ -49,8 +49,6 @@ function parseHierarchical(input: string): Section[] {
     stack.push(node);
   }
 
-  console.log(util.inspect(root, { showHidden: false, depth: null, colors: true }));
-
   return root;
 
   function depth(n: Section) { return n.id.split(".").length; }
@@ -60,6 +58,9 @@ function parseHierarchical(input: string): Section[] {
 }
 
 function evaluateTriggerRules(sections: Section[], rules: ClausePartial[]): TriggerHit[] {
+
+  
+
   return []
 } 
 
@@ -71,12 +72,15 @@ export async function analyzeActionForm(prev: FormState, formData: FormData): Pr
   if (text.length < 20) return { ok: false, error: "Text must be at least 20 characters" };
 
   const parsed = parseHierarchical(text);
+  console.log(util.inspect(parsed, { showHidden: false, depth: null, colors: true }));
 
-  const triggerRules = await prisma.clauseType.findMany({ where: { isActive: true } });
+
+  const triggerRules = await prisma.clauseCategory.findMany({ where: { isActive: true } });
 
   const currentTriggers = evaluateTriggerRules(parsed, triggerRules);
 
-  console.log(util.inspect(currentTriggers, { showHidden: false, depth: null, colors: true }));
+  // console.log(util.inspect(triggerRules, { showHidden: false, depth: null, colors: true }));
+  // console.log(util.inspect(currentTriggers, { showHidden: false, depth: null, colors: true }));
 
   return { ok: true, triggers: currentTriggers };
 }

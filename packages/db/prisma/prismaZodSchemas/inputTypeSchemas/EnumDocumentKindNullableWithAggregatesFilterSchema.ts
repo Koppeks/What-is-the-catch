@@ -1,0 +1,19 @@
+import type { Prisma } from '@prisma/client';
+
+import { z } from 'zod';
+import { DocumentKindSchema } from './DocumentKindSchema';
+import { NestedEnumDocumentKindNullableWithAggregatesFilterSchema } from './NestedEnumDocumentKindNullableWithAggregatesFilterSchema';
+import { NestedIntNullableFilterSchema } from './NestedIntNullableFilterSchema';
+import { NestedEnumDocumentKindNullableFilterSchema } from './NestedEnumDocumentKindNullableFilterSchema';
+
+export const EnumDocumentKindNullableWithAggregatesFilterSchema: z.ZodType<Prisma.EnumDocumentKindNullableWithAggregatesFilter> = z.object({
+  equals: z.lazy(() => DocumentKindSchema).optional().nullable(),
+  in: z.lazy(() => DocumentKindSchema).array().optional().nullable(),
+  notIn: z.lazy(() => DocumentKindSchema).array().optional().nullable(),
+  not: z.union([ z.lazy(() => DocumentKindSchema),z.lazy(() => NestedEnumDocumentKindNullableWithAggregatesFilterSchema) ]).optional().nullable(),
+  _count: z.lazy(() => NestedIntNullableFilterSchema).optional(),
+  _min: z.lazy(() => NestedEnumDocumentKindNullableFilterSchema).optional(),
+  _max: z.lazy(() => NestedEnumDocumentKindNullableFilterSchema).optional()
+}).strict() as z.ZodType<Prisma.EnumDocumentKindNullableWithAggregatesFilter>;
+
+export default EnumDocumentKindNullableWithAggregatesFilterSchema;

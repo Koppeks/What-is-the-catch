@@ -1,0 +1,20 @@
+import type { Prisma } from '@prisma/client';
+
+import { z } from 'zod';
+import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSchema';
+import { InputJsonValueSchema } from './InputJsonValueSchema';
+
+export const ClauseCreateManyParentInputSchema: z.ZodType<Prisma.ClauseCreateManyParentInput> = z.object({
+  id: z.string().cuid().optional(),
+  documentId: z.string(),
+  ordinalPath: z.string(),
+  title: z.string(),
+  text: z.string(),
+  order: z.number().int(),
+  depth: z.number().int(),
+  meta: z.union([ z.lazy(() => NullableJsonNullValueInputSchema),InputJsonValueSchema ]).optional(),
+  createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional()
+}).strict() as z.ZodType<Prisma.ClauseCreateManyParentInput>;
+
+export default ClauseCreateManyParentInputSchema;

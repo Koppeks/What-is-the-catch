@@ -1,23 +1,27 @@
 import type { Prisma } from '@prisma/client';
 
 import { z } from 'zod';
-import { ClauseCreatetriggerWarningInputSchema } from './ClauseCreatetriggerWarningInputSchema';
-import { SeveritySchema } from './SeveritySchema';
-import { ClauseCreatecategoriesInputSchema } from './ClauseCreatecategoriesInputSchema';
+import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSchema';
+import { InputJsonValueSchema } from './InputJsonValueSchema';
+import { ClauseUncheckedCreateNestedManyWithoutParentInputSchema } from './ClauseUncheckedCreateNestedManyWithoutParentInputSchema';
 import { TriggerHitUncheckedCreateNestedManyWithoutClauseInputSchema } from './TriggerHitUncheckedCreateNestedManyWithoutClauseInputSchema';
+import { ClauseAnalysisUncheckedCreateNestedManyWithoutClauseInputSchema } from './ClauseAnalysisUncheckedCreateNestedManyWithoutClauseInputSchema';
 
 export const ClauseUncheckedCreateInputSchema: z.ZodType<Prisma.ClauseUncheckedCreateInput> = z.object({
   id: z.string().cuid().optional(),
-  analysisRequestId: z.string(),
-  order: z.number().int(),
+  documentId: z.string(),
+  parentId: z.string().optional().nullable(),
+  ordinalPath: z.string(),
   title: z.string(),
-  content: z.string(),
-  triggerWarning: z.union([ z.lazy(() => ClauseCreatetriggerWarningInputSchema),z.string().array() ]).optional(),
-  severity: z.lazy(() => SeveritySchema),
-  riskScore: z.number().int(),
-  categories: z.union([ z.lazy(() => ClauseCreatecategoriesInputSchema),z.string().array() ]).optional(),
+  text: z.string(),
+  order: z.number().int(),
+  depth: z.number().int(),
+  meta: z.union([ z.lazy(() => NullableJsonNullValueInputSchema),InputJsonValueSchema ]).optional(),
   createdAt: z.coerce.date().optional(),
-  hits: z.lazy(() => TriggerHitUncheckedCreateNestedManyWithoutClauseInputSchema).optional()
+  updatedAt: z.coerce.date().optional(),
+  children: z.lazy(() => ClauseUncheckedCreateNestedManyWithoutParentInputSchema).optional(),
+  TriggerHits: z.lazy(() => TriggerHitUncheckedCreateNestedManyWithoutClauseInputSchema).optional(),
+  ClauseAnalysis: z.lazy(() => ClauseAnalysisUncheckedCreateNestedManyWithoutClauseInputSchema).optional()
 }).strict() as z.ZodType<Prisma.ClauseUncheckedCreateInput>;
 
 export default ClauseUncheckedCreateInputSchema;

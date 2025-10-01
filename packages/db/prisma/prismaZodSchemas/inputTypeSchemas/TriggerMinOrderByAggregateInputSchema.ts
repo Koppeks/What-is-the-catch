@@ -13,7 +13,7 @@ export const TriggerMinOrderByAggregateInputSchema: z.ZodType<Prisma.TriggerMinO
   mergedIntoId: z.lazy(() => SortOrderSchema).optional(),
   reviewNotes: z.lazy(() => SortOrderSchema).optional(),
   promotedAt: z.lazy(() => SortOrderSchema).optional(),
-  clauseTypeId: z.lazy(() => SortOrderSchema).optional(),
+  clauseCategoryId: z.lazy(() => SortOrderSchema).optional(),
   defaultSeverity: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional()

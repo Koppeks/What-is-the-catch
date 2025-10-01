@@ -2,10 +2,9 @@ import type { Prisma } from '@prisma/client';
 
 import { z } from 'zod';
 import { StringWithAggregatesFilterSchema } from './StringWithAggregatesFilterSchema';
+import { StringNullableWithAggregatesFilterSchema } from './StringNullableWithAggregatesFilterSchema';
 import { IntWithAggregatesFilterSchema } from './IntWithAggregatesFilterSchema';
-import { StringNullableListFilterSchema } from './StringNullableListFilterSchema';
-import { EnumSeverityWithAggregatesFilterSchema } from './EnumSeverityWithAggregatesFilterSchema';
-import { SeveritySchema } from './SeveritySchema';
+import { JsonNullableWithAggregatesFilterSchema } from './JsonNullableWithAggregatesFilterSchema';
 import { DateTimeWithAggregatesFilterSchema } from './DateTimeWithAggregatesFilterSchema';
 
 export const ClauseScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.ClauseScalarWhereWithAggregatesInput> = z.object({
@@ -13,15 +12,16 @@ export const ClauseScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.Clause
   OR: z.lazy(() => ClauseScalarWhereWithAggregatesInputSchema).array().optional(),
   NOT: z.union([ z.lazy(() => ClauseScalarWhereWithAggregatesInputSchema),z.lazy(() => ClauseScalarWhereWithAggregatesInputSchema).array() ]).optional(),
   id: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
-  analysisRequestId: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
-  order: z.union([ z.lazy(() => IntWithAggregatesFilterSchema),z.number() ]).optional(),
+  documentId: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  parentId: z.union([ z.lazy(() => StringNullableWithAggregatesFilterSchema),z.string() ]).optional().nullable(),
+  ordinalPath: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
   title: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
-  content: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
-  triggerWarning: z.lazy(() => StringNullableListFilterSchema).optional(),
-  severity: z.union([ z.lazy(() => EnumSeverityWithAggregatesFilterSchema),z.lazy(() => SeveritySchema) ]).optional(),
-  riskScore: z.union([ z.lazy(() => IntWithAggregatesFilterSchema),z.number() ]).optional(),
-  categories: z.lazy(() => StringNullableListFilterSchema).optional(),
+  text: z.union([ z.lazy(() => StringWithAggregatesFilterSchema),z.string() ]).optional(),
+  order: z.union([ z.lazy(() => IntWithAggregatesFilterSchema),z.number() ]).optional(),
+  depth: z.union([ z.lazy(() => IntWithAggregatesFilterSchema),z.number() ]).optional(),
+  meta: z.lazy(() => JsonNullableWithAggregatesFilterSchema).optional(),
   createdAt: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema),z.coerce.date() ]).optional(),
+  updatedAt: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema),z.coerce.date() ]).optional(),
 }).strict() as z.ZodType<Prisma.ClauseScalarWhereWithAggregatesInput>;
 
 export default ClauseScalarWhereWithAggregatesInputSchema;

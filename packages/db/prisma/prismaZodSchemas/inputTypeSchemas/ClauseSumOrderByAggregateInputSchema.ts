@@ -5,7 +5,7 @@ import { SortOrderSchema } from './SortOrderSchema';
 
 export const ClauseSumOrderByAggregateInputSchema: z.ZodType<Prisma.ClauseSumOrderByAggregateInput> = z.object({
   order: z.lazy(() => SortOrderSchema).optional(),
-  riskScore: z.lazy(() => SortOrderSchema).optional()
+  depth: z.lazy(() => SortOrderSchema).optional()
 }).strict() as z.ZodType<Prisma.ClauseSumOrderByAggregateInput>;
 
 export default ClauseSumOrderByAggregateInputSchema;

@@ -1,7 +1,6 @@
 import type { Prisma } from '@prisma/client';
 
 import { z } from 'zod';
-import { TriggerHitClauseIdTriggerIdCompoundUniqueInputSchema } from './TriggerHitClauseIdTriggerIdCompoundUniqueInputSchema';
 import { TriggerHitWhereInputSchema } from './TriggerHitWhereInputSchema';
 import { StringFilterSchema } from './StringFilterSchema';
 import { FloatNullableFilterSchema } from './FloatNullableFilterSchema';
@@ -11,21 +10,11 @@ import { ClauseWhereInputSchema } from './ClauseWhereInputSchema';
 import { TriggerScalarRelationFilterSchema } from './TriggerScalarRelationFilterSchema';
 import { TriggerWhereInputSchema } from './TriggerWhereInputSchema';
 
-export const TriggerHitWhereUniqueInputSchema: z.ZodType<Prisma.TriggerHitWhereUniqueInput> = z.union([
-  z.object({
-    id: z.string().cuid(),
-    clauseId_triggerId: z.lazy(() => TriggerHitClauseIdTriggerIdCompoundUniqueInputSchema)
-  }),
-  z.object({
-    id: z.string().cuid(),
-  }),
-  z.object({
-    clauseId_triggerId: z.lazy(() => TriggerHitClauseIdTriggerIdCompoundUniqueInputSchema),
-  }),
-])
+export const TriggerHitWhereUniqueInputSchema: z.ZodType<Prisma.TriggerHitWhereUniqueInput> = z.object({
+  id: z.string().cuid()
+})
 .and(z.object({
   id: z.string().cuid().optional(),
-  clauseId_triggerId: z.lazy(() => TriggerHitClauseIdTriggerIdCompoundUniqueInputSchema).optional(),
   AND: z.union([ z.lazy(() => TriggerHitWhereInputSchema),z.lazy(() => TriggerHitWhereInputSchema).array() ]).optional(),
   OR: z.lazy(() => TriggerHitWhereInputSchema).array().optional(),
   NOT: z.union([ z.lazy(() => TriggerHitWhereInputSchema),z.lazy(() => TriggerHitWhereInputSchema).array() ]).optional(),

@@ -7,7 +7,7 @@ import { TriggerStateSchema } from './TriggerStateSchema';
 import { SeveritySchema } from './SeveritySchema';
 import { TriggerUncheckedCreateNestedManyWithoutMergedIntoInputSchema } from './TriggerUncheckedCreateNestedManyWithoutMergedIntoInputSchema';
 import { TriggerHitUncheckedCreateNestedManyWithoutTriggerInputSchema } from './TriggerHitUncheckedCreateNestedManyWithoutTriggerInputSchema';
-import { AnalysisRequestUncheckedCreateNestedManyWithoutTriggersInputSchema } from './AnalysisRequestUncheckedCreateNestedManyWithoutTriggersInputSchema';
+import { DocumentTriggerUncheckedCreateNestedManyWithoutTriggerInputSchema } from './DocumentTriggerUncheckedCreateNestedManyWithoutTriggerInputSchema';
 
 export const TriggerUncheckedCreateInputSchema: z.ZodType<Prisma.TriggerUncheckedCreateInput> = z.object({
   id: z.string().cuid().optional(),
@@ -20,13 +20,13 @@ export const TriggerUncheckedCreateInputSchema: z.ZodType<Prisma.TriggerUnchecke
   mergedIntoId: z.string().optional().nullable(),
   reviewNotes: z.string().optional().nullable(),
   promotedAt: z.coerce.date().optional().nullable(),
-  clauseTypeId: z.string(),
+  clauseCategoryId: z.string(),
   defaultSeverity: z.lazy(() => SeveritySchema).optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   mergeFrom: z.lazy(() => TriggerUncheckedCreateNestedManyWithoutMergedIntoInputSchema).optional(),
   hits: z.lazy(() => TriggerHitUncheckedCreateNestedManyWithoutTriggerInputSchema).optional(),
-  AnalysisRequest: z.lazy(() => AnalysisRequestUncheckedCreateNestedManyWithoutTriggersInputSchema).optional()
+  documentRules: z.lazy(() => DocumentTriggerUncheckedCreateNestedManyWithoutTriggerInputSchema).optional()
 }).strict() as z.ZodType<Prisma.TriggerUncheckedCreateInput>;
 
 export default TriggerUncheckedCreateInputSchema;

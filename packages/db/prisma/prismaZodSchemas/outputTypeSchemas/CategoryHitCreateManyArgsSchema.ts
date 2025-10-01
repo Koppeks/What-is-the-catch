@@ -1,0 +1,10 @@
+import { z } from 'zod';
+import type { Prisma } from '@prisma/client';
+import { CategoryHitCreateManyInputSchema } from '../inputTypeSchemas/CategoryHitCreateManyInputSchema'
+
+export const CategoryHitCreateManyArgsSchema: z.ZodType<Prisma.CategoryHitCreateManyArgs> = z.object({
+  data: z.union([ CategoryHitCreateManyInputSchema,CategoryHitCreateManyInputSchema.array() ]),
+  skipDuplicates: z.boolean().optional(),
+}).strict() as z.ZodType<Prisma.CategoryHitCreateManyArgs>;
+
+export default CategoryHitCreateManyArgsSchema;

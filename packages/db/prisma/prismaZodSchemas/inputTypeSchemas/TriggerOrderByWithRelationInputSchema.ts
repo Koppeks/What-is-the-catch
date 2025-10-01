@@ -4,9 +4,9 @@ import { z } from 'zod';
 import { SortOrderSchema } from './SortOrderSchema';
 import { SortOrderInputSchema } from './SortOrderInputSchema';
 import { TriggerOrderByRelationAggregateInputSchema } from './TriggerOrderByRelationAggregateInputSchema';
-import { ClauseTypeOrderByWithRelationInputSchema } from './ClauseTypeOrderByWithRelationInputSchema';
+import { ClauseCategoryOrderByWithRelationInputSchema } from './ClauseCategoryOrderByWithRelationInputSchema';
 import { TriggerHitOrderByRelationAggregateInputSchema } from './TriggerHitOrderByRelationAggregateInputSchema';
-import { AnalysisRequestOrderByRelationAggregateInputSchema } from './AnalysisRequestOrderByRelationAggregateInputSchema';
+import { DocumentTriggerOrderByRelationAggregateInputSchema } from './DocumentTriggerOrderByRelationAggregateInputSchema';
 
 export const TriggerOrderByWithRelationInputSchema: z.ZodType<Prisma.TriggerOrderByWithRelationInput> = z.object({
   id: z.lazy(() => SortOrderSchema).optional(),
@@ -19,15 +19,15 @@ export const TriggerOrderByWithRelationInputSchema: z.ZodType<Prisma.TriggerOrde
   mergedIntoId: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   reviewNotes: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   promotedAt: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
-  clauseTypeId: z.lazy(() => SortOrderSchema).optional(),
+  clauseCategoryId: z.lazy(() => SortOrderSchema).optional(),
   defaultSeverity: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional(),
   mergedInto: z.lazy(() => TriggerOrderByWithRelationInputSchema).optional(),
   mergeFrom: z.lazy(() => TriggerOrderByRelationAggregateInputSchema).optional(),
-  clauseType: z.lazy(() => ClauseTypeOrderByWithRelationInputSchema).optional(),
+  clauseCategory: z.lazy(() => ClauseCategoryOrderByWithRelationInputSchema).optional(),
   hits: z.lazy(() => TriggerHitOrderByRelationAggregateInputSchema).optional(),
-  AnalysisRequest: z.lazy(() => AnalysisRequestOrderByRelationAggregateInputSchema).optional()
+  documentRules: z.lazy(() => DocumentTriggerOrderByRelationAggregateInputSchema).optional()
 }).strict() as z.ZodType<Prisma.TriggerOrderByWithRelationInput>;
 
 export default TriggerOrderByWithRelationInputSchema;

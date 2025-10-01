@@ -2,31 +2,37 @@ import type { Prisma } from '@prisma/client';
 
 import { z } from 'zod';
 import { StringFilterSchema } from './StringFilterSchema';
+import { StringNullableFilterSchema } from './StringNullableFilterSchema';
 import { IntFilterSchema } from './IntFilterSchema';
-import { StringNullableListFilterSchema } from './StringNullableListFilterSchema';
-import { EnumSeverityFilterSchema } from './EnumSeverityFilterSchema';
-import { SeveritySchema } from './SeveritySchema';
+import { JsonNullableFilterSchema } from './JsonNullableFilterSchema';
 import { DateTimeFilterSchema } from './DateTimeFilterSchema';
-import { AnalysisRequestScalarRelationFilterSchema } from './AnalysisRequestScalarRelationFilterSchema';
-import { AnalysisRequestWhereInputSchema } from './AnalysisRequestWhereInputSchema';
+import { DocumentScalarRelationFilterSchema } from './DocumentScalarRelationFilterSchema';
+import { DocumentWhereInputSchema } from './DocumentWhereInputSchema';
+import { ClauseNullableScalarRelationFilterSchema } from './ClauseNullableScalarRelationFilterSchema';
+import { ClauseListRelationFilterSchema } from './ClauseListRelationFilterSchema';
 import { TriggerHitListRelationFilterSchema } from './TriggerHitListRelationFilterSchema';
+import { ClauseAnalysisListRelationFilterSchema } from './ClauseAnalysisListRelationFilterSchema';
 
 export const ClauseWhereInputSchema: z.ZodType<Prisma.ClauseWhereInput> = z.object({
   AND: z.union([ z.lazy(() => ClauseWhereInputSchema),z.lazy(() => ClauseWhereInputSchema).array() ]).optional(),
   OR: z.lazy(() => ClauseWhereInputSchema).array().optional(),
   NOT: z.union([ z.lazy(() => ClauseWhereInputSchema),z.lazy(() => ClauseWhereInputSchema).array() ]).optional(),
   id: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  analysisRequestId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  order: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
+  documentId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  parentId: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
+  ordinalPath: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
   title: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  content: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  triggerWarning: z.lazy(() => StringNullableListFilterSchema).optional(),
-  severity: z.union([ z.lazy(() => EnumSeverityFilterSchema),z.lazy(() => SeveritySchema) ]).optional(),
-  riskScore: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
-  categories: z.lazy(() => StringNullableListFilterSchema).optional(),
+  text: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
+  order: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
+  depth: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
+  meta: z.lazy(() => JsonNullableFilterSchema).optional(),
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
-  analysisRequest: z.union([ z.lazy(() => AnalysisRequestScalarRelationFilterSchema),z.lazy(() => AnalysisRequestWhereInputSchema) ]).optional(),
-  hits: z.lazy(() => TriggerHitListRelationFilterSchema).optional()
+  updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+  document: z.union([ z.lazy(() => DocumentScalarRelationFilterSchema),z.lazy(() => DocumentWhereInputSchema) ]).optional(),
+  parent: z.union([ z.lazy(() => ClauseNullableScalarRelationFilterSchema),z.lazy(() => ClauseWhereInputSchema) ]).optional().nullable(),
+  children: z.lazy(() => ClauseListRelationFilterSchema).optional(),
+  TriggerHits: z.lazy(() => TriggerHitListRelationFilterSchema).optional(),
+  ClauseAnalysis: z.lazy(() => ClauseAnalysisListRelationFilterSchema).optional()
 }).strict() as z.ZodType<Prisma.ClauseWhereInput>;
 
 export default ClauseWhereInputSchema;

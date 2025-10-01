@@ -13,9 +13,9 @@ import { SeveritySchema } from './SeveritySchema';
 import { NullableEnumSeverityFieldUpdateOperationsInputSchema } from './NullableEnumSeverityFieldUpdateOperationsInputSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { TriggerUpdateManyWithoutMergedIntoNestedInputSchema } from './TriggerUpdateManyWithoutMergedIntoNestedInputSchema';
-import { ClauseTypeUpdateOneRequiredWithoutTriggerNestedInputSchema } from './ClauseTypeUpdateOneRequiredWithoutTriggerNestedInputSchema';
+import { ClauseCategoryUpdateOneRequiredWithoutTriggerNestedInputSchema } from './ClauseCategoryUpdateOneRequiredWithoutTriggerNestedInputSchema';
 import { TriggerHitUpdateManyWithoutTriggerNestedInputSchema } from './TriggerHitUpdateManyWithoutTriggerNestedInputSchema';
-import { AnalysisRequestUpdateManyWithoutTriggersNestedInputSchema } from './AnalysisRequestUpdateManyWithoutTriggersNestedInputSchema';
+import { DocumentTriggerUpdateManyWithoutTriggerNestedInputSchema } from './DocumentTriggerUpdateManyWithoutTriggerNestedInputSchema';
 
 export const TriggerUpdateWithoutMergedIntoInputSchema: z.ZodType<Prisma.TriggerUpdateWithoutMergedIntoInput> = z.object({
   id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -31,9 +31,9 @@ export const TriggerUpdateWithoutMergedIntoInputSchema: z.ZodType<Prisma.Trigger
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   mergeFrom: z.lazy(() => TriggerUpdateManyWithoutMergedIntoNestedInputSchema).optional(),
-  clauseType: z.lazy(() => ClauseTypeUpdateOneRequiredWithoutTriggerNestedInputSchema).optional(),
+  clauseCategory: z.lazy(() => ClauseCategoryUpdateOneRequiredWithoutTriggerNestedInputSchema).optional(),
   hits: z.lazy(() => TriggerHitUpdateManyWithoutTriggerNestedInputSchema).optional(),
-  AnalysisRequest: z.lazy(() => AnalysisRequestUpdateManyWithoutTriggersNestedInputSchema).optional()
+  documentRules: z.lazy(() => DocumentTriggerUpdateManyWithoutTriggerNestedInputSchema).optional()
 }).strict() as z.ZodType<Prisma.TriggerUpdateWithoutMergedIntoInput>;
 
 export default TriggerUpdateWithoutMergedIntoInputSchema;
