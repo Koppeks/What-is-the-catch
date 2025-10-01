@@ -30,54 +30,144 @@ model user {
     createdAt          DateTime       @default(now())
 }
 
-model AnalysisRequest {
-    id        String         @id @default(cuid())
-    type      TypeRequest
-    status    AnalysisStatus @default(PENDING)
-    clauses   Clause[]
-    triggers  Trigger[]
-    sourceUrl String?
-    language  String?
-    updatedAt DateTime       @updatedAt
-    createdAt DateTime       @default(now())
+model Document {
+    id            String            @id @default(cuid())
+    name          String
+    locale        String? // "es-AR", "en-US"
+    kind          DocumentKind?
+    type          TypeRequest
+    status        AnalysisStatus    @default(PENDING)
+    clauses       Clause[]
+    runs          AnalysisRun[]
+    documentRules DocumentTrigger[]
+    sourceUrl     String?
+    updatedAt     DateTime          @updatedAt
+    createdAt     DateTime          @default(now())
+}
+
+model DocumentTrigger {
+    id            String  @id @default(cuid())
+    documentId    String
+    triggerId     String
+    enabled       Boolean @default(true)
+    minConfidence Float? // e.g. 0.6
+    notes         String?
+
+    document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+    trigger  Trigger  @relation(fields: [triggerId], references: [id], onDelete: Cascade)
+
+    @@unique([documentId, triggerId])
+    @@index([triggerId])
 }
 
 // Representation of a segment of the document
 model Clause {
-    id                String          @id @default(cuid())
-    analysisRequest   AnalysisRequest @relation(fields: [analysisRequestId], references: [id])
-    analysisRequestId String
-    order             Int
-    title             String
-    content           String
-    triggerWarning    String[]
-    severity          Severity
-    riskScore         Int // 0-100
-    categories        String[] // e.g ["DataSharing", "Arbitration"]hits 
-    hits              TriggerHit[]
-    createdAt         DateTime        @default(now())
+    id String @id @default(cuid())
+
+    // Grouping
+    documentId String
+    document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+    // Tree, with self reference
+    parentId String?
+    parent   Clause?  @relation("ClauseToChildren", fields: [parentId], references: [id], onDelete: Cascade)
+    children Clause[] @relation("ClauseToChildren")
+
+    // Payload
+    ordinalPath String // "22.1", "a", "b-4", "5-d"
+    title       String
+    text        String @db.Text
+    order       Int
+    depth       Int // numerical root order 0=parent, 1=children, 2=grandChildren, n...
+
+    meta        Json? // Whatever
+    TriggerHits TriggerHit[]
+
+    createdAt      DateTime         @default(now())
+    updatedAt      DateTime         @updatedAt
+    ClauseAnalysis ClauseAnalysis[]
+
+    @@index([documentId, depth, order])
+    @@index([documentId, ordinalPath])
+}
+
+model AnalysisRun {
+    id String @id @default(cuid())
+
+    documentId String
+    document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+    status        AnalysisStatus @default(RUNNING)
+    engineVersion String
+    startedAt     DateTime       @default(now())
+    finishedAt    DateTime
+    overallRisk   Int @db.SmallInt @default(0)  // 0..100 summary for the doc
+    notes         String
+
+    clauseAnalyses ClauseAnalysis[]
+}
+
+model ClauseAnalysis {
+    id    String      @id @default(cuid())
+    runId String
+    run   AnalysisRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+    clauseId String
+    clause   Clause @relation(fields: [clauseId], references: [id], onDelete: Cascade)
+
+    severity        Severity      @default(NONE)
+    riskScore       Int           @default(0) // 0..100
+    // optional convenience: turn top hits into user-facing warnings
+    triggerWarnings String[] // e.g. ["Unilateral changes without notice"]
+    categoryHits    CategoryHit[]
+
+    @@index([runId])
+}
+
+model CategoryHit {
+    id               String         @id @default(cuid())
+    clauseAnalysisId String
+    clauseAnalysis   ClauseAnalysis @relation(fields: [clauseAnalysisId], references: [id], onDelete: Cascade)
+
+    categoryId String
+    category   ClauseCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+
+    confidence Float? // model confidence for this hit
+    //confidence formula
+    //baseValue = 0.0(no match), 0.5(contain some words), 1.0 (exact regex)
+    //aiConfidence = from 0 to 100, turn in to 0.00 to 1.00
+    //confidence = (0.3 * baseValue) + (0.7 * aiConfidence)
+
+    @@unique([clauseAnalysisId, categoryId])
 }
 
 model Trigger {
-    id          String   @id @default(cuid())
-    key         String   @unique // e.g., "unilateral_changes_without_notice"
+    id          String  @id @default(cuid())
+    key         String  @unique
     label       String
     description String?
-    patterns    String[]
 
-    source          TriggerSource @default(SYSTEM)
-    state           TriggerState  @default(ACTIVE)
-    mergedIntoId    String?
-    mergedInto      Trigger?      @relation("TriggerMerge", fields: [mergedIntoId], references: [id])
-    mergeFrom       Trigger[]     @relation("TriggerMerge")
-    reviewNotes     String?
-    promotedAt      DateTime?
-    clauseType      ClauseType    @relation(fields: [clauseTypeId], references: [id], onDelete: Restrict)
-    clauseTypeId    String
+    // Move patterns into a separate table (recommended):
+    // patterns String[]  // ← remove if you adopt TriggerPattern
+    patterns String[] // ← keep temporarily if you want; you can deprecate later
+
+    source       TriggerSource @default(SYSTEM)
+    state        TriggerState  @default(ACTIVE)
+    mergedIntoId String?
+    mergedInto   Trigger?      @relation("TriggerMerge", fields: [mergedIntoId], references: [id])
+    mergeFrom    Trigger[]     @relation("TriggerMerge")
+    reviewNotes  String?
+    promotedAt   DateTime?
+
+    // Rename ClauseType → ClauseCategory (see model below)
+    clauseCategoryId String
+    clauseCategory   ClauseCategory @relation(fields: [clauseCategoryId], references: [id], onDelete: Restrict)
+
     defaultSeverity Severity?
-
     hits            TriggerHit[]
-    AnalysisRequest AnalysisRequest[]
+
+    // explicit per-document settings
+    documentRules DocumentTrigger[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -103,7 +193,25 @@ model TriggerHit {
     //confidence = (0.3 * baseValue) + (0.7 * aiConfidence)
     matches    Json?
 
-    @@unique([clauseId, triggerId])
+    @@index([clauseId])
+    @@index([triggerId])
+}
+
+model ClauseCategory {
+    id                 String    @id @default(cuid())
+    slug               String    @unique // e.g MODIFICATION_RIGHTS
+    version            String    @default("0.0.1")
+    defaultScoring     Float     @default(0.5)
+    label              String // Modification rights
+    isActive           Boolean   @default(true)
+    Trigger            Trigger[]
+    triggerInstruction String
+    triggerKeywords    String[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    CategoryHit CategoryHit[]
 }
 
 model Company {
@@ -184,21 +292,6 @@ model ServiceDomain {
     @@index([serviceId])
 }
 
-model ClauseType {
-    id                 String    @id @default(cuid())
-    slug               String    @unique // e.g MODIFICATION_RIGHTS
-    version            String    @default("0.0.1")
-    defaultScoring     Float     @default(0.5)
-    label              String // Modification rights
-    isActive           Boolean
-    Trigger            Trigger[]
-    triggerInstruction String
-    triggerKeywords    String[]
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-}
-
 // --- enums --- 
 enum AccountStatus {
     FREE
@@ -249,4 +342,12 @@ enum AliasKind {
     BRAND
     ALIAS
     LEGAL_ENTITY
+}
+
+enum DocumentKind { 
+    TOS 
+    PRIVACY 
+    COOKIE 
+    EULA 
+    OTHER 
 }
