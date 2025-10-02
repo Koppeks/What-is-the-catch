@@ -9,7 +9,7 @@ import type { TriggerWithRelations, TriggerPartialWithRelations } from './Trigge
 /////////////////////////////////////////
 
 export const DocumentTriggerSchema = z.object({
-  id: z.string().cuid(),
+  id: z.cuid(),
   documentId: z.string(),
   triggerId: z.string(),
   enabled: z.boolean(),

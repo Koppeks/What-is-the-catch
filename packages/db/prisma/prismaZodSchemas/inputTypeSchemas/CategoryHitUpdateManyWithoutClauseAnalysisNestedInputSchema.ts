@@ -11,18 +11,18 @@ import { CategoryHitUpdateWithWhereUniqueWithoutClauseAnalysisInputSchema } from
 import { CategoryHitUpdateManyWithWhereWithoutClauseAnalysisInputSchema } from './CategoryHitUpdateManyWithWhereWithoutClauseAnalysisInputSchema';
 import { CategoryHitScalarWhereInputSchema } from './CategoryHitScalarWhereInputSchema';
 
-export const CategoryHitUpdateManyWithoutClauseAnalysisNestedInputSchema: z.ZodType<Prisma.CategoryHitUpdateManyWithoutClauseAnalysisNestedInput> = z.object({
-  create: z.union([ z.lazy(() => CategoryHitCreateWithoutClauseAnalysisInputSchema),z.lazy(() => CategoryHitCreateWithoutClauseAnalysisInputSchema).array(),z.lazy(() => CategoryHitUncheckedCreateWithoutClauseAnalysisInputSchema),z.lazy(() => CategoryHitUncheckedCreateWithoutClauseAnalysisInputSchema).array() ]).optional(),
-  connectOrCreate: z.union([ z.lazy(() => CategoryHitCreateOrConnectWithoutClauseAnalysisInputSchema),z.lazy(() => CategoryHitCreateOrConnectWithoutClauseAnalysisInputSchema).array() ]).optional(),
-  upsert: z.union([ z.lazy(() => CategoryHitUpsertWithWhereUniqueWithoutClauseAnalysisInputSchema),z.lazy(() => CategoryHitUpsertWithWhereUniqueWithoutClauseAnalysisInputSchema).array() ]).optional(),
+export const CategoryHitUpdateManyWithoutClauseAnalysisNestedInputSchema: z.ZodType<Prisma.CategoryHitUpdateManyWithoutClauseAnalysisNestedInput> = z.strictObject({
+  create: z.union([ z.lazy(() => CategoryHitCreateWithoutClauseAnalysisInputSchema), z.lazy(() => CategoryHitCreateWithoutClauseAnalysisInputSchema).array(), z.lazy(() => CategoryHitUncheckedCreateWithoutClauseAnalysisInputSchema), z.lazy(() => CategoryHitUncheckedCreateWithoutClauseAnalysisInputSchema).array() ]).optional(),
+  connectOrCreate: z.union([ z.lazy(() => CategoryHitCreateOrConnectWithoutClauseAnalysisInputSchema), z.lazy(() => CategoryHitCreateOrConnectWithoutClauseAnalysisInputSchema).array() ]).optional(),
+  upsert: z.union([ z.lazy(() => CategoryHitUpsertWithWhereUniqueWithoutClauseAnalysisInputSchema), z.lazy(() => CategoryHitUpsertWithWhereUniqueWithoutClauseAnalysisInputSchema).array() ]).optional(),
   createMany: z.lazy(() => CategoryHitCreateManyClauseAnalysisInputEnvelopeSchema).optional(),
-  set: z.union([ z.lazy(() => CategoryHitWhereUniqueInputSchema),z.lazy(() => CategoryHitWhereUniqueInputSchema).array() ]).optional(),
-  disconnect: z.union([ z.lazy(() => CategoryHitWhereUniqueInputSchema),z.lazy(() => CategoryHitWhereUniqueInputSchema).array() ]).optional(),
-  delete: z.union([ z.lazy(() => CategoryHitWhereUniqueInputSchema),z.lazy(() => CategoryHitWhereUniqueInputSchema).array() ]).optional(),
-  connect: z.union([ z.lazy(() => CategoryHitWhereUniqueInputSchema),z.lazy(() => CategoryHitWhereUniqueInputSchema).array() ]).optional(),
-  update: z.union([ z.lazy(() => CategoryHitUpdateWithWhereUniqueWithoutClauseAnalysisInputSchema),z.lazy(() => CategoryHitUpdateWithWhereUniqueWithoutClauseAnalysisInputSchema).array() ]).optional(),
-  updateMany: z.union([ z.lazy(() => CategoryHitUpdateManyWithWhereWithoutClauseAnalysisInputSchema),z.lazy(() => CategoryHitUpdateManyWithWhereWithoutClauseAnalysisInputSchema).array() ]).optional(),
-  deleteMany: z.union([ z.lazy(() => CategoryHitScalarWhereInputSchema),z.lazy(() => CategoryHitScalarWhereInputSchema).array() ]).optional(),
-}).strict() as z.ZodType<Prisma.CategoryHitUpdateManyWithoutClauseAnalysisNestedInput>;
+  set: z.union([ z.lazy(() => CategoryHitWhereUniqueInputSchema), z.lazy(() => CategoryHitWhereUniqueInputSchema).array() ]).optional(),
+  disconnect: z.union([ z.lazy(() => CategoryHitWhereUniqueInputSchema), z.lazy(() => CategoryHitWhereUniqueInputSchema).array() ]).optional(),
+  delete: z.union([ z.lazy(() => CategoryHitWhereUniqueInputSchema), z.lazy(() => CategoryHitWhereUniqueInputSchema).array() ]).optional(),
+  connect: z.union([ z.lazy(() => CategoryHitWhereUniqueInputSchema), z.lazy(() => CategoryHitWhereUniqueInputSchema).array() ]).optional(),
+  update: z.union([ z.lazy(() => CategoryHitUpdateWithWhereUniqueWithoutClauseAnalysisInputSchema), z.lazy(() => CategoryHitUpdateWithWhereUniqueWithoutClauseAnalysisInputSchema).array() ]).optional(),
+  updateMany: z.union([ z.lazy(() => CategoryHitUpdateManyWithWhereWithoutClauseAnalysisInputSchema), z.lazy(() => CategoryHitUpdateManyWithWhereWithoutClauseAnalysisInputSchema).array() ]).optional(),
+  deleteMany: z.union([ z.lazy(() => CategoryHitScalarWhereInputSchema), z.lazy(() => CategoryHitScalarWhereInputSchema).array() ]).optional(),
+});
 
 export default CategoryHitUpdateManyWithoutClauseAnalysisNestedInputSchema;

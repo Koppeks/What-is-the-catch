@@ -1,11 +1,11 @@
 import { z } from 'zod';
 import type { Prisma } from '@prisma/client';
-import { userCreateInputSchema } from '../inputTypeSchemas/userCreateInputSchema'
-import { userUncheckedCreateInputSchema } from '../inputTypeSchemas/userUncheckedCreateInputSchema'
+import { UserCreateInputSchema } from '../inputTypeSchemas/UserCreateInputSchema'
+import { UserUncheckedCreateInputSchema } from '../inputTypeSchemas/UserUncheckedCreateInputSchema'
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
-export const userSelectSchema: z.ZodType<Prisma.userSelect> = z.object({
+export const UserSelectSchema: z.ZodType<Prisma.UserSelect> = z.object({
   id: z.boolean().optional(),
   email: z.boolean().optional(),
   username: z.boolean().optional(),
@@ -16,9 +16,9 @@ export const userSelectSchema: z.ZodType<Prisma.userSelect> = z.object({
   createdAt: z.boolean().optional(),
 }).strict()
 
-export const userCreateArgsSchema: z.ZodType<Prisma.userCreateArgs> = z.object({
-  select: userSelectSchema.optional(),
-  data: z.union([ userCreateInputSchema,userUncheckedCreateInputSchema ]),
-}).strict() as z.ZodType<Prisma.userCreateArgs>;
+export const UserCreateArgsSchema: z.ZodType<Prisma.UserCreateArgs> = z.object({
+  select: UserSelectSchema.optional(),
+  data: z.union([ UserCreateInputSchema, UserUncheckedCreateInputSchema ]),
+}).strict();
 
-export default userCreateArgsSchema;
+export default UserCreateArgsSchema;

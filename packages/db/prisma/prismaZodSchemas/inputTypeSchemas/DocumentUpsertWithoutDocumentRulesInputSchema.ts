@@ -7,10 +7,10 @@ import { DocumentCreateWithoutDocumentRulesInputSchema } from './DocumentCreateW
 import { DocumentUncheckedCreateWithoutDocumentRulesInputSchema } from './DocumentUncheckedCreateWithoutDocumentRulesInputSchema';
 import { DocumentWhereInputSchema } from './DocumentWhereInputSchema';
 
-export const DocumentUpsertWithoutDocumentRulesInputSchema: z.ZodType<Prisma.DocumentUpsertWithoutDocumentRulesInput> = z.object({
-  update: z.union([ z.lazy(() => DocumentUpdateWithoutDocumentRulesInputSchema),z.lazy(() => DocumentUncheckedUpdateWithoutDocumentRulesInputSchema) ]),
-  create: z.union([ z.lazy(() => DocumentCreateWithoutDocumentRulesInputSchema),z.lazy(() => DocumentUncheckedCreateWithoutDocumentRulesInputSchema) ]),
-  where: z.lazy(() => DocumentWhereInputSchema).optional()
-}).strict() as z.ZodType<Prisma.DocumentUpsertWithoutDocumentRulesInput>;
+export const DocumentUpsertWithoutDocumentRulesInputSchema: z.ZodType<Prisma.DocumentUpsertWithoutDocumentRulesInput> = z.strictObject({
+  update: z.union([ z.lazy(() => DocumentUpdateWithoutDocumentRulesInputSchema), z.lazy(() => DocumentUncheckedUpdateWithoutDocumentRulesInputSchema) ]),
+  create: z.union([ z.lazy(() => DocumentCreateWithoutDocumentRulesInputSchema), z.lazy(() => DocumentUncheckedCreateWithoutDocumentRulesInputSchema) ]),
+  where: z.lazy(() => DocumentWhereInputSchema).optional(),
+});
 
 export default DocumentUpsertWithoutDocumentRulesInputSchema;

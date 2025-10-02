@@ -5,11 +5,11 @@ import { ClauseOrderByWithRelationInputSchema } from '../inputTypeSchemas/Clause
 import { ClauseWhereUniqueInputSchema } from '../inputTypeSchemas/ClauseWhereUniqueInputSchema'
 
 export const ClauseAggregateArgsSchema: z.ZodType<Prisma.ClauseAggregateArgs> = z.object({
-  where: ClauseWhereInputSchema.optional(),
-  orderBy: z.union([ ClauseOrderByWithRelationInputSchema.array(),ClauseOrderByWithRelationInputSchema ]).optional(),
-  cursor: ClauseWhereUniqueInputSchema.optional(),
+  where: ClauseWhereInputSchema.optional(), 
+  orderBy: z.union([ ClauseOrderByWithRelationInputSchema.array(), ClauseOrderByWithRelationInputSchema ]).optional(),
+  cursor: ClauseWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.ClauseAggregateArgs>;
+}).strict();
 
 export default ClauseAggregateArgsSchema;

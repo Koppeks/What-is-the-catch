@@ -3,8 +3,8 @@ import type { Prisma } from '@prisma/client';
 import { CompanyCreateManyInputSchema } from '../inputTypeSchemas/CompanyCreateManyInputSchema'
 
 export const CompanyCreateManyArgsSchema: z.ZodType<Prisma.CompanyCreateManyArgs> = z.object({
-  data: z.union([ CompanyCreateManyInputSchema,CompanyCreateManyInputSchema.array() ]),
+  data: z.union([ CompanyCreateManyInputSchema, CompanyCreateManyInputSchema.array() ]),
   skipDuplicates: z.boolean().optional(),
-}).strict() as z.ZodType<Prisma.CompanyCreateManyArgs>;
+}).strict();
 
 export default CompanyCreateManyArgsSchema;

@@ -5,9 +5,9 @@ import { CompanyAliasWhereUniqueInputSchema } from './CompanyAliasWhereUniqueInp
 import { CompanyAliasCreateWithoutCompanyInputSchema } from './CompanyAliasCreateWithoutCompanyInputSchema';
 import { CompanyAliasUncheckedCreateWithoutCompanyInputSchema } from './CompanyAliasUncheckedCreateWithoutCompanyInputSchema';
 
-export const CompanyAliasCreateOrConnectWithoutCompanyInputSchema: z.ZodType<Prisma.CompanyAliasCreateOrConnectWithoutCompanyInput> = z.object({
+export const CompanyAliasCreateOrConnectWithoutCompanyInputSchema: z.ZodType<Prisma.CompanyAliasCreateOrConnectWithoutCompanyInput> = z.strictObject({
   where: z.lazy(() => CompanyAliasWhereUniqueInputSchema),
-  create: z.union([ z.lazy(() => CompanyAliasCreateWithoutCompanyInputSchema),z.lazy(() => CompanyAliasUncheckedCreateWithoutCompanyInputSchema) ]),
-}).strict() as z.ZodType<Prisma.CompanyAliasCreateOrConnectWithoutCompanyInput>;
+  create: z.union([ z.lazy(() => CompanyAliasCreateWithoutCompanyInputSchema), z.lazy(() => CompanyAliasUncheckedCreateWithoutCompanyInputSchema) ]),
+});
 
 export default CompanyAliasCreateOrConnectWithoutCompanyInputSchema;

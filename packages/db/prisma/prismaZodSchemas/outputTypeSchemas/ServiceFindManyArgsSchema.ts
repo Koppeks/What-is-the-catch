@@ -27,12 +27,12 @@ export const ServiceSelectSchema: z.ZodType<Prisma.ServiceSelect> = z.object({
 export const ServiceFindManyArgsSchema: z.ZodType<Prisma.ServiceFindManyArgs> = z.object({
   select: ServiceSelectSchema.optional(),
   include: z.lazy(() => ServiceIncludeSchema).optional(),
-  where: ServiceWhereInputSchema.optional(),
-  orderBy: z.union([ ServiceOrderByWithRelationInputSchema.array(),ServiceOrderByWithRelationInputSchema ]).optional(),
-  cursor: ServiceWhereUniqueInputSchema.optional(),
+  where: ServiceWhereInputSchema.optional(), 
+  orderBy: z.union([ ServiceOrderByWithRelationInputSchema.array(), ServiceOrderByWithRelationInputSchema ]).optional(),
+  cursor: ServiceWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-  distinct: z.union([ ServiceScalarFieldEnumSchema,ServiceScalarFieldEnumSchema.array() ]).optional(),
-}).strict() as z.ZodType<Prisma.ServiceFindManyArgs>;
+  distinct: z.union([ ServiceScalarFieldEnumSchema, ServiceScalarFieldEnumSchema.array() ]).optional(),
+}).strict();
 
 export default ServiceFindManyArgsSchema;

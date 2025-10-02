@@ -5,9 +5,9 @@ import { CategoryHitWhereUniqueInputSchema } from './CategoryHitWhereUniqueInput
 import { CategoryHitUpdateWithoutClauseAnalysisInputSchema } from './CategoryHitUpdateWithoutClauseAnalysisInputSchema';
 import { CategoryHitUncheckedUpdateWithoutClauseAnalysisInputSchema } from './CategoryHitUncheckedUpdateWithoutClauseAnalysisInputSchema';
 
-export const CategoryHitUpdateWithWhereUniqueWithoutClauseAnalysisInputSchema: z.ZodType<Prisma.CategoryHitUpdateWithWhereUniqueWithoutClauseAnalysisInput> = z.object({
+export const CategoryHitUpdateWithWhereUniqueWithoutClauseAnalysisInputSchema: z.ZodType<Prisma.CategoryHitUpdateWithWhereUniqueWithoutClauseAnalysisInput> = z.strictObject({
   where: z.lazy(() => CategoryHitWhereUniqueInputSchema),
-  data: z.union([ z.lazy(() => CategoryHitUpdateWithoutClauseAnalysisInputSchema),z.lazy(() => CategoryHitUncheckedUpdateWithoutClauseAnalysisInputSchema) ]),
-}).strict() as z.ZodType<Prisma.CategoryHitUpdateWithWhereUniqueWithoutClauseAnalysisInput>;
+  data: z.union([ z.lazy(() => CategoryHitUpdateWithoutClauseAnalysisInputSchema), z.lazy(() => CategoryHitUncheckedUpdateWithoutClauseAnalysisInputSchema) ]),
+});
 
 export default CategoryHitUpdateWithWhereUniqueWithoutClauseAnalysisInputSchema;

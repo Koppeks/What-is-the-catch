@@ -7,7 +7,7 @@ export const JsonValueSchema: z.ZodType<Prisma.JsonValue> = z.lazy(() =>
     z.number(),
     z.boolean(),
     z.literal(null),
-    z.record(z.lazy(() => JsonValueSchema.optional())),
+    z.record(z.string(), z.lazy(() => JsonValueSchema.optional())),
     z.array(z.lazy(() => JsonValueSchema)),
   ])
 );

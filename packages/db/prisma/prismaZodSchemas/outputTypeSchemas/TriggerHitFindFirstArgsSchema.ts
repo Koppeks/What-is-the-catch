@@ -23,12 +23,12 @@ export const TriggerHitSelectSchema: z.ZodType<Prisma.TriggerHitSelect> = z.obje
 export const TriggerHitFindFirstArgsSchema: z.ZodType<Prisma.TriggerHitFindFirstArgs> = z.object({
   select: TriggerHitSelectSchema.optional(),
   include: z.lazy(() => TriggerHitIncludeSchema).optional(),
-  where: TriggerHitWhereInputSchema.optional(),
-  orderBy: z.union([ TriggerHitOrderByWithRelationInputSchema.array(),TriggerHitOrderByWithRelationInputSchema ]).optional(),
-  cursor: TriggerHitWhereUniqueInputSchema.optional(),
+  where: TriggerHitWhereInputSchema.optional(), 
+  orderBy: z.union([ TriggerHitOrderByWithRelationInputSchema.array(), TriggerHitOrderByWithRelationInputSchema ]).optional(),
+  cursor: TriggerHitWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-  distinct: z.union([ TriggerHitScalarFieldEnumSchema,TriggerHitScalarFieldEnumSchema.array() ]).optional(),
-}).strict() as z.ZodType<Prisma.TriggerHitFindFirstArgs>;
+  distinct: z.union([ TriggerHitScalarFieldEnumSchema, TriggerHitScalarFieldEnumSchema.array() ]).optional(),
+}).strict();
 
 export default TriggerHitFindFirstArgsSchema;

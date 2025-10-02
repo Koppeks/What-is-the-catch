@@ -7,11 +7,11 @@ import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSc
 import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { TriggerUpdateOneRequiredWithoutHitsNestedInputSchema } from './TriggerUpdateOneRequiredWithoutHitsNestedInputSchema';
 
-export const TriggerHitUpdateWithoutClauseInputSchema: z.ZodType<Prisma.TriggerHitUpdateWithoutClauseInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const TriggerHitUpdateWithoutClauseInputSchema: z.ZodType<Prisma.TriggerHitUpdateWithoutClauseInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   confidence: z.union([ z.number(),z.lazy(() => NullableFloatFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  matches: z.union([ z.lazy(() => NullableJsonNullValueInputSchema),InputJsonValueSchema ]).optional(),
-  trigger: z.lazy(() => TriggerUpdateOneRequiredWithoutHitsNestedInputSchema).optional()
-}).strict() as z.ZodType<Prisma.TriggerHitUpdateWithoutClauseInput>;
+  matches: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
+  trigger: z.lazy(() => TriggerUpdateOneRequiredWithoutHitsNestedInputSchema).optional(),
+});
 
 export default TriggerHitUpdateWithoutClauseInputSchema;

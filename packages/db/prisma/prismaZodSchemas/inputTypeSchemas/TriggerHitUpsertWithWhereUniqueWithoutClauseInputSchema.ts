@@ -7,10 +7,10 @@ import { TriggerHitUncheckedUpdateWithoutClauseInputSchema } from './TriggerHitU
 import { TriggerHitCreateWithoutClauseInputSchema } from './TriggerHitCreateWithoutClauseInputSchema';
 import { TriggerHitUncheckedCreateWithoutClauseInputSchema } from './TriggerHitUncheckedCreateWithoutClauseInputSchema';
 
-export const TriggerHitUpsertWithWhereUniqueWithoutClauseInputSchema: z.ZodType<Prisma.TriggerHitUpsertWithWhereUniqueWithoutClauseInput> = z.object({
+export const TriggerHitUpsertWithWhereUniqueWithoutClauseInputSchema: z.ZodType<Prisma.TriggerHitUpsertWithWhereUniqueWithoutClauseInput> = z.strictObject({
   where: z.lazy(() => TriggerHitWhereUniqueInputSchema),
-  update: z.union([ z.lazy(() => TriggerHitUpdateWithoutClauseInputSchema),z.lazy(() => TriggerHitUncheckedUpdateWithoutClauseInputSchema) ]),
-  create: z.union([ z.lazy(() => TriggerHitCreateWithoutClauseInputSchema),z.lazy(() => TriggerHitUncheckedCreateWithoutClauseInputSchema) ]),
-}).strict() as z.ZodType<Prisma.TriggerHitUpsertWithWhereUniqueWithoutClauseInput>;
+  update: z.union([ z.lazy(() => TriggerHitUpdateWithoutClauseInputSchema), z.lazy(() => TriggerHitUncheckedUpdateWithoutClauseInputSchema) ]),
+  create: z.union([ z.lazy(() => TriggerHitCreateWithoutClauseInputSchema), z.lazy(() => TriggerHitUncheckedCreateWithoutClauseInputSchema) ]),
+});
 
 export default TriggerHitUpsertWithWhereUniqueWithoutClauseInputSchema;

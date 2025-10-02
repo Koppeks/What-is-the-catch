@@ -6,12 +6,12 @@ import { TriggerScalarFieldEnumSchema } from '../inputTypeSchemas/TriggerScalarF
 import { TriggerScalarWhereWithAggregatesInputSchema } from '../inputTypeSchemas/TriggerScalarWhereWithAggregatesInputSchema'
 
 export const TriggerGroupByArgsSchema: z.ZodType<Prisma.TriggerGroupByArgs> = z.object({
-  where: TriggerWhereInputSchema.optional(),
-  orderBy: z.union([ TriggerOrderByWithAggregationInputSchema.array(),TriggerOrderByWithAggregationInputSchema ]).optional(),
-  by: TriggerScalarFieldEnumSchema.array(),
-  having: TriggerScalarWhereWithAggregatesInputSchema.optional(),
+  where: TriggerWhereInputSchema.optional(), 
+  orderBy: z.union([ TriggerOrderByWithAggregationInputSchema.array(), TriggerOrderByWithAggregationInputSchema ]).optional(),
+  by: TriggerScalarFieldEnumSchema.array(), 
+  having: TriggerScalarWhereWithAggregatesInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.TriggerGroupByArgs>;
+}).strict();
 
 export default TriggerGroupByArgsSchema;

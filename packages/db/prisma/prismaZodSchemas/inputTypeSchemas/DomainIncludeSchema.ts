@@ -8,6 +8,6 @@ export const DomainIncludeSchema: z.ZodType<Prisma.DomainInclude> = z.object({
   company: z.union([z.boolean(),z.lazy(() => CompanyArgsSchema)]).optional(),
   ServiceDomain: z.union([z.boolean(),z.lazy(() => ServiceDomainFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => DomainCountOutputTypeArgsSchema)]).optional(),
-}).strict()
+}).strict();
 
 export default DomainIncludeSchema;

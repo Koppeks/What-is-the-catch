@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { SortOrderSchema } from './SortOrderSchema';
 import { CompanyOrderByWithRelationInputSchema } from './CompanyOrderByWithRelationInputSchema';
 
-export const CompanyAliasOrderByWithRelationInputSchema: z.ZodType<Prisma.CompanyAliasOrderByWithRelationInput> = z.object({
+export const CompanyAliasOrderByWithRelationInputSchema: z.ZodType<Prisma.CompanyAliasOrderByWithRelationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   companyId: z.lazy(() => SortOrderSchema).optional(),
   kind: z.lazy(() => SortOrderSchema).optional(),
@@ -12,7 +12,7 @@ export const CompanyAliasOrderByWithRelationInputSchema: z.ZodType<Prisma.Compan
   valueNorm: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional(),
-  company: z.lazy(() => CompanyOrderByWithRelationInputSchema).optional()
-}).strict() as z.ZodType<Prisma.CompanyAliasOrderByWithRelationInput>;
+  company: z.lazy(() => CompanyOrderByWithRelationInputSchema).optional(),
+});
 
 export default CompanyAliasOrderByWithRelationInputSchema;

@@ -7,10 +7,10 @@ import { DomainCreateWithoutServiceDomainInputSchema } from './DomainCreateWitho
 import { DomainUncheckedCreateWithoutServiceDomainInputSchema } from './DomainUncheckedCreateWithoutServiceDomainInputSchema';
 import { DomainWhereInputSchema } from './DomainWhereInputSchema';
 
-export const DomainUpsertWithoutServiceDomainInputSchema: z.ZodType<Prisma.DomainUpsertWithoutServiceDomainInput> = z.object({
-  update: z.union([ z.lazy(() => DomainUpdateWithoutServiceDomainInputSchema),z.lazy(() => DomainUncheckedUpdateWithoutServiceDomainInputSchema) ]),
-  create: z.union([ z.lazy(() => DomainCreateWithoutServiceDomainInputSchema),z.lazy(() => DomainUncheckedCreateWithoutServiceDomainInputSchema) ]),
-  where: z.lazy(() => DomainWhereInputSchema).optional()
-}).strict() as z.ZodType<Prisma.DomainUpsertWithoutServiceDomainInput>;
+export const DomainUpsertWithoutServiceDomainInputSchema: z.ZodType<Prisma.DomainUpsertWithoutServiceDomainInput> = z.strictObject({
+  update: z.union([ z.lazy(() => DomainUpdateWithoutServiceDomainInputSchema), z.lazy(() => DomainUncheckedUpdateWithoutServiceDomainInputSchema) ]),
+  create: z.union([ z.lazy(() => DomainCreateWithoutServiceDomainInputSchema), z.lazy(() => DomainUncheckedCreateWithoutServiceDomainInputSchema) ]),
+  where: z.lazy(() => DomainWhereInputSchema).optional(),
+});
 
 export default DomainUpsertWithoutServiceDomainInputSchema;

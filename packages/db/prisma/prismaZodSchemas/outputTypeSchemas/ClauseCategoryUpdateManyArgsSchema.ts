@@ -5,9 +5,9 @@ import { ClauseCategoryUncheckedUpdateManyInputSchema } from '../inputTypeSchema
 import { ClauseCategoryWhereInputSchema } from '../inputTypeSchemas/ClauseCategoryWhereInputSchema'
 
 export const ClauseCategoryUpdateManyArgsSchema: z.ZodType<Prisma.ClauseCategoryUpdateManyArgs> = z.object({
-  data: z.union([ ClauseCategoryUpdateManyMutationInputSchema,ClauseCategoryUncheckedUpdateManyInputSchema ]),
-  where: ClauseCategoryWhereInputSchema.optional(),
+  data: z.union([ ClauseCategoryUpdateManyMutationInputSchema, ClauseCategoryUncheckedUpdateManyInputSchema ]),
+  where: ClauseCategoryWhereInputSchema.optional(), 
   limit: z.number().optional(),
-}).strict() as z.ZodType<Prisma.ClauseCategoryUpdateManyArgs>;
+}).strict();
 
 export default ClauseCategoryUpdateManyArgsSchema;

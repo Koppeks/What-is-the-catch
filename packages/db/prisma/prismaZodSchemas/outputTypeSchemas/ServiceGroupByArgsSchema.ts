@@ -6,12 +6,12 @@ import { ServiceScalarFieldEnumSchema } from '../inputTypeSchemas/ServiceScalarF
 import { ServiceScalarWhereWithAggregatesInputSchema } from '../inputTypeSchemas/ServiceScalarWhereWithAggregatesInputSchema'
 
 export const ServiceGroupByArgsSchema: z.ZodType<Prisma.ServiceGroupByArgs> = z.object({
-  where: ServiceWhereInputSchema.optional(),
-  orderBy: z.union([ ServiceOrderByWithAggregationInputSchema.array(),ServiceOrderByWithAggregationInputSchema ]).optional(),
-  by: ServiceScalarFieldEnumSchema.array(),
-  having: ServiceScalarWhereWithAggregatesInputSchema.optional(),
+  where: ServiceWhereInputSchema.optional(), 
+  orderBy: z.union([ ServiceOrderByWithAggregationInputSchema.array(), ServiceOrderByWithAggregationInputSchema ]).optional(),
+  by: ServiceScalarFieldEnumSchema.array(), 
+  having: ServiceScalarWhereWithAggregatesInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.ServiceGroupByArgs>;
+}).strict();
 
 export default ServiceGroupByArgsSchema;

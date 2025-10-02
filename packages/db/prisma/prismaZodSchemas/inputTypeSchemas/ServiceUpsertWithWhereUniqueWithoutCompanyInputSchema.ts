@@ -7,10 +7,10 @@ import { ServiceUncheckedUpdateWithoutCompanyInputSchema } from './ServiceUnchec
 import { ServiceCreateWithoutCompanyInputSchema } from './ServiceCreateWithoutCompanyInputSchema';
 import { ServiceUncheckedCreateWithoutCompanyInputSchema } from './ServiceUncheckedCreateWithoutCompanyInputSchema';
 
-export const ServiceUpsertWithWhereUniqueWithoutCompanyInputSchema: z.ZodType<Prisma.ServiceUpsertWithWhereUniqueWithoutCompanyInput> = z.object({
+export const ServiceUpsertWithWhereUniqueWithoutCompanyInputSchema: z.ZodType<Prisma.ServiceUpsertWithWhereUniqueWithoutCompanyInput> = z.strictObject({
   where: z.lazy(() => ServiceWhereUniqueInputSchema),
-  update: z.union([ z.lazy(() => ServiceUpdateWithoutCompanyInputSchema),z.lazy(() => ServiceUncheckedUpdateWithoutCompanyInputSchema) ]),
-  create: z.union([ z.lazy(() => ServiceCreateWithoutCompanyInputSchema),z.lazy(() => ServiceUncheckedCreateWithoutCompanyInputSchema) ]),
-}).strict() as z.ZodType<Prisma.ServiceUpsertWithWhereUniqueWithoutCompanyInput>;
+  update: z.union([ z.lazy(() => ServiceUpdateWithoutCompanyInputSchema), z.lazy(() => ServiceUncheckedUpdateWithoutCompanyInputSchema) ]),
+  create: z.union([ z.lazy(() => ServiceCreateWithoutCompanyInputSchema), z.lazy(() => ServiceUncheckedCreateWithoutCompanyInputSchema) ]),
+});
 
 export default ServiceUpsertWithWhereUniqueWithoutCompanyInputSchema;

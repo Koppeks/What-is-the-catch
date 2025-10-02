@@ -22,12 +22,12 @@ export const ServiceDomainSelectSchema: z.ZodType<Prisma.ServiceDomainSelect> = 
 export const ServiceDomainFindFirstArgsSchema: z.ZodType<Prisma.ServiceDomainFindFirstArgs> = z.object({
   select: ServiceDomainSelectSchema.optional(),
   include: z.lazy(() => ServiceDomainIncludeSchema).optional(),
-  where: ServiceDomainWhereInputSchema.optional(),
-  orderBy: z.union([ ServiceDomainOrderByWithRelationInputSchema.array(),ServiceDomainOrderByWithRelationInputSchema ]).optional(),
-  cursor: ServiceDomainWhereUniqueInputSchema.optional(),
+  where: ServiceDomainWhereInputSchema.optional(), 
+  orderBy: z.union([ ServiceDomainOrderByWithRelationInputSchema.array(), ServiceDomainOrderByWithRelationInputSchema ]).optional(),
+  cursor: ServiceDomainWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-  distinct: z.union([ ServiceDomainScalarFieldEnumSchema,ServiceDomainScalarFieldEnumSchema.array() ]).optional(),
-}).strict() as z.ZodType<Prisma.ServiceDomainFindFirstArgs>;
+  distinct: z.union([ ServiceDomainScalarFieldEnumSchema, ServiceDomainScalarFieldEnumSchema.array() ]).optional(),
+}).strict();
 
 export default ServiceDomainFindFirstArgsSchema;

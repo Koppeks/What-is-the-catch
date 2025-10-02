@@ -1,14 +1,14 @@
 import { z } from 'zod';
 import type { Prisma } from '@prisma/client';
-import { userWhereUniqueInputSchema } from '../inputTypeSchemas/userWhereUniqueInputSchema'
-import { userCreateInputSchema } from '../inputTypeSchemas/userCreateInputSchema'
-import { userUncheckedCreateInputSchema } from '../inputTypeSchemas/userUncheckedCreateInputSchema'
-import { userUpdateInputSchema } from '../inputTypeSchemas/userUpdateInputSchema'
-import { userUncheckedUpdateInputSchema } from '../inputTypeSchemas/userUncheckedUpdateInputSchema'
+import { UserWhereUniqueInputSchema } from '../inputTypeSchemas/UserWhereUniqueInputSchema'
+import { UserCreateInputSchema } from '../inputTypeSchemas/UserCreateInputSchema'
+import { UserUncheckedCreateInputSchema } from '../inputTypeSchemas/UserUncheckedCreateInputSchema'
+import { UserUpdateInputSchema } from '../inputTypeSchemas/UserUpdateInputSchema'
+import { UserUncheckedUpdateInputSchema } from '../inputTypeSchemas/UserUncheckedUpdateInputSchema'
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
-export const userSelectSchema: z.ZodType<Prisma.userSelect> = z.object({
+export const UserSelectSchema: z.ZodType<Prisma.UserSelect> = z.object({
   id: z.boolean().optional(),
   email: z.boolean().optional(),
   username: z.boolean().optional(),
@@ -19,11 +19,11 @@ export const userSelectSchema: z.ZodType<Prisma.userSelect> = z.object({
   createdAt: z.boolean().optional(),
 }).strict()
 
-export const userUpsertArgsSchema: z.ZodType<Prisma.userUpsertArgs> = z.object({
-  select: userSelectSchema.optional(),
-  where: userWhereUniqueInputSchema,
-  create: z.union([ userCreateInputSchema,userUncheckedCreateInputSchema ]),
-  update: z.union([ userUpdateInputSchema,userUncheckedUpdateInputSchema ]),
-}).strict() as z.ZodType<Prisma.userUpsertArgs>;
+export const UserUpsertArgsSchema: z.ZodType<Prisma.UserUpsertArgs> = z.object({
+  select: UserSelectSchema.optional(),
+  where: UserWhereUniqueInputSchema, 
+  create: z.union([ UserCreateInputSchema, UserUncheckedCreateInputSchema ]),
+  update: z.union([ UserUpdateInputSchema, UserUncheckedUpdateInputSchema ]),
+}).strict();
 
-export default userUpsertArgsSchema;
+export default UserUpsertArgsSchema;

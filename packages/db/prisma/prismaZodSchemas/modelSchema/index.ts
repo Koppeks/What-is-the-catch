@@ -1,4 +1,4 @@
-export * from './userSchema';
+export * from './UserSchema';
 export * from './DocumentSchema';
 export * from './DocumentTriggerSchema';
 export * from './ClauseSchema';

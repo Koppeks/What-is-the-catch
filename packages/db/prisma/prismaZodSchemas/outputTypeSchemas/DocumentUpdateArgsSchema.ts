@@ -30,8 +30,8 @@ export const DocumentSelectSchema: z.ZodType<Prisma.DocumentSelect> = z.object({
 export const DocumentUpdateArgsSchema: z.ZodType<Prisma.DocumentUpdateArgs> = z.object({
   select: DocumentSelectSchema.optional(),
   include: z.lazy(() => DocumentIncludeSchema).optional(),
-  data: z.union([ DocumentUpdateInputSchema,DocumentUncheckedUpdateInputSchema ]),
-  where: DocumentWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.DocumentUpdateArgs>;
+  data: z.union([ DocumentUpdateInputSchema, DocumentUncheckedUpdateInputSchema ]),
+  where: DocumentWhereUniqueInputSchema, 
+}).strict();
 
 export default DocumentUpdateArgsSchema;

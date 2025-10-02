@@ -3,7 +3,7 @@ import type { Prisma } from '@prisma/client';
 import { z } from 'zod';
 import { SortOrderSchema } from './SortOrderSchema';
 
-export const userOrderByWithRelationInputSchema: z.ZodType<Prisma.userOrderByWithRelationInput> = z.object({
+export const UserOrderByWithRelationInputSchema: z.ZodType<Prisma.UserOrderByWithRelationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   email: z.lazy(() => SortOrderSchema).optional(),
   username: z.lazy(() => SortOrderSchema).optional(),
@@ -11,7 +11,7 @@ export const userOrderByWithRelationInputSchema: z.ZodType<Prisma.userOrderByWit
   userRole: z.lazy(() => SortOrderSchema).optional(),
   subscriptionStatus: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional(),
-  createdAt: z.lazy(() => SortOrderSchema).optional()
-}).strict() as z.ZodType<Prisma.userOrderByWithRelationInput>;
+  createdAt: z.lazy(() => SortOrderSchema).optional(),
+});
 
-export default userOrderByWithRelationInputSchema;
+export default UserOrderByWithRelationInputSchema;

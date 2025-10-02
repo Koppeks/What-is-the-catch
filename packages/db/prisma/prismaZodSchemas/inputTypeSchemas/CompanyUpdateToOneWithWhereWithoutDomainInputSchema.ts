@@ -5,9 +5,9 @@ import { CompanyWhereInputSchema } from './CompanyWhereInputSchema';
 import { CompanyUpdateWithoutDomainInputSchema } from './CompanyUpdateWithoutDomainInputSchema';
 import { CompanyUncheckedUpdateWithoutDomainInputSchema } from './CompanyUncheckedUpdateWithoutDomainInputSchema';
 
-export const CompanyUpdateToOneWithWhereWithoutDomainInputSchema: z.ZodType<Prisma.CompanyUpdateToOneWithWhereWithoutDomainInput> = z.object({
+export const CompanyUpdateToOneWithWhereWithoutDomainInputSchema: z.ZodType<Prisma.CompanyUpdateToOneWithWhereWithoutDomainInput> = z.strictObject({
   where: z.lazy(() => CompanyWhereInputSchema).optional(),
-  data: z.union([ z.lazy(() => CompanyUpdateWithoutDomainInputSchema),z.lazy(() => CompanyUncheckedUpdateWithoutDomainInputSchema) ]),
-}).strict() as z.ZodType<Prisma.CompanyUpdateToOneWithWhereWithoutDomainInput>;
+  data: z.union([ z.lazy(() => CompanyUpdateWithoutDomainInputSchema), z.lazy(() => CompanyUncheckedUpdateWithoutDomainInputSchema) ]),
+});
 
 export default CompanyUpdateToOneWithWhereWithoutDomainInputSchema;

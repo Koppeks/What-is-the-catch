@@ -6,13 +6,13 @@ import { ClauseAnalysisCreatetriggerWarningsInputSchema } from './ClauseAnalysis
 import { AnalysisRunCreateNestedOneWithoutClauseAnalysesInputSchema } from './AnalysisRunCreateNestedOneWithoutClauseAnalysesInputSchema';
 import { CategoryHitCreateNestedManyWithoutClauseAnalysisInputSchema } from './CategoryHitCreateNestedManyWithoutClauseAnalysisInputSchema';
 
-export const ClauseAnalysisCreateWithoutClauseInputSchema: z.ZodType<Prisma.ClauseAnalysisCreateWithoutClauseInput> = z.object({
-  id: z.string().cuid().optional(),
+export const ClauseAnalysisCreateWithoutClauseInputSchema: z.ZodType<Prisma.ClauseAnalysisCreateWithoutClauseInput> = z.strictObject({
+  id: z.cuid().optional(),
   severity: z.lazy(() => SeveritySchema).optional(),
   riskScore: z.number().int().optional(),
-  triggerWarnings: z.union([ z.lazy(() => ClauseAnalysisCreatetriggerWarningsInputSchema),z.string().array() ]).optional(),
+  triggerWarnings: z.union([ z.lazy(() => ClauseAnalysisCreatetriggerWarningsInputSchema), z.string().array() ]).optional(),
   run: z.lazy(() => AnalysisRunCreateNestedOneWithoutClauseAnalysesInputSchema),
-  categoryHits: z.lazy(() => CategoryHitCreateNestedManyWithoutClauseAnalysisInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseAnalysisCreateWithoutClauseInput>;
+  categoryHits: z.lazy(() => CategoryHitCreateNestedManyWithoutClauseAnalysisInputSchema).optional(),
+});
 
 export default ClauseAnalysisCreateWithoutClauseInputSchema;

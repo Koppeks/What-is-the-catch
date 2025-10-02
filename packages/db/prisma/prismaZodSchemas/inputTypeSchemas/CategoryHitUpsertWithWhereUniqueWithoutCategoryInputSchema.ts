@@ -7,10 +7,10 @@ import { CategoryHitUncheckedUpdateWithoutCategoryInputSchema } from './Category
 import { CategoryHitCreateWithoutCategoryInputSchema } from './CategoryHitCreateWithoutCategoryInputSchema';
 import { CategoryHitUncheckedCreateWithoutCategoryInputSchema } from './CategoryHitUncheckedCreateWithoutCategoryInputSchema';
 
-export const CategoryHitUpsertWithWhereUniqueWithoutCategoryInputSchema: z.ZodType<Prisma.CategoryHitUpsertWithWhereUniqueWithoutCategoryInput> = z.object({
+export const CategoryHitUpsertWithWhereUniqueWithoutCategoryInputSchema: z.ZodType<Prisma.CategoryHitUpsertWithWhereUniqueWithoutCategoryInput> = z.strictObject({
   where: z.lazy(() => CategoryHitWhereUniqueInputSchema),
-  update: z.union([ z.lazy(() => CategoryHitUpdateWithoutCategoryInputSchema),z.lazy(() => CategoryHitUncheckedUpdateWithoutCategoryInputSchema) ]),
-  create: z.union([ z.lazy(() => CategoryHitCreateWithoutCategoryInputSchema),z.lazy(() => CategoryHitUncheckedCreateWithoutCategoryInputSchema) ]),
-}).strict() as z.ZodType<Prisma.CategoryHitUpsertWithWhereUniqueWithoutCategoryInput>;
+  update: z.union([ z.lazy(() => CategoryHitUpdateWithoutCategoryInputSchema), z.lazy(() => CategoryHitUncheckedUpdateWithoutCategoryInputSchema) ]),
+  create: z.union([ z.lazy(() => CategoryHitCreateWithoutCategoryInputSchema), z.lazy(() => CategoryHitUncheckedCreateWithoutCategoryInputSchema) ]),
+});
 
 export default CategoryHitUpsertWithWhereUniqueWithoutCategoryInputSchema;

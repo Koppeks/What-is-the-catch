@@ -19,7 +19,7 @@ export const CategoryHitSelectSchema: z.ZodType<Prisma.CategoryHitSelect> = z.ob
 export const CategoryHitFindUniqueOrThrowArgsSchema: z.ZodType<Prisma.CategoryHitFindUniqueOrThrowArgs> = z.object({
   select: CategoryHitSelectSchema.optional(),
   include: z.lazy(() => CategoryHitIncludeSchema).optional(),
-  where: CategoryHitWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.CategoryHitFindUniqueOrThrowArgs>;
+  where: CategoryHitWhereUniqueInputSchema, 
+}).strict();
 
 export default CategoryHitFindUniqueOrThrowArgsSchema;

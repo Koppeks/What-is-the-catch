@@ -5,11 +5,11 @@ import { CompanyAliasOrderByWithRelationInputSchema } from '../inputTypeSchemas/
 import { CompanyAliasWhereUniqueInputSchema } from '../inputTypeSchemas/CompanyAliasWhereUniqueInputSchema'
 
 export const CompanyAliasAggregateArgsSchema: z.ZodType<Prisma.CompanyAliasAggregateArgs> = z.object({
-  where: CompanyAliasWhereInputSchema.optional(),
-  orderBy: z.union([ CompanyAliasOrderByWithRelationInputSchema.array(),CompanyAliasOrderByWithRelationInputSchema ]).optional(),
-  cursor: CompanyAliasWhereUniqueInputSchema.optional(),
+  where: CompanyAliasWhereInputSchema.optional(), 
+  orderBy: z.union([ CompanyAliasOrderByWithRelationInputSchema.array(), CompanyAliasOrderByWithRelationInputSchema ]).optional(),
+  cursor: CompanyAliasWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.CompanyAliasAggregateArgs>;
+}).strict();
 
 export default CompanyAliasAggregateArgsSchema;

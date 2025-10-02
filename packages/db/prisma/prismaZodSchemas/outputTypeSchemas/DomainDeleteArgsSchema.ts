@@ -23,7 +23,7 @@ export const DomainSelectSchema: z.ZodType<Prisma.DomainSelect> = z.object({
 export const DomainDeleteArgsSchema: z.ZodType<Prisma.DomainDeleteArgs> = z.object({
   select: DomainSelectSchema.optional(),
   include: z.lazy(() => DomainIncludeSchema).optional(),
-  where: DomainWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.DomainDeleteArgs>;
+  where: DomainWhereUniqueInputSchema, 
+}).strict();
 
 export default DomainDeleteArgsSchema;

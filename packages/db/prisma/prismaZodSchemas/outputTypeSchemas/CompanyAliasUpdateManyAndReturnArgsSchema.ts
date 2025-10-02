@@ -5,9 +5,9 @@ import { CompanyAliasUncheckedUpdateManyInputSchema } from '../inputTypeSchemas/
 import { CompanyAliasWhereInputSchema } from '../inputTypeSchemas/CompanyAliasWhereInputSchema'
 
 export const CompanyAliasUpdateManyAndReturnArgsSchema: z.ZodType<Prisma.CompanyAliasUpdateManyAndReturnArgs> = z.object({
-  data: z.union([ CompanyAliasUpdateManyMutationInputSchema,CompanyAliasUncheckedUpdateManyInputSchema ]),
-  where: CompanyAliasWhereInputSchema.optional(),
+  data: z.union([ CompanyAliasUpdateManyMutationInputSchema, CompanyAliasUncheckedUpdateManyInputSchema ]),
+  where: CompanyAliasWhereInputSchema.optional(), 
   limit: z.number().optional(),
-}).strict() as z.ZodType<Prisma.CompanyAliasUpdateManyAndReturnArgs>;
+}).strict();
 
 export default CompanyAliasUpdateManyAndReturnArgsSchema;

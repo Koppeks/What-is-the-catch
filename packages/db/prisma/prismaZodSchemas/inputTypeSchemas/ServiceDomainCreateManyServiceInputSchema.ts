@@ -2,10 +2,10 @@ import type { Prisma } from '@prisma/client';
 
 import { z } from 'zod';
 
-export const ServiceDomainCreateManyServiceInputSchema: z.ZodType<Prisma.ServiceDomainCreateManyServiceInput> = z.object({
-  id: z.string().cuid().optional(),
+export const ServiceDomainCreateManyServiceInputSchema: z.ZodType<Prisma.ServiceDomainCreateManyServiceInput> = z.strictObject({
+  id: z.cuid().optional(),
   domainId: z.string(),
-  pathPattern: z.string().optional().nullable()
-}).strict() as z.ZodType<Prisma.ServiceDomainCreateManyServiceInput>;
+  pathPattern: z.string().optional().nullable(),
+});
 
 export default ServiceDomainCreateManyServiceInputSchema;

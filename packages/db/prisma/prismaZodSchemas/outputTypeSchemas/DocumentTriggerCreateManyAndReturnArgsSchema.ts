@@ -3,8 +3,8 @@ import type { Prisma } from '@prisma/client';
 import { DocumentTriggerCreateManyInputSchema } from '../inputTypeSchemas/DocumentTriggerCreateManyInputSchema'
 
 export const DocumentTriggerCreateManyAndReturnArgsSchema: z.ZodType<Prisma.DocumentTriggerCreateManyAndReturnArgs> = z.object({
-  data: z.union([ DocumentTriggerCreateManyInputSchema,DocumentTriggerCreateManyInputSchema.array() ]),
+  data: z.union([ DocumentTriggerCreateManyInputSchema, DocumentTriggerCreateManyInputSchema.array() ]),
   skipDuplicates: z.boolean().optional(),
-}).strict() as z.ZodType<Prisma.DocumentTriggerCreateManyAndReturnArgs>;
+}).strict();
 
 export default DocumentTriggerCreateManyAndReturnArgsSchema;

@@ -5,9 +5,9 @@ import { DocumentWhereInputSchema } from './DocumentWhereInputSchema';
 import { DocumentUpdateWithoutClausesInputSchema } from './DocumentUpdateWithoutClausesInputSchema';
 import { DocumentUncheckedUpdateWithoutClausesInputSchema } from './DocumentUncheckedUpdateWithoutClausesInputSchema';
 
-export const DocumentUpdateToOneWithWhereWithoutClausesInputSchema: z.ZodType<Prisma.DocumentUpdateToOneWithWhereWithoutClausesInput> = z.object({
+export const DocumentUpdateToOneWithWhereWithoutClausesInputSchema: z.ZodType<Prisma.DocumentUpdateToOneWithWhereWithoutClausesInput> = z.strictObject({
   where: z.lazy(() => DocumentWhereInputSchema).optional(),
-  data: z.union([ z.lazy(() => DocumentUpdateWithoutClausesInputSchema),z.lazy(() => DocumentUncheckedUpdateWithoutClausesInputSchema) ]),
-}).strict() as z.ZodType<Prisma.DocumentUpdateToOneWithWhereWithoutClausesInput>;
+  data: z.union([ z.lazy(() => DocumentUpdateWithoutClausesInputSchema), z.lazy(() => DocumentUncheckedUpdateWithoutClausesInputSchema) ]),
+});
 
 export default DocumentUpdateToOneWithWhereWithoutClausesInputSchema;

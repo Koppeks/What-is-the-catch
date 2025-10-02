@@ -6,12 +6,12 @@ import { CategoryHitScalarFieldEnumSchema } from '../inputTypeSchemas/CategoryHi
 import { CategoryHitScalarWhereWithAggregatesInputSchema } from '../inputTypeSchemas/CategoryHitScalarWhereWithAggregatesInputSchema'
 
 export const CategoryHitGroupByArgsSchema: z.ZodType<Prisma.CategoryHitGroupByArgs> = z.object({
-  where: CategoryHitWhereInputSchema.optional(),
-  orderBy: z.union([ CategoryHitOrderByWithAggregationInputSchema.array(),CategoryHitOrderByWithAggregationInputSchema ]).optional(),
-  by: CategoryHitScalarFieldEnumSchema.array(),
-  having: CategoryHitScalarWhereWithAggregatesInputSchema.optional(),
+  where: CategoryHitWhereInputSchema.optional(), 
+  orderBy: z.union([ CategoryHitOrderByWithAggregationInputSchema.array(), CategoryHitOrderByWithAggregationInputSchema ]).optional(),
+  by: CategoryHitScalarFieldEnumSchema.array(), 
+  having: CategoryHitScalarWhereWithAggregatesInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.CategoryHitGroupByArgs>;
+}).strict();
 
 export default CategoryHitGroupByArgsSchema;

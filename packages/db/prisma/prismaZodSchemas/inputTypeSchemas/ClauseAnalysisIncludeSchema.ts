@@ -10,6 +10,6 @@ export const ClauseAnalysisIncludeSchema: z.ZodType<Prisma.ClauseAnalysisInclude
   clause: z.union([z.boolean(),z.lazy(() => ClauseArgsSchema)]).optional(),
   categoryHits: z.union([z.boolean(),z.lazy(() => CategoryHitFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => ClauseAnalysisCountOutputTypeArgsSchema)]).optional(),
-}).strict()
+}).strict();
 
 export default ClauseAnalysisIncludeSchema;

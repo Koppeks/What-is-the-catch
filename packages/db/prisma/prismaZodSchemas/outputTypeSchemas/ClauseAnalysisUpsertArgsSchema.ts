@@ -29,9 +29,9 @@ export const ClauseAnalysisSelectSchema: z.ZodType<Prisma.ClauseAnalysisSelect> 
 export const ClauseAnalysisUpsertArgsSchema: z.ZodType<Prisma.ClauseAnalysisUpsertArgs> = z.object({
   select: ClauseAnalysisSelectSchema.optional(),
   include: z.lazy(() => ClauseAnalysisIncludeSchema).optional(),
-  where: ClauseAnalysisWhereUniqueInputSchema,
-  create: z.union([ ClauseAnalysisCreateInputSchema,ClauseAnalysisUncheckedCreateInputSchema ]),
-  update: z.union([ ClauseAnalysisUpdateInputSchema,ClauseAnalysisUncheckedUpdateInputSchema ]),
-}).strict() as z.ZodType<Prisma.ClauseAnalysisUpsertArgs>;
+  where: ClauseAnalysisWhereUniqueInputSchema, 
+  create: z.union([ ClauseAnalysisCreateInputSchema, ClauseAnalysisUncheckedCreateInputSchema ]),
+  update: z.union([ ClauseAnalysisUpdateInputSchema, ClauseAnalysisUncheckedUpdateInputSchema ]),
+}).strict();
 
 export default ClauseAnalysisUpsertArgsSchema;

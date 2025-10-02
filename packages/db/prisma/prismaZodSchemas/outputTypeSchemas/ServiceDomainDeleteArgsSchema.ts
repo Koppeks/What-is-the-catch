@@ -19,7 +19,7 @@ export const ServiceDomainSelectSchema: z.ZodType<Prisma.ServiceDomainSelect> = 
 export const ServiceDomainDeleteArgsSchema: z.ZodType<Prisma.ServiceDomainDeleteArgs> = z.object({
   select: ServiceDomainSelectSchema.optional(),
   include: z.lazy(() => ServiceDomainIncludeSchema).optional(),
-  where: ServiceDomainWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.ServiceDomainDeleteArgs>;
+  where: ServiceDomainWhereUniqueInputSchema, 
+}).strict();
 
 export default ServiceDomainDeleteArgsSchema;

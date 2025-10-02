@@ -7,10 +7,10 @@ import { DomainUncheckedUpdateWithoutCompanyInputSchema } from './DomainUnchecke
 import { DomainCreateWithoutCompanyInputSchema } from './DomainCreateWithoutCompanyInputSchema';
 import { DomainUncheckedCreateWithoutCompanyInputSchema } from './DomainUncheckedCreateWithoutCompanyInputSchema';
 
-export const DomainUpsertWithWhereUniqueWithoutCompanyInputSchema: z.ZodType<Prisma.DomainUpsertWithWhereUniqueWithoutCompanyInput> = z.object({
+export const DomainUpsertWithWhereUniqueWithoutCompanyInputSchema: z.ZodType<Prisma.DomainUpsertWithWhereUniqueWithoutCompanyInput> = z.strictObject({
   where: z.lazy(() => DomainWhereUniqueInputSchema),
-  update: z.union([ z.lazy(() => DomainUpdateWithoutCompanyInputSchema),z.lazy(() => DomainUncheckedUpdateWithoutCompanyInputSchema) ]),
-  create: z.union([ z.lazy(() => DomainCreateWithoutCompanyInputSchema),z.lazy(() => DomainUncheckedCreateWithoutCompanyInputSchema) ]),
-}).strict() as z.ZodType<Prisma.DomainUpsertWithWhereUniqueWithoutCompanyInput>;
+  update: z.union([ z.lazy(() => DomainUpdateWithoutCompanyInputSchema), z.lazy(() => DomainUncheckedUpdateWithoutCompanyInputSchema) ]),
+  create: z.union([ z.lazy(() => DomainCreateWithoutCompanyInputSchema), z.lazy(() => DomainUncheckedCreateWithoutCompanyInputSchema) ]),
+});
 
 export default DomainUpsertWithWhereUniqueWithoutCompanyInputSchema;

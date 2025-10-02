@@ -3,8 +3,8 @@ import type { Prisma } from '@prisma/client';
 import { CategoryHitCreateManyInputSchema } from '../inputTypeSchemas/CategoryHitCreateManyInputSchema'
 
 export const CategoryHitCreateManyAndReturnArgsSchema: z.ZodType<Prisma.CategoryHitCreateManyAndReturnArgs> = z.object({
-  data: z.union([ CategoryHitCreateManyInputSchema,CategoryHitCreateManyInputSchema.array() ]),
+  data: z.union([ CategoryHitCreateManyInputSchema, CategoryHitCreateManyInputSchema.array() ]),
   skipDuplicates: z.boolean().optional(),
-}).strict() as z.ZodType<Prisma.CategoryHitCreateManyAndReturnArgs>;
+}).strict();
 
 export default CategoryHitCreateManyAndReturnArgsSchema;

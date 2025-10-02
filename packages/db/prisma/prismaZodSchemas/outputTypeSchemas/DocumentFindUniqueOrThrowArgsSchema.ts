@@ -28,7 +28,7 @@ export const DocumentSelectSchema: z.ZodType<Prisma.DocumentSelect> = z.object({
 export const DocumentFindUniqueOrThrowArgsSchema: z.ZodType<Prisma.DocumentFindUniqueOrThrowArgs> = z.object({
   select: DocumentSelectSchema.optional(),
   include: z.lazy(() => DocumentIncludeSchema).optional(),
-  where: DocumentWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.DocumentFindUniqueOrThrowArgs>;
+  where: DocumentWhereUniqueInputSchema, 
+}).strict();
 
 export default DocumentFindUniqueOrThrowArgsSchema;

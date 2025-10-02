@@ -7,10 +7,10 @@ import { TriggerHitUncheckedUpdateWithoutTriggerInputSchema } from './TriggerHit
 import { TriggerHitCreateWithoutTriggerInputSchema } from './TriggerHitCreateWithoutTriggerInputSchema';
 import { TriggerHitUncheckedCreateWithoutTriggerInputSchema } from './TriggerHitUncheckedCreateWithoutTriggerInputSchema';
 
-export const TriggerHitUpsertWithWhereUniqueWithoutTriggerInputSchema: z.ZodType<Prisma.TriggerHitUpsertWithWhereUniqueWithoutTriggerInput> = z.object({
+export const TriggerHitUpsertWithWhereUniqueWithoutTriggerInputSchema: z.ZodType<Prisma.TriggerHitUpsertWithWhereUniqueWithoutTriggerInput> = z.strictObject({
   where: z.lazy(() => TriggerHitWhereUniqueInputSchema),
-  update: z.union([ z.lazy(() => TriggerHitUpdateWithoutTriggerInputSchema),z.lazy(() => TriggerHitUncheckedUpdateWithoutTriggerInputSchema) ]),
-  create: z.union([ z.lazy(() => TriggerHitCreateWithoutTriggerInputSchema),z.lazy(() => TriggerHitUncheckedCreateWithoutTriggerInputSchema) ]),
-}).strict() as z.ZodType<Prisma.TriggerHitUpsertWithWhereUniqueWithoutTriggerInput>;
+  update: z.union([ z.lazy(() => TriggerHitUpdateWithoutTriggerInputSchema), z.lazy(() => TriggerHitUncheckedUpdateWithoutTriggerInputSchema) ]),
+  create: z.union([ z.lazy(() => TriggerHitCreateWithoutTriggerInputSchema), z.lazy(() => TriggerHitUncheckedCreateWithoutTriggerInputSchema) ]),
+});
 
 export default TriggerHitUpsertWithWhereUniqueWithoutTriggerInputSchema;

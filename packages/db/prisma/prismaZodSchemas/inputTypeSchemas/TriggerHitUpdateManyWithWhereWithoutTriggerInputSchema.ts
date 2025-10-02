@@ -5,9 +5,9 @@ import { TriggerHitScalarWhereInputSchema } from './TriggerHitScalarWhereInputSc
 import { TriggerHitUpdateManyMutationInputSchema } from './TriggerHitUpdateManyMutationInputSchema';
 import { TriggerHitUncheckedUpdateManyWithoutTriggerInputSchema } from './TriggerHitUncheckedUpdateManyWithoutTriggerInputSchema';
 
-export const TriggerHitUpdateManyWithWhereWithoutTriggerInputSchema: z.ZodType<Prisma.TriggerHitUpdateManyWithWhereWithoutTriggerInput> = z.object({
+export const TriggerHitUpdateManyWithWhereWithoutTriggerInputSchema: z.ZodType<Prisma.TriggerHitUpdateManyWithWhereWithoutTriggerInput> = z.strictObject({
   where: z.lazy(() => TriggerHitScalarWhereInputSchema),
-  data: z.union([ z.lazy(() => TriggerHitUpdateManyMutationInputSchema),z.lazy(() => TriggerHitUncheckedUpdateManyWithoutTriggerInputSchema) ]),
-}).strict() as z.ZodType<Prisma.TriggerHitUpdateManyWithWhereWithoutTriggerInput>;
+  data: z.union([ z.lazy(() => TriggerHitUpdateManyMutationInputSchema), z.lazy(() => TriggerHitUncheckedUpdateManyWithoutTriggerInputSchema) ]),
+});
 
 export default TriggerHitUpdateManyWithWhereWithoutTriggerInputSchema;

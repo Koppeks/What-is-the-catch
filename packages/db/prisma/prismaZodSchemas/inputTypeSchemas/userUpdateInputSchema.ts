@@ -8,15 +8,15 @@ import { AccountStatusSchema } from './AccountStatusSchema';
 import { EnumAccountStatusFieldUpdateOperationsInputSchema } from './EnumAccountStatusFieldUpdateOperationsInputSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 
-export const userUpdateInputSchema: z.ZodType<Prisma.userUpdateInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const UserUpdateInputSchema: z.ZodType<Prisma.UserUpdateInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   email: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   username: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   password: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  userRole: z.union([ z.lazy(() => AvailableRolesSchema),z.lazy(() => EnumAvailableRolesFieldUpdateOperationsInputSchema) ]).optional(),
-  subscriptionStatus: z.union([ z.lazy(() => AccountStatusSchema),z.lazy(() => EnumAccountStatusFieldUpdateOperationsInputSchema) ]).optional(),
+  userRole: z.union([ z.lazy(() => AvailableRolesSchema), z.lazy(() => EnumAvailableRolesFieldUpdateOperationsInputSchema) ]).optional(),
+  subscriptionStatus: z.union([ z.lazy(() => AccountStatusSchema), z.lazy(() => EnumAccountStatusFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-}).strict() as z.ZodType<Prisma.userUpdateInput>;
+});
 
-export default userUpdateInputSchema;
+export default UserUpdateInputSchema;

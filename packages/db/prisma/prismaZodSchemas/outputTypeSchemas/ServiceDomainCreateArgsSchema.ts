@@ -20,7 +20,7 @@ export const ServiceDomainSelectSchema: z.ZodType<Prisma.ServiceDomainSelect> = 
 export const ServiceDomainCreateArgsSchema: z.ZodType<Prisma.ServiceDomainCreateArgs> = z.object({
   select: ServiceDomainSelectSchema.optional(),
   include: z.lazy(() => ServiceDomainIncludeSchema).optional(),
-  data: z.union([ ServiceDomainCreateInputSchema,ServiceDomainUncheckedCreateInputSchema ]),
-}).strict() as z.ZodType<Prisma.ServiceDomainCreateArgs>;
+  data: z.union([ ServiceDomainCreateInputSchema, ServiceDomainUncheckedCreateInputSchema ]),
+}).strict();
 
 export default ServiceDomainCreateArgsSchema;

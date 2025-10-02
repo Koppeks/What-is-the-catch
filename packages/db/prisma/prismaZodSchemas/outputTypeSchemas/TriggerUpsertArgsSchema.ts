@@ -41,9 +41,9 @@ export const TriggerSelectSchema: z.ZodType<Prisma.TriggerSelect> = z.object({
 export const TriggerUpsertArgsSchema: z.ZodType<Prisma.TriggerUpsertArgs> = z.object({
   select: TriggerSelectSchema.optional(),
   include: z.lazy(() => TriggerIncludeSchema).optional(),
-  where: TriggerWhereUniqueInputSchema,
-  create: z.union([ TriggerCreateInputSchema,TriggerUncheckedCreateInputSchema ]),
-  update: z.union([ TriggerUpdateInputSchema,TriggerUncheckedUpdateInputSchema ]),
-}).strict() as z.ZodType<Prisma.TriggerUpsertArgs>;
+  where: TriggerWhereUniqueInputSchema, 
+  create: z.union([ TriggerCreateInputSchema, TriggerUncheckedCreateInputSchema ]),
+  update: z.union([ TriggerUpdateInputSchema, TriggerUncheckedUpdateInputSchema ]),
+}).strict();
 
 export default TriggerUpsertArgsSchema;

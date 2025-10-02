@@ -7,10 +7,10 @@ import { ClauseCreateWithoutClauseAnalysisInputSchema } from './ClauseCreateWith
 import { ClauseUncheckedCreateWithoutClauseAnalysisInputSchema } from './ClauseUncheckedCreateWithoutClauseAnalysisInputSchema';
 import { ClauseWhereInputSchema } from './ClauseWhereInputSchema';
 
-export const ClauseUpsertWithoutClauseAnalysisInputSchema: z.ZodType<Prisma.ClauseUpsertWithoutClauseAnalysisInput> = z.object({
-  update: z.union([ z.lazy(() => ClauseUpdateWithoutClauseAnalysisInputSchema),z.lazy(() => ClauseUncheckedUpdateWithoutClauseAnalysisInputSchema) ]),
-  create: z.union([ z.lazy(() => ClauseCreateWithoutClauseAnalysisInputSchema),z.lazy(() => ClauseUncheckedCreateWithoutClauseAnalysisInputSchema) ]),
-  where: z.lazy(() => ClauseWhereInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseUpsertWithoutClauseAnalysisInput>;
+export const ClauseUpsertWithoutClauseAnalysisInputSchema: z.ZodType<Prisma.ClauseUpsertWithoutClauseAnalysisInput> = z.strictObject({
+  update: z.union([ z.lazy(() => ClauseUpdateWithoutClauseAnalysisInputSchema), z.lazy(() => ClauseUncheckedUpdateWithoutClauseAnalysisInputSchema) ]),
+  create: z.union([ z.lazy(() => ClauseCreateWithoutClauseAnalysisInputSchema), z.lazy(() => ClauseUncheckedCreateWithoutClauseAnalysisInputSchema) ]),
+  where: z.lazy(() => ClauseWhereInputSchema).optional(),
+});
 
 export default ClauseUpsertWithoutClauseAnalysisInputSchema;

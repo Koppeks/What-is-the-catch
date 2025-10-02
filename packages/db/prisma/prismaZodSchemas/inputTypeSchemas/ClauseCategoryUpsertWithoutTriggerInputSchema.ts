@@ -7,10 +7,10 @@ import { ClauseCategoryCreateWithoutTriggerInputSchema } from './ClauseCategoryC
 import { ClauseCategoryUncheckedCreateWithoutTriggerInputSchema } from './ClauseCategoryUncheckedCreateWithoutTriggerInputSchema';
 import { ClauseCategoryWhereInputSchema } from './ClauseCategoryWhereInputSchema';
 
-export const ClauseCategoryUpsertWithoutTriggerInputSchema: z.ZodType<Prisma.ClauseCategoryUpsertWithoutTriggerInput> = z.object({
-  update: z.union([ z.lazy(() => ClauseCategoryUpdateWithoutTriggerInputSchema),z.lazy(() => ClauseCategoryUncheckedUpdateWithoutTriggerInputSchema) ]),
-  create: z.union([ z.lazy(() => ClauseCategoryCreateWithoutTriggerInputSchema),z.lazy(() => ClauseCategoryUncheckedCreateWithoutTriggerInputSchema) ]),
-  where: z.lazy(() => ClauseCategoryWhereInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseCategoryUpsertWithoutTriggerInput>;
+export const ClauseCategoryUpsertWithoutTriggerInputSchema: z.ZodType<Prisma.ClauseCategoryUpsertWithoutTriggerInput> = z.strictObject({
+  update: z.union([ z.lazy(() => ClauseCategoryUpdateWithoutTriggerInputSchema), z.lazy(() => ClauseCategoryUncheckedUpdateWithoutTriggerInputSchema) ]),
+  create: z.union([ z.lazy(() => ClauseCategoryCreateWithoutTriggerInputSchema), z.lazy(() => ClauseCategoryUncheckedCreateWithoutTriggerInputSchema) ]),
+  where: z.lazy(() => ClauseCategoryWhereInputSchema).optional(),
+});
 
 export default ClauseCategoryUpsertWithoutTriggerInputSchema;

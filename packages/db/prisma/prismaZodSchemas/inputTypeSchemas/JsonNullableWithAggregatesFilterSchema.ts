@@ -6,7 +6,7 @@ import { QueryModeSchema } from './QueryModeSchema';
 import { NestedIntNullableFilterSchema } from './NestedIntNullableFilterSchema';
 import { NestedJsonNullableFilterSchema } from './NestedJsonNullableFilterSchema';
 
-export const JsonNullableWithAggregatesFilterSchema: z.ZodType<Prisma.JsonNullableWithAggregatesFilter> = z.object({
+export const JsonNullableWithAggregatesFilterSchema: z.ZodType<Prisma.JsonNullableWithAggregatesFilter> = z.strictObject({
   equals: InputJsonValueSchema.optional(),
   path: z.string().array().optional(),
   mode: z.lazy(() => QueryModeSchema).optional(),
@@ -23,7 +23,7 @@ export const JsonNullableWithAggregatesFilterSchema: z.ZodType<Prisma.JsonNullab
   not: InputJsonValueSchema.optional(),
   _count: z.lazy(() => NestedIntNullableFilterSchema).optional(),
   _min: z.lazy(() => NestedJsonNullableFilterSchema).optional(),
-  _max: z.lazy(() => NestedJsonNullableFilterSchema).optional()
-}).strict() as z.ZodType<Prisma.JsonNullableWithAggregatesFilter>;
+  _max: z.lazy(() => NestedJsonNullableFilterSchema).optional(),
+});
 
 export default JsonNullableWithAggregatesFilterSchema;

@@ -10,12 +10,12 @@ import { TriggerUpdateToOneWithWhereWithoutHitsInputSchema } from './TriggerUpda
 import { TriggerUpdateWithoutHitsInputSchema } from './TriggerUpdateWithoutHitsInputSchema';
 import { TriggerUncheckedUpdateWithoutHitsInputSchema } from './TriggerUncheckedUpdateWithoutHitsInputSchema';
 
-export const TriggerUpdateOneRequiredWithoutHitsNestedInputSchema: z.ZodType<Prisma.TriggerUpdateOneRequiredWithoutHitsNestedInput> = z.object({
-  create: z.union([ z.lazy(() => TriggerCreateWithoutHitsInputSchema),z.lazy(() => TriggerUncheckedCreateWithoutHitsInputSchema) ]).optional(),
+export const TriggerUpdateOneRequiredWithoutHitsNestedInputSchema: z.ZodType<Prisma.TriggerUpdateOneRequiredWithoutHitsNestedInput> = z.strictObject({
+  create: z.union([ z.lazy(() => TriggerCreateWithoutHitsInputSchema), z.lazy(() => TriggerUncheckedCreateWithoutHitsInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => TriggerCreateOrConnectWithoutHitsInputSchema).optional(),
   upsert: z.lazy(() => TriggerUpsertWithoutHitsInputSchema).optional(),
   connect: z.lazy(() => TriggerWhereUniqueInputSchema).optional(),
-  update: z.union([ z.lazy(() => TriggerUpdateToOneWithWhereWithoutHitsInputSchema),z.lazy(() => TriggerUpdateWithoutHitsInputSchema),z.lazy(() => TriggerUncheckedUpdateWithoutHitsInputSchema) ]).optional(),
-}).strict() as z.ZodType<Prisma.TriggerUpdateOneRequiredWithoutHitsNestedInput>;
+  update: z.union([ z.lazy(() => TriggerUpdateToOneWithWhereWithoutHitsInputSchema), z.lazy(() => TriggerUpdateWithoutHitsInputSchema), z.lazy(() => TriggerUncheckedUpdateWithoutHitsInputSchema) ]).optional(),
+});
 
 export default TriggerUpdateOneRequiredWithoutHitsNestedInputSchema;

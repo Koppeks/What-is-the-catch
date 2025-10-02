@@ -14,6 +14,6 @@ export const ClauseIncludeSchema: z.ZodType<Prisma.ClauseInclude> = z.object({
   TriggerHits: z.union([z.boolean(),z.lazy(() => TriggerHitFindManyArgsSchema)]).optional(),
   ClauseAnalysis: z.union([z.boolean(),z.lazy(() => ClauseAnalysisFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => ClauseCountOutputTypeArgsSchema)]).optional(),
-}).strict()
+}).strict();
 
 export default ClauseIncludeSchema;

@@ -5,8 +5,8 @@ import { DocumentKindSchema } from './DocumentKindSchema';
 import { TypeRequestSchema } from './TypeRequestSchema';
 import { AnalysisStatusSchema } from './AnalysisStatusSchema';
 
-export const DocumentCreateManyInputSchema: z.ZodType<Prisma.DocumentCreateManyInput> = z.object({
-  id: z.string().cuid().optional(),
+export const DocumentCreateManyInputSchema: z.ZodType<Prisma.DocumentCreateManyInput> = z.strictObject({
+  id: z.cuid().optional(),
   name: z.string(),
   locale: z.string().optional().nullable(),
   kind: z.lazy(() => DocumentKindSchema).optional().nullable(),
@@ -14,7 +14,7 @@ export const DocumentCreateManyInputSchema: z.ZodType<Prisma.DocumentCreateManyI
   status: z.lazy(() => AnalysisStatusSchema).optional(),
   sourceUrl: z.string().optional().nullable(),
   updatedAt: z.coerce.date().optional(),
-  createdAt: z.coerce.date().optional()
-}).strict() as z.ZodType<Prisma.DocumentCreateManyInput>;
+  createdAt: z.coerce.date().optional(),
+});
 
 export default DocumentCreateManyInputSchema;

@@ -11,18 +11,18 @@ import { TriggerHitUpdateWithWhereUniqueWithoutTriggerInputSchema } from './Trig
 import { TriggerHitUpdateManyWithWhereWithoutTriggerInputSchema } from './TriggerHitUpdateManyWithWhereWithoutTriggerInputSchema';
 import { TriggerHitScalarWhereInputSchema } from './TriggerHitScalarWhereInputSchema';
 
-export const TriggerHitUpdateManyWithoutTriggerNestedInputSchema: z.ZodType<Prisma.TriggerHitUpdateManyWithoutTriggerNestedInput> = z.object({
-  create: z.union([ z.lazy(() => TriggerHitCreateWithoutTriggerInputSchema),z.lazy(() => TriggerHitCreateWithoutTriggerInputSchema).array(),z.lazy(() => TriggerHitUncheckedCreateWithoutTriggerInputSchema),z.lazy(() => TriggerHitUncheckedCreateWithoutTriggerInputSchema).array() ]).optional(),
-  connectOrCreate: z.union([ z.lazy(() => TriggerHitCreateOrConnectWithoutTriggerInputSchema),z.lazy(() => TriggerHitCreateOrConnectWithoutTriggerInputSchema).array() ]).optional(),
-  upsert: z.union([ z.lazy(() => TriggerHitUpsertWithWhereUniqueWithoutTriggerInputSchema),z.lazy(() => TriggerHitUpsertWithWhereUniqueWithoutTriggerInputSchema).array() ]).optional(),
+export const TriggerHitUpdateManyWithoutTriggerNestedInputSchema: z.ZodType<Prisma.TriggerHitUpdateManyWithoutTriggerNestedInput> = z.strictObject({
+  create: z.union([ z.lazy(() => TriggerHitCreateWithoutTriggerInputSchema), z.lazy(() => TriggerHitCreateWithoutTriggerInputSchema).array(), z.lazy(() => TriggerHitUncheckedCreateWithoutTriggerInputSchema), z.lazy(() => TriggerHitUncheckedCreateWithoutTriggerInputSchema).array() ]).optional(),
+  connectOrCreate: z.union([ z.lazy(() => TriggerHitCreateOrConnectWithoutTriggerInputSchema), z.lazy(() => TriggerHitCreateOrConnectWithoutTriggerInputSchema).array() ]).optional(),
+  upsert: z.union([ z.lazy(() => TriggerHitUpsertWithWhereUniqueWithoutTriggerInputSchema), z.lazy(() => TriggerHitUpsertWithWhereUniqueWithoutTriggerInputSchema).array() ]).optional(),
   createMany: z.lazy(() => TriggerHitCreateManyTriggerInputEnvelopeSchema).optional(),
-  set: z.union([ z.lazy(() => TriggerHitWhereUniqueInputSchema),z.lazy(() => TriggerHitWhereUniqueInputSchema).array() ]).optional(),
-  disconnect: z.union([ z.lazy(() => TriggerHitWhereUniqueInputSchema),z.lazy(() => TriggerHitWhereUniqueInputSchema).array() ]).optional(),
-  delete: z.union([ z.lazy(() => TriggerHitWhereUniqueInputSchema),z.lazy(() => TriggerHitWhereUniqueInputSchema).array() ]).optional(),
-  connect: z.union([ z.lazy(() => TriggerHitWhereUniqueInputSchema),z.lazy(() => TriggerHitWhereUniqueInputSchema).array() ]).optional(),
-  update: z.union([ z.lazy(() => TriggerHitUpdateWithWhereUniqueWithoutTriggerInputSchema),z.lazy(() => TriggerHitUpdateWithWhereUniqueWithoutTriggerInputSchema).array() ]).optional(),
-  updateMany: z.union([ z.lazy(() => TriggerHitUpdateManyWithWhereWithoutTriggerInputSchema),z.lazy(() => TriggerHitUpdateManyWithWhereWithoutTriggerInputSchema).array() ]).optional(),
-  deleteMany: z.union([ z.lazy(() => TriggerHitScalarWhereInputSchema),z.lazy(() => TriggerHitScalarWhereInputSchema).array() ]).optional(),
-}).strict() as z.ZodType<Prisma.TriggerHitUpdateManyWithoutTriggerNestedInput>;
+  set: z.union([ z.lazy(() => TriggerHitWhereUniqueInputSchema), z.lazy(() => TriggerHitWhereUniqueInputSchema).array() ]).optional(),
+  disconnect: z.union([ z.lazy(() => TriggerHitWhereUniqueInputSchema), z.lazy(() => TriggerHitWhereUniqueInputSchema).array() ]).optional(),
+  delete: z.union([ z.lazy(() => TriggerHitWhereUniqueInputSchema), z.lazy(() => TriggerHitWhereUniqueInputSchema).array() ]).optional(),
+  connect: z.union([ z.lazy(() => TriggerHitWhereUniqueInputSchema), z.lazy(() => TriggerHitWhereUniqueInputSchema).array() ]).optional(),
+  update: z.union([ z.lazy(() => TriggerHitUpdateWithWhereUniqueWithoutTriggerInputSchema), z.lazy(() => TriggerHitUpdateWithWhereUniqueWithoutTriggerInputSchema).array() ]).optional(),
+  updateMany: z.union([ z.lazy(() => TriggerHitUpdateManyWithWhereWithoutTriggerInputSchema), z.lazy(() => TriggerHitUpdateManyWithWhereWithoutTriggerInputSchema).array() ]).optional(),
+  deleteMany: z.union([ z.lazy(() => TriggerHitScalarWhereInputSchema), z.lazy(() => TriggerHitScalarWhereInputSchema).array() ]).optional(),
+});
 
 export default TriggerHitUpdateManyWithoutTriggerNestedInputSchema;

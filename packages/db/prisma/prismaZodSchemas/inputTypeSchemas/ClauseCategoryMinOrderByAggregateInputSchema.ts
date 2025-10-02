@@ -3,7 +3,7 @@ import type { Prisma } from '@prisma/client';
 import { z } from 'zod';
 import { SortOrderSchema } from './SortOrderSchema';
 
-export const ClauseCategoryMinOrderByAggregateInputSchema: z.ZodType<Prisma.ClauseCategoryMinOrderByAggregateInput> = z.object({
+export const ClauseCategoryMinOrderByAggregateInputSchema: z.ZodType<Prisma.ClauseCategoryMinOrderByAggregateInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   slug: z.lazy(() => SortOrderSchema).optional(),
   version: z.lazy(() => SortOrderSchema).optional(),
@@ -12,7 +12,7 @@ export const ClauseCategoryMinOrderByAggregateInputSchema: z.ZodType<Prisma.Clau
   isActive: z.lazy(() => SortOrderSchema).optional(),
   triggerInstruction: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
-  updatedAt: z.lazy(() => SortOrderSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseCategoryMinOrderByAggregateInput>;
+  updatedAt: z.lazy(() => SortOrderSchema).optional(),
+});
 
 export default ClauseCategoryMinOrderByAggregateInputSchema;

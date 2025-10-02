@@ -6,10 +6,10 @@ import { TriggerUncheckedCreateWithoutDocumentRulesInputSchema } from './Trigger
 import { TriggerCreateOrConnectWithoutDocumentRulesInputSchema } from './TriggerCreateOrConnectWithoutDocumentRulesInputSchema';
 import { TriggerWhereUniqueInputSchema } from './TriggerWhereUniqueInputSchema';
 
-export const TriggerCreateNestedOneWithoutDocumentRulesInputSchema: z.ZodType<Prisma.TriggerCreateNestedOneWithoutDocumentRulesInput> = z.object({
-  create: z.union([ z.lazy(() => TriggerCreateWithoutDocumentRulesInputSchema),z.lazy(() => TriggerUncheckedCreateWithoutDocumentRulesInputSchema) ]).optional(),
+export const TriggerCreateNestedOneWithoutDocumentRulesInputSchema: z.ZodType<Prisma.TriggerCreateNestedOneWithoutDocumentRulesInput> = z.strictObject({
+  create: z.union([ z.lazy(() => TriggerCreateWithoutDocumentRulesInputSchema), z.lazy(() => TriggerUncheckedCreateWithoutDocumentRulesInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => TriggerCreateOrConnectWithoutDocumentRulesInputSchema).optional(),
-  connect: z.lazy(() => TriggerWhereUniqueInputSchema).optional()
-}).strict() as z.ZodType<Prisma.TriggerCreateNestedOneWithoutDocumentRulesInput>;
+  connect: z.lazy(() => TriggerWhereUniqueInputSchema).optional(),
+});
 
 export default TriggerCreateNestedOneWithoutDocumentRulesInputSchema;

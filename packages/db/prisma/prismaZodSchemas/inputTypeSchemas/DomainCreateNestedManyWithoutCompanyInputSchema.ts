@@ -7,11 +7,11 @@ import { DomainCreateOrConnectWithoutCompanyInputSchema } from './DomainCreateOr
 import { DomainCreateManyCompanyInputEnvelopeSchema } from './DomainCreateManyCompanyInputEnvelopeSchema';
 import { DomainWhereUniqueInputSchema } from './DomainWhereUniqueInputSchema';
 
-export const DomainCreateNestedManyWithoutCompanyInputSchema: z.ZodType<Prisma.DomainCreateNestedManyWithoutCompanyInput> = z.object({
-  create: z.union([ z.lazy(() => DomainCreateWithoutCompanyInputSchema),z.lazy(() => DomainCreateWithoutCompanyInputSchema).array(),z.lazy(() => DomainUncheckedCreateWithoutCompanyInputSchema),z.lazy(() => DomainUncheckedCreateWithoutCompanyInputSchema).array() ]).optional(),
-  connectOrCreate: z.union([ z.lazy(() => DomainCreateOrConnectWithoutCompanyInputSchema),z.lazy(() => DomainCreateOrConnectWithoutCompanyInputSchema).array() ]).optional(),
+export const DomainCreateNestedManyWithoutCompanyInputSchema: z.ZodType<Prisma.DomainCreateNestedManyWithoutCompanyInput> = z.strictObject({
+  create: z.union([ z.lazy(() => DomainCreateWithoutCompanyInputSchema), z.lazy(() => DomainCreateWithoutCompanyInputSchema).array(), z.lazy(() => DomainUncheckedCreateWithoutCompanyInputSchema), z.lazy(() => DomainUncheckedCreateWithoutCompanyInputSchema).array() ]).optional(),
+  connectOrCreate: z.union([ z.lazy(() => DomainCreateOrConnectWithoutCompanyInputSchema), z.lazy(() => DomainCreateOrConnectWithoutCompanyInputSchema).array() ]).optional(),
   createMany: z.lazy(() => DomainCreateManyCompanyInputEnvelopeSchema).optional(),
-  connect: z.union([ z.lazy(() => DomainWhereUniqueInputSchema),z.lazy(() => DomainWhereUniqueInputSchema).array() ]).optional(),
-}).strict() as z.ZodType<Prisma.DomainCreateNestedManyWithoutCompanyInput>;
+  connect: z.union([ z.lazy(() => DomainWhereUniqueInputSchema), z.lazy(() => DomainWhereUniqueInputSchema).array() ]).optional(),
+});
 
 export default DomainCreateNestedManyWithoutCompanyInputSchema;

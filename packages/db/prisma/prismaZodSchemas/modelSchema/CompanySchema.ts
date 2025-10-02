@@ -11,7 +11,7 @@ import type { DomainWithRelations, DomainPartialWithRelations } from './DomainSc
 /////////////////////////////////////////
 
 export const CompanySchema = z.object({
-  id: z.string().cuid(),
+  id: z.cuid(),
   slug: z.string(),
   displayName: z.string(),
   websiteUrl: z.string().nullish(),

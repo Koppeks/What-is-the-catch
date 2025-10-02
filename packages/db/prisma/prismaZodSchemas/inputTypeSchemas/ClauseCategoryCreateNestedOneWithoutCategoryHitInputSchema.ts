@@ -6,10 +6,10 @@ import { ClauseCategoryUncheckedCreateWithoutCategoryHitInputSchema } from './Cl
 import { ClauseCategoryCreateOrConnectWithoutCategoryHitInputSchema } from './ClauseCategoryCreateOrConnectWithoutCategoryHitInputSchema';
 import { ClauseCategoryWhereUniqueInputSchema } from './ClauseCategoryWhereUniqueInputSchema';
 
-export const ClauseCategoryCreateNestedOneWithoutCategoryHitInputSchema: z.ZodType<Prisma.ClauseCategoryCreateNestedOneWithoutCategoryHitInput> = z.object({
-  create: z.union([ z.lazy(() => ClauseCategoryCreateWithoutCategoryHitInputSchema),z.lazy(() => ClauseCategoryUncheckedCreateWithoutCategoryHitInputSchema) ]).optional(),
+export const ClauseCategoryCreateNestedOneWithoutCategoryHitInputSchema: z.ZodType<Prisma.ClauseCategoryCreateNestedOneWithoutCategoryHitInput> = z.strictObject({
+  create: z.union([ z.lazy(() => ClauseCategoryCreateWithoutCategoryHitInputSchema), z.lazy(() => ClauseCategoryUncheckedCreateWithoutCategoryHitInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => ClauseCategoryCreateOrConnectWithoutCategoryHitInputSchema).optional(),
-  connect: z.lazy(() => ClauseCategoryWhereUniqueInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseCategoryCreateNestedOneWithoutCategoryHitInput>;
+  connect: z.lazy(() => ClauseCategoryWhereUniqueInputSchema).optional(),
+});
 
 export default ClauseCategoryCreateNestedOneWithoutCategoryHitInputSchema;

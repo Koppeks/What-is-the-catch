@@ -5,9 +5,9 @@ import { CompanyAliasWhereUniqueInputSchema } from './CompanyAliasWhereUniqueInp
 import { CompanyAliasUpdateWithoutCompanyInputSchema } from './CompanyAliasUpdateWithoutCompanyInputSchema';
 import { CompanyAliasUncheckedUpdateWithoutCompanyInputSchema } from './CompanyAliasUncheckedUpdateWithoutCompanyInputSchema';
 
-export const CompanyAliasUpdateWithWhereUniqueWithoutCompanyInputSchema: z.ZodType<Prisma.CompanyAliasUpdateWithWhereUniqueWithoutCompanyInput> = z.object({
+export const CompanyAliasUpdateWithWhereUniqueWithoutCompanyInputSchema: z.ZodType<Prisma.CompanyAliasUpdateWithWhereUniqueWithoutCompanyInput> = z.strictObject({
   where: z.lazy(() => CompanyAliasWhereUniqueInputSchema),
-  data: z.union([ z.lazy(() => CompanyAliasUpdateWithoutCompanyInputSchema),z.lazy(() => CompanyAliasUncheckedUpdateWithoutCompanyInputSchema) ]),
-}).strict() as z.ZodType<Prisma.CompanyAliasUpdateWithWhereUniqueWithoutCompanyInput>;
+  data: z.union([ z.lazy(() => CompanyAliasUpdateWithoutCompanyInputSchema), z.lazy(() => CompanyAliasUncheckedUpdateWithoutCompanyInputSchema) ]),
+});
 
 export default CompanyAliasUpdateWithWhereUniqueWithoutCompanyInputSchema;

@@ -13,7 +13,7 @@ import type { ClauseAnalysisWithRelations, ClauseAnalysisPartialWithRelations } 
 /////////////////////////////////////////
 
 export const ClauseSchema = z.object({
-  id: z.string().cuid(),
+  id: z.cuid(),
   documentId: z.string(),
   parentId: z.string().nullish(),
   ordinalPath: z.string(),

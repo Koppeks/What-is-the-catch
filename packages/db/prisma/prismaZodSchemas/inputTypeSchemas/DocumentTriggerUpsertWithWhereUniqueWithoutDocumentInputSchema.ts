@@ -7,10 +7,10 @@ import { DocumentTriggerUncheckedUpdateWithoutDocumentInputSchema } from './Docu
 import { DocumentTriggerCreateWithoutDocumentInputSchema } from './DocumentTriggerCreateWithoutDocumentInputSchema';
 import { DocumentTriggerUncheckedCreateWithoutDocumentInputSchema } from './DocumentTriggerUncheckedCreateWithoutDocumentInputSchema';
 
-export const DocumentTriggerUpsertWithWhereUniqueWithoutDocumentInputSchema: z.ZodType<Prisma.DocumentTriggerUpsertWithWhereUniqueWithoutDocumentInput> = z.object({
+export const DocumentTriggerUpsertWithWhereUniqueWithoutDocumentInputSchema: z.ZodType<Prisma.DocumentTriggerUpsertWithWhereUniqueWithoutDocumentInput> = z.strictObject({
   where: z.lazy(() => DocumentTriggerWhereUniqueInputSchema),
-  update: z.union([ z.lazy(() => DocumentTriggerUpdateWithoutDocumentInputSchema),z.lazy(() => DocumentTriggerUncheckedUpdateWithoutDocumentInputSchema) ]),
-  create: z.union([ z.lazy(() => DocumentTriggerCreateWithoutDocumentInputSchema),z.lazy(() => DocumentTriggerUncheckedCreateWithoutDocumentInputSchema) ]),
-}).strict() as z.ZodType<Prisma.DocumentTriggerUpsertWithWhereUniqueWithoutDocumentInput>;
+  update: z.union([ z.lazy(() => DocumentTriggerUpdateWithoutDocumentInputSchema), z.lazy(() => DocumentTriggerUncheckedUpdateWithoutDocumentInputSchema) ]),
+  create: z.union([ z.lazy(() => DocumentTriggerCreateWithoutDocumentInputSchema), z.lazy(() => DocumentTriggerUncheckedCreateWithoutDocumentInputSchema) ]),
+});
 
 export default DocumentTriggerUpsertWithWhereUniqueWithoutDocumentInputSchema;

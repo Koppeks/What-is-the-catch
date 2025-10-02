@@ -3,8 +3,8 @@ import type { Prisma } from '@prisma/client';
 import { ServiceDomainCreateManyInputSchema } from '../inputTypeSchemas/ServiceDomainCreateManyInputSchema'
 
 export const ServiceDomainCreateManyAndReturnArgsSchema: z.ZodType<Prisma.ServiceDomainCreateManyAndReturnArgs> = z.object({
-  data: z.union([ ServiceDomainCreateManyInputSchema,ServiceDomainCreateManyInputSchema.array() ]),
+  data: z.union([ ServiceDomainCreateManyInputSchema, ServiceDomainCreateManyInputSchema.array() ]),
   skipDuplicates: z.boolean().optional(),
-}).strict() as z.ZodType<Prisma.ServiceDomainCreateManyAndReturnArgs>;
+}).strict();
 
 export default ServiceDomainCreateManyAndReturnArgsSchema;

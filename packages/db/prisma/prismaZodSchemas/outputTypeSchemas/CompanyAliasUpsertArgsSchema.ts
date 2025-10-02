@@ -24,9 +24,9 @@ export const CompanyAliasSelectSchema: z.ZodType<Prisma.CompanyAliasSelect> = z.
 export const CompanyAliasUpsertArgsSchema: z.ZodType<Prisma.CompanyAliasUpsertArgs> = z.object({
   select: CompanyAliasSelectSchema.optional(),
   include: z.lazy(() => CompanyAliasIncludeSchema).optional(),
-  where: CompanyAliasWhereUniqueInputSchema,
-  create: z.union([ CompanyAliasCreateInputSchema,CompanyAliasUncheckedCreateInputSchema ]),
-  update: z.union([ CompanyAliasUpdateInputSchema,CompanyAliasUncheckedUpdateInputSchema ]),
-}).strict() as z.ZodType<Prisma.CompanyAliasUpsertArgs>;
+  where: CompanyAliasWhereUniqueInputSchema, 
+  create: z.union([ CompanyAliasCreateInputSchema, CompanyAliasUncheckedCreateInputSchema ]),
+  update: z.union([ CompanyAliasUpdateInputSchema, CompanyAliasUncheckedUpdateInputSchema ]),
+}).strict();
 
 export default CompanyAliasUpsertArgsSchema;

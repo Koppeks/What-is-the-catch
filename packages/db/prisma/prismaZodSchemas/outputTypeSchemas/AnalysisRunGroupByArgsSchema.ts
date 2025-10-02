@@ -6,12 +6,12 @@ import { AnalysisRunScalarFieldEnumSchema } from '../inputTypeSchemas/AnalysisRu
 import { AnalysisRunScalarWhereWithAggregatesInputSchema } from '../inputTypeSchemas/AnalysisRunScalarWhereWithAggregatesInputSchema'
 
 export const AnalysisRunGroupByArgsSchema: z.ZodType<Prisma.AnalysisRunGroupByArgs> = z.object({
-  where: AnalysisRunWhereInputSchema.optional(),
-  orderBy: z.union([ AnalysisRunOrderByWithAggregationInputSchema.array(),AnalysisRunOrderByWithAggregationInputSchema ]).optional(),
-  by: AnalysisRunScalarFieldEnumSchema.array(),
-  having: AnalysisRunScalarWhereWithAggregatesInputSchema.optional(),
+  where: AnalysisRunWhereInputSchema.optional(), 
+  orderBy: z.union([ AnalysisRunOrderByWithAggregationInputSchema.array(), AnalysisRunOrderByWithAggregationInputSchema ]).optional(),
+  by: AnalysisRunScalarFieldEnumSchema.array(), 
+  having: AnalysisRunScalarWhereWithAggregatesInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.AnalysisRunGroupByArgs>;
+}).strict();
 
 export default AnalysisRunGroupByArgsSchema;

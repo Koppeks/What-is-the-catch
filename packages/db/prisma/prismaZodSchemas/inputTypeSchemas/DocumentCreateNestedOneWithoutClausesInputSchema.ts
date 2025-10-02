@@ -6,10 +6,10 @@ import { DocumentUncheckedCreateWithoutClausesInputSchema } from './DocumentUnch
 import { DocumentCreateOrConnectWithoutClausesInputSchema } from './DocumentCreateOrConnectWithoutClausesInputSchema';
 import { DocumentWhereUniqueInputSchema } from './DocumentWhereUniqueInputSchema';
 
-export const DocumentCreateNestedOneWithoutClausesInputSchema: z.ZodType<Prisma.DocumentCreateNestedOneWithoutClausesInput> = z.object({
-  create: z.union([ z.lazy(() => DocumentCreateWithoutClausesInputSchema),z.lazy(() => DocumentUncheckedCreateWithoutClausesInputSchema) ]).optional(),
+export const DocumentCreateNestedOneWithoutClausesInputSchema: z.ZodType<Prisma.DocumentCreateNestedOneWithoutClausesInput> = z.strictObject({
+  create: z.union([ z.lazy(() => DocumentCreateWithoutClausesInputSchema), z.lazy(() => DocumentUncheckedCreateWithoutClausesInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => DocumentCreateOrConnectWithoutClausesInputSchema).optional(),
-  connect: z.lazy(() => DocumentWhereUniqueInputSchema).optional()
-}).strict() as z.ZodType<Prisma.DocumentCreateNestedOneWithoutClausesInput>;
+  connect: z.lazy(() => DocumentWhereUniqueInputSchema).optional(),
+});
 
 export default DocumentCreateNestedOneWithoutClausesInputSchema;

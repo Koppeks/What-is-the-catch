@@ -22,7 +22,7 @@ export const DocumentTriggerSelectSchema: z.ZodType<Prisma.DocumentTriggerSelect
 export const DocumentTriggerCreateArgsSchema: z.ZodType<Prisma.DocumentTriggerCreateArgs> = z.object({
   select: DocumentTriggerSelectSchema.optional(),
   include: z.lazy(() => DocumentTriggerIncludeSchema).optional(),
-  data: z.union([ DocumentTriggerCreateInputSchema,DocumentTriggerUncheckedCreateInputSchema ]),
-}).strict() as z.ZodType<Prisma.DocumentTriggerCreateArgs>;
+  data: z.union([ DocumentTriggerCreateInputSchema, DocumentTriggerUncheckedCreateInputSchema ]),
+}).strict();
 
 export default DocumentTriggerCreateArgsSchema;

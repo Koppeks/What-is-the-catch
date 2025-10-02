@@ -9,7 +9,7 @@ import type { ServiceDomainWithRelations, ServiceDomainPartialWithRelations } fr
 /////////////////////////////////////////
 
 export const DomainSchema = z.object({
-  id: z.string().cuid(),
+  id: z.cuid(),
   companyId: z.string(),
   host: z.string(),
   note: z.string().nullish(),

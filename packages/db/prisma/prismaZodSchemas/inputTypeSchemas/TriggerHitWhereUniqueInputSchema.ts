@@ -11,19 +11,19 @@ import { TriggerScalarRelationFilterSchema } from './TriggerScalarRelationFilter
 import { TriggerWhereInputSchema } from './TriggerWhereInputSchema';
 
 export const TriggerHitWhereUniqueInputSchema: z.ZodType<Prisma.TriggerHitWhereUniqueInput> = z.object({
-  id: z.string().cuid()
+  id: z.cuid(),
 })
-.and(z.object({
-  id: z.string().cuid().optional(),
-  AND: z.union([ z.lazy(() => TriggerHitWhereInputSchema),z.lazy(() => TriggerHitWhereInputSchema).array() ]).optional(),
+.and(z.strictObject({
+  id: z.cuid().optional(),
+  AND: z.union([ z.lazy(() => TriggerHitWhereInputSchema), z.lazy(() => TriggerHitWhereInputSchema).array() ]).optional(),
   OR: z.lazy(() => TriggerHitWhereInputSchema).array().optional(),
-  NOT: z.union([ z.lazy(() => TriggerHitWhereInputSchema),z.lazy(() => TriggerHitWhereInputSchema).array() ]).optional(),
-  clauseId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  triggerId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  confidence: z.union([ z.lazy(() => FloatNullableFilterSchema),z.number() ]).optional().nullable(),
+  NOT: z.union([ z.lazy(() => TriggerHitWhereInputSchema), z.lazy(() => TriggerHitWhereInputSchema).array() ]).optional(),
+  clauseId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  triggerId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  confidence: z.union([ z.lazy(() => FloatNullableFilterSchema), z.number() ]).optional().nullable(),
   matches: z.lazy(() => JsonNullableFilterSchema).optional(),
-  clause: z.union([ z.lazy(() => ClauseScalarRelationFilterSchema),z.lazy(() => ClauseWhereInputSchema) ]).optional(),
-  trigger: z.union([ z.lazy(() => TriggerScalarRelationFilterSchema),z.lazy(() => TriggerWhereInputSchema) ]).optional(),
-}).strict()) as z.ZodType<Prisma.TriggerHitWhereUniqueInput>;
+  clause: z.union([ z.lazy(() => ClauseScalarRelationFilterSchema), z.lazy(() => ClauseWhereInputSchema) ]).optional(),
+  trigger: z.union([ z.lazy(() => TriggerScalarRelationFilterSchema), z.lazy(() => TriggerWhereInputSchema) ]).optional(),
+}));
 
 export default TriggerHitWhereUniqueInputSchema;

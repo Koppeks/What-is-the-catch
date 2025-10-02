@@ -34,7 +34,7 @@ export const ClauseSelectSchema: z.ZodType<Prisma.ClauseSelect> = z.object({
 export const ClauseFindUniqueOrThrowArgsSchema: z.ZodType<Prisma.ClauseFindUniqueOrThrowArgs> = z.object({
   select: ClauseSelectSchema.optional(),
   include: z.lazy(() => ClauseIncludeSchema).optional(),
-  where: ClauseWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.ClauseFindUniqueOrThrowArgs>;
+  where: ClauseWhereUniqueInputSchema, 
+}).strict();
 
 export default ClauseFindUniqueOrThrowArgsSchema;

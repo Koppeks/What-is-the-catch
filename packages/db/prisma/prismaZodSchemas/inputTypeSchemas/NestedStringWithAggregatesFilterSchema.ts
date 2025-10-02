@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { NestedIntFilterSchema } from './NestedIntFilterSchema';
 import { NestedStringFilterSchema } from './NestedStringFilterSchema';
 
-export const NestedStringWithAggregatesFilterSchema: z.ZodType<Prisma.NestedStringWithAggregatesFilter> = z.object({
+export const NestedStringWithAggregatesFilterSchema: z.ZodType<Prisma.NestedStringWithAggregatesFilter> = z.strictObject({
   equals: z.string().optional(),
   in: z.string().array().optional(),
   notIn: z.string().array().optional(),
@@ -18,7 +18,7 @@ export const NestedStringWithAggregatesFilterSchema: z.ZodType<Prisma.NestedStri
   not: z.union([ z.string(),z.lazy(() => NestedStringWithAggregatesFilterSchema) ]).optional(),
   _count: z.lazy(() => NestedIntFilterSchema).optional(),
   _min: z.lazy(() => NestedStringFilterSchema).optional(),
-  _max: z.lazy(() => NestedStringFilterSchema).optional()
-}).strict() as z.ZodType<Prisma.NestedStringWithAggregatesFilter>;
+  _max: z.lazy(() => NestedStringFilterSchema).optional(),
+});
 
 export default NestedStringWithAggregatesFilterSchema;

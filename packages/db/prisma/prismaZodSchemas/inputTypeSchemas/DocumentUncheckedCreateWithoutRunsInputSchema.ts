@@ -7,8 +7,8 @@ import { AnalysisStatusSchema } from './AnalysisStatusSchema';
 import { ClauseUncheckedCreateNestedManyWithoutDocumentInputSchema } from './ClauseUncheckedCreateNestedManyWithoutDocumentInputSchema';
 import { DocumentTriggerUncheckedCreateNestedManyWithoutDocumentInputSchema } from './DocumentTriggerUncheckedCreateNestedManyWithoutDocumentInputSchema';
 
-export const DocumentUncheckedCreateWithoutRunsInputSchema: z.ZodType<Prisma.DocumentUncheckedCreateWithoutRunsInput> = z.object({
-  id: z.string().cuid().optional(),
+export const DocumentUncheckedCreateWithoutRunsInputSchema: z.ZodType<Prisma.DocumentUncheckedCreateWithoutRunsInput> = z.strictObject({
+  id: z.cuid().optional(),
   name: z.string(),
   locale: z.string().optional().nullable(),
   kind: z.lazy(() => DocumentKindSchema).optional().nullable(),
@@ -18,7 +18,7 @@ export const DocumentUncheckedCreateWithoutRunsInputSchema: z.ZodType<Prisma.Doc
   updatedAt: z.coerce.date().optional(),
   createdAt: z.coerce.date().optional(),
   clauses: z.lazy(() => ClauseUncheckedCreateNestedManyWithoutDocumentInputSchema).optional(),
-  documentRules: z.lazy(() => DocumentTriggerUncheckedCreateNestedManyWithoutDocumentInputSchema).optional()
-}).strict() as z.ZodType<Prisma.DocumentUncheckedCreateWithoutRunsInput>;
+  documentRules: z.lazy(() => DocumentTriggerUncheckedCreateNestedManyWithoutDocumentInputSchema).optional(),
+});
 
 export default DocumentUncheckedCreateWithoutRunsInputSchema;

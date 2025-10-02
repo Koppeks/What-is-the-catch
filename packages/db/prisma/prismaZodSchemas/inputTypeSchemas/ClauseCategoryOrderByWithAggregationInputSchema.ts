@@ -8,7 +8,7 @@ import { ClauseCategoryMaxOrderByAggregateInputSchema } from './ClauseCategoryMa
 import { ClauseCategoryMinOrderByAggregateInputSchema } from './ClauseCategoryMinOrderByAggregateInputSchema';
 import { ClauseCategorySumOrderByAggregateInputSchema } from './ClauseCategorySumOrderByAggregateInputSchema';
 
-export const ClauseCategoryOrderByWithAggregationInputSchema: z.ZodType<Prisma.ClauseCategoryOrderByWithAggregationInput> = z.object({
+export const ClauseCategoryOrderByWithAggregationInputSchema: z.ZodType<Prisma.ClauseCategoryOrderByWithAggregationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   slug: z.lazy(() => SortOrderSchema).optional(),
   version: z.lazy(() => SortOrderSchema).optional(),
@@ -23,7 +23,7 @@ export const ClauseCategoryOrderByWithAggregationInputSchema: z.ZodType<Prisma.C
   _avg: z.lazy(() => ClauseCategoryAvgOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => ClauseCategoryMaxOrderByAggregateInputSchema).optional(),
   _min: z.lazy(() => ClauseCategoryMinOrderByAggregateInputSchema).optional(),
-  _sum: z.lazy(() => ClauseCategorySumOrderByAggregateInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseCategoryOrderByWithAggregationInput>;
+  _sum: z.lazy(() => ClauseCategorySumOrderByAggregateInputSchema).optional(),
+});
 
 export default ClauseCategoryOrderByWithAggregationInputSchema;

@@ -6,7 +6,7 @@ import { CompanyAliasCountOrderByAggregateInputSchema } from './CompanyAliasCoun
 import { CompanyAliasMaxOrderByAggregateInputSchema } from './CompanyAliasMaxOrderByAggregateInputSchema';
 import { CompanyAliasMinOrderByAggregateInputSchema } from './CompanyAliasMinOrderByAggregateInputSchema';
 
-export const CompanyAliasOrderByWithAggregationInputSchema: z.ZodType<Prisma.CompanyAliasOrderByWithAggregationInput> = z.object({
+export const CompanyAliasOrderByWithAggregationInputSchema: z.ZodType<Prisma.CompanyAliasOrderByWithAggregationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   companyId: z.lazy(() => SortOrderSchema).optional(),
   kind: z.lazy(() => SortOrderSchema).optional(),
@@ -16,7 +16,7 @@ export const CompanyAliasOrderByWithAggregationInputSchema: z.ZodType<Prisma.Com
   updatedAt: z.lazy(() => SortOrderSchema).optional(),
   _count: z.lazy(() => CompanyAliasCountOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => CompanyAliasMaxOrderByAggregateInputSchema).optional(),
-  _min: z.lazy(() => CompanyAliasMinOrderByAggregateInputSchema).optional()
-}).strict() as z.ZodType<Prisma.CompanyAliasOrderByWithAggregationInput>;
+  _min: z.lazy(() => CompanyAliasMinOrderByAggregateInputSchema).optional(),
+});
 
 export default CompanyAliasOrderByWithAggregationInputSchema;

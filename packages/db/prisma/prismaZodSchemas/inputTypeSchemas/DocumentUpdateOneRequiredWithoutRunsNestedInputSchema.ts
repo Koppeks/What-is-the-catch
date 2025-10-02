@@ -10,12 +10,12 @@ import { DocumentUpdateToOneWithWhereWithoutRunsInputSchema } from './DocumentUp
 import { DocumentUpdateWithoutRunsInputSchema } from './DocumentUpdateWithoutRunsInputSchema';
 import { DocumentUncheckedUpdateWithoutRunsInputSchema } from './DocumentUncheckedUpdateWithoutRunsInputSchema';
 
-export const DocumentUpdateOneRequiredWithoutRunsNestedInputSchema: z.ZodType<Prisma.DocumentUpdateOneRequiredWithoutRunsNestedInput> = z.object({
-  create: z.union([ z.lazy(() => DocumentCreateWithoutRunsInputSchema),z.lazy(() => DocumentUncheckedCreateWithoutRunsInputSchema) ]).optional(),
+export const DocumentUpdateOneRequiredWithoutRunsNestedInputSchema: z.ZodType<Prisma.DocumentUpdateOneRequiredWithoutRunsNestedInput> = z.strictObject({
+  create: z.union([ z.lazy(() => DocumentCreateWithoutRunsInputSchema), z.lazy(() => DocumentUncheckedCreateWithoutRunsInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => DocumentCreateOrConnectWithoutRunsInputSchema).optional(),
   upsert: z.lazy(() => DocumentUpsertWithoutRunsInputSchema).optional(),
   connect: z.lazy(() => DocumentWhereUniqueInputSchema).optional(),
-  update: z.union([ z.lazy(() => DocumentUpdateToOneWithWhereWithoutRunsInputSchema),z.lazy(() => DocumentUpdateWithoutRunsInputSchema),z.lazy(() => DocumentUncheckedUpdateWithoutRunsInputSchema) ]).optional(),
-}).strict() as z.ZodType<Prisma.DocumentUpdateOneRequiredWithoutRunsNestedInput>;
+  update: z.union([ z.lazy(() => DocumentUpdateToOneWithWhereWithoutRunsInputSchema), z.lazy(() => DocumentUpdateWithoutRunsInputSchema), z.lazy(() => DocumentUncheckedUpdateWithoutRunsInputSchema) ]).optional(),
+});
 
 export default DocumentUpdateOneRequiredWithoutRunsNestedInputSchema;

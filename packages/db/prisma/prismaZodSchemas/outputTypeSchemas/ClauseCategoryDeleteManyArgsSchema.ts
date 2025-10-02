@@ -3,8 +3,8 @@ import type { Prisma } from '@prisma/client';
 import { ClauseCategoryWhereInputSchema } from '../inputTypeSchemas/ClauseCategoryWhereInputSchema'
 
 export const ClauseCategoryDeleteManyArgsSchema: z.ZodType<Prisma.ClauseCategoryDeleteManyArgs> = z.object({
-  where: ClauseCategoryWhereInputSchema.optional(),
+  where: ClauseCategoryWhereInputSchema.optional(), 
   limit: z.number().optional(),
-}).strict() as z.ZodType<Prisma.ClauseCategoryDeleteManyArgs>;
+}).strict();
 
 export default ClauseCategoryDeleteManyArgsSchema;

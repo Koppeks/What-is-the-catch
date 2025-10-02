@@ -6,7 +6,7 @@ import { AnalysisRunOrderByWithRelationInputSchema } from './AnalysisRunOrderByW
 import { ClauseOrderByWithRelationInputSchema } from './ClauseOrderByWithRelationInputSchema';
 import { CategoryHitOrderByRelationAggregateInputSchema } from './CategoryHitOrderByRelationAggregateInputSchema';
 
-export const ClauseAnalysisOrderByWithRelationInputSchema: z.ZodType<Prisma.ClauseAnalysisOrderByWithRelationInput> = z.object({
+export const ClauseAnalysisOrderByWithRelationInputSchema: z.ZodType<Prisma.ClauseAnalysisOrderByWithRelationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   runId: z.lazy(() => SortOrderSchema).optional(),
   clauseId: z.lazy(() => SortOrderSchema).optional(),
@@ -15,7 +15,7 @@ export const ClauseAnalysisOrderByWithRelationInputSchema: z.ZodType<Prisma.Clau
   triggerWarnings: z.lazy(() => SortOrderSchema).optional(),
   run: z.lazy(() => AnalysisRunOrderByWithRelationInputSchema).optional(),
   clause: z.lazy(() => ClauseOrderByWithRelationInputSchema).optional(),
-  categoryHits: z.lazy(() => CategoryHitOrderByRelationAggregateInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseAnalysisOrderByWithRelationInput>;
+  categoryHits: z.lazy(() => CategoryHitOrderByRelationAggregateInputSchema).optional(),
+});
 
 export default ClauseAnalysisOrderByWithRelationInputSchema;

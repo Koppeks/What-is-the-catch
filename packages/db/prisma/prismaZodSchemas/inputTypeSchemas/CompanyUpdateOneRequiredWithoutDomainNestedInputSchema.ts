@@ -10,12 +10,12 @@ import { CompanyUpdateToOneWithWhereWithoutDomainInputSchema } from './CompanyUp
 import { CompanyUpdateWithoutDomainInputSchema } from './CompanyUpdateWithoutDomainInputSchema';
 import { CompanyUncheckedUpdateWithoutDomainInputSchema } from './CompanyUncheckedUpdateWithoutDomainInputSchema';
 
-export const CompanyUpdateOneRequiredWithoutDomainNestedInputSchema: z.ZodType<Prisma.CompanyUpdateOneRequiredWithoutDomainNestedInput> = z.object({
-  create: z.union([ z.lazy(() => CompanyCreateWithoutDomainInputSchema),z.lazy(() => CompanyUncheckedCreateWithoutDomainInputSchema) ]).optional(),
+export const CompanyUpdateOneRequiredWithoutDomainNestedInputSchema: z.ZodType<Prisma.CompanyUpdateOneRequiredWithoutDomainNestedInput> = z.strictObject({
+  create: z.union([ z.lazy(() => CompanyCreateWithoutDomainInputSchema), z.lazy(() => CompanyUncheckedCreateWithoutDomainInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => CompanyCreateOrConnectWithoutDomainInputSchema).optional(),
   upsert: z.lazy(() => CompanyUpsertWithoutDomainInputSchema).optional(),
   connect: z.lazy(() => CompanyWhereUniqueInputSchema).optional(),
-  update: z.union([ z.lazy(() => CompanyUpdateToOneWithWhereWithoutDomainInputSchema),z.lazy(() => CompanyUpdateWithoutDomainInputSchema),z.lazy(() => CompanyUncheckedUpdateWithoutDomainInputSchema) ]).optional(),
-}).strict() as z.ZodType<Prisma.CompanyUpdateOneRequiredWithoutDomainNestedInput>;
+  update: z.union([ z.lazy(() => CompanyUpdateToOneWithWhereWithoutDomainInputSchema), z.lazy(() => CompanyUpdateWithoutDomainInputSchema), z.lazy(() => CompanyUncheckedUpdateWithoutDomainInputSchema) ]).optional(),
+});
 
 export default CompanyUpdateOneRequiredWithoutDomainNestedInputSchema;

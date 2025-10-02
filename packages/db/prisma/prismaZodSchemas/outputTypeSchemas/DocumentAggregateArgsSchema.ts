@@ -5,11 +5,11 @@ import { DocumentOrderByWithRelationInputSchema } from '../inputTypeSchemas/Docu
 import { DocumentWhereUniqueInputSchema } from '../inputTypeSchemas/DocumentWhereUniqueInputSchema'
 
 export const DocumentAggregateArgsSchema: z.ZodType<Prisma.DocumentAggregateArgs> = z.object({
-  where: DocumentWhereInputSchema.optional(),
-  orderBy: z.union([ DocumentOrderByWithRelationInputSchema.array(),DocumentOrderByWithRelationInputSchema ]).optional(),
-  cursor: DocumentWhereUniqueInputSchema.optional(),
+  where: DocumentWhereInputSchema.optional(), 
+  orderBy: z.union([ DocumentOrderByWithRelationInputSchema.array(), DocumentOrderByWithRelationInputSchema ]).optional(),
+  cursor: DocumentWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.DocumentAggregateArgs>;
+}).strict();
 
 export default DocumentAggregateArgsSchema;

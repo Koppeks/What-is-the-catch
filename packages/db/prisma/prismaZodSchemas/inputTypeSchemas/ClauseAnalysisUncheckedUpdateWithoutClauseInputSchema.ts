@@ -8,13 +8,13 @@ import { IntFieldUpdateOperationsInputSchema } from './IntFieldUpdateOperationsI
 import { ClauseAnalysisUpdatetriggerWarningsInputSchema } from './ClauseAnalysisUpdatetriggerWarningsInputSchema';
 import { CategoryHitUncheckedUpdateManyWithoutClauseAnalysisNestedInputSchema } from './CategoryHitUncheckedUpdateManyWithoutClauseAnalysisNestedInputSchema';
 
-export const ClauseAnalysisUncheckedUpdateWithoutClauseInputSchema: z.ZodType<Prisma.ClauseAnalysisUncheckedUpdateWithoutClauseInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const ClauseAnalysisUncheckedUpdateWithoutClauseInputSchema: z.ZodType<Prisma.ClauseAnalysisUncheckedUpdateWithoutClauseInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   runId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  severity: z.union([ z.lazy(() => SeveritySchema),z.lazy(() => EnumSeverityFieldUpdateOperationsInputSchema) ]).optional(),
+  severity: z.union([ z.lazy(() => SeveritySchema), z.lazy(() => EnumSeverityFieldUpdateOperationsInputSchema) ]).optional(),
   riskScore: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
-  triggerWarnings: z.union([ z.lazy(() => ClauseAnalysisUpdatetriggerWarningsInputSchema),z.string().array() ]).optional(),
-  categoryHits: z.lazy(() => CategoryHitUncheckedUpdateManyWithoutClauseAnalysisNestedInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseAnalysisUncheckedUpdateWithoutClauseInput>;
+  triggerWarnings: z.union([ z.lazy(() => ClauseAnalysisUpdatetriggerWarningsInputSchema), z.string().array() ]).optional(),
+  categoryHits: z.lazy(() => CategoryHitUncheckedUpdateManyWithoutClauseAnalysisNestedInputSchema).optional(),
+});
 
 export default ClauseAnalysisUncheckedUpdateWithoutClauseInputSchema;

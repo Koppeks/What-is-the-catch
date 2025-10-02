@@ -7,11 +7,11 @@ import { ClauseAnalysisCreateOrConnectWithoutRunInputSchema } from './ClauseAnal
 import { ClauseAnalysisCreateManyRunInputEnvelopeSchema } from './ClauseAnalysisCreateManyRunInputEnvelopeSchema';
 import { ClauseAnalysisWhereUniqueInputSchema } from './ClauseAnalysisWhereUniqueInputSchema';
 
-export const ClauseAnalysisUncheckedCreateNestedManyWithoutRunInputSchema: z.ZodType<Prisma.ClauseAnalysisUncheckedCreateNestedManyWithoutRunInput> = z.object({
-  create: z.union([ z.lazy(() => ClauseAnalysisCreateWithoutRunInputSchema),z.lazy(() => ClauseAnalysisCreateWithoutRunInputSchema).array(),z.lazy(() => ClauseAnalysisUncheckedCreateWithoutRunInputSchema),z.lazy(() => ClauseAnalysisUncheckedCreateWithoutRunInputSchema).array() ]).optional(),
-  connectOrCreate: z.union([ z.lazy(() => ClauseAnalysisCreateOrConnectWithoutRunInputSchema),z.lazy(() => ClauseAnalysisCreateOrConnectWithoutRunInputSchema).array() ]).optional(),
+export const ClauseAnalysisUncheckedCreateNestedManyWithoutRunInputSchema: z.ZodType<Prisma.ClauseAnalysisUncheckedCreateNestedManyWithoutRunInput> = z.strictObject({
+  create: z.union([ z.lazy(() => ClauseAnalysisCreateWithoutRunInputSchema), z.lazy(() => ClauseAnalysisCreateWithoutRunInputSchema).array(), z.lazy(() => ClauseAnalysisUncheckedCreateWithoutRunInputSchema), z.lazy(() => ClauseAnalysisUncheckedCreateWithoutRunInputSchema).array() ]).optional(),
+  connectOrCreate: z.union([ z.lazy(() => ClauseAnalysisCreateOrConnectWithoutRunInputSchema), z.lazy(() => ClauseAnalysisCreateOrConnectWithoutRunInputSchema).array() ]).optional(),
   createMany: z.lazy(() => ClauseAnalysisCreateManyRunInputEnvelopeSchema).optional(),
-  connect: z.union([ z.lazy(() => ClauseAnalysisWhereUniqueInputSchema),z.lazy(() => ClauseAnalysisWhereUniqueInputSchema).array() ]).optional(),
-}).strict() as z.ZodType<Prisma.ClauseAnalysisUncheckedCreateNestedManyWithoutRunInput>;
+  connect: z.union([ z.lazy(() => ClauseAnalysisWhereUniqueInputSchema), z.lazy(() => ClauseAnalysisWhereUniqueInputSchema).array() ]).optional(),
+});
 
 export default ClauseAnalysisUncheckedCreateNestedManyWithoutRunInputSchema;

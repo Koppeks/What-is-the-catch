@@ -2,11 +2,11 @@ import type { Prisma } from '@prisma/client';
 
 import { z } from 'zod';
 import { SortOrderSchema } from './SortOrderSchema';
-import { userCountOrderByAggregateInputSchema } from './userCountOrderByAggregateInputSchema';
-import { userMaxOrderByAggregateInputSchema } from './userMaxOrderByAggregateInputSchema';
-import { userMinOrderByAggregateInputSchema } from './userMinOrderByAggregateInputSchema';
+import { UserCountOrderByAggregateInputSchema } from './UserCountOrderByAggregateInputSchema';
+import { UserMaxOrderByAggregateInputSchema } from './UserMaxOrderByAggregateInputSchema';
+import { UserMinOrderByAggregateInputSchema } from './UserMinOrderByAggregateInputSchema';
 
-export const userOrderByWithAggregationInputSchema: z.ZodType<Prisma.userOrderByWithAggregationInput> = z.object({
+export const UserOrderByWithAggregationInputSchema: z.ZodType<Prisma.UserOrderByWithAggregationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   email: z.lazy(() => SortOrderSchema).optional(),
   username: z.lazy(() => SortOrderSchema).optional(),
@@ -15,9 +15,9 @@ export const userOrderByWithAggregationInputSchema: z.ZodType<Prisma.userOrderBy
   subscriptionStatus: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
-  _count: z.lazy(() => userCountOrderByAggregateInputSchema).optional(),
-  _max: z.lazy(() => userMaxOrderByAggregateInputSchema).optional(),
-  _min: z.lazy(() => userMinOrderByAggregateInputSchema).optional()
-}).strict() as z.ZodType<Prisma.userOrderByWithAggregationInput>;
+  _count: z.lazy(() => UserCountOrderByAggregateInputSchema).optional(),
+  _max: z.lazy(() => UserMaxOrderByAggregateInputSchema).optional(),
+  _min: z.lazy(() => UserMinOrderByAggregateInputSchema).optional(),
+});
 
-export default userOrderByWithAggregationInputSchema;
+export default UserOrderByWithAggregationInputSchema;

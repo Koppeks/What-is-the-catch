@@ -17,7 +17,7 @@ export const DocumentSchema = z.object({
   kind: DocumentKindSchema.nullish(),
   type: TypeRequestSchema,
   status: AnalysisStatusSchema,
-  id: z.string().cuid(),
+  id: z.cuid(),
   name: z.string(),
   locale: z.string().nullish(),
   sourceUrl: z.string().nullish(),

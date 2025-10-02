@@ -5,11 +5,11 @@ import { TriggerOrderByWithRelationInputSchema } from '../inputTypeSchemas/Trigg
 import { TriggerWhereUniqueInputSchema } from '../inputTypeSchemas/TriggerWhereUniqueInputSchema'
 
 export const TriggerAggregateArgsSchema: z.ZodType<Prisma.TriggerAggregateArgs> = z.object({
-  where: TriggerWhereInputSchema.optional(),
-  orderBy: z.union([ TriggerOrderByWithRelationInputSchema.array(),TriggerOrderByWithRelationInputSchema ]).optional(),
-  cursor: TriggerWhereUniqueInputSchema.optional(),
+  where: TriggerWhereInputSchema.optional(), 
+  orderBy: z.union([ TriggerOrderByWithRelationInputSchema.array(), TriggerOrderByWithRelationInputSchema ]).optional(),
+  cursor: TriggerWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.TriggerAggregateArgs>;
+}).strict();
 
 export default TriggerAggregateArgsSchema;

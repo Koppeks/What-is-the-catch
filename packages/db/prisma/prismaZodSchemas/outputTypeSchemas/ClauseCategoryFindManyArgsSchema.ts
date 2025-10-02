@@ -30,12 +30,12 @@ export const ClauseCategorySelectSchema: z.ZodType<Prisma.ClauseCategorySelect> 
 export const ClauseCategoryFindManyArgsSchema: z.ZodType<Prisma.ClauseCategoryFindManyArgs> = z.object({
   select: ClauseCategorySelectSchema.optional(),
   include: z.lazy(() => ClauseCategoryIncludeSchema).optional(),
-  where: ClauseCategoryWhereInputSchema.optional(),
-  orderBy: z.union([ ClauseCategoryOrderByWithRelationInputSchema.array(),ClauseCategoryOrderByWithRelationInputSchema ]).optional(),
-  cursor: ClauseCategoryWhereUniqueInputSchema.optional(),
+  where: ClauseCategoryWhereInputSchema.optional(), 
+  orderBy: z.union([ ClauseCategoryOrderByWithRelationInputSchema.array(), ClauseCategoryOrderByWithRelationInputSchema ]).optional(),
+  cursor: ClauseCategoryWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-  distinct: z.union([ ClauseCategoryScalarFieldEnumSchema,ClauseCategoryScalarFieldEnumSchema.array() ]).optional(),
-}).strict() as z.ZodType<Prisma.ClauseCategoryFindManyArgs>;
+  distinct: z.union([ ClauseCategoryScalarFieldEnumSchema, ClauseCategoryScalarFieldEnumSchema.array() ]).optional(),
+}).strict();
 
 export default ClauseCategoryFindManyArgsSchema;

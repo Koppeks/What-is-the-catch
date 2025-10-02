@@ -11,7 +11,7 @@ import type { TriggerWithRelations, TriggerPartialWithRelations } from './Trigge
 /////////////////////////////////////////
 
 export const TriggerHitSchema = z.object({
-  id: z.string().cuid(),
+  id: z.cuid(),
   clauseId: z.string(),
   triggerId: z.string(),
   confidence: z.number().nullish(),

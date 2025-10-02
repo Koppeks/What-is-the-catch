@@ -2,10 +2,10 @@ import type { Prisma } from '@prisma/client';
 
 import { z } from 'zod';
 
-export const CategoryHitCreateManyClauseAnalysisInputSchema: z.ZodType<Prisma.CategoryHitCreateManyClauseAnalysisInput> = z.object({
-  id: z.string().cuid().optional(),
+export const CategoryHitCreateManyClauseAnalysisInputSchema: z.ZodType<Prisma.CategoryHitCreateManyClauseAnalysisInput> = z.strictObject({
+  id: z.cuid().optional(),
   categoryId: z.string(),
-  confidence: z.number().optional().nullable()
-}).strict() as z.ZodType<Prisma.CategoryHitCreateManyClauseAnalysisInput>;
+  confidence: z.number().optional().nullable(),
+});
 
 export default CategoryHitCreateManyClauseAnalysisInputSchema;

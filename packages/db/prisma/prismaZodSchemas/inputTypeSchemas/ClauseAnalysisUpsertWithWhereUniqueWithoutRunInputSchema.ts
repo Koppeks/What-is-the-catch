@@ -7,10 +7,10 @@ import { ClauseAnalysisUncheckedUpdateWithoutRunInputSchema } from './ClauseAnal
 import { ClauseAnalysisCreateWithoutRunInputSchema } from './ClauseAnalysisCreateWithoutRunInputSchema';
 import { ClauseAnalysisUncheckedCreateWithoutRunInputSchema } from './ClauseAnalysisUncheckedCreateWithoutRunInputSchema';
 
-export const ClauseAnalysisUpsertWithWhereUniqueWithoutRunInputSchema: z.ZodType<Prisma.ClauseAnalysisUpsertWithWhereUniqueWithoutRunInput> = z.object({
+export const ClauseAnalysisUpsertWithWhereUniqueWithoutRunInputSchema: z.ZodType<Prisma.ClauseAnalysisUpsertWithWhereUniqueWithoutRunInput> = z.strictObject({
   where: z.lazy(() => ClauseAnalysisWhereUniqueInputSchema),
-  update: z.union([ z.lazy(() => ClauseAnalysisUpdateWithoutRunInputSchema),z.lazy(() => ClauseAnalysisUncheckedUpdateWithoutRunInputSchema) ]),
-  create: z.union([ z.lazy(() => ClauseAnalysisCreateWithoutRunInputSchema),z.lazy(() => ClauseAnalysisUncheckedCreateWithoutRunInputSchema) ]),
-}).strict() as z.ZodType<Prisma.ClauseAnalysisUpsertWithWhereUniqueWithoutRunInput>;
+  update: z.union([ z.lazy(() => ClauseAnalysisUpdateWithoutRunInputSchema), z.lazy(() => ClauseAnalysisUncheckedUpdateWithoutRunInputSchema) ]),
+  create: z.union([ z.lazy(() => ClauseAnalysisCreateWithoutRunInputSchema), z.lazy(() => ClauseAnalysisUncheckedCreateWithoutRunInputSchema) ]),
+});
 
 export default ClauseAnalysisUpsertWithWhereUniqueWithoutRunInputSchema;

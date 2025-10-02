@@ -6,10 +6,10 @@ import { CompanyUncheckedCreateWithoutDomainInputSchema } from './CompanyUncheck
 import { CompanyCreateOrConnectWithoutDomainInputSchema } from './CompanyCreateOrConnectWithoutDomainInputSchema';
 import { CompanyWhereUniqueInputSchema } from './CompanyWhereUniqueInputSchema';
 
-export const CompanyCreateNestedOneWithoutDomainInputSchema: z.ZodType<Prisma.CompanyCreateNestedOneWithoutDomainInput> = z.object({
-  create: z.union([ z.lazy(() => CompanyCreateWithoutDomainInputSchema),z.lazy(() => CompanyUncheckedCreateWithoutDomainInputSchema) ]).optional(),
+export const CompanyCreateNestedOneWithoutDomainInputSchema: z.ZodType<Prisma.CompanyCreateNestedOneWithoutDomainInput> = z.strictObject({
+  create: z.union([ z.lazy(() => CompanyCreateWithoutDomainInputSchema), z.lazy(() => CompanyUncheckedCreateWithoutDomainInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => CompanyCreateOrConnectWithoutDomainInputSchema).optional(),
-  connect: z.lazy(() => CompanyWhereUniqueInputSchema).optional()
-}).strict() as z.ZodType<Prisma.CompanyCreateNestedOneWithoutDomainInput>;
+  connect: z.lazy(() => CompanyWhereUniqueInputSchema).optional(),
+});
 
 export default CompanyCreateNestedOneWithoutDomainInputSchema;

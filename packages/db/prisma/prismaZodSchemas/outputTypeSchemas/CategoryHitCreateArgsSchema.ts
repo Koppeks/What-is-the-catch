@@ -20,7 +20,7 @@ export const CategoryHitSelectSchema: z.ZodType<Prisma.CategoryHitSelect> = z.ob
 export const CategoryHitCreateArgsSchema: z.ZodType<Prisma.CategoryHitCreateArgs> = z.object({
   select: CategoryHitSelectSchema.optional(),
   include: z.lazy(() => CategoryHitIncludeSchema).optional(),
-  data: z.union([ CategoryHitCreateInputSchema,CategoryHitUncheckedCreateInputSchema ]),
-}).strict() as z.ZodType<Prisma.CategoryHitCreateArgs>;
+  data: z.union([ CategoryHitCreateInputSchema, CategoryHitUncheckedCreateInputSchema ]),
+}).strict();
 
 export default CategoryHitCreateArgsSchema;

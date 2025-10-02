@@ -27,7 +27,7 @@ export const ClauseCategorySelectSchema: z.ZodType<Prisma.ClauseCategorySelect> 
 export const ClauseCategoryFindUniqueArgsSchema: z.ZodType<Prisma.ClauseCategoryFindUniqueArgs> = z.object({
   select: ClauseCategorySelectSchema.optional(),
   include: z.lazy(() => ClauseCategoryIncludeSchema).optional(),
-  where: ClauseCategoryWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.ClauseCategoryFindUniqueArgs>;
+  where: ClauseCategoryWhereUniqueInputSchema, 
+}).strict();
 
 export default ClauseCategoryFindUniqueArgsSchema;

@@ -5,9 +5,9 @@ import { ClauseCategoryWhereUniqueInputSchema } from './ClauseCategoryWhereUniqu
 import { ClauseCategoryCreateWithoutTriggerInputSchema } from './ClauseCategoryCreateWithoutTriggerInputSchema';
 import { ClauseCategoryUncheckedCreateWithoutTriggerInputSchema } from './ClauseCategoryUncheckedCreateWithoutTriggerInputSchema';
 
-export const ClauseCategoryCreateOrConnectWithoutTriggerInputSchema: z.ZodType<Prisma.ClauseCategoryCreateOrConnectWithoutTriggerInput> = z.object({
+export const ClauseCategoryCreateOrConnectWithoutTriggerInputSchema: z.ZodType<Prisma.ClauseCategoryCreateOrConnectWithoutTriggerInput> = z.strictObject({
   where: z.lazy(() => ClauseCategoryWhereUniqueInputSchema),
-  create: z.union([ z.lazy(() => ClauseCategoryCreateWithoutTriggerInputSchema),z.lazy(() => ClauseCategoryUncheckedCreateWithoutTriggerInputSchema) ]),
-}).strict() as z.ZodType<Prisma.ClauseCategoryCreateOrConnectWithoutTriggerInput>;
+  create: z.union([ z.lazy(() => ClauseCategoryCreateWithoutTriggerInputSchema), z.lazy(() => ClauseCategoryUncheckedCreateWithoutTriggerInputSchema) ]),
+});
 
 export default ClauseCategoryCreateOrConnectWithoutTriggerInputSchema;

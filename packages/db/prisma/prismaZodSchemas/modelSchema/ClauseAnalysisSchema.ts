@@ -13,7 +13,7 @@ import type { CategoryHitWithRelations, CategoryHitPartialWithRelations } from '
 
 export const ClauseAnalysisSchema = z.object({
   severity: SeveritySchema,
-  id: z.string().cuid(),
+  id: z.cuid(),
   runId: z.string(),
   clauseId: z.string(),
   riskScore: z.number().int(),

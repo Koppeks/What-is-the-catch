@@ -29,9 +29,9 @@ export const AnalysisRunSelectSchema: z.ZodType<Prisma.AnalysisRunSelect> = z.ob
 export const AnalysisRunUpsertArgsSchema: z.ZodType<Prisma.AnalysisRunUpsertArgs> = z.object({
   select: AnalysisRunSelectSchema.optional(),
   include: z.lazy(() => AnalysisRunIncludeSchema).optional(),
-  where: AnalysisRunWhereUniqueInputSchema,
-  create: z.union([ AnalysisRunCreateInputSchema,AnalysisRunUncheckedCreateInputSchema ]),
-  update: z.union([ AnalysisRunUpdateInputSchema,AnalysisRunUncheckedUpdateInputSchema ]),
-}).strict() as z.ZodType<Prisma.AnalysisRunUpsertArgs>;
+  where: AnalysisRunWhereUniqueInputSchema, 
+  create: z.union([ AnalysisRunCreateInputSchema, AnalysisRunUncheckedCreateInputSchema ]),
+  update: z.union([ AnalysisRunUpdateInputSchema, AnalysisRunUncheckedUpdateInputSchema ]),
+}).strict();
 
 export default AnalysisRunUpsertArgsSchema;

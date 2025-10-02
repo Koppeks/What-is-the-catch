@@ -17,7 +17,7 @@ export const TriggerSchema = z.object({
   source: TriggerSourceSchema,
   state: TriggerStateSchema,
   defaultSeverity: SeveritySchema.nullish(),
-  id: z.string().cuid(),
+  id: z.cuid(),
   key: z.string(),
   label: z.string(),
   description: z.string().nullish(),

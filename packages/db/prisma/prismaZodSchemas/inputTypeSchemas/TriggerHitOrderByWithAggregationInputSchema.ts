@@ -9,17 +9,17 @@ import { TriggerHitMaxOrderByAggregateInputSchema } from './TriggerHitMaxOrderBy
 import { TriggerHitMinOrderByAggregateInputSchema } from './TriggerHitMinOrderByAggregateInputSchema';
 import { TriggerHitSumOrderByAggregateInputSchema } from './TriggerHitSumOrderByAggregateInputSchema';
 
-export const TriggerHitOrderByWithAggregationInputSchema: z.ZodType<Prisma.TriggerHitOrderByWithAggregationInput> = z.object({
+export const TriggerHitOrderByWithAggregationInputSchema: z.ZodType<Prisma.TriggerHitOrderByWithAggregationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   clauseId: z.lazy(() => SortOrderSchema).optional(),
   triggerId: z.lazy(() => SortOrderSchema).optional(),
-  confidence: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
-  matches: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  confidence: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
+  matches: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   _count: z.lazy(() => TriggerHitCountOrderByAggregateInputSchema).optional(),
   _avg: z.lazy(() => TriggerHitAvgOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => TriggerHitMaxOrderByAggregateInputSchema).optional(),
   _min: z.lazy(() => TriggerHitMinOrderByAggregateInputSchema).optional(),
-  _sum: z.lazy(() => TriggerHitSumOrderByAggregateInputSchema).optional()
-}).strict() as z.ZodType<Prisma.TriggerHitOrderByWithAggregationInput>;
+  _sum: z.lazy(() => TriggerHitSumOrderByAggregateInputSchema).optional(),
+});
 
 export default TriggerHitOrderByWithAggregationInputSchema;

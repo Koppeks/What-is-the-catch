@@ -7,11 +7,11 @@ import { CategoryHitCreateOrConnectWithoutCategoryInputSchema } from './Category
 import { CategoryHitCreateManyCategoryInputEnvelopeSchema } from './CategoryHitCreateManyCategoryInputEnvelopeSchema';
 import { CategoryHitWhereUniqueInputSchema } from './CategoryHitWhereUniqueInputSchema';
 
-export const CategoryHitCreateNestedManyWithoutCategoryInputSchema: z.ZodType<Prisma.CategoryHitCreateNestedManyWithoutCategoryInput> = z.object({
-  create: z.union([ z.lazy(() => CategoryHitCreateWithoutCategoryInputSchema),z.lazy(() => CategoryHitCreateWithoutCategoryInputSchema).array(),z.lazy(() => CategoryHitUncheckedCreateWithoutCategoryInputSchema),z.lazy(() => CategoryHitUncheckedCreateWithoutCategoryInputSchema).array() ]).optional(),
-  connectOrCreate: z.union([ z.lazy(() => CategoryHitCreateOrConnectWithoutCategoryInputSchema),z.lazy(() => CategoryHitCreateOrConnectWithoutCategoryInputSchema).array() ]).optional(),
+export const CategoryHitCreateNestedManyWithoutCategoryInputSchema: z.ZodType<Prisma.CategoryHitCreateNestedManyWithoutCategoryInput> = z.strictObject({
+  create: z.union([ z.lazy(() => CategoryHitCreateWithoutCategoryInputSchema), z.lazy(() => CategoryHitCreateWithoutCategoryInputSchema).array(), z.lazy(() => CategoryHitUncheckedCreateWithoutCategoryInputSchema), z.lazy(() => CategoryHitUncheckedCreateWithoutCategoryInputSchema).array() ]).optional(),
+  connectOrCreate: z.union([ z.lazy(() => CategoryHitCreateOrConnectWithoutCategoryInputSchema), z.lazy(() => CategoryHitCreateOrConnectWithoutCategoryInputSchema).array() ]).optional(),
   createMany: z.lazy(() => CategoryHitCreateManyCategoryInputEnvelopeSchema).optional(),
-  connect: z.union([ z.lazy(() => CategoryHitWhereUniqueInputSchema),z.lazy(() => CategoryHitWhereUniqueInputSchema).array() ]).optional(),
-}).strict() as z.ZodType<Prisma.CategoryHitCreateNestedManyWithoutCategoryInput>;
+  connect: z.union([ z.lazy(() => CategoryHitWhereUniqueInputSchema), z.lazy(() => CategoryHitWhereUniqueInputSchema).array() ]).optional(),
+});
 
 export default CategoryHitCreateNestedManyWithoutCategoryInputSchema;

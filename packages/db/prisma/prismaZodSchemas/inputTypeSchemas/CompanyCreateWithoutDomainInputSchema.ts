@@ -4,8 +4,8 @@ import { z } from 'zod';
 import { ServiceCreateNestedManyWithoutCompanyInputSchema } from './ServiceCreateNestedManyWithoutCompanyInputSchema';
 import { CompanyAliasCreateNestedManyWithoutCompanyInputSchema } from './CompanyAliasCreateNestedManyWithoutCompanyInputSchema';
 
-export const CompanyCreateWithoutDomainInputSchema: z.ZodType<Prisma.CompanyCreateWithoutDomainInput> = z.object({
-  id: z.string().cuid().optional(),
+export const CompanyCreateWithoutDomainInputSchema: z.ZodType<Prisma.CompanyCreateWithoutDomainInput> = z.strictObject({
+  id: z.cuid().optional(),
   slug: z.string(),
   displayName: z.string(),
   websiteUrl: z.string().optional().nullable(),
@@ -14,7 +14,7 @@ export const CompanyCreateWithoutDomainInputSchema: z.ZodType<Prisma.CompanyCrea
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   Service: z.lazy(() => ServiceCreateNestedManyWithoutCompanyInputSchema).optional(),
-  CompanyAlias: z.lazy(() => CompanyAliasCreateNestedManyWithoutCompanyInputSchema).optional()
-}).strict() as z.ZodType<Prisma.CompanyCreateWithoutDomainInput>;
+  CompanyAlias: z.lazy(() => CompanyAliasCreateNestedManyWithoutCompanyInputSchema).optional(),
+});
 
 export default CompanyCreateWithoutDomainInputSchema;

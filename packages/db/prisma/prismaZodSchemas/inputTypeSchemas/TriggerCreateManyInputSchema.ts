@@ -6,12 +6,12 @@ import { TriggerSourceSchema } from './TriggerSourceSchema';
 import { TriggerStateSchema } from './TriggerStateSchema';
 import { SeveritySchema } from './SeveritySchema';
 
-export const TriggerCreateManyInputSchema: z.ZodType<Prisma.TriggerCreateManyInput> = z.object({
-  id: z.string().cuid().optional(),
+export const TriggerCreateManyInputSchema: z.ZodType<Prisma.TriggerCreateManyInput> = z.strictObject({
+  id: z.cuid().optional(),
   key: z.string(),
   label: z.string(),
   description: z.string().optional().nullable(),
-  patterns: z.union([ z.lazy(() => TriggerCreatepatternsInputSchema),z.string().array() ]).optional(),
+  patterns: z.union([ z.lazy(() => TriggerCreatepatternsInputSchema), z.string().array() ]).optional(),
   source: z.lazy(() => TriggerSourceSchema).optional(),
   state: z.lazy(() => TriggerStateSchema).optional(),
   mergedIntoId: z.string().optional().nullable(),
@@ -20,7 +20,7 @@ export const TriggerCreateManyInputSchema: z.ZodType<Prisma.TriggerCreateManyInp
   clauseCategoryId: z.string(),
   defaultSeverity: z.lazy(() => SeveritySchema).optional().nullable(),
   createdAt: z.coerce.date().optional(),
-  updatedAt: z.coerce.date().optional()
-}).strict() as z.ZodType<Prisma.TriggerCreateManyInput>;
+  updatedAt: z.coerce.date().optional(),
+});
 
 export default TriggerCreateManyInputSchema;

@@ -1,12 +1,12 @@
 import { z } from 'zod';
 import type { Prisma } from '@prisma/client';
-import { userUpdateInputSchema } from '../inputTypeSchemas/userUpdateInputSchema'
-import { userUncheckedUpdateInputSchema } from '../inputTypeSchemas/userUncheckedUpdateInputSchema'
-import { userWhereUniqueInputSchema } from '../inputTypeSchemas/userWhereUniqueInputSchema'
+import { UserUpdateInputSchema } from '../inputTypeSchemas/UserUpdateInputSchema'
+import { UserUncheckedUpdateInputSchema } from '../inputTypeSchemas/UserUncheckedUpdateInputSchema'
+import { UserWhereUniqueInputSchema } from '../inputTypeSchemas/UserWhereUniqueInputSchema'
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
-export const userSelectSchema: z.ZodType<Prisma.userSelect> = z.object({
+export const UserSelectSchema: z.ZodType<Prisma.UserSelect> = z.object({
   id: z.boolean().optional(),
   email: z.boolean().optional(),
   username: z.boolean().optional(),
@@ -17,10 +17,10 @@ export const userSelectSchema: z.ZodType<Prisma.userSelect> = z.object({
   createdAt: z.boolean().optional(),
 }).strict()
 
-export const userUpdateArgsSchema: z.ZodType<Prisma.userUpdateArgs> = z.object({
-  select: userSelectSchema.optional(),
-  data: z.union([ userUpdateInputSchema,userUncheckedUpdateInputSchema ]),
-  where: userWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.userUpdateArgs>;
+export const UserUpdateArgsSchema: z.ZodType<Prisma.UserUpdateArgs> = z.object({
+  select: UserSelectSchema.optional(),
+  data: z.union([ UserUpdateInputSchema, UserUncheckedUpdateInputSchema ]),
+  where: UserWhereUniqueInputSchema, 
+}).strict();
 
-export default userUpdateArgsSchema;
+export default UserUpdateArgsSchema;

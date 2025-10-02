@@ -3,8 +3,8 @@ import type { Prisma } from '@prisma/client';
 import { DocumentWhereInputSchema } from '../inputTypeSchemas/DocumentWhereInputSchema'
 
 export const DocumentDeleteManyArgsSchema: z.ZodType<Prisma.DocumentDeleteManyArgs> = z.object({
-  where: DocumentWhereInputSchema.optional(),
+  where: DocumentWhereInputSchema.optional(), 
   limit: z.number().optional(),
-}).strict() as z.ZodType<Prisma.DocumentDeleteManyArgs>;
+}).strict();
 
 export default DocumentDeleteManyArgsSchema;

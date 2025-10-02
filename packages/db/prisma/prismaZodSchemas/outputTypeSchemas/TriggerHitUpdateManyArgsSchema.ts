@@ -5,9 +5,9 @@ import { TriggerHitUncheckedUpdateManyInputSchema } from '../inputTypeSchemas/Tr
 import { TriggerHitWhereInputSchema } from '../inputTypeSchemas/TriggerHitWhereInputSchema'
 
 export const TriggerHitUpdateManyArgsSchema: z.ZodType<Prisma.TriggerHitUpdateManyArgs> = z.object({
-  data: z.union([ TriggerHitUpdateManyMutationInputSchema,TriggerHitUncheckedUpdateManyInputSchema ]),
-  where: TriggerHitWhereInputSchema.optional(),
+  data: z.union([ TriggerHitUpdateManyMutationInputSchema, TriggerHitUncheckedUpdateManyInputSchema ]),
+  where: TriggerHitWhereInputSchema.optional(), 
   limit: z.number().optional(),
-}).strict() as z.ZodType<Prisma.TriggerHitUpdateManyArgs>;
+}).strict();
 
 export default TriggerHitUpdateManyArgsSchema;

@@ -8,16 +8,16 @@ import { ClauseAnalysisWhereInputSchema } from './ClauseAnalysisWhereInputSchema
 import { ClauseCategoryScalarRelationFilterSchema } from './ClauseCategoryScalarRelationFilterSchema';
 import { ClauseCategoryWhereInputSchema } from './ClauseCategoryWhereInputSchema';
 
-export const CategoryHitWhereInputSchema: z.ZodType<Prisma.CategoryHitWhereInput> = z.object({
-  AND: z.union([ z.lazy(() => CategoryHitWhereInputSchema),z.lazy(() => CategoryHitWhereInputSchema).array() ]).optional(),
+export const CategoryHitWhereInputSchema: z.ZodType<Prisma.CategoryHitWhereInput> = z.strictObject({
+  AND: z.union([ z.lazy(() => CategoryHitWhereInputSchema), z.lazy(() => CategoryHitWhereInputSchema).array() ]).optional(),
   OR: z.lazy(() => CategoryHitWhereInputSchema).array().optional(),
-  NOT: z.union([ z.lazy(() => CategoryHitWhereInputSchema),z.lazy(() => CategoryHitWhereInputSchema).array() ]).optional(),
-  id: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  clauseAnalysisId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  categoryId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  confidence: z.union([ z.lazy(() => FloatNullableFilterSchema),z.number() ]).optional().nullable(),
-  clauseAnalysis: z.union([ z.lazy(() => ClauseAnalysisScalarRelationFilterSchema),z.lazy(() => ClauseAnalysisWhereInputSchema) ]).optional(),
-  category: z.union([ z.lazy(() => ClauseCategoryScalarRelationFilterSchema),z.lazy(() => ClauseCategoryWhereInputSchema) ]).optional(),
-}).strict() as z.ZodType<Prisma.CategoryHitWhereInput>;
+  NOT: z.union([ z.lazy(() => CategoryHitWhereInputSchema), z.lazy(() => CategoryHitWhereInputSchema).array() ]).optional(),
+  id: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  clauseAnalysisId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  categoryId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  confidence: z.union([ z.lazy(() => FloatNullableFilterSchema), z.number() ]).optional().nullable(),
+  clauseAnalysis: z.union([ z.lazy(() => ClauseAnalysisScalarRelationFilterSchema), z.lazy(() => ClauseAnalysisWhereInputSchema) ]).optional(),
+  category: z.union([ z.lazy(() => ClauseCategoryScalarRelationFilterSchema), z.lazy(() => ClauseCategoryWhereInputSchema) ]).optional(),
+});
 
 export default CategoryHitWhereInputSchema;

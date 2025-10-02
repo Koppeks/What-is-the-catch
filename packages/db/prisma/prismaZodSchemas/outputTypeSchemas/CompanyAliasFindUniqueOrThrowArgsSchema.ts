@@ -20,7 +20,7 @@ export const CompanyAliasSelectSchema: z.ZodType<Prisma.CompanyAliasSelect> = z.
 export const CompanyAliasFindUniqueOrThrowArgsSchema: z.ZodType<Prisma.CompanyAliasFindUniqueOrThrowArgs> = z.object({
   select: CompanyAliasSelectSchema.optional(),
   include: z.lazy(() => CompanyAliasIncludeSchema).optional(),
-  where: CompanyAliasWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.CompanyAliasFindUniqueOrThrowArgs>;
+  where: CompanyAliasWhereUniqueInputSchema, 
+}).strict();
 
 export default CompanyAliasFindUniqueOrThrowArgsSchema;

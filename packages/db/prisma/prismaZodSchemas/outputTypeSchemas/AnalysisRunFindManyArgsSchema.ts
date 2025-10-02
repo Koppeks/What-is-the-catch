@@ -28,12 +28,12 @@ export const AnalysisRunSelectSchema: z.ZodType<Prisma.AnalysisRunSelect> = z.ob
 export const AnalysisRunFindManyArgsSchema: z.ZodType<Prisma.AnalysisRunFindManyArgs> = z.object({
   select: AnalysisRunSelectSchema.optional(),
   include: z.lazy(() => AnalysisRunIncludeSchema).optional(),
-  where: AnalysisRunWhereInputSchema.optional(),
-  orderBy: z.union([ AnalysisRunOrderByWithRelationInputSchema.array(),AnalysisRunOrderByWithRelationInputSchema ]).optional(),
-  cursor: AnalysisRunWhereUniqueInputSchema.optional(),
+  where: AnalysisRunWhereInputSchema.optional(), 
+  orderBy: z.union([ AnalysisRunOrderByWithRelationInputSchema.array(), AnalysisRunOrderByWithRelationInputSchema ]).optional(),
+  cursor: AnalysisRunWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-  distinct: z.union([ AnalysisRunScalarFieldEnumSchema,AnalysisRunScalarFieldEnumSchema.array() ]).optional(),
-}).strict() as z.ZodType<Prisma.AnalysisRunFindManyArgs>;
+  distinct: z.union([ AnalysisRunScalarFieldEnumSchema, AnalysisRunScalarFieldEnumSchema.array() ]).optional(),
+}).strict();
 
 export default AnalysisRunFindManyArgsSchema;

@@ -5,9 +5,9 @@ import { AnalysisRunUncheckedUpdateManyInputSchema } from '../inputTypeSchemas/A
 import { AnalysisRunWhereInputSchema } from '../inputTypeSchemas/AnalysisRunWhereInputSchema'
 
 export const AnalysisRunUpdateManyArgsSchema: z.ZodType<Prisma.AnalysisRunUpdateManyArgs> = z.object({
-  data: z.union([ AnalysisRunUpdateManyMutationInputSchema,AnalysisRunUncheckedUpdateManyInputSchema ]),
-  where: AnalysisRunWhereInputSchema.optional(),
+  data: z.union([ AnalysisRunUpdateManyMutationInputSchema, AnalysisRunUncheckedUpdateManyInputSchema ]),
+  where: AnalysisRunWhereInputSchema.optional(), 
   limit: z.number().optional(),
-}).strict() as z.ZodType<Prisma.AnalysisRunUpdateManyArgs>;
+}).strict();
 
 export default AnalysisRunUpdateManyArgsSchema;

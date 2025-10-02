@@ -12,27 +12,27 @@ import { ClauseCategoryWhereInputSchema } from './ClauseCategoryWhereInputSchema
 
 export const CategoryHitWhereUniqueInputSchema: z.ZodType<Prisma.CategoryHitWhereUniqueInput> = z.union([
   z.object({
-    id: z.string().cuid(),
-    clauseAnalysisId_categoryId: z.lazy(() => CategoryHitClauseAnalysisIdCategoryIdCompoundUniqueInputSchema)
+    id: z.cuid(),
+    clauseAnalysisId_categoryId: z.lazy(() => CategoryHitClauseAnalysisIdCategoryIdCompoundUniqueInputSchema),
   }),
   z.object({
-    id: z.string().cuid(),
+    id: z.cuid(),
   }),
   z.object({
     clauseAnalysisId_categoryId: z.lazy(() => CategoryHitClauseAnalysisIdCategoryIdCompoundUniqueInputSchema),
   }),
 ])
-.and(z.object({
-  id: z.string().cuid().optional(),
+.and(z.strictObject({
+  id: z.cuid().optional(),
   clauseAnalysisId_categoryId: z.lazy(() => CategoryHitClauseAnalysisIdCategoryIdCompoundUniqueInputSchema).optional(),
-  AND: z.union([ z.lazy(() => CategoryHitWhereInputSchema),z.lazy(() => CategoryHitWhereInputSchema).array() ]).optional(),
+  AND: z.union([ z.lazy(() => CategoryHitWhereInputSchema), z.lazy(() => CategoryHitWhereInputSchema).array() ]).optional(),
   OR: z.lazy(() => CategoryHitWhereInputSchema).array().optional(),
-  NOT: z.union([ z.lazy(() => CategoryHitWhereInputSchema),z.lazy(() => CategoryHitWhereInputSchema).array() ]).optional(),
-  clauseAnalysisId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  categoryId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  confidence: z.union([ z.lazy(() => FloatNullableFilterSchema),z.number() ]).optional().nullable(),
-  clauseAnalysis: z.union([ z.lazy(() => ClauseAnalysisScalarRelationFilterSchema),z.lazy(() => ClauseAnalysisWhereInputSchema) ]).optional(),
-  category: z.union([ z.lazy(() => ClauseCategoryScalarRelationFilterSchema),z.lazy(() => ClauseCategoryWhereInputSchema) ]).optional(),
-}).strict()) as z.ZodType<Prisma.CategoryHitWhereUniqueInput>;
+  NOT: z.union([ z.lazy(() => CategoryHitWhereInputSchema), z.lazy(() => CategoryHitWhereInputSchema).array() ]).optional(),
+  clauseAnalysisId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  categoryId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  confidence: z.union([ z.lazy(() => FloatNullableFilterSchema), z.number() ]).optional().nullable(),
+  clauseAnalysis: z.union([ z.lazy(() => ClauseAnalysisScalarRelationFilterSchema), z.lazy(() => ClauseAnalysisWhereInputSchema) ]).optional(),
+  category: z.union([ z.lazy(() => ClauseCategoryScalarRelationFilterSchema), z.lazy(() => ClauseCategoryWhereInputSchema) ]).optional(),
+}));
 
 export default CategoryHitWhereUniqueInputSchema;

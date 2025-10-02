@@ -6,12 +6,12 @@ import { CompanyAliasScalarFieldEnumSchema } from '../inputTypeSchemas/CompanyAl
 import { CompanyAliasScalarWhereWithAggregatesInputSchema } from '../inputTypeSchemas/CompanyAliasScalarWhereWithAggregatesInputSchema'
 
 export const CompanyAliasGroupByArgsSchema: z.ZodType<Prisma.CompanyAliasGroupByArgs> = z.object({
-  where: CompanyAliasWhereInputSchema.optional(),
-  orderBy: z.union([ CompanyAliasOrderByWithAggregationInputSchema.array(),CompanyAliasOrderByWithAggregationInputSchema ]).optional(),
-  by: CompanyAliasScalarFieldEnumSchema.array(),
-  having: CompanyAliasScalarWhereWithAggregatesInputSchema.optional(),
+  where: CompanyAliasWhereInputSchema.optional(), 
+  orderBy: z.union([ CompanyAliasOrderByWithAggregationInputSchema.array(), CompanyAliasOrderByWithAggregationInputSchema ]).optional(),
+  by: CompanyAliasScalarFieldEnumSchema.array(), 
+  having: CompanyAliasScalarWhereWithAggregatesInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.CompanyAliasGroupByArgs>;
+}).strict();
 
 export default CompanyAliasGroupByArgsSchema;

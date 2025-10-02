@@ -5,9 +5,9 @@ import { ServiceUncheckedUpdateManyInputSchema } from '../inputTypeSchemas/Servi
 import { ServiceWhereInputSchema } from '../inputTypeSchemas/ServiceWhereInputSchema'
 
 export const ServiceUpdateManyArgsSchema: z.ZodType<Prisma.ServiceUpdateManyArgs> = z.object({
-  data: z.union([ ServiceUpdateManyMutationInputSchema,ServiceUncheckedUpdateManyInputSchema ]),
-  where: ServiceWhereInputSchema.optional(),
+  data: z.union([ ServiceUpdateManyMutationInputSchema, ServiceUncheckedUpdateManyInputSchema ]),
+  where: ServiceWhereInputSchema.optional(), 
   limit: z.number().optional(),
-}).strict() as z.ZodType<Prisma.ServiceUpdateManyArgs>;
+}).strict();
 
 export default ServiceUpdateManyArgsSchema;

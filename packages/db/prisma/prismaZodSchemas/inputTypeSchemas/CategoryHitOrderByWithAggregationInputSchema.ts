@@ -9,16 +9,16 @@ import { CategoryHitMaxOrderByAggregateInputSchema } from './CategoryHitMaxOrder
 import { CategoryHitMinOrderByAggregateInputSchema } from './CategoryHitMinOrderByAggregateInputSchema';
 import { CategoryHitSumOrderByAggregateInputSchema } from './CategoryHitSumOrderByAggregateInputSchema';
 
-export const CategoryHitOrderByWithAggregationInputSchema: z.ZodType<Prisma.CategoryHitOrderByWithAggregationInput> = z.object({
+export const CategoryHitOrderByWithAggregationInputSchema: z.ZodType<Prisma.CategoryHitOrderByWithAggregationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   clauseAnalysisId: z.lazy(() => SortOrderSchema).optional(),
   categoryId: z.lazy(() => SortOrderSchema).optional(),
-  confidence: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  confidence: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   _count: z.lazy(() => CategoryHitCountOrderByAggregateInputSchema).optional(),
   _avg: z.lazy(() => CategoryHitAvgOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => CategoryHitMaxOrderByAggregateInputSchema).optional(),
   _min: z.lazy(() => CategoryHitMinOrderByAggregateInputSchema).optional(),
-  _sum: z.lazy(() => CategoryHitSumOrderByAggregateInputSchema).optional()
-}).strict() as z.ZodType<Prisma.CategoryHitOrderByWithAggregationInput>;
+  _sum: z.lazy(() => CategoryHitSumOrderByAggregateInputSchema).optional(),
+});
 
 export default CategoryHitOrderByWithAggregationInputSchema;

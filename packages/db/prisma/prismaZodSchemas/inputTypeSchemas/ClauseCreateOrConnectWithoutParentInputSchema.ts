@@ -5,9 +5,9 @@ import { ClauseWhereUniqueInputSchema } from './ClauseWhereUniqueInputSchema';
 import { ClauseCreateWithoutParentInputSchema } from './ClauseCreateWithoutParentInputSchema';
 import { ClauseUncheckedCreateWithoutParentInputSchema } from './ClauseUncheckedCreateWithoutParentInputSchema';
 
-export const ClauseCreateOrConnectWithoutParentInputSchema: z.ZodType<Prisma.ClauseCreateOrConnectWithoutParentInput> = z.object({
+export const ClauseCreateOrConnectWithoutParentInputSchema: z.ZodType<Prisma.ClauseCreateOrConnectWithoutParentInput> = z.strictObject({
   where: z.lazy(() => ClauseWhereUniqueInputSchema),
-  create: z.union([ z.lazy(() => ClauseCreateWithoutParentInputSchema),z.lazy(() => ClauseUncheckedCreateWithoutParentInputSchema) ]),
-}).strict() as z.ZodType<Prisma.ClauseCreateOrConnectWithoutParentInput>;
+  create: z.union([ z.lazy(() => ClauseCreateWithoutParentInputSchema), z.lazy(() => ClauseUncheckedCreateWithoutParentInputSchema) ]),
+});
 
 export default ClauseCreateOrConnectWithoutParentInputSchema;

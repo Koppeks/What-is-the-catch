@@ -7,8 +7,8 @@ import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateO
 import { ServiceUncheckedUpdateManyWithoutCompanyNestedInputSchema } from './ServiceUncheckedUpdateManyWithoutCompanyNestedInputSchema';
 import { CompanyAliasUncheckedUpdateManyWithoutCompanyNestedInputSchema } from './CompanyAliasUncheckedUpdateManyWithoutCompanyNestedInputSchema';
 
-export const CompanyUncheckedUpdateWithoutDomainInputSchema: z.ZodType<Prisma.CompanyUncheckedUpdateWithoutDomainInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const CompanyUncheckedUpdateWithoutDomainInputSchema: z.ZodType<Prisma.CompanyUncheckedUpdateWithoutDomainInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   slug: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   displayName: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   websiteUrl: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
@@ -17,7 +17,7 @@ export const CompanyUncheckedUpdateWithoutDomainInputSchema: z.ZodType<Prisma.Co
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   Service: z.lazy(() => ServiceUncheckedUpdateManyWithoutCompanyNestedInputSchema).optional(),
-  CompanyAlias: z.lazy(() => CompanyAliasUncheckedUpdateManyWithoutCompanyNestedInputSchema).optional()
-}).strict() as z.ZodType<Prisma.CompanyUncheckedUpdateWithoutDomainInput>;
+  CompanyAlias: z.lazy(() => CompanyAliasUncheckedUpdateManyWithoutCompanyNestedInputSchema).optional(),
+});
 
 export default CompanyUncheckedUpdateWithoutDomainInputSchema;

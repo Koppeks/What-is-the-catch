@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { QueryModeSchema } from './QueryModeSchema';
 
-export const NestedJsonNullableFilterSchema: z.ZodType<Prisma.NestedJsonNullableFilter> = z.object({
+export const NestedJsonNullableFilterSchema: z.ZodType<Prisma.NestedJsonNullableFilter> = z.strictObject({
   equals: InputJsonValueSchema.optional(),
   path: z.string().array().optional(),
   mode: z.lazy(() => QueryModeSchema).optional(),
@@ -18,7 +18,7 @@ export const NestedJsonNullableFilterSchema: z.ZodType<Prisma.NestedJsonNullable
   lte: InputJsonValueSchema.optional(),
   gt: InputJsonValueSchema.optional(),
   gte: InputJsonValueSchema.optional(),
-  not: InputJsonValueSchema.optional()
-}).strict() as z.ZodType<Prisma.NestedJsonNullableFilter>;
+  not: InputJsonValueSchema.optional(),
+});
 
 export default NestedJsonNullableFilterSchema;

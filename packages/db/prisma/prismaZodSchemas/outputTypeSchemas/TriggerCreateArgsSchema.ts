@@ -38,7 +38,7 @@ export const TriggerSelectSchema: z.ZodType<Prisma.TriggerSelect> = z.object({
 export const TriggerCreateArgsSchema: z.ZodType<Prisma.TriggerCreateArgs> = z.object({
   select: TriggerSelectSchema.optional(),
   include: z.lazy(() => TriggerIncludeSchema).optional(),
-  data: z.union([ TriggerCreateInputSchema,TriggerUncheckedCreateInputSchema ]),
-}).strict() as z.ZodType<Prisma.TriggerCreateArgs>;
+  data: z.union([ TriggerCreateInputSchema, TriggerUncheckedCreateInputSchema ]),
+}).strict();
 
 export default TriggerCreateArgsSchema;

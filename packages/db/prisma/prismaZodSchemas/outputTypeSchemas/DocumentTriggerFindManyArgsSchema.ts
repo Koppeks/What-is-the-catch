@@ -24,12 +24,12 @@ export const DocumentTriggerSelectSchema: z.ZodType<Prisma.DocumentTriggerSelect
 export const DocumentTriggerFindManyArgsSchema: z.ZodType<Prisma.DocumentTriggerFindManyArgs> = z.object({
   select: DocumentTriggerSelectSchema.optional(),
   include: z.lazy(() => DocumentTriggerIncludeSchema).optional(),
-  where: DocumentTriggerWhereInputSchema.optional(),
-  orderBy: z.union([ DocumentTriggerOrderByWithRelationInputSchema.array(),DocumentTriggerOrderByWithRelationInputSchema ]).optional(),
-  cursor: DocumentTriggerWhereUniqueInputSchema.optional(),
+  where: DocumentTriggerWhereInputSchema.optional(), 
+  orderBy: z.union([ DocumentTriggerOrderByWithRelationInputSchema.array(), DocumentTriggerOrderByWithRelationInputSchema ]).optional(),
+  cursor: DocumentTriggerWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-  distinct: z.union([ DocumentTriggerScalarFieldEnumSchema,DocumentTriggerScalarFieldEnumSchema.array() ]).optional(),
-}).strict() as z.ZodType<Prisma.DocumentTriggerFindManyArgs>;
+  distinct: z.union([ DocumentTriggerScalarFieldEnumSchema, DocumentTriggerScalarFieldEnumSchema.array() ]).optional(),
+}).strict();
 
 export default DocumentTriggerFindManyArgsSchema;

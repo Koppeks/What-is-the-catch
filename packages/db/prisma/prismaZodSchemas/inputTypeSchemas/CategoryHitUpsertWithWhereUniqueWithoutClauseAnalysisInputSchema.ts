@@ -7,10 +7,10 @@ import { CategoryHitUncheckedUpdateWithoutClauseAnalysisInputSchema } from './Ca
 import { CategoryHitCreateWithoutClauseAnalysisInputSchema } from './CategoryHitCreateWithoutClauseAnalysisInputSchema';
 import { CategoryHitUncheckedCreateWithoutClauseAnalysisInputSchema } from './CategoryHitUncheckedCreateWithoutClauseAnalysisInputSchema';
 
-export const CategoryHitUpsertWithWhereUniqueWithoutClauseAnalysisInputSchema: z.ZodType<Prisma.CategoryHitUpsertWithWhereUniqueWithoutClauseAnalysisInput> = z.object({
+export const CategoryHitUpsertWithWhereUniqueWithoutClauseAnalysisInputSchema: z.ZodType<Prisma.CategoryHitUpsertWithWhereUniqueWithoutClauseAnalysisInput> = z.strictObject({
   where: z.lazy(() => CategoryHitWhereUniqueInputSchema),
-  update: z.union([ z.lazy(() => CategoryHitUpdateWithoutClauseAnalysisInputSchema),z.lazy(() => CategoryHitUncheckedUpdateWithoutClauseAnalysisInputSchema) ]),
-  create: z.union([ z.lazy(() => CategoryHitCreateWithoutClauseAnalysisInputSchema),z.lazy(() => CategoryHitUncheckedCreateWithoutClauseAnalysisInputSchema) ]),
-}).strict() as z.ZodType<Prisma.CategoryHitUpsertWithWhereUniqueWithoutClauseAnalysisInput>;
+  update: z.union([ z.lazy(() => CategoryHitUpdateWithoutClauseAnalysisInputSchema), z.lazy(() => CategoryHitUncheckedUpdateWithoutClauseAnalysisInputSchema) ]),
+  create: z.union([ z.lazy(() => CategoryHitCreateWithoutClauseAnalysisInputSchema), z.lazy(() => CategoryHitUncheckedCreateWithoutClauseAnalysisInputSchema) ]),
+});
 
 export default CategoryHitUpsertWithWhereUniqueWithoutClauseAnalysisInputSchema;

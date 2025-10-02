@@ -12,27 +12,27 @@ import { DomainWhereInputSchema } from './DomainWhereInputSchema';
 
 export const ServiceDomainWhereUniqueInputSchema: z.ZodType<Prisma.ServiceDomainWhereUniqueInput> = z.union([
   z.object({
-    id: z.string().cuid(),
-    serviceId_domainId_pathPattern: z.lazy(() => ServiceDomainServiceIdDomainIdPathPatternCompoundUniqueInputSchema)
+    id: z.cuid(),
+    serviceId_domainId_pathPattern: z.lazy(() => ServiceDomainServiceIdDomainIdPathPatternCompoundUniqueInputSchema),
   }),
   z.object({
-    id: z.string().cuid(),
+    id: z.cuid(),
   }),
   z.object({
     serviceId_domainId_pathPattern: z.lazy(() => ServiceDomainServiceIdDomainIdPathPatternCompoundUniqueInputSchema),
   }),
 ])
-.and(z.object({
-  id: z.string().cuid().optional(),
+.and(z.strictObject({
+  id: z.cuid().optional(),
   serviceId_domainId_pathPattern: z.lazy(() => ServiceDomainServiceIdDomainIdPathPatternCompoundUniqueInputSchema).optional(),
-  AND: z.union([ z.lazy(() => ServiceDomainWhereInputSchema),z.lazy(() => ServiceDomainWhereInputSchema).array() ]).optional(),
+  AND: z.union([ z.lazy(() => ServiceDomainWhereInputSchema), z.lazy(() => ServiceDomainWhereInputSchema).array() ]).optional(),
   OR: z.lazy(() => ServiceDomainWhereInputSchema).array().optional(),
-  NOT: z.union([ z.lazy(() => ServiceDomainWhereInputSchema),z.lazy(() => ServiceDomainWhereInputSchema).array() ]).optional(),
-  serviceId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  domainId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  pathPattern: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
-  service: z.union([ z.lazy(() => ServiceScalarRelationFilterSchema),z.lazy(() => ServiceWhereInputSchema) ]).optional(),
-  domain: z.union([ z.lazy(() => DomainScalarRelationFilterSchema),z.lazy(() => DomainWhereInputSchema) ]).optional(),
-}).strict()) as z.ZodType<Prisma.ServiceDomainWhereUniqueInput>;
+  NOT: z.union([ z.lazy(() => ServiceDomainWhereInputSchema), z.lazy(() => ServiceDomainWhereInputSchema).array() ]).optional(),
+  serviceId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  domainId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  pathPattern: z.union([ z.lazy(() => StringNullableFilterSchema), z.string() ]).optional().nullable(),
+  service: z.union([ z.lazy(() => ServiceScalarRelationFilterSchema), z.lazy(() => ServiceWhereInputSchema) ]).optional(),
+  domain: z.union([ z.lazy(() => DomainScalarRelationFilterSchema), z.lazy(() => DomainWhereInputSchema) ]).optional(),
+}));
 
 export default ServiceDomainWhereUniqueInputSchema;

@@ -2,9 +2,9 @@ import type { Prisma } from '@prisma/client';
 
 import { z } from 'zod';
 
-export const ServiceCompanyIdSlugCompoundUniqueInputSchema: z.ZodType<Prisma.ServiceCompanyIdSlugCompoundUniqueInput> = z.object({
+export const ServiceCompanyIdSlugCompoundUniqueInputSchema: z.ZodType<Prisma.ServiceCompanyIdSlugCompoundUniqueInput> = z.strictObject({
   companyId: z.string(),
-  slug: z.string()
-}).strict() as z.ZodType<Prisma.ServiceCompanyIdSlugCompoundUniqueInput>;
+  slug: z.string(),
+});
 
 export default ServiceCompanyIdSlugCompoundUniqueInputSchema;

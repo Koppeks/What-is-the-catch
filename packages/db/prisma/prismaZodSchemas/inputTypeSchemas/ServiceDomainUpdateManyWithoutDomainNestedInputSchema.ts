@@ -11,18 +11,18 @@ import { ServiceDomainUpdateWithWhereUniqueWithoutDomainInputSchema } from './Se
 import { ServiceDomainUpdateManyWithWhereWithoutDomainInputSchema } from './ServiceDomainUpdateManyWithWhereWithoutDomainInputSchema';
 import { ServiceDomainScalarWhereInputSchema } from './ServiceDomainScalarWhereInputSchema';
 
-export const ServiceDomainUpdateManyWithoutDomainNestedInputSchema: z.ZodType<Prisma.ServiceDomainUpdateManyWithoutDomainNestedInput> = z.object({
-  create: z.union([ z.lazy(() => ServiceDomainCreateWithoutDomainInputSchema),z.lazy(() => ServiceDomainCreateWithoutDomainInputSchema).array(),z.lazy(() => ServiceDomainUncheckedCreateWithoutDomainInputSchema),z.lazy(() => ServiceDomainUncheckedCreateWithoutDomainInputSchema).array() ]).optional(),
-  connectOrCreate: z.union([ z.lazy(() => ServiceDomainCreateOrConnectWithoutDomainInputSchema),z.lazy(() => ServiceDomainCreateOrConnectWithoutDomainInputSchema).array() ]).optional(),
-  upsert: z.union([ z.lazy(() => ServiceDomainUpsertWithWhereUniqueWithoutDomainInputSchema),z.lazy(() => ServiceDomainUpsertWithWhereUniqueWithoutDomainInputSchema).array() ]).optional(),
+export const ServiceDomainUpdateManyWithoutDomainNestedInputSchema: z.ZodType<Prisma.ServiceDomainUpdateManyWithoutDomainNestedInput> = z.strictObject({
+  create: z.union([ z.lazy(() => ServiceDomainCreateWithoutDomainInputSchema), z.lazy(() => ServiceDomainCreateWithoutDomainInputSchema).array(), z.lazy(() => ServiceDomainUncheckedCreateWithoutDomainInputSchema), z.lazy(() => ServiceDomainUncheckedCreateWithoutDomainInputSchema).array() ]).optional(),
+  connectOrCreate: z.union([ z.lazy(() => ServiceDomainCreateOrConnectWithoutDomainInputSchema), z.lazy(() => ServiceDomainCreateOrConnectWithoutDomainInputSchema).array() ]).optional(),
+  upsert: z.union([ z.lazy(() => ServiceDomainUpsertWithWhereUniqueWithoutDomainInputSchema), z.lazy(() => ServiceDomainUpsertWithWhereUniqueWithoutDomainInputSchema).array() ]).optional(),
   createMany: z.lazy(() => ServiceDomainCreateManyDomainInputEnvelopeSchema).optional(),
-  set: z.union([ z.lazy(() => ServiceDomainWhereUniqueInputSchema),z.lazy(() => ServiceDomainWhereUniqueInputSchema).array() ]).optional(),
-  disconnect: z.union([ z.lazy(() => ServiceDomainWhereUniqueInputSchema),z.lazy(() => ServiceDomainWhereUniqueInputSchema).array() ]).optional(),
-  delete: z.union([ z.lazy(() => ServiceDomainWhereUniqueInputSchema),z.lazy(() => ServiceDomainWhereUniqueInputSchema).array() ]).optional(),
-  connect: z.union([ z.lazy(() => ServiceDomainWhereUniqueInputSchema),z.lazy(() => ServiceDomainWhereUniqueInputSchema).array() ]).optional(),
-  update: z.union([ z.lazy(() => ServiceDomainUpdateWithWhereUniqueWithoutDomainInputSchema),z.lazy(() => ServiceDomainUpdateWithWhereUniqueWithoutDomainInputSchema).array() ]).optional(),
-  updateMany: z.union([ z.lazy(() => ServiceDomainUpdateManyWithWhereWithoutDomainInputSchema),z.lazy(() => ServiceDomainUpdateManyWithWhereWithoutDomainInputSchema).array() ]).optional(),
-  deleteMany: z.union([ z.lazy(() => ServiceDomainScalarWhereInputSchema),z.lazy(() => ServiceDomainScalarWhereInputSchema).array() ]).optional(),
-}).strict() as z.ZodType<Prisma.ServiceDomainUpdateManyWithoutDomainNestedInput>;
+  set: z.union([ z.lazy(() => ServiceDomainWhereUniqueInputSchema), z.lazy(() => ServiceDomainWhereUniqueInputSchema).array() ]).optional(),
+  disconnect: z.union([ z.lazy(() => ServiceDomainWhereUniqueInputSchema), z.lazy(() => ServiceDomainWhereUniqueInputSchema).array() ]).optional(),
+  delete: z.union([ z.lazy(() => ServiceDomainWhereUniqueInputSchema), z.lazy(() => ServiceDomainWhereUniqueInputSchema).array() ]).optional(),
+  connect: z.union([ z.lazy(() => ServiceDomainWhereUniqueInputSchema), z.lazy(() => ServiceDomainWhereUniqueInputSchema).array() ]).optional(),
+  update: z.union([ z.lazy(() => ServiceDomainUpdateWithWhereUniqueWithoutDomainInputSchema), z.lazy(() => ServiceDomainUpdateWithWhereUniqueWithoutDomainInputSchema).array() ]).optional(),
+  updateMany: z.union([ z.lazy(() => ServiceDomainUpdateManyWithWhereWithoutDomainInputSchema), z.lazy(() => ServiceDomainUpdateManyWithWhereWithoutDomainInputSchema).array() ]).optional(),
+  deleteMany: z.union([ z.lazy(() => ServiceDomainScalarWhereInputSchema), z.lazy(() => ServiceDomainScalarWhereInputSchema).array() ]).optional(),
+});
 
 export default ServiceDomainUpdateManyWithoutDomainNestedInputSchema;

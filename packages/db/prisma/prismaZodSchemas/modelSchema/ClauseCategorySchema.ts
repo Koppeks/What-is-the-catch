@@ -9,7 +9,7 @@ import type { CategoryHitWithRelations, CategoryHitPartialWithRelations } from '
 /////////////////////////////////////////
 
 export const ClauseCategorySchema = z.object({
-  id: z.string().cuid(),
+  id: z.cuid(),
   slug: z.string(),
   version: z.string(),
   defaultScoring: z.number(),

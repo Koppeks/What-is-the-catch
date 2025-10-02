@@ -28,12 +28,12 @@ export const ClauseAnalysisSelectSchema: z.ZodType<Prisma.ClauseAnalysisSelect> 
 export const ClauseAnalysisFindFirstOrThrowArgsSchema: z.ZodType<Prisma.ClauseAnalysisFindFirstOrThrowArgs> = z.object({
   select: ClauseAnalysisSelectSchema.optional(),
   include: z.lazy(() => ClauseAnalysisIncludeSchema).optional(),
-  where: ClauseAnalysisWhereInputSchema.optional(),
-  orderBy: z.union([ ClauseAnalysisOrderByWithRelationInputSchema.array(),ClauseAnalysisOrderByWithRelationInputSchema ]).optional(),
-  cursor: ClauseAnalysisWhereUniqueInputSchema.optional(),
+  where: ClauseAnalysisWhereInputSchema.optional(), 
+  orderBy: z.union([ ClauseAnalysisOrderByWithRelationInputSchema.array(), ClauseAnalysisOrderByWithRelationInputSchema ]).optional(),
+  cursor: ClauseAnalysisWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-  distinct: z.union([ ClauseAnalysisScalarFieldEnumSchema,ClauseAnalysisScalarFieldEnumSchema.array() ]).optional(),
-}).strict() as z.ZodType<Prisma.ClauseAnalysisFindFirstOrThrowArgs>;
+  distinct: z.union([ ClauseAnalysisScalarFieldEnumSchema, ClauseAnalysisScalarFieldEnumSchema.array() ]).optional(),
+}).strict();
 
 export default ClauseAnalysisFindFirstOrThrowArgsSchema;

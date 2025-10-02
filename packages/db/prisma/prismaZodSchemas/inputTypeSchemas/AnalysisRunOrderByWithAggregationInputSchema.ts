@@ -8,7 +8,7 @@ import { AnalysisRunMaxOrderByAggregateInputSchema } from './AnalysisRunMaxOrder
 import { AnalysisRunMinOrderByAggregateInputSchema } from './AnalysisRunMinOrderByAggregateInputSchema';
 import { AnalysisRunSumOrderByAggregateInputSchema } from './AnalysisRunSumOrderByAggregateInputSchema';
 
-export const AnalysisRunOrderByWithAggregationInputSchema: z.ZodType<Prisma.AnalysisRunOrderByWithAggregationInput> = z.object({
+export const AnalysisRunOrderByWithAggregationInputSchema: z.ZodType<Prisma.AnalysisRunOrderByWithAggregationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   documentId: z.lazy(() => SortOrderSchema).optional(),
   status: z.lazy(() => SortOrderSchema).optional(),
@@ -21,7 +21,7 @@ export const AnalysisRunOrderByWithAggregationInputSchema: z.ZodType<Prisma.Anal
   _avg: z.lazy(() => AnalysisRunAvgOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => AnalysisRunMaxOrderByAggregateInputSchema).optional(),
   _min: z.lazy(() => AnalysisRunMinOrderByAggregateInputSchema).optional(),
-  _sum: z.lazy(() => AnalysisRunSumOrderByAggregateInputSchema).optional()
-}).strict() as z.ZodType<Prisma.AnalysisRunOrderByWithAggregationInput>;
+  _sum: z.lazy(() => AnalysisRunSumOrderByAggregateInputSchema).optional(),
+});
 
 export default AnalysisRunOrderByWithAggregationInputSchema;

@@ -2,9 +2,9 @@ import type { Prisma } from '@prisma/client';
 
 import { z } from 'zod';
 
-export const CategoryHitClauseAnalysisIdCategoryIdCompoundUniqueInputSchema: z.ZodType<Prisma.CategoryHitClauseAnalysisIdCategoryIdCompoundUniqueInput> = z.object({
+export const CategoryHitClauseAnalysisIdCategoryIdCompoundUniqueInputSchema: z.ZodType<Prisma.CategoryHitClauseAnalysisIdCategoryIdCompoundUniqueInput> = z.strictObject({
   clauseAnalysisId: z.string(),
-  categoryId: z.string()
-}).strict() as z.ZodType<Prisma.CategoryHitClauseAnalysisIdCategoryIdCompoundUniqueInput>;
+  categoryId: z.string(),
+});
 
 export default CategoryHitClauseAnalysisIdCategoryIdCompoundUniqueInputSchema;

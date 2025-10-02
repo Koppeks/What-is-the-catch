@@ -4,6 +4,6 @@ import { CompanyArgsSchema } from "../outputTypeSchemas/CompanyArgsSchema"
 
 export const CompanyAliasIncludeSchema: z.ZodType<Prisma.CompanyAliasInclude> = z.object({
   company: z.union([z.boolean(),z.lazy(() => CompanyArgsSchema)]).optional(),
-}).strict()
+}).strict();
 
 export default CompanyAliasIncludeSchema;

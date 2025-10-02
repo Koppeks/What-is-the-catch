@@ -11,18 +11,18 @@ import { TriggerUpdateWithWhereUniqueWithoutClauseCategoryInputSchema } from './
 import { TriggerUpdateManyWithWhereWithoutClauseCategoryInputSchema } from './TriggerUpdateManyWithWhereWithoutClauseCategoryInputSchema';
 import { TriggerScalarWhereInputSchema } from './TriggerScalarWhereInputSchema';
 
-export const TriggerUpdateManyWithoutClauseCategoryNestedInputSchema: z.ZodType<Prisma.TriggerUpdateManyWithoutClauseCategoryNestedInput> = z.object({
-  create: z.union([ z.lazy(() => TriggerCreateWithoutClauseCategoryInputSchema),z.lazy(() => TriggerCreateWithoutClauseCategoryInputSchema).array(),z.lazy(() => TriggerUncheckedCreateWithoutClauseCategoryInputSchema),z.lazy(() => TriggerUncheckedCreateWithoutClauseCategoryInputSchema).array() ]).optional(),
-  connectOrCreate: z.union([ z.lazy(() => TriggerCreateOrConnectWithoutClauseCategoryInputSchema),z.lazy(() => TriggerCreateOrConnectWithoutClauseCategoryInputSchema).array() ]).optional(),
-  upsert: z.union([ z.lazy(() => TriggerUpsertWithWhereUniqueWithoutClauseCategoryInputSchema),z.lazy(() => TriggerUpsertWithWhereUniqueWithoutClauseCategoryInputSchema).array() ]).optional(),
+export const TriggerUpdateManyWithoutClauseCategoryNestedInputSchema: z.ZodType<Prisma.TriggerUpdateManyWithoutClauseCategoryNestedInput> = z.strictObject({
+  create: z.union([ z.lazy(() => TriggerCreateWithoutClauseCategoryInputSchema), z.lazy(() => TriggerCreateWithoutClauseCategoryInputSchema).array(), z.lazy(() => TriggerUncheckedCreateWithoutClauseCategoryInputSchema), z.lazy(() => TriggerUncheckedCreateWithoutClauseCategoryInputSchema).array() ]).optional(),
+  connectOrCreate: z.union([ z.lazy(() => TriggerCreateOrConnectWithoutClauseCategoryInputSchema), z.lazy(() => TriggerCreateOrConnectWithoutClauseCategoryInputSchema).array() ]).optional(),
+  upsert: z.union([ z.lazy(() => TriggerUpsertWithWhereUniqueWithoutClauseCategoryInputSchema), z.lazy(() => TriggerUpsertWithWhereUniqueWithoutClauseCategoryInputSchema).array() ]).optional(),
   createMany: z.lazy(() => TriggerCreateManyClauseCategoryInputEnvelopeSchema).optional(),
-  set: z.union([ z.lazy(() => TriggerWhereUniqueInputSchema),z.lazy(() => TriggerWhereUniqueInputSchema).array() ]).optional(),
-  disconnect: z.union([ z.lazy(() => TriggerWhereUniqueInputSchema),z.lazy(() => TriggerWhereUniqueInputSchema).array() ]).optional(),
-  delete: z.union([ z.lazy(() => TriggerWhereUniqueInputSchema),z.lazy(() => TriggerWhereUniqueInputSchema).array() ]).optional(),
-  connect: z.union([ z.lazy(() => TriggerWhereUniqueInputSchema),z.lazy(() => TriggerWhereUniqueInputSchema).array() ]).optional(),
-  update: z.union([ z.lazy(() => TriggerUpdateWithWhereUniqueWithoutClauseCategoryInputSchema),z.lazy(() => TriggerUpdateWithWhereUniqueWithoutClauseCategoryInputSchema).array() ]).optional(),
-  updateMany: z.union([ z.lazy(() => TriggerUpdateManyWithWhereWithoutClauseCategoryInputSchema),z.lazy(() => TriggerUpdateManyWithWhereWithoutClauseCategoryInputSchema).array() ]).optional(),
-  deleteMany: z.union([ z.lazy(() => TriggerScalarWhereInputSchema),z.lazy(() => TriggerScalarWhereInputSchema).array() ]).optional(),
-}).strict() as z.ZodType<Prisma.TriggerUpdateManyWithoutClauseCategoryNestedInput>;
+  set: z.union([ z.lazy(() => TriggerWhereUniqueInputSchema), z.lazy(() => TriggerWhereUniqueInputSchema).array() ]).optional(),
+  disconnect: z.union([ z.lazy(() => TriggerWhereUniqueInputSchema), z.lazy(() => TriggerWhereUniqueInputSchema).array() ]).optional(),
+  delete: z.union([ z.lazy(() => TriggerWhereUniqueInputSchema), z.lazy(() => TriggerWhereUniqueInputSchema).array() ]).optional(),
+  connect: z.union([ z.lazy(() => TriggerWhereUniqueInputSchema), z.lazy(() => TriggerWhereUniqueInputSchema).array() ]).optional(),
+  update: z.union([ z.lazy(() => TriggerUpdateWithWhereUniqueWithoutClauseCategoryInputSchema), z.lazy(() => TriggerUpdateWithWhereUniqueWithoutClauseCategoryInputSchema).array() ]).optional(),
+  updateMany: z.union([ z.lazy(() => TriggerUpdateManyWithWhereWithoutClauseCategoryInputSchema), z.lazy(() => TriggerUpdateManyWithWhereWithoutClauseCategoryInputSchema).array() ]).optional(),
+  deleteMany: z.union([ z.lazy(() => TriggerScalarWhereInputSchema), z.lazy(() => TriggerScalarWhereInputSchema).array() ]).optional(),
+});
 
 export default TriggerUpdateManyWithoutClauseCategoryNestedInputSchema;

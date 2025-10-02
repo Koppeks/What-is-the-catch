@@ -7,11 +7,11 @@ import { TriggerCreateOrConnectWithoutClauseCategoryInputSchema } from './Trigge
 import { TriggerCreateManyClauseCategoryInputEnvelopeSchema } from './TriggerCreateManyClauseCategoryInputEnvelopeSchema';
 import { TriggerWhereUniqueInputSchema } from './TriggerWhereUniqueInputSchema';
 
-export const TriggerUncheckedCreateNestedManyWithoutClauseCategoryInputSchema: z.ZodType<Prisma.TriggerUncheckedCreateNestedManyWithoutClauseCategoryInput> = z.object({
-  create: z.union([ z.lazy(() => TriggerCreateWithoutClauseCategoryInputSchema),z.lazy(() => TriggerCreateWithoutClauseCategoryInputSchema).array(),z.lazy(() => TriggerUncheckedCreateWithoutClauseCategoryInputSchema),z.lazy(() => TriggerUncheckedCreateWithoutClauseCategoryInputSchema).array() ]).optional(),
-  connectOrCreate: z.union([ z.lazy(() => TriggerCreateOrConnectWithoutClauseCategoryInputSchema),z.lazy(() => TriggerCreateOrConnectWithoutClauseCategoryInputSchema).array() ]).optional(),
+export const TriggerUncheckedCreateNestedManyWithoutClauseCategoryInputSchema: z.ZodType<Prisma.TriggerUncheckedCreateNestedManyWithoutClauseCategoryInput> = z.strictObject({
+  create: z.union([ z.lazy(() => TriggerCreateWithoutClauseCategoryInputSchema), z.lazy(() => TriggerCreateWithoutClauseCategoryInputSchema).array(), z.lazy(() => TriggerUncheckedCreateWithoutClauseCategoryInputSchema), z.lazy(() => TriggerUncheckedCreateWithoutClauseCategoryInputSchema).array() ]).optional(),
+  connectOrCreate: z.union([ z.lazy(() => TriggerCreateOrConnectWithoutClauseCategoryInputSchema), z.lazy(() => TriggerCreateOrConnectWithoutClauseCategoryInputSchema).array() ]).optional(),
   createMany: z.lazy(() => TriggerCreateManyClauseCategoryInputEnvelopeSchema).optional(),
-  connect: z.union([ z.lazy(() => TriggerWhereUniqueInputSchema),z.lazy(() => TriggerWhereUniqueInputSchema).array() ]).optional(),
-}).strict() as z.ZodType<Prisma.TriggerUncheckedCreateNestedManyWithoutClauseCategoryInput>;
+  connect: z.union([ z.lazy(() => TriggerWhereUniqueInputSchema), z.lazy(() => TriggerWhereUniqueInputSchema).array() ]).optional(),
+});
 
 export default TriggerUncheckedCreateNestedManyWithoutClauseCategoryInputSchema;

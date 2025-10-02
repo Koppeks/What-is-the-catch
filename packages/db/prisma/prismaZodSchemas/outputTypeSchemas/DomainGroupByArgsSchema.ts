@@ -6,12 +6,12 @@ import { DomainScalarFieldEnumSchema } from '../inputTypeSchemas/DomainScalarFie
 import { DomainScalarWhereWithAggregatesInputSchema } from '../inputTypeSchemas/DomainScalarWhereWithAggregatesInputSchema'
 
 export const DomainGroupByArgsSchema: z.ZodType<Prisma.DomainGroupByArgs> = z.object({
-  where: DomainWhereInputSchema.optional(),
-  orderBy: z.union([ DomainOrderByWithAggregationInputSchema.array(),DomainOrderByWithAggregationInputSchema ]).optional(),
-  by: DomainScalarFieldEnumSchema.array(),
-  having: DomainScalarWhereWithAggregatesInputSchema.optional(),
+  where: DomainWhereInputSchema.optional(), 
+  orderBy: z.union([ DomainOrderByWithAggregationInputSchema.array(), DomainOrderByWithAggregationInputSchema ]).optional(),
+  by: DomainScalarFieldEnumSchema.array(), 
+  having: DomainScalarWhereWithAggregatesInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.DomainGroupByArgs>;
+}).strict();
 
 export default DomainGroupByArgsSchema;

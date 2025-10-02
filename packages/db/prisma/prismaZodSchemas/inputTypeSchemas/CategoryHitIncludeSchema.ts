@@ -6,6 +6,6 @@ import { ClauseCategoryArgsSchema } from "../outputTypeSchemas/ClauseCategoryArg
 export const CategoryHitIncludeSchema: z.ZodType<Prisma.CategoryHitInclude> = z.object({
   clauseAnalysis: z.union([z.boolean(),z.lazy(() => ClauseAnalysisArgsSchema)]).optional(),
   category: z.union([z.boolean(),z.lazy(() => ClauseCategoryArgsSchema)]).optional(),
-}).strict()
+}).strict();
 
 export default CategoryHitIncludeSchema;

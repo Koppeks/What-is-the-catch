@@ -3,8 +3,8 @@ import type { Prisma } from '@prisma/client';
 import { TriggerHitWhereInputSchema } from '../inputTypeSchemas/TriggerHitWhereInputSchema'
 
 export const TriggerHitDeleteManyArgsSchema: z.ZodType<Prisma.TriggerHitDeleteManyArgs> = z.object({
-  where: TriggerHitWhereInputSchema.optional(),
+  where: TriggerHitWhereInputSchema.optional(), 
   limit: z.number().optional(),
-}).strict() as z.ZodType<Prisma.TriggerHitDeleteManyArgs>;
+}).strict();
 
 export default TriggerHitDeleteManyArgsSchema;

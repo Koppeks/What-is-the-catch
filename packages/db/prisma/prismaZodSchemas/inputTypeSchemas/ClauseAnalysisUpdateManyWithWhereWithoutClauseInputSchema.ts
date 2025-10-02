@@ -5,9 +5,9 @@ import { ClauseAnalysisScalarWhereInputSchema } from './ClauseAnalysisScalarWher
 import { ClauseAnalysisUpdateManyMutationInputSchema } from './ClauseAnalysisUpdateManyMutationInputSchema';
 import { ClauseAnalysisUncheckedUpdateManyWithoutClauseInputSchema } from './ClauseAnalysisUncheckedUpdateManyWithoutClauseInputSchema';
 
-export const ClauseAnalysisUpdateManyWithWhereWithoutClauseInputSchema: z.ZodType<Prisma.ClauseAnalysisUpdateManyWithWhereWithoutClauseInput> = z.object({
+export const ClauseAnalysisUpdateManyWithWhereWithoutClauseInputSchema: z.ZodType<Prisma.ClauseAnalysisUpdateManyWithWhereWithoutClauseInput> = z.strictObject({
   where: z.lazy(() => ClauseAnalysisScalarWhereInputSchema),
-  data: z.union([ z.lazy(() => ClauseAnalysisUpdateManyMutationInputSchema),z.lazy(() => ClauseAnalysisUncheckedUpdateManyWithoutClauseInputSchema) ]),
-}).strict() as z.ZodType<Prisma.ClauseAnalysisUpdateManyWithWhereWithoutClauseInput>;
+  data: z.union([ z.lazy(() => ClauseAnalysisUpdateManyMutationInputSchema), z.lazy(() => ClauseAnalysisUncheckedUpdateManyWithoutClauseInputSchema) ]),
+});
 
 export default ClauseAnalysisUpdateManyWithWhereWithoutClauseInputSchema;

@@ -21,7 +21,7 @@ export const DocumentTriggerSelectSchema: z.ZodType<Prisma.DocumentTriggerSelect
 export const DocumentTriggerFindUniqueArgsSchema: z.ZodType<Prisma.DocumentTriggerFindUniqueArgs> = z.object({
   select: DocumentTriggerSelectSchema.optional(),
   include: z.lazy(() => DocumentTriggerIncludeSchema).optional(),
-  where: DocumentTriggerWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.DocumentTriggerFindUniqueArgs>;
+  where: DocumentTriggerWhereUniqueInputSchema, 
+}).strict();
 
 export default DocumentTriggerFindUniqueArgsSchema;

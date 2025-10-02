@@ -15,28 +15,28 @@ import { TriggerHitListRelationFilterSchema } from './TriggerHitListRelationFilt
 import { ClauseAnalysisListRelationFilterSchema } from './ClauseAnalysisListRelationFilterSchema';
 
 export const ClauseWhereUniqueInputSchema: z.ZodType<Prisma.ClauseWhereUniqueInput> = z.object({
-  id: z.string().cuid()
+  id: z.cuid(),
 })
-.and(z.object({
-  id: z.string().cuid().optional(),
-  AND: z.union([ z.lazy(() => ClauseWhereInputSchema),z.lazy(() => ClauseWhereInputSchema).array() ]).optional(),
+.and(z.strictObject({
+  id: z.cuid().optional(),
+  AND: z.union([ z.lazy(() => ClauseWhereInputSchema), z.lazy(() => ClauseWhereInputSchema).array() ]).optional(),
   OR: z.lazy(() => ClauseWhereInputSchema).array().optional(),
-  NOT: z.union([ z.lazy(() => ClauseWhereInputSchema),z.lazy(() => ClauseWhereInputSchema).array() ]).optional(),
-  documentId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  parentId: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
-  ordinalPath: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  title: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  text: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  order: z.union([ z.lazy(() => IntFilterSchema),z.number().int() ]).optional(),
-  depth: z.union([ z.lazy(() => IntFilterSchema),z.number().int() ]).optional(),
+  NOT: z.union([ z.lazy(() => ClauseWhereInputSchema), z.lazy(() => ClauseWhereInputSchema).array() ]).optional(),
+  documentId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  parentId: z.union([ z.lazy(() => StringNullableFilterSchema), z.string() ]).optional().nullable(),
+  ordinalPath: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  title: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  text: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  order: z.union([ z.lazy(() => IntFilterSchema), z.number().int() ]).optional(),
+  depth: z.union([ z.lazy(() => IntFilterSchema), z.number().int() ]).optional(),
   meta: z.lazy(() => JsonNullableFilterSchema).optional(),
-  createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
-  updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
-  document: z.union([ z.lazy(() => DocumentScalarRelationFilterSchema),z.lazy(() => DocumentWhereInputSchema) ]).optional(),
-  parent: z.union([ z.lazy(() => ClauseNullableScalarRelationFilterSchema),z.lazy(() => ClauseWhereInputSchema) ]).optional().nullable(),
+  createdAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
+  updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
+  document: z.union([ z.lazy(() => DocumentScalarRelationFilterSchema), z.lazy(() => DocumentWhereInputSchema) ]).optional(),
+  parent: z.union([ z.lazy(() => ClauseNullableScalarRelationFilterSchema), z.lazy(() => ClauseWhereInputSchema) ]).optional().nullable(),
   children: z.lazy(() => ClauseListRelationFilterSchema).optional(),
   TriggerHits: z.lazy(() => TriggerHitListRelationFilterSchema).optional(),
-  ClauseAnalysis: z.lazy(() => ClauseAnalysisListRelationFilterSchema).optional()
-}).strict()) as z.ZodType<Prisma.ClauseWhereUniqueInput>;
+  ClauseAnalysis: z.lazy(() => ClauseAnalysisListRelationFilterSchema).optional(),
+}));
 
 export default ClauseWhereUniqueInputSchema;

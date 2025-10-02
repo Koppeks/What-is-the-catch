@@ -11,28 +11,28 @@ import { ServiceDomainListRelationFilterSchema } from './ServiceDomainListRelati
 
 export const DomainWhereUniqueInputSchema: z.ZodType<Prisma.DomainWhereUniqueInput> = z.union([
   z.object({
-    id: z.string().cuid(),
-    host: z.string()
+    id: z.cuid(),
+    host: z.string(),
   }),
   z.object({
-    id: z.string().cuid(),
+    id: z.cuid(),
   }),
   z.object({
     host: z.string(),
   }),
 ])
-.and(z.object({
-  id: z.string().cuid().optional(),
+.and(z.strictObject({
+  id: z.cuid().optional(),
   host: z.string().optional(),
-  AND: z.union([ z.lazy(() => DomainWhereInputSchema),z.lazy(() => DomainWhereInputSchema).array() ]).optional(),
+  AND: z.union([ z.lazy(() => DomainWhereInputSchema), z.lazy(() => DomainWhereInputSchema).array() ]).optional(),
   OR: z.lazy(() => DomainWhereInputSchema).array().optional(),
-  NOT: z.union([ z.lazy(() => DomainWhereInputSchema),z.lazy(() => DomainWhereInputSchema).array() ]).optional(),
-  companyId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  note: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
-  createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
-  updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
-  company: z.union([ z.lazy(() => CompanyScalarRelationFilterSchema),z.lazy(() => CompanyWhereInputSchema) ]).optional(),
-  ServiceDomain: z.lazy(() => ServiceDomainListRelationFilterSchema).optional()
-}).strict()) as z.ZodType<Prisma.DomainWhereUniqueInput>;
+  NOT: z.union([ z.lazy(() => DomainWhereInputSchema), z.lazy(() => DomainWhereInputSchema).array() ]).optional(),
+  companyId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  note: z.union([ z.lazy(() => StringNullableFilterSchema), z.string() ]).optional().nullable(),
+  createdAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
+  updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
+  company: z.union([ z.lazy(() => CompanyScalarRelationFilterSchema), z.lazy(() => CompanyWhereInputSchema) ]).optional(),
+  ServiceDomain: z.lazy(() => ServiceDomainListRelationFilterSchema).optional(),
+}));
 
 export default DomainWhereUniqueInputSchema;

@@ -23,8 +23,8 @@ export const DocumentTriggerSelectSchema: z.ZodType<Prisma.DocumentTriggerSelect
 export const DocumentTriggerUpdateArgsSchema: z.ZodType<Prisma.DocumentTriggerUpdateArgs> = z.object({
   select: DocumentTriggerSelectSchema.optional(),
   include: z.lazy(() => DocumentTriggerIncludeSchema).optional(),
-  data: z.union([ DocumentTriggerUpdateInputSchema,DocumentTriggerUncheckedUpdateInputSchema ]),
-  where: DocumentTriggerWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.DocumentTriggerUpdateArgs>;
+  data: z.union([ DocumentTriggerUpdateInputSchema, DocumentTriggerUncheckedUpdateInputSchema ]),
+  where: DocumentTriggerWhereUniqueInputSchema, 
+}).strict();
 
 export default DocumentTriggerUpdateArgsSchema;

@@ -32,9 +32,9 @@ export const DocumentSelectSchema: z.ZodType<Prisma.DocumentSelect> = z.object({
 export const DocumentUpsertArgsSchema: z.ZodType<Prisma.DocumentUpsertArgs> = z.object({
   select: DocumentSelectSchema.optional(),
   include: z.lazy(() => DocumentIncludeSchema).optional(),
-  where: DocumentWhereUniqueInputSchema,
-  create: z.union([ DocumentCreateInputSchema,DocumentUncheckedCreateInputSchema ]),
-  update: z.union([ DocumentUpdateInputSchema,DocumentUncheckedUpdateInputSchema ]),
-}).strict() as z.ZodType<Prisma.DocumentUpsertArgs>;
+  where: DocumentWhereUniqueInputSchema, 
+  create: z.union([ DocumentCreateInputSchema, DocumentUncheckedCreateInputSchema ]),
+  update: z.union([ DocumentUpdateInputSchema, DocumentUncheckedUpdateInputSchema ]),
+}).strict();
 
 export default DocumentUpsertArgsSchema;

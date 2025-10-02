@@ -8,6 +8,6 @@ export const AnalysisRunIncludeSchema: z.ZodType<Prisma.AnalysisRunInclude> = z.
   document: z.union([z.boolean(),z.lazy(() => DocumentArgsSchema)]).optional(),
   clauseAnalyses: z.union([z.boolean(),z.lazy(() => ClauseAnalysisFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => AnalysisRunCountOutputTypeArgsSchema)]).optional(),
-}).strict()
+}).strict();
 
 export default AnalysisRunIncludeSchema;

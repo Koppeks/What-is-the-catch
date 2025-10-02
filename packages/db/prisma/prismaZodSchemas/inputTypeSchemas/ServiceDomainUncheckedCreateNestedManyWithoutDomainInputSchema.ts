@@ -7,11 +7,11 @@ import { ServiceDomainCreateOrConnectWithoutDomainInputSchema } from './ServiceD
 import { ServiceDomainCreateManyDomainInputEnvelopeSchema } from './ServiceDomainCreateManyDomainInputEnvelopeSchema';
 import { ServiceDomainWhereUniqueInputSchema } from './ServiceDomainWhereUniqueInputSchema';
 
-export const ServiceDomainUncheckedCreateNestedManyWithoutDomainInputSchema: z.ZodType<Prisma.ServiceDomainUncheckedCreateNestedManyWithoutDomainInput> = z.object({
-  create: z.union([ z.lazy(() => ServiceDomainCreateWithoutDomainInputSchema),z.lazy(() => ServiceDomainCreateWithoutDomainInputSchema).array(),z.lazy(() => ServiceDomainUncheckedCreateWithoutDomainInputSchema),z.lazy(() => ServiceDomainUncheckedCreateWithoutDomainInputSchema).array() ]).optional(),
-  connectOrCreate: z.union([ z.lazy(() => ServiceDomainCreateOrConnectWithoutDomainInputSchema),z.lazy(() => ServiceDomainCreateOrConnectWithoutDomainInputSchema).array() ]).optional(),
+export const ServiceDomainUncheckedCreateNestedManyWithoutDomainInputSchema: z.ZodType<Prisma.ServiceDomainUncheckedCreateNestedManyWithoutDomainInput> = z.strictObject({
+  create: z.union([ z.lazy(() => ServiceDomainCreateWithoutDomainInputSchema), z.lazy(() => ServiceDomainCreateWithoutDomainInputSchema).array(), z.lazy(() => ServiceDomainUncheckedCreateWithoutDomainInputSchema), z.lazy(() => ServiceDomainUncheckedCreateWithoutDomainInputSchema).array() ]).optional(),
+  connectOrCreate: z.union([ z.lazy(() => ServiceDomainCreateOrConnectWithoutDomainInputSchema), z.lazy(() => ServiceDomainCreateOrConnectWithoutDomainInputSchema).array() ]).optional(),
   createMany: z.lazy(() => ServiceDomainCreateManyDomainInputEnvelopeSchema).optional(),
-  connect: z.union([ z.lazy(() => ServiceDomainWhereUniqueInputSchema),z.lazy(() => ServiceDomainWhereUniqueInputSchema).array() ]).optional(),
-}).strict() as z.ZodType<Prisma.ServiceDomainUncheckedCreateNestedManyWithoutDomainInput>;
+  connect: z.union([ z.lazy(() => ServiceDomainWhereUniqueInputSchema), z.lazy(() => ServiceDomainWhereUniqueInputSchema).array() ]).optional(),
+});
 
 export default ServiceDomainUncheckedCreateNestedManyWithoutDomainInputSchema;

@@ -5,9 +5,9 @@ import { AnalysisRunScalarWhereInputSchema } from './AnalysisRunScalarWhereInput
 import { AnalysisRunUpdateManyMutationInputSchema } from './AnalysisRunUpdateManyMutationInputSchema';
 import { AnalysisRunUncheckedUpdateManyWithoutDocumentInputSchema } from './AnalysisRunUncheckedUpdateManyWithoutDocumentInputSchema';
 
-export const AnalysisRunUpdateManyWithWhereWithoutDocumentInputSchema: z.ZodType<Prisma.AnalysisRunUpdateManyWithWhereWithoutDocumentInput> = z.object({
+export const AnalysisRunUpdateManyWithWhereWithoutDocumentInputSchema: z.ZodType<Prisma.AnalysisRunUpdateManyWithWhereWithoutDocumentInput> = z.strictObject({
   where: z.lazy(() => AnalysisRunScalarWhereInputSchema),
-  data: z.union([ z.lazy(() => AnalysisRunUpdateManyMutationInputSchema),z.lazy(() => AnalysisRunUncheckedUpdateManyWithoutDocumentInputSchema) ]),
-}).strict() as z.ZodType<Prisma.AnalysisRunUpdateManyWithWhereWithoutDocumentInput>;
+  data: z.union([ z.lazy(() => AnalysisRunUpdateManyMutationInputSchema), z.lazy(() => AnalysisRunUncheckedUpdateManyWithoutDocumentInputSchema) ]),
+});
 
 export default AnalysisRunUpdateManyWithWhereWithoutDocumentInputSchema;

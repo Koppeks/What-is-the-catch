@@ -5,9 +5,9 @@ import { AnalysisRunWhereUniqueInputSchema } from './AnalysisRunWhereUniqueInput
 import { AnalysisRunUpdateWithoutDocumentInputSchema } from './AnalysisRunUpdateWithoutDocumentInputSchema';
 import { AnalysisRunUncheckedUpdateWithoutDocumentInputSchema } from './AnalysisRunUncheckedUpdateWithoutDocumentInputSchema';
 
-export const AnalysisRunUpdateWithWhereUniqueWithoutDocumentInputSchema: z.ZodType<Prisma.AnalysisRunUpdateWithWhereUniqueWithoutDocumentInput> = z.object({
+export const AnalysisRunUpdateWithWhereUniqueWithoutDocumentInputSchema: z.ZodType<Prisma.AnalysisRunUpdateWithWhereUniqueWithoutDocumentInput> = z.strictObject({
   where: z.lazy(() => AnalysisRunWhereUniqueInputSchema),
-  data: z.union([ z.lazy(() => AnalysisRunUpdateWithoutDocumentInputSchema),z.lazy(() => AnalysisRunUncheckedUpdateWithoutDocumentInputSchema) ]),
-}).strict() as z.ZodType<Prisma.AnalysisRunUpdateWithWhereUniqueWithoutDocumentInput>;
+  data: z.union([ z.lazy(() => AnalysisRunUpdateWithoutDocumentInputSchema), z.lazy(() => AnalysisRunUncheckedUpdateWithoutDocumentInputSchema) ]),
+});
 
 export default AnalysisRunUpdateWithWhereUniqueWithoutDocumentInputSchema;

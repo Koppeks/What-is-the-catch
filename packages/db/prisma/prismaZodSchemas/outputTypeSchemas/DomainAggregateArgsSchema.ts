@@ -5,11 +5,11 @@ import { DomainOrderByWithRelationInputSchema } from '../inputTypeSchemas/Domain
 import { DomainWhereUniqueInputSchema } from '../inputTypeSchemas/DomainWhereUniqueInputSchema'
 
 export const DomainAggregateArgsSchema: z.ZodType<Prisma.DomainAggregateArgs> = z.object({
-  where: DomainWhereInputSchema.optional(),
-  orderBy: z.union([ DomainOrderByWithRelationInputSchema.array(),DomainOrderByWithRelationInputSchema ]).optional(),
-  cursor: DomainWhereUniqueInputSchema.optional(),
+  where: DomainWhereInputSchema.optional(), 
+  orderBy: z.union([ DomainOrderByWithRelationInputSchema.array(), DomainOrderByWithRelationInputSchema ]).optional(),
+  cursor: DomainWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.DomainAggregateArgs>;
+}).strict();
 
 export default DomainAggregateArgsSchema;

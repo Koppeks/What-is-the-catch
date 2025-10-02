@@ -3,8 +3,8 @@ import type { Prisma } from '@prisma/client';
 import { CompanyAliasWhereInputSchema } from '../inputTypeSchemas/CompanyAliasWhereInputSchema'
 
 export const CompanyAliasDeleteManyArgsSchema: z.ZodType<Prisma.CompanyAliasDeleteManyArgs> = z.object({
-  where: CompanyAliasWhereInputSchema.optional(),
+  where: CompanyAliasWhereInputSchema.optional(), 
   limit: z.number().optional(),
-}).strict() as z.ZodType<Prisma.CompanyAliasDeleteManyArgs>;
+}).strict();
 
 export default CompanyAliasDeleteManyArgsSchema;

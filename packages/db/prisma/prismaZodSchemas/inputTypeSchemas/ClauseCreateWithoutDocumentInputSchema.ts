@@ -8,20 +8,20 @@ import { ClauseCreateNestedManyWithoutParentInputSchema } from './ClauseCreateNe
 import { TriggerHitCreateNestedManyWithoutClauseInputSchema } from './TriggerHitCreateNestedManyWithoutClauseInputSchema';
 import { ClauseAnalysisCreateNestedManyWithoutClauseInputSchema } from './ClauseAnalysisCreateNestedManyWithoutClauseInputSchema';
 
-export const ClauseCreateWithoutDocumentInputSchema: z.ZodType<Prisma.ClauseCreateWithoutDocumentInput> = z.object({
-  id: z.string().cuid().optional(),
+export const ClauseCreateWithoutDocumentInputSchema: z.ZodType<Prisma.ClauseCreateWithoutDocumentInput> = z.strictObject({
+  id: z.cuid().optional(),
   ordinalPath: z.string(),
   title: z.string(),
   text: z.string(),
   order: z.number().int(),
   depth: z.number().int(),
-  meta: z.union([ z.lazy(() => NullableJsonNullValueInputSchema),InputJsonValueSchema ]).optional(),
+  meta: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   parent: z.lazy(() => ClauseCreateNestedOneWithoutChildrenInputSchema).optional(),
   children: z.lazy(() => ClauseCreateNestedManyWithoutParentInputSchema).optional(),
   TriggerHits: z.lazy(() => TriggerHitCreateNestedManyWithoutClauseInputSchema).optional(),
-  ClauseAnalysis: z.lazy(() => ClauseAnalysisCreateNestedManyWithoutClauseInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseCreateWithoutDocumentInput>;
+  ClauseAnalysis: z.lazy(() => ClauseAnalysisCreateNestedManyWithoutClauseInputSchema).optional(),
+});
 
 export default ClauseCreateWithoutDocumentInputSchema;

@@ -7,12 +7,12 @@ import { EnumSeverityFieldUpdateOperationsInputSchema } from './EnumSeverityFiel
 import { IntFieldUpdateOperationsInputSchema } from './IntFieldUpdateOperationsInputSchema';
 import { ClauseAnalysisUpdatetriggerWarningsInputSchema } from './ClauseAnalysisUpdatetriggerWarningsInputSchema';
 
-export const ClauseAnalysisUncheckedUpdateManyWithoutRunInputSchema: z.ZodType<Prisma.ClauseAnalysisUncheckedUpdateManyWithoutRunInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const ClauseAnalysisUncheckedUpdateManyWithoutRunInputSchema: z.ZodType<Prisma.ClauseAnalysisUncheckedUpdateManyWithoutRunInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   clauseId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  severity: z.union([ z.lazy(() => SeveritySchema),z.lazy(() => EnumSeverityFieldUpdateOperationsInputSchema) ]).optional(),
+  severity: z.union([ z.lazy(() => SeveritySchema), z.lazy(() => EnumSeverityFieldUpdateOperationsInputSchema) ]).optional(),
   riskScore: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
-  triggerWarnings: z.union([ z.lazy(() => ClauseAnalysisUpdatetriggerWarningsInputSchema),z.string().array() ]).optional(),
-}).strict() as z.ZodType<Prisma.ClauseAnalysisUncheckedUpdateManyWithoutRunInput>;
+  triggerWarnings: z.union([ z.lazy(() => ClauseAnalysisUpdatetriggerWarningsInputSchema), z.string().array() ]).optional(),
+});
 
 export default ClauseAnalysisUncheckedUpdateManyWithoutRunInputSchema;

@@ -10,14 +10,14 @@ import { AnalysisRunUpdateOneRequiredWithoutClauseAnalysesNestedInputSchema } fr
 import { ClauseUpdateOneRequiredWithoutClauseAnalysisNestedInputSchema } from './ClauseUpdateOneRequiredWithoutClauseAnalysisNestedInputSchema';
 import { CategoryHitUpdateManyWithoutClauseAnalysisNestedInputSchema } from './CategoryHitUpdateManyWithoutClauseAnalysisNestedInputSchema';
 
-export const ClauseAnalysisUpdateInputSchema: z.ZodType<Prisma.ClauseAnalysisUpdateInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  severity: z.union([ z.lazy(() => SeveritySchema),z.lazy(() => EnumSeverityFieldUpdateOperationsInputSchema) ]).optional(),
+export const ClauseAnalysisUpdateInputSchema: z.ZodType<Prisma.ClauseAnalysisUpdateInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  severity: z.union([ z.lazy(() => SeveritySchema), z.lazy(() => EnumSeverityFieldUpdateOperationsInputSchema) ]).optional(),
   riskScore: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
-  triggerWarnings: z.union([ z.lazy(() => ClauseAnalysisUpdatetriggerWarningsInputSchema),z.string().array() ]).optional(),
+  triggerWarnings: z.union([ z.lazy(() => ClauseAnalysisUpdatetriggerWarningsInputSchema), z.string().array() ]).optional(),
   run: z.lazy(() => AnalysisRunUpdateOneRequiredWithoutClauseAnalysesNestedInputSchema).optional(),
   clause: z.lazy(() => ClauseUpdateOneRequiredWithoutClauseAnalysisNestedInputSchema).optional(),
-  categoryHits: z.lazy(() => CategoryHitUpdateManyWithoutClauseAnalysisNestedInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseAnalysisUpdateInput>;
+  categoryHits: z.lazy(() => CategoryHitUpdateManyWithoutClauseAnalysisNestedInputSchema).optional(),
+});
 
 export default ClauseAnalysisUpdateInputSchema;

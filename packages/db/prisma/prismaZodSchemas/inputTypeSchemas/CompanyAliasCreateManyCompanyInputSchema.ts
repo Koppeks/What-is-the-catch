@@ -3,13 +3,13 @@ import type { Prisma } from '@prisma/client';
 import { z } from 'zod';
 import { AliasKindSchema } from './AliasKindSchema';
 
-export const CompanyAliasCreateManyCompanyInputSchema: z.ZodType<Prisma.CompanyAliasCreateManyCompanyInput> = z.object({
-  id: z.string().cuid().optional(),
+export const CompanyAliasCreateManyCompanyInputSchema: z.ZodType<Prisma.CompanyAliasCreateManyCompanyInput> = z.strictObject({
+  id: z.cuid().optional(),
   kind: z.lazy(() => AliasKindSchema),
   value: z.string(),
   valueNorm: z.string(),
   createdAt: z.coerce.date().optional(),
-  updatedAt: z.coerce.date().optional()
-}).strict() as z.ZodType<Prisma.CompanyAliasCreateManyCompanyInput>;
+  updatedAt: z.coerce.date().optional(),
+});
 
 export default CompanyAliasCreateManyCompanyInputSchema;

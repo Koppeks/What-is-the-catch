@@ -6,12 +6,12 @@ import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { ClauseCreateNestedOneWithoutTriggerHitsInputSchema } from './ClauseCreateNestedOneWithoutTriggerHitsInputSchema';
 import { TriggerCreateNestedOneWithoutHitsInputSchema } from './TriggerCreateNestedOneWithoutHitsInputSchema';
 
-export const TriggerHitCreateInputSchema: z.ZodType<Prisma.TriggerHitCreateInput> = z.object({
-  id: z.string().cuid().optional(),
+export const TriggerHitCreateInputSchema: z.ZodType<Prisma.TriggerHitCreateInput> = z.strictObject({
+  id: z.cuid().optional(),
   confidence: z.number().optional().nullable(),
-  matches: z.union([ z.lazy(() => NullableJsonNullValueInputSchema),InputJsonValueSchema ]).optional(),
+  matches: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
   clause: z.lazy(() => ClauseCreateNestedOneWithoutTriggerHitsInputSchema),
-  trigger: z.lazy(() => TriggerCreateNestedOneWithoutHitsInputSchema)
-}).strict() as z.ZodType<Prisma.TriggerHitCreateInput>;
+  trigger: z.lazy(() => TriggerCreateNestedOneWithoutHitsInputSchema),
+});
 
 export default TriggerHitCreateInputSchema;

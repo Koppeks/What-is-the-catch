@@ -4,8 +4,8 @@ import { z } from 'zod';
 import { AnalysisStatusSchema } from './AnalysisStatusSchema';
 import { ClauseAnalysisUncheckedCreateNestedManyWithoutRunInputSchema } from './ClauseAnalysisUncheckedCreateNestedManyWithoutRunInputSchema';
 
-export const AnalysisRunUncheckedCreateInputSchema: z.ZodType<Prisma.AnalysisRunUncheckedCreateInput> = z.object({
-  id: z.string().cuid().optional(),
+export const AnalysisRunUncheckedCreateInputSchema: z.ZodType<Prisma.AnalysisRunUncheckedCreateInput> = z.strictObject({
+  id: z.cuid().optional(),
   documentId: z.string(),
   status: z.lazy(() => AnalysisStatusSchema).optional(),
   engineVersion: z.string(),
@@ -13,7 +13,7 @@ export const AnalysisRunUncheckedCreateInputSchema: z.ZodType<Prisma.AnalysisRun
   finishedAt: z.coerce.date(),
   overallRisk: z.number().int().optional(),
   notes: z.string(),
-  clauseAnalyses: z.lazy(() => ClauseAnalysisUncheckedCreateNestedManyWithoutRunInputSchema).optional()
-}).strict() as z.ZodType<Prisma.AnalysisRunUncheckedCreateInput>;
+  clauseAnalyses: z.lazy(() => ClauseAnalysisUncheckedCreateNestedManyWithoutRunInputSchema).optional(),
+});
 
 export default AnalysisRunUncheckedCreateInputSchema;

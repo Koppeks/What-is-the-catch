@@ -5,10 +5,10 @@ import { StringFieldUpdateOperationsInputSchema } from './StringFieldUpdateOpera
 import { NullableStringFieldUpdateOperationsInputSchema } from './NullableStringFieldUpdateOperationsInputSchema';
 import { DomainUpdateOneRequiredWithoutServiceDomainNestedInputSchema } from './DomainUpdateOneRequiredWithoutServiceDomainNestedInputSchema';
 
-export const ServiceDomainUpdateWithoutServiceInputSchema: z.ZodType<Prisma.ServiceDomainUpdateWithoutServiceInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const ServiceDomainUpdateWithoutServiceInputSchema: z.ZodType<Prisma.ServiceDomainUpdateWithoutServiceInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   pathPattern: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  domain: z.lazy(() => DomainUpdateOneRequiredWithoutServiceDomainNestedInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ServiceDomainUpdateWithoutServiceInput>;
+  domain: z.lazy(() => DomainUpdateOneRequiredWithoutServiceDomainNestedInputSchema).optional(),
+});
 
 export default ServiceDomainUpdateWithoutServiceInputSchema;

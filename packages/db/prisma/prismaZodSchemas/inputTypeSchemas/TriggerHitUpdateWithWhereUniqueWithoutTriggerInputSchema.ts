@@ -5,9 +5,9 @@ import { TriggerHitWhereUniqueInputSchema } from './TriggerHitWhereUniqueInputSc
 import { TriggerHitUpdateWithoutTriggerInputSchema } from './TriggerHitUpdateWithoutTriggerInputSchema';
 import { TriggerHitUncheckedUpdateWithoutTriggerInputSchema } from './TriggerHitUncheckedUpdateWithoutTriggerInputSchema';
 
-export const TriggerHitUpdateWithWhereUniqueWithoutTriggerInputSchema: z.ZodType<Prisma.TriggerHitUpdateWithWhereUniqueWithoutTriggerInput> = z.object({
+export const TriggerHitUpdateWithWhereUniqueWithoutTriggerInputSchema: z.ZodType<Prisma.TriggerHitUpdateWithWhereUniqueWithoutTriggerInput> = z.strictObject({
   where: z.lazy(() => TriggerHitWhereUniqueInputSchema),
-  data: z.union([ z.lazy(() => TriggerHitUpdateWithoutTriggerInputSchema),z.lazy(() => TriggerHitUncheckedUpdateWithoutTriggerInputSchema) ]),
-}).strict() as z.ZodType<Prisma.TriggerHitUpdateWithWhereUniqueWithoutTriggerInput>;
+  data: z.union([ z.lazy(() => TriggerHitUpdateWithoutTriggerInputSchema), z.lazy(() => TriggerHitUncheckedUpdateWithoutTriggerInputSchema) ]),
+});
 
 export default TriggerHitUpdateWithWhereUniqueWithoutTriggerInputSchema;

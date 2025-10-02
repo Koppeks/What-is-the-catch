@@ -5,9 +5,9 @@ import { ServiceDomainScalarWhereInputSchema } from './ServiceDomainScalarWhereI
 import { ServiceDomainUpdateManyMutationInputSchema } from './ServiceDomainUpdateManyMutationInputSchema';
 import { ServiceDomainUncheckedUpdateManyWithoutServiceInputSchema } from './ServiceDomainUncheckedUpdateManyWithoutServiceInputSchema';
 
-export const ServiceDomainUpdateManyWithWhereWithoutServiceInputSchema: z.ZodType<Prisma.ServiceDomainUpdateManyWithWhereWithoutServiceInput> = z.object({
+export const ServiceDomainUpdateManyWithWhereWithoutServiceInputSchema: z.ZodType<Prisma.ServiceDomainUpdateManyWithWhereWithoutServiceInput> = z.strictObject({
   where: z.lazy(() => ServiceDomainScalarWhereInputSchema),
-  data: z.union([ z.lazy(() => ServiceDomainUpdateManyMutationInputSchema),z.lazy(() => ServiceDomainUncheckedUpdateManyWithoutServiceInputSchema) ]),
-}).strict() as z.ZodType<Prisma.ServiceDomainUpdateManyWithWhereWithoutServiceInput>;
+  data: z.union([ z.lazy(() => ServiceDomainUpdateManyMutationInputSchema), z.lazy(() => ServiceDomainUncheckedUpdateManyWithoutServiceInputSchema) ]),
+});
 
 export default ServiceDomainUpdateManyWithWhereWithoutServiceInputSchema;

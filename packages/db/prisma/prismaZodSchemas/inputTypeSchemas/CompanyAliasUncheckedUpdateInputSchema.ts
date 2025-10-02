@@ -6,14 +6,14 @@ import { AliasKindSchema } from './AliasKindSchema';
 import { EnumAliasKindFieldUpdateOperationsInputSchema } from './EnumAliasKindFieldUpdateOperationsInputSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 
-export const CompanyAliasUncheckedUpdateInputSchema: z.ZodType<Prisma.CompanyAliasUncheckedUpdateInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const CompanyAliasUncheckedUpdateInputSchema: z.ZodType<Prisma.CompanyAliasUncheckedUpdateInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   companyId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  kind: z.union([ z.lazy(() => AliasKindSchema),z.lazy(() => EnumAliasKindFieldUpdateOperationsInputSchema) ]).optional(),
+  kind: z.union([ z.lazy(() => AliasKindSchema), z.lazy(() => EnumAliasKindFieldUpdateOperationsInputSchema) ]).optional(),
   value: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   valueNorm: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-}).strict() as z.ZodType<Prisma.CompanyAliasUncheckedUpdateInput>;
+});
 
 export default CompanyAliasUncheckedUpdateInputSchema;

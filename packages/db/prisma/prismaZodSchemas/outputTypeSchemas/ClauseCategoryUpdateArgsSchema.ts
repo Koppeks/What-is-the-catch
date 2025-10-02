@@ -29,8 +29,8 @@ export const ClauseCategorySelectSchema: z.ZodType<Prisma.ClauseCategorySelect> 
 export const ClauseCategoryUpdateArgsSchema: z.ZodType<Prisma.ClauseCategoryUpdateArgs> = z.object({
   select: ClauseCategorySelectSchema.optional(),
   include: z.lazy(() => ClauseCategoryIncludeSchema).optional(),
-  data: z.union([ ClauseCategoryUpdateInputSchema,ClauseCategoryUncheckedUpdateInputSchema ]),
-  where: ClauseCategoryWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.ClauseCategoryUpdateArgs>;
+  data: z.union([ ClauseCategoryUpdateInputSchema, ClauseCategoryUncheckedUpdateInputSchema ]),
+  where: ClauseCategoryWhereUniqueInputSchema, 
+}).strict();
 
 export default ClauseCategoryUpdateArgsSchema;

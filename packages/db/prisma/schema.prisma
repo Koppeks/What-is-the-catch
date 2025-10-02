@@ -19,7 +19,7 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model user {
+model User {
     id                 String         @id @default(cuid())
     email              String         @unique
     username           String         @db.VarChar(64)
@@ -80,7 +80,7 @@ model Clause {
     order       Int
     depth       Int // numerical root order 0=parent, 1=children, 2=grandChildren, n...
 
-    meta        Json? // Whatever
+    meta        Json? @db.Json// Whatever
     TriggerHits TriggerHit[]
 
     createdAt      DateTime         @default(now())
@@ -191,7 +191,7 @@ model TriggerHit {
     //baseValue = 0.0(no match), 0.5(contain some words), 1.0 (exact regex)
     //aiConfidence = from 0 to 100, turn in to 0.00 to 1.00
     //confidence = (0.3 * baseValue) + (0.7 * aiConfidence)
-    matches    Json?
+    matches    Json? @db.Json
 
     @@index([clauseId])
     @@index([triggerId])

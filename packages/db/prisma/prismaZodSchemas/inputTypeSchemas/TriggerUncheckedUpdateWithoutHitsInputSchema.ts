@@ -15,23 +15,23 @@ import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateO
 import { TriggerUncheckedUpdateManyWithoutMergedIntoNestedInputSchema } from './TriggerUncheckedUpdateManyWithoutMergedIntoNestedInputSchema';
 import { DocumentTriggerUncheckedUpdateManyWithoutTriggerNestedInputSchema } from './DocumentTriggerUncheckedUpdateManyWithoutTriggerNestedInputSchema';
 
-export const TriggerUncheckedUpdateWithoutHitsInputSchema: z.ZodType<Prisma.TriggerUncheckedUpdateWithoutHitsInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const TriggerUncheckedUpdateWithoutHitsInputSchema: z.ZodType<Prisma.TriggerUncheckedUpdateWithoutHitsInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   key: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   label: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   description: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  patterns: z.union([ z.lazy(() => TriggerUpdatepatternsInputSchema),z.string().array() ]).optional(),
-  source: z.union([ z.lazy(() => TriggerSourceSchema),z.lazy(() => EnumTriggerSourceFieldUpdateOperationsInputSchema) ]).optional(),
-  state: z.union([ z.lazy(() => TriggerStateSchema),z.lazy(() => EnumTriggerStateFieldUpdateOperationsInputSchema) ]).optional(),
+  patterns: z.union([ z.lazy(() => TriggerUpdatepatternsInputSchema), z.string().array() ]).optional(),
+  source: z.union([ z.lazy(() => TriggerSourceSchema), z.lazy(() => EnumTriggerSourceFieldUpdateOperationsInputSchema) ]).optional(),
+  state: z.union([ z.lazy(() => TriggerStateSchema), z.lazy(() => EnumTriggerStateFieldUpdateOperationsInputSchema) ]).optional(),
   mergedIntoId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   reviewNotes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   promotedAt: z.union([ z.coerce.date(),z.lazy(() => NullableDateTimeFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   clauseCategoryId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  defaultSeverity: z.union([ z.lazy(() => SeveritySchema),z.lazy(() => NullableEnumSeverityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
+  defaultSeverity: z.union([ z.lazy(() => SeveritySchema), z.lazy(() => NullableEnumSeverityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   mergeFrom: z.lazy(() => TriggerUncheckedUpdateManyWithoutMergedIntoNestedInputSchema).optional(),
-  documentRules: z.lazy(() => DocumentTriggerUncheckedUpdateManyWithoutTriggerNestedInputSchema).optional()
-}).strict() as z.ZodType<Prisma.TriggerUncheckedUpdateWithoutHitsInput>;
+  documentRules: z.lazy(() => DocumentTriggerUncheckedUpdateManyWithoutTriggerNestedInputSchema).optional(),
+});
 
 export default TriggerUncheckedUpdateWithoutHitsInputSchema;

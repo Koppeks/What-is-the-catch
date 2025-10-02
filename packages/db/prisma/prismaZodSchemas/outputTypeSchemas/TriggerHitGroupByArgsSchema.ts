@@ -6,12 +6,12 @@ import { TriggerHitScalarFieldEnumSchema } from '../inputTypeSchemas/TriggerHitS
 import { TriggerHitScalarWhereWithAggregatesInputSchema } from '../inputTypeSchemas/TriggerHitScalarWhereWithAggregatesInputSchema'
 
 export const TriggerHitGroupByArgsSchema: z.ZodType<Prisma.TriggerHitGroupByArgs> = z.object({
-  where: TriggerHitWhereInputSchema.optional(),
-  orderBy: z.union([ TriggerHitOrderByWithAggregationInputSchema.array(),TriggerHitOrderByWithAggregationInputSchema ]).optional(),
-  by: TriggerHitScalarFieldEnumSchema.array(),
-  having: TriggerHitScalarWhereWithAggregatesInputSchema.optional(),
+  where: TriggerHitWhereInputSchema.optional(), 
+  orderBy: z.union([ TriggerHitOrderByWithAggregationInputSchema.array(), TriggerHitOrderByWithAggregationInputSchema ]).optional(),
+  by: TriggerHitScalarFieldEnumSchema.array(), 
+  having: TriggerHitScalarWhereWithAggregatesInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.TriggerHitGroupByArgs>;
+}).strict();
 
 export default TriggerHitGroupByArgsSchema;

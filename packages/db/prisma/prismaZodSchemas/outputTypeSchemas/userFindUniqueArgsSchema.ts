@@ -1,10 +1,10 @@
 import { z } from 'zod';
 import type { Prisma } from '@prisma/client';
-import { userWhereUniqueInputSchema } from '../inputTypeSchemas/userWhereUniqueInputSchema'
+import { UserWhereUniqueInputSchema } from '../inputTypeSchemas/UserWhereUniqueInputSchema'
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
-export const userSelectSchema: z.ZodType<Prisma.userSelect> = z.object({
+export const UserSelectSchema: z.ZodType<Prisma.UserSelect> = z.object({
   id: z.boolean().optional(),
   email: z.boolean().optional(),
   username: z.boolean().optional(),
@@ -15,9 +15,9 @@ export const userSelectSchema: z.ZodType<Prisma.userSelect> = z.object({
   createdAt: z.boolean().optional(),
 }).strict()
 
-export const userFindUniqueArgsSchema: z.ZodType<Prisma.userFindUniqueArgs> = z.object({
-  select: userSelectSchema.optional(),
-  where: userWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.userFindUniqueArgs>;
+export const UserFindUniqueArgsSchema: z.ZodType<Prisma.UserFindUniqueArgs> = z.object({
+  select: UserSelectSchema.optional(),
+  where: UserWhereUniqueInputSchema, 
+}).strict();
 
-export default userFindUniqueArgsSchema;
+export default UserFindUniqueArgsSchema;

@@ -6,13 +6,13 @@ import { NullableStringFieldUpdateOperationsInputSchema } from './NullableString
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { ServiceDomainUncheckedUpdateManyWithoutDomainNestedInputSchema } from './ServiceDomainUncheckedUpdateManyWithoutDomainNestedInputSchema';
 
-export const DomainUncheckedUpdateWithoutCompanyInputSchema: z.ZodType<Prisma.DomainUncheckedUpdateWithoutCompanyInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const DomainUncheckedUpdateWithoutCompanyInputSchema: z.ZodType<Prisma.DomainUncheckedUpdateWithoutCompanyInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   host: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   note: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  ServiceDomain: z.lazy(() => ServiceDomainUncheckedUpdateManyWithoutDomainNestedInputSchema).optional()
-}).strict() as z.ZodType<Prisma.DomainUncheckedUpdateWithoutCompanyInput>;
+  ServiceDomain: z.lazy(() => ServiceDomainUncheckedUpdateManyWithoutDomainNestedInputSchema).optional(),
+});
 
 export default DomainUncheckedUpdateWithoutCompanyInputSchema;

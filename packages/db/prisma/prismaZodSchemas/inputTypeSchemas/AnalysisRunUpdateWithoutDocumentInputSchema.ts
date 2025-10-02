@@ -8,15 +8,15 @@ import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateO
 import { IntFieldUpdateOperationsInputSchema } from './IntFieldUpdateOperationsInputSchema';
 import { ClauseAnalysisUpdateManyWithoutRunNestedInputSchema } from './ClauseAnalysisUpdateManyWithoutRunNestedInputSchema';
 
-export const AnalysisRunUpdateWithoutDocumentInputSchema: z.ZodType<Prisma.AnalysisRunUpdateWithoutDocumentInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  status: z.union([ z.lazy(() => AnalysisStatusSchema),z.lazy(() => EnumAnalysisStatusFieldUpdateOperationsInputSchema) ]).optional(),
+export const AnalysisRunUpdateWithoutDocumentInputSchema: z.ZodType<Prisma.AnalysisRunUpdateWithoutDocumentInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+  status: z.union([ z.lazy(() => AnalysisStatusSchema), z.lazy(() => EnumAnalysisStatusFieldUpdateOperationsInputSchema) ]).optional(),
   engineVersion: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   startedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   finishedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   overallRisk: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   notes: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  clauseAnalyses: z.lazy(() => ClauseAnalysisUpdateManyWithoutRunNestedInputSchema).optional()
-}).strict() as z.ZodType<Prisma.AnalysisRunUpdateWithoutDocumentInput>;
+  clauseAnalyses: z.lazy(() => ClauseAnalysisUpdateManyWithoutRunNestedInputSchema).optional(),
+});
 
 export default AnalysisRunUpdateWithoutDocumentInputSchema;

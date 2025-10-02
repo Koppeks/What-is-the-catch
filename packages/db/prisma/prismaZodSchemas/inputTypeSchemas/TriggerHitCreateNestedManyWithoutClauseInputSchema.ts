@@ -7,11 +7,11 @@ import { TriggerHitCreateOrConnectWithoutClauseInputSchema } from './TriggerHitC
 import { TriggerHitCreateManyClauseInputEnvelopeSchema } from './TriggerHitCreateManyClauseInputEnvelopeSchema';
 import { TriggerHitWhereUniqueInputSchema } from './TriggerHitWhereUniqueInputSchema';
 
-export const TriggerHitCreateNestedManyWithoutClauseInputSchema: z.ZodType<Prisma.TriggerHitCreateNestedManyWithoutClauseInput> = z.object({
-  create: z.union([ z.lazy(() => TriggerHitCreateWithoutClauseInputSchema),z.lazy(() => TriggerHitCreateWithoutClauseInputSchema).array(),z.lazy(() => TriggerHitUncheckedCreateWithoutClauseInputSchema),z.lazy(() => TriggerHitUncheckedCreateWithoutClauseInputSchema).array() ]).optional(),
-  connectOrCreate: z.union([ z.lazy(() => TriggerHitCreateOrConnectWithoutClauseInputSchema),z.lazy(() => TriggerHitCreateOrConnectWithoutClauseInputSchema).array() ]).optional(),
+export const TriggerHitCreateNestedManyWithoutClauseInputSchema: z.ZodType<Prisma.TriggerHitCreateNestedManyWithoutClauseInput> = z.strictObject({
+  create: z.union([ z.lazy(() => TriggerHitCreateWithoutClauseInputSchema), z.lazy(() => TriggerHitCreateWithoutClauseInputSchema).array(), z.lazy(() => TriggerHitUncheckedCreateWithoutClauseInputSchema), z.lazy(() => TriggerHitUncheckedCreateWithoutClauseInputSchema).array() ]).optional(),
+  connectOrCreate: z.union([ z.lazy(() => TriggerHitCreateOrConnectWithoutClauseInputSchema), z.lazy(() => TriggerHitCreateOrConnectWithoutClauseInputSchema).array() ]).optional(),
   createMany: z.lazy(() => TriggerHitCreateManyClauseInputEnvelopeSchema).optional(),
-  connect: z.union([ z.lazy(() => TriggerHitWhereUniqueInputSchema),z.lazy(() => TriggerHitWhereUniqueInputSchema).array() ]).optional(),
-}).strict() as z.ZodType<Prisma.TriggerHitCreateNestedManyWithoutClauseInput>;
+  connect: z.union([ z.lazy(() => TriggerHitWhereUniqueInputSchema), z.lazy(() => TriggerHitWhereUniqueInputSchema).array() ]).optional(),
+});
 
 export default TriggerHitCreateNestedManyWithoutClauseInputSchema;

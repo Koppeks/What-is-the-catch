@@ -7,11 +7,11 @@ import { ClauseCreateOrConnectWithoutDocumentInputSchema } from './ClauseCreateO
 import { ClauseCreateManyDocumentInputEnvelopeSchema } from './ClauseCreateManyDocumentInputEnvelopeSchema';
 import { ClauseWhereUniqueInputSchema } from './ClauseWhereUniqueInputSchema';
 
-export const ClauseUncheckedCreateNestedManyWithoutDocumentInputSchema: z.ZodType<Prisma.ClauseUncheckedCreateNestedManyWithoutDocumentInput> = z.object({
-  create: z.union([ z.lazy(() => ClauseCreateWithoutDocumentInputSchema),z.lazy(() => ClauseCreateWithoutDocumentInputSchema).array(),z.lazy(() => ClauseUncheckedCreateWithoutDocumentInputSchema),z.lazy(() => ClauseUncheckedCreateWithoutDocumentInputSchema).array() ]).optional(),
-  connectOrCreate: z.union([ z.lazy(() => ClauseCreateOrConnectWithoutDocumentInputSchema),z.lazy(() => ClauseCreateOrConnectWithoutDocumentInputSchema).array() ]).optional(),
+export const ClauseUncheckedCreateNestedManyWithoutDocumentInputSchema: z.ZodType<Prisma.ClauseUncheckedCreateNestedManyWithoutDocumentInput> = z.strictObject({
+  create: z.union([ z.lazy(() => ClauseCreateWithoutDocumentInputSchema), z.lazy(() => ClauseCreateWithoutDocumentInputSchema).array(), z.lazy(() => ClauseUncheckedCreateWithoutDocumentInputSchema), z.lazy(() => ClauseUncheckedCreateWithoutDocumentInputSchema).array() ]).optional(),
+  connectOrCreate: z.union([ z.lazy(() => ClauseCreateOrConnectWithoutDocumentInputSchema), z.lazy(() => ClauseCreateOrConnectWithoutDocumentInputSchema).array() ]).optional(),
   createMany: z.lazy(() => ClauseCreateManyDocumentInputEnvelopeSchema).optional(),
-  connect: z.union([ z.lazy(() => ClauseWhereUniqueInputSchema),z.lazy(() => ClauseWhereUniqueInputSchema).array() ]).optional(),
-}).strict() as z.ZodType<Prisma.ClauseUncheckedCreateNestedManyWithoutDocumentInput>;
+  connect: z.union([ z.lazy(() => ClauseWhereUniqueInputSchema), z.lazy(() => ClauseWhereUniqueInputSchema).array() ]).optional(),
+});
 
 export default ClauseUncheckedCreateNestedManyWithoutDocumentInputSchema;

@@ -5,9 +5,9 @@ import { DomainScalarWhereInputSchema } from './DomainScalarWhereInputSchema';
 import { DomainUpdateManyMutationInputSchema } from './DomainUpdateManyMutationInputSchema';
 import { DomainUncheckedUpdateManyWithoutCompanyInputSchema } from './DomainUncheckedUpdateManyWithoutCompanyInputSchema';
 
-export const DomainUpdateManyWithWhereWithoutCompanyInputSchema: z.ZodType<Prisma.DomainUpdateManyWithWhereWithoutCompanyInput> = z.object({
+export const DomainUpdateManyWithWhereWithoutCompanyInputSchema: z.ZodType<Prisma.DomainUpdateManyWithWhereWithoutCompanyInput> = z.strictObject({
   where: z.lazy(() => DomainScalarWhereInputSchema),
-  data: z.union([ z.lazy(() => DomainUpdateManyMutationInputSchema),z.lazy(() => DomainUncheckedUpdateManyWithoutCompanyInputSchema) ]),
-}).strict() as z.ZodType<Prisma.DomainUpdateManyWithWhereWithoutCompanyInput>;
+  data: z.union([ z.lazy(() => DomainUpdateManyMutationInputSchema), z.lazy(() => DomainUncheckedUpdateManyWithoutCompanyInputSchema) ]),
+});
 
 export default DomainUpdateManyWithWhereWithoutCompanyInputSchema;

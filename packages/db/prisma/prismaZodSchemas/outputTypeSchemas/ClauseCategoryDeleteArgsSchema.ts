@@ -27,7 +27,7 @@ export const ClauseCategorySelectSchema: z.ZodType<Prisma.ClauseCategorySelect> 
 export const ClauseCategoryDeleteArgsSchema: z.ZodType<Prisma.ClauseCategoryDeleteArgs> = z.object({
   select: ClauseCategorySelectSchema.optional(),
   include: z.lazy(() => ClauseCategoryIncludeSchema).optional(),
-  where: ClauseCategoryWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.ClauseCategoryDeleteArgs>;
+  where: ClauseCategoryWhereUniqueInputSchema, 
+}).strict();
 
 export default ClauseCategoryDeleteArgsSchema;

@@ -7,14 +7,14 @@ import { ServiceDomainCountOrderByAggregateInputSchema } from './ServiceDomainCo
 import { ServiceDomainMaxOrderByAggregateInputSchema } from './ServiceDomainMaxOrderByAggregateInputSchema';
 import { ServiceDomainMinOrderByAggregateInputSchema } from './ServiceDomainMinOrderByAggregateInputSchema';
 
-export const ServiceDomainOrderByWithAggregationInputSchema: z.ZodType<Prisma.ServiceDomainOrderByWithAggregationInput> = z.object({
+export const ServiceDomainOrderByWithAggregationInputSchema: z.ZodType<Prisma.ServiceDomainOrderByWithAggregationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   serviceId: z.lazy(() => SortOrderSchema).optional(),
   domainId: z.lazy(() => SortOrderSchema).optional(),
-  pathPattern: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  pathPattern: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   _count: z.lazy(() => ServiceDomainCountOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => ServiceDomainMaxOrderByAggregateInputSchema).optional(),
-  _min: z.lazy(() => ServiceDomainMinOrderByAggregateInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ServiceDomainOrderByWithAggregationInput>;
+  _min: z.lazy(() => ServiceDomainMinOrderByAggregateInputSchema).optional(),
+});
 
 export default ServiceDomainOrderByWithAggregationInputSchema;

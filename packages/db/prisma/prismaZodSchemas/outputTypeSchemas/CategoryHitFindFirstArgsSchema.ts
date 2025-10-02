@@ -22,12 +22,12 @@ export const CategoryHitSelectSchema: z.ZodType<Prisma.CategoryHitSelect> = z.ob
 export const CategoryHitFindFirstArgsSchema: z.ZodType<Prisma.CategoryHitFindFirstArgs> = z.object({
   select: CategoryHitSelectSchema.optional(),
   include: z.lazy(() => CategoryHitIncludeSchema).optional(),
-  where: CategoryHitWhereInputSchema.optional(),
-  orderBy: z.union([ CategoryHitOrderByWithRelationInputSchema.array(),CategoryHitOrderByWithRelationInputSchema ]).optional(),
-  cursor: CategoryHitWhereUniqueInputSchema.optional(),
+  where: CategoryHitWhereInputSchema.optional(), 
+  orderBy: z.union([ CategoryHitOrderByWithRelationInputSchema.array(), CategoryHitOrderByWithRelationInputSchema ]).optional(),
+  cursor: CategoryHitWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-  distinct: z.union([ CategoryHitScalarFieldEnumSchema,CategoryHitScalarFieldEnumSchema.array() ]).optional(),
-}).strict() as z.ZodType<Prisma.CategoryHitFindFirstArgs>;
+  distinct: z.union([ CategoryHitScalarFieldEnumSchema, CategoryHitScalarFieldEnumSchema.array() ]).optional(),
+}).strict();
 
 export default CategoryHitFindFirstArgsSchema;

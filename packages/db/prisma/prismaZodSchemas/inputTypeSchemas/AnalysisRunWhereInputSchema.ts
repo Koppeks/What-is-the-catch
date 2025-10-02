@@ -10,20 +10,20 @@ import { DocumentScalarRelationFilterSchema } from './DocumentScalarRelationFilt
 import { DocumentWhereInputSchema } from './DocumentWhereInputSchema';
 import { ClauseAnalysisListRelationFilterSchema } from './ClauseAnalysisListRelationFilterSchema';
 
-export const AnalysisRunWhereInputSchema: z.ZodType<Prisma.AnalysisRunWhereInput> = z.object({
-  AND: z.union([ z.lazy(() => AnalysisRunWhereInputSchema),z.lazy(() => AnalysisRunWhereInputSchema).array() ]).optional(),
+export const AnalysisRunWhereInputSchema: z.ZodType<Prisma.AnalysisRunWhereInput> = z.strictObject({
+  AND: z.union([ z.lazy(() => AnalysisRunWhereInputSchema), z.lazy(() => AnalysisRunWhereInputSchema).array() ]).optional(),
   OR: z.lazy(() => AnalysisRunWhereInputSchema).array().optional(),
-  NOT: z.union([ z.lazy(() => AnalysisRunWhereInputSchema),z.lazy(() => AnalysisRunWhereInputSchema).array() ]).optional(),
-  id: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  documentId: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  status: z.union([ z.lazy(() => EnumAnalysisStatusFilterSchema),z.lazy(() => AnalysisStatusSchema) ]).optional(),
-  engineVersion: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  startedAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
-  finishedAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
-  overallRisk: z.union([ z.lazy(() => IntFilterSchema),z.number() ]).optional(),
-  notes: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  document: z.union([ z.lazy(() => DocumentScalarRelationFilterSchema),z.lazy(() => DocumentWhereInputSchema) ]).optional(),
-  clauseAnalyses: z.lazy(() => ClauseAnalysisListRelationFilterSchema).optional()
-}).strict() as z.ZodType<Prisma.AnalysisRunWhereInput>;
+  NOT: z.union([ z.lazy(() => AnalysisRunWhereInputSchema), z.lazy(() => AnalysisRunWhereInputSchema).array() ]).optional(),
+  id: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  documentId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  status: z.union([ z.lazy(() => EnumAnalysisStatusFilterSchema), z.lazy(() => AnalysisStatusSchema) ]).optional(),
+  engineVersion: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  startedAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
+  finishedAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
+  overallRisk: z.union([ z.lazy(() => IntFilterSchema), z.number() ]).optional(),
+  notes: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  document: z.union([ z.lazy(() => DocumentScalarRelationFilterSchema), z.lazy(() => DocumentWhereInputSchema) ]).optional(),
+  clauseAnalyses: z.lazy(() => ClauseAnalysisListRelationFilterSchema).optional(),
+});
 
 export default AnalysisRunWhereInputSchema;

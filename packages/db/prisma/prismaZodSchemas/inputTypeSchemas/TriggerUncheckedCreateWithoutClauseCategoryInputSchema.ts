@@ -9,12 +9,12 @@ import { TriggerUncheckedCreateNestedManyWithoutMergedIntoInputSchema } from './
 import { TriggerHitUncheckedCreateNestedManyWithoutTriggerInputSchema } from './TriggerHitUncheckedCreateNestedManyWithoutTriggerInputSchema';
 import { DocumentTriggerUncheckedCreateNestedManyWithoutTriggerInputSchema } from './DocumentTriggerUncheckedCreateNestedManyWithoutTriggerInputSchema';
 
-export const TriggerUncheckedCreateWithoutClauseCategoryInputSchema: z.ZodType<Prisma.TriggerUncheckedCreateWithoutClauseCategoryInput> = z.object({
-  id: z.string().cuid().optional(),
+export const TriggerUncheckedCreateWithoutClauseCategoryInputSchema: z.ZodType<Prisma.TriggerUncheckedCreateWithoutClauseCategoryInput> = z.strictObject({
+  id: z.cuid().optional(),
   key: z.string(),
   label: z.string(),
   description: z.string().optional().nullable(),
-  patterns: z.union([ z.lazy(() => TriggerCreatepatternsInputSchema),z.string().array() ]).optional(),
+  patterns: z.union([ z.lazy(() => TriggerCreatepatternsInputSchema), z.string().array() ]).optional(),
   source: z.lazy(() => TriggerSourceSchema).optional(),
   state: z.lazy(() => TriggerStateSchema).optional(),
   mergedIntoId: z.string().optional().nullable(),
@@ -25,7 +25,7 @@ export const TriggerUncheckedCreateWithoutClauseCategoryInputSchema: z.ZodType<P
   updatedAt: z.coerce.date().optional(),
   mergeFrom: z.lazy(() => TriggerUncheckedCreateNestedManyWithoutMergedIntoInputSchema).optional(),
   hits: z.lazy(() => TriggerHitUncheckedCreateNestedManyWithoutTriggerInputSchema).optional(),
-  documentRules: z.lazy(() => DocumentTriggerUncheckedCreateNestedManyWithoutTriggerInputSchema).optional()
-}).strict() as z.ZodType<Prisma.TriggerUncheckedCreateWithoutClauseCategoryInput>;
+  documentRules: z.lazy(() => DocumentTriggerUncheckedCreateNestedManyWithoutTriggerInputSchema).optional(),
+});
 
 export default TriggerUncheckedCreateWithoutClauseCategoryInputSchema;

@@ -31,9 +31,9 @@ export const ClauseCategorySelectSchema: z.ZodType<Prisma.ClauseCategorySelect> 
 export const ClauseCategoryUpsertArgsSchema: z.ZodType<Prisma.ClauseCategoryUpsertArgs> = z.object({
   select: ClauseCategorySelectSchema.optional(),
   include: z.lazy(() => ClauseCategoryIncludeSchema).optional(),
-  where: ClauseCategoryWhereUniqueInputSchema,
-  create: z.union([ ClauseCategoryCreateInputSchema,ClauseCategoryUncheckedCreateInputSchema ]),
-  update: z.union([ ClauseCategoryUpdateInputSchema,ClauseCategoryUncheckedUpdateInputSchema ]),
-}).strict() as z.ZodType<Prisma.ClauseCategoryUpsertArgs>;
+  where: ClauseCategoryWhereUniqueInputSchema, 
+  create: z.union([ ClauseCategoryCreateInputSchema, ClauseCategoryUncheckedCreateInputSchema ]),
+  update: z.union([ ClauseCategoryUpdateInputSchema, ClauseCategoryUncheckedUpdateInputSchema ]),
+}).strict();
 
 export default ClauseCategoryUpsertArgsSchema;

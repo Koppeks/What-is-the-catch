@@ -6,10 +6,10 @@ import { ServiceUncheckedCreateWithoutServiceDomainInputSchema } from './Service
 import { ServiceCreateOrConnectWithoutServiceDomainInputSchema } from './ServiceCreateOrConnectWithoutServiceDomainInputSchema';
 import { ServiceWhereUniqueInputSchema } from './ServiceWhereUniqueInputSchema';
 
-export const ServiceCreateNestedOneWithoutServiceDomainInputSchema: z.ZodType<Prisma.ServiceCreateNestedOneWithoutServiceDomainInput> = z.object({
-  create: z.union([ z.lazy(() => ServiceCreateWithoutServiceDomainInputSchema),z.lazy(() => ServiceUncheckedCreateWithoutServiceDomainInputSchema) ]).optional(),
+export const ServiceCreateNestedOneWithoutServiceDomainInputSchema: z.ZodType<Prisma.ServiceCreateNestedOneWithoutServiceDomainInput> = z.strictObject({
+  create: z.union([ z.lazy(() => ServiceCreateWithoutServiceDomainInputSchema), z.lazy(() => ServiceUncheckedCreateWithoutServiceDomainInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => ServiceCreateOrConnectWithoutServiceDomainInputSchema).optional(),
-  connect: z.lazy(() => ServiceWhereUniqueInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ServiceCreateNestedOneWithoutServiceDomainInput>;
+  connect: z.lazy(() => ServiceWhereUniqueInputSchema).optional(),
+});
 
 export default ServiceCreateNestedOneWithoutServiceDomainInputSchema;

@@ -5,14 +5,14 @@ import { SeveritySchema } from './SeveritySchema';
 import { ClauseAnalysisCreatetriggerWarningsInputSchema } from './ClauseAnalysisCreatetriggerWarningsInputSchema';
 import { CategoryHitUncheckedCreateNestedManyWithoutClauseAnalysisInputSchema } from './CategoryHitUncheckedCreateNestedManyWithoutClauseAnalysisInputSchema';
 
-export const ClauseAnalysisUncheckedCreateInputSchema: z.ZodType<Prisma.ClauseAnalysisUncheckedCreateInput> = z.object({
-  id: z.string().cuid().optional(),
+export const ClauseAnalysisUncheckedCreateInputSchema: z.ZodType<Prisma.ClauseAnalysisUncheckedCreateInput> = z.strictObject({
+  id: z.cuid().optional(),
   runId: z.string(),
   clauseId: z.string(),
   severity: z.lazy(() => SeveritySchema).optional(),
   riskScore: z.number().int().optional(),
-  triggerWarnings: z.union([ z.lazy(() => ClauseAnalysisCreatetriggerWarningsInputSchema),z.string().array() ]).optional(),
-  categoryHits: z.lazy(() => CategoryHitUncheckedCreateNestedManyWithoutClauseAnalysisInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseAnalysisUncheckedCreateInput>;
+  triggerWarnings: z.union([ z.lazy(() => ClauseAnalysisCreatetriggerWarningsInputSchema), z.string().array() ]).optional(),
+  categoryHits: z.lazy(() => CategoryHitUncheckedCreateNestedManyWithoutClauseAnalysisInputSchema).optional(),
+});
 
 export default ClauseAnalysisUncheckedCreateInputSchema;

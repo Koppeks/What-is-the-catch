@@ -27,9 +27,9 @@ export const DomainSelectSchema: z.ZodType<Prisma.DomainSelect> = z.object({
 export const DomainUpsertArgsSchema: z.ZodType<Prisma.DomainUpsertArgs> = z.object({
   select: DomainSelectSchema.optional(),
   include: z.lazy(() => DomainIncludeSchema).optional(),
-  where: DomainWhereUniqueInputSchema,
-  create: z.union([ DomainCreateInputSchema,DomainUncheckedCreateInputSchema ]),
-  update: z.union([ DomainUpdateInputSchema,DomainUncheckedUpdateInputSchema ]),
-}).strict() as z.ZodType<Prisma.DomainUpsertArgs>;
+  where: DomainWhereUniqueInputSchema, 
+  create: z.union([ DomainCreateInputSchema, DomainUncheckedCreateInputSchema ]),
+  update: z.union([ DomainUpdateInputSchema, DomainUncheckedUpdateInputSchema ]),
+}).strict();
 
 export default DomainUpsertArgsSchema;

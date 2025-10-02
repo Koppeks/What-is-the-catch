@@ -5,11 +5,11 @@ import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSc
 import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { ClauseCreateNestedOneWithoutTriggerHitsInputSchema } from './ClauseCreateNestedOneWithoutTriggerHitsInputSchema';
 
-export const TriggerHitCreateWithoutTriggerInputSchema: z.ZodType<Prisma.TriggerHitCreateWithoutTriggerInput> = z.object({
-  id: z.string().cuid().optional(),
+export const TriggerHitCreateWithoutTriggerInputSchema: z.ZodType<Prisma.TriggerHitCreateWithoutTriggerInput> = z.strictObject({
+  id: z.cuid().optional(),
   confidence: z.number().optional().nullable(),
-  matches: z.union([ z.lazy(() => NullableJsonNullValueInputSchema),InputJsonValueSchema ]).optional(),
-  clause: z.lazy(() => ClauseCreateNestedOneWithoutTriggerHitsInputSchema)
-}).strict() as z.ZodType<Prisma.TriggerHitCreateWithoutTriggerInput>;
+  matches: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
+  clause: z.lazy(() => ClauseCreateNestedOneWithoutTriggerHitsInputSchema),
+});
 
 export default TriggerHitCreateWithoutTriggerInputSchema;

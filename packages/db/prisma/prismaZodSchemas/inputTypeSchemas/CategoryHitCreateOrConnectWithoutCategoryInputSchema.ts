@@ -5,9 +5,9 @@ import { CategoryHitWhereUniqueInputSchema } from './CategoryHitWhereUniqueInput
 import { CategoryHitCreateWithoutCategoryInputSchema } from './CategoryHitCreateWithoutCategoryInputSchema';
 import { CategoryHitUncheckedCreateWithoutCategoryInputSchema } from './CategoryHitUncheckedCreateWithoutCategoryInputSchema';
 
-export const CategoryHitCreateOrConnectWithoutCategoryInputSchema: z.ZodType<Prisma.CategoryHitCreateOrConnectWithoutCategoryInput> = z.object({
+export const CategoryHitCreateOrConnectWithoutCategoryInputSchema: z.ZodType<Prisma.CategoryHitCreateOrConnectWithoutCategoryInput> = z.strictObject({
   where: z.lazy(() => CategoryHitWhereUniqueInputSchema),
-  create: z.union([ z.lazy(() => CategoryHitCreateWithoutCategoryInputSchema),z.lazy(() => CategoryHitUncheckedCreateWithoutCategoryInputSchema) ]),
-}).strict() as z.ZodType<Prisma.CategoryHitCreateOrConnectWithoutCategoryInput>;
+  create: z.union([ z.lazy(() => CategoryHitCreateWithoutCategoryInputSchema), z.lazy(() => CategoryHitUncheckedCreateWithoutCategoryInputSchema) ]),
+});
 
 export default CategoryHitCreateOrConnectWithoutCategoryInputSchema;

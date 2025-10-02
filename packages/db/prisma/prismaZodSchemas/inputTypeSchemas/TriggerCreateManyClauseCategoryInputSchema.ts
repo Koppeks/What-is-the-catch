@@ -6,12 +6,12 @@ import { TriggerSourceSchema } from './TriggerSourceSchema';
 import { TriggerStateSchema } from './TriggerStateSchema';
 import { SeveritySchema } from './SeveritySchema';
 
-export const TriggerCreateManyClauseCategoryInputSchema: z.ZodType<Prisma.TriggerCreateManyClauseCategoryInput> = z.object({
-  id: z.string().cuid().optional(),
+export const TriggerCreateManyClauseCategoryInputSchema: z.ZodType<Prisma.TriggerCreateManyClauseCategoryInput> = z.strictObject({
+  id: z.cuid().optional(),
   key: z.string(),
   label: z.string(),
   description: z.string().optional().nullable(),
-  patterns: z.union([ z.lazy(() => TriggerCreatepatternsInputSchema),z.string().array() ]).optional(),
+  patterns: z.union([ z.lazy(() => TriggerCreatepatternsInputSchema), z.string().array() ]).optional(),
   source: z.lazy(() => TriggerSourceSchema).optional(),
   state: z.lazy(() => TriggerStateSchema).optional(),
   mergedIntoId: z.string().optional().nullable(),
@@ -19,7 +19,7 @@ export const TriggerCreateManyClauseCategoryInputSchema: z.ZodType<Prisma.Trigge
   promotedAt: z.coerce.date().optional().nullable(),
   defaultSeverity: z.lazy(() => SeveritySchema).optional().nullable(),
   createdAt: z.coerce.date().optional(),
-  updatedAt: z.coerce.date().optional()
-}).strict() as z.ZodType<Prisma.TriggerCreateManyClauseCategoryInput>;
+  updatedAt: z.coerce.date().optional(),
+});
 
 export default TriggerCreateManyClauseCategoryInputSchema;

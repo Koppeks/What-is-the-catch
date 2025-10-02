@@ -8,6 +8,6 @@ export const ClauseCategoryIncludeSchema: z.ZodType<Prisma.ClauseCategoryInclude
   Trigger: z.union([z.boolean(),z.lazy(() => TriggerFindManyArgsSchema)]).optional(),
   CategoryHit: z.union([z.boolean(),z.lazy(() => CategoryHitFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => ClauseCategoryCountOutputTypeArgsSchema)]).optional(),
-}).strict()
+}).strict();
 
 export default ClauseCategoryIncludeSchema;

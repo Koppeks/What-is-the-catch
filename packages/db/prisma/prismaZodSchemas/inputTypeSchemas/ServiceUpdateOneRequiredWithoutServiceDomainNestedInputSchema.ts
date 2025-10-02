@@ -10,12 +10,12 @@ import { ServiceUpdateToOneWithWhereWithoutServiceDomainInputSchema } from './Se
 import { ServiceUpdateWithoutServiceDomainInputSchema } from './ServiceUpdateWithoutServiceDomainInputSchema';
 import { ServiceUncheckedUpdateWithoutServiceDomainInputSchema } from './ServiceUncheckedUpdateWithoutServiceDomainInputSchema';
 
-export const ServiceUpdateOneRequiredWithoutServiceDomainNestedInputSchema: z.ZodType<Prisma.ServiceUpdateOneRequiredWithoutServiceDomainNestedInput> = z.object({
-  create: z.union([ z.lazy(() => ServiceCreateWithoutServiceDomainInputSchema),z.lazy(() => ServiceUncheckedCreateWithoutServiceDomainInputSchema) ]).optional(),
+export const ServiceUpdateOneRequiredWithoutServiceDomainNestedInputSchema: z.ZodType<Prisma.ServiceUpdateOneRequiredWithoutServiceDomainNestedInput> = z.strictObject({
+  create: z.union([ z.lazy(() => ServiceCreateWithoutServiceDomainInputSchema), z.lazy(() => ServiceUncheckedCreateWithoutServiceDomainInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => ServiceCreateOrConnectWithoutServiceDomainInputSchema).optional(),
   upsert: z.lazy(() => ServiceUpsertWithoutServiceDomainInputSchema).optional(),
   connect: z.lazy(() => ServiceWhereUniqueInputSchema).optional(),
-  update: z.union([ z.lazy(() => ServiceUpdateToOneWithWhereWithoutServiceDomainInputSchema),z.lazy(() => ServiceUpdateWithoutServiceDomainInputSchema),z.lazy(() => ServiceUncheckedUpdateWithoutServiceDomainInputSchema) ]).optional(),
-}).strict() as z.ZodType<Prisma.ServiceUpdateOneRequiredWithoutServiceDomainNestedInput>;
+  update: z.union([ z.lazy(() => ServiceUpdateToOneWithWhereWithoutServiceDomainInputSchema), z.lazy(() => ServiceUpdateWithoutServiceDomainInputSchema), z.lazy(() => ServiceUncheckedUpdateWithoutServiceDomainInputSchema) ]).optional(),
+});
 
 export default ServiceUpdateOneRequiredWithoutServiceDomainNestedInputSchema;

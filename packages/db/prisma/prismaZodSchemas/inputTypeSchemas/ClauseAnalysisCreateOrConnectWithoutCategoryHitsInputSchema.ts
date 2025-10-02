@@ -5,9 +5,9 @@ import { ClauseAnalysisWhereUniqueInputSchema } from './ClauseAnalysisWhereUniqu
 import { ClauseAnalysisCreateWithoutCategoryHitsInputSchema } from './ClauseAnalysisCreateWithoutCategoryHitsInputSchema';
 import { ClauseAnalysisUncheckedCreateWithoutCategoryHitsInputSchema } from './ClauseAnalysisUncheckedCreateWithoutCategoryHitsInputSchema';
 
-export const ClauseAnalysisCreateOrConnectWithoutCategoryHitsInputSchema: z.ZodType<Prisma.ClauseAnalysisCreateOrConnectWithoutCategoryHitsInput> = z.object({
+export const ClauseAnalysisCreateOrConnectWithoutCategoryHitsInputSchema: z.ZodType<Prisma.ClauseAnalysisCreateOrConnectWithoutCategoryHitsInput> = z.strictObject({
   where: z.lazy(() => ClauseAnalysisWhereUniqueInputSchema),
-  create: z.union([ z.lazy(() => ClauseAnalysisCreateWithoutCategoryHitsInputSchema),z.lazy(() => ClauseAnalysisUncheckedCreateWithoutCategoryHitsInputSchema) ]),
-}).strict() as z.ZodType<Prisma.ClauseAnalysisCreateOrConnectWithoutCategoryHitsInput>;
+  create: z.union([ z.lazy(() => ClauseAnalysisCreateWithoutCategoryHitsInputSchema), z.lazy(() => ClauseAnalysisUncheckedCreateWithoutCategoryHitsInputSchema) ]),
+});
 
 export default ClauseAnalysisCreateOrConnectWithoutCategoryHitsInputSchema;

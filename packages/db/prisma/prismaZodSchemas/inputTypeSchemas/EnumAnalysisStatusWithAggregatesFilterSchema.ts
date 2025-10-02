@@ -6,14 +6,14 @@ import { NestedEnumAnalysisStatusWithAggregatesFilterSchema } from './NestedEnum
 import { NestedIntFilterSchema } from './NestedIntFilterSchema';
 import { NestedEnumAnalysisStatusFilterSchema } from './NestedEnumAnalysisStatusFilterSchema';
 
-export const EnumAnalysisStatusWithAggregatesFilterSchema: z.ZodType<Prisma.EnumAnalysisStatusWithAggregatesFilter> = z.object({
+export const EnumAnalysisStatusWithAggregatesFilterSchema: z.ZodType<Prisma.EnumAnalysisStatusWithAggregatesFilter> = z.strictObject({
   equals: z.lazy(() => AnalysisStatusSchema).optional(),
   in: z.lazy(() => AnalysisStatusSchema).array().optional(),
   notIn: z.lazy(() => AnalysisStatusSchema).array().optional(),
-  not: z.union([ z.lazy(() => AnalysisStatusSchema),z.lazy(() => NestedEnumAnalysisStatusWithAggregatesFilterSchema) ]).optional(),
+  not: z.union([ z.lazy(() => AnalysisStatusSchema), z.lazy(() => NestedEnumAnalysisStatusWithAggregatesFilterSchema) ]).optional(),
   _count: z.lazy(() => NestedIntFilterSchema).optional(),
   _min: z.lazy(() => NestedEnumAnalysisStatusFilterSchema).optional(),
-  _max: z.lazy(() => NestedEnumAnalysisStatusFilterSchema).optional()
-}).strict() as z.ZodType<Prisma.EnumAnalysisStatusWithAggregatesFilter>;
+  _max: z.lazy(() => NestedEnumAnalysisStatusFilterSchema).optional(),
+});
 
 export default EnumAnalysisStatusWithAggregatesFilterSchema;

@@ -14,6 +14,6 @@ export const TriggerIncludeSchema: z.ZodType<Prisma.TriggerInclude> = z.object({
   hits: z.union([z.boolean(),z.lazy(() => TriggerHitFindManyArgsSchema)]).optional(),
   documentRules: z.union([z.boolean(),z.lazy(() => DocumentTriggerFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => TriggerCountOutputTypeArgsSchema)]).optional(),
-}).strict()
+}).strict();
 
 export default TriggerIncludeSchema;

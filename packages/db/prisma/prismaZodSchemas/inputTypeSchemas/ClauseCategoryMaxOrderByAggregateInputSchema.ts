@@ -3,7 +3,7 @@ import type { Prisma } from '@prisma/client';
 import { z } from 'zod';
 import { SortOrderSchema } from './SortOrderSchema';
 
-export const ClauseCategoryMaxOrderByAggregateInputSchema: z.ZodType<Prisma.ClauseCategoryMaxOrderByAggregateInput> = z.object({
+export const ClauseCategoryMaxOrderByAggregateInputSchema: z.ZodType<Prisma.ClauseCategoryMaxOrderByAggregateInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   slug: z.lazy(() => SortOrderSchema).optional(),
   version: z.lazy(() => SortOrderSchema).optional(),
@@ -12,7 +12,7 @@ export const ClauseCategoryMaxOrderByAggregateInputSchema: z.ZodType<Prisma.Clau
   isActive: z.lazy(() => SortOrderSchema).optional(),
   triggerInstruction: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
-  updatedAt: z.lazy(() => SortOrderSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseCategoryMaxOrderByAggregateInput>;
+  updatedAt: z.lazy(() => SortOrderSchema).optional(),
+});
 
 export default ClauseCategoryMaxOrderByAggregateInputSchema;

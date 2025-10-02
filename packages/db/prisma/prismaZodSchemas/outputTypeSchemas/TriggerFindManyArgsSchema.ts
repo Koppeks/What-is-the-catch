@@ -39,12 +39,12 @@ export const TriggerSelectSchema: z.ZodType<Prisma.TriggerSelect> = z.object({
 export const TriggerFindManyArgsSchema: z.ZodType<Prisma.TriggerFindManyArgs> = z.object({
   select: TriggerSelectSchema.optional(),
   include: z.lazy(() => TriggerIncludeSchema).optional(),
-  where: TriggerWhereInputSchema.optional(),
-  orderBy: z.union([ TriggerOrderByWithRelationInputSchema.array(),TriggerOrderByWithRelationInputSchema ]).optional(),
-  cursor: TriggerWhereUniqueInputSchema.optional(),
+  where: TriggerWhereInputSchema.optional(), 
+  orderBy: z.union([ TriggerOrderByWithRelationInputSchema.array(), TriggerOrderByWithRelationInputSchema ]).optional(),
+  cursor: TriggerWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-  distinct: z.union([ TriggerScalarFieldEnumSchema,TriggerScalarFieldEnumSchema.array() ]).optional(),
-}).strict() as z.ZodType<Prisma.TriggerFindManyArgs>;
+  distinct: z.union([ TriggerScalarFieldEnumSchema, TriggerScalarFieldEnumSchema.array() ]).optional(),
+}).strict();
 
 export default TriggerFindManyArgsSchema;

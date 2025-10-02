@@ -5,11 +5,11 @@ import { ServiceDomainOrderByWithRelationInputSchema } from '../inputTypeSchemas
 import { ServiceDomainWhereUniqueInputSchema } from '../inputTypeSchemas/ServiceDomainWhereUniqueInputSchema'
 
 export const ServiceDomainAggregateArgsSchema: z.ZodType<Prisma.ServiceDomainAggregateArgs> = z.object({
-  where: ServiceDomainWhereInputSchema.optional(),
-  orderBy: z.union([ ServiceDomainOrderByWithRelationInputSchema.array(),ServiceDomainOrderByWithRelationInputSchema ]).optional(),
-  cursor: ServiceDomainWhereUniqueInputSchema.optional(),
+  where: ServiceDomainWhereInputSchema.optional(), 
+  orderBy: z.union([ ServiceDomainOrderByWithRelationInputSchema.array(), ServiceDomainOrderByWithRelationInputSchema ]).optional(),
+  cursor: ServiceDomainWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.ServiceDomainAggregateArgs>;
+}).strict();
 
 export default ServiceDomainAggregateArgsSchema;

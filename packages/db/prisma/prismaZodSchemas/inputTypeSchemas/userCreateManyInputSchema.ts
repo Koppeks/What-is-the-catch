@@ -4,15 +4,15 @@ import { z } from 'zod';
 import { AvailableRolesSchema } from './AvailableRolesSchema';
 import { AccountStatusSchema } from './AccountStatusSchema';
 
-export const userCreateManyInputSchema: z.ZodType<Prisma.userCreateManyInput> = z.object({
-  id: z.string().cuid().optional(),
+export const UserCreateManyInputSchema: z.ZodType<Prisma.UserCreateManyInput> = z.strictObject({
+  id: z.cuid().optional(),
   email: z.string(),
   username: z.string(),
   password: z.string(),
   userRole: z.lazy(() => AvailableRolesSchema).optional(),
   subscriptionStatus: z.lazy(() => AccountStatusSchema).optional(),
   updatedAt: z.coerce.date().optional(),
-  createdAt: z.coerce.date().optional()
-}).strict() as z.ZodType<Prisma.userCreateManyInput>;
+  createdAt: z.coerce.date().optional(),
+});
 
-export default userCreateManyInputSchema;
+export default UserCreateManyInputSchema;

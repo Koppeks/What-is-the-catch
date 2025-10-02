@@ -5,9 +5,9 @@ import { AnalysisRunWhereUniqueInputSchema } from './AnalysisRunWhereUniqueInput
 import { AnalysisRunCreateWithoutDocumentInputSchema } from './AnalysisRunCreateWithoutDocumentInputSchema';
 import { AnalysisRunUncheckedCreateWithoutDocumentInputSchema } from './AnalysisRunUncheckedCreateWithoutDocumentInputSchema';
 
-export const AnalysisRunCreateOrConnectWithoutDocumentInputSchema: z.ZodType<Prisma.AnalysisRunCreateOrConnectWithoutDocumentInput> = z.object({
+export const AnalysisRunCreateOrConnectWithoutDocumentInputSchema: z.ZodType<Prisma.AnalysisRunCreateOrConnectWithoutDocumentInput> = z.strictObject({
   where: z.lazy(() => AnalysisRunWhereUniqueInputSchema),
-  create: z.union([ z.lazy(() => AnalysisRunCreateWithoutDocumentInputSchema),z.lazy(() => AnalysisRunUncheckedCreateWithoutDocumentInputSchema) ]),
-}).strict() as z.ZodType<Prisma.AnalysisRunCreateOrConnectWithoutDocumentInput>;
+  create: z.union([ z.lazy(() => AnalysisRunCreateWithoutDocumentInputSchema), z.lazy(() => AnalysisRunUncheckedCreateWithoutDocumentInputSchema) ]),
+});
 
 export default AnalysisRunCreateOrConnectWithoutDocumentInputSchema;

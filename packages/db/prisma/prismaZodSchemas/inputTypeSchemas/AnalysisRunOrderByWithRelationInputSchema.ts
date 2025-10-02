@@ -5,7 +5,7 @@ import { SortOrderSchema } from './SortOrderSchema';
 import { DocumentOrderByWithRelationInputSchema } from './DocumentOrderByWithRelationInputSchema';
 import { ClauseAnalysisOrderByRelationAggregateInputSchema } from './ClauseAnalysisOrderByRelationAggregateInputSchema';
 
-export const AnalysisRunOrderByWithRelationInputSchema: z.ZodType<Prisma.AnalysisRunOrderByWithRelationInput> = z.object({
+export const AnalysisRunOrderByWithRelationInputSchema: z.ZodType<Prisma.AnalysisRunOrderByWithRelationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   documentId: z.lazy(() => SortOrderSchema).optional(),
   status: z.lazy(() => SortOrderSchema).optional(),
@@ -15,7 +15,7 @@ export const AnalysisRunOrderByWithRelationInputSchema: z.ZodType<Prisma.Analysi
   overallRisk: z.lazy(() => SortOrderSchema).optional(),
   notes: z.lazy(() => SortOrderSchema).optional(),
   document: z.lazy(() => DocumentOrderByWithRelationInputSchema).optional(),
-  clauseAnalyses: z.lazy(() => ClauseAnalysisOrderByRelationAggregateInputSchema).optional()
-}).strict() as z.ZodType<Prisma.AnalysisRunOrderByWithRelationInput>;
+  clauseAnalyses: z.lazy(() => ClauseAnalysisOrderByRelationAggregateInputSchema).optional(),
+});
 
 export default AnalysisRunOrderByWithRelationInputSchema;

@@ -6,12 +6,12 @@ import { ClauseCategoryScalarFieldEnumSchema } from '../inputTypeSchemas/ClauseC
 import { ClauseCategoryScalarWhereWithAggregatesInputSchema } from '../inputTypeSchemas/ClauseCategoryScalarWhereWithAggregatesInputSchema'
 
 export const ClauseCategoryGroupByArgsSchema: z.ZodType<Prisma.ClauseCategoryGroupByArgs> = z.object({
-  where: ClauseCategoryWhereInputSchema.optional(),
-  orderBy: z.union([ ClauseCategoryOrderByWithAggregationInputSchema.array(),ClauseCategoryOrderByWithAggregationInputSchema ]).optional(),
-  by: ClauseCategoryScalarFieldEnumSchema.array(),
-  having: ClauseCategoryScalarWhereWithAggregatesInputSchema.optional(),
+  where: ClauseCategoryWhereInputSchema.optional(), 
+  orderBy: z.union([ ClauseCategoryOrderByWithAggregationInputSchema.array(), ClauseCategoryOrderByWithAggregationInputSchema ]).optional(),
+  by: ClauseCategoryScalarFieldEnumSchema.array(), 
+  having: ClauseCategoryScalarWhereWithAggregatesInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.ClauseCategoryGroupByArgs>;
+}).strict();
 
 export default ClauseCategoryGroupByArgsSchema;

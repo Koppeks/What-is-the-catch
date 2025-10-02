@@ -23,12 +23,12 @@ export const CompanyAliasSelectSchema: z.ZodType<Prisma.CompanyAliasSelect> = z.
 export const CompanyAliasFindFirstArgsSchema: z.ZodType<Prisma.CompanyAliasFindFirstArgs> = z.object({
   select: CompanyAliasSelectSchema.optional(),
   include: z.lazy(() => CompanyAliasIncludeSchema).optional(),
-  where: CompanyAliasWhereInputSchema.optional(),
-  orderBy: z.union([ CompanyAliasOrderByWithRelationInputSchema.array(),CompanyAliasOrderByWithRelationInputSchema ]).optional(),
-  cursor: CompanyAliasWhereUniqueInputSchema.optional(),
+  where: CompanyAliasWhereInputSchema.optional(), 
+  orderBy: z.union([ CompanyAliasOrderByWithRelationInputSchema.array(), CompanyAliasOrderByWithRelationInputSchema ]).optional(),
+  cursor: CompanyAliasWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-  distinct: z.union([ CompanyAliasScalarFieldEnumSchema,CompanyAliasScalarFieldEnumSchema.array() ]).optional(),
-}).strict() as z.ZodType<Prisma.CompanyAliasFindFirstArgs>;
+  distinct: z.union([ CompanyAliasScalarFieldEnumSchema, CompanyAliasScalarFieldEnumSchema.array() ]).optional(),
+}).strict();
 
 export default CompanyAliasFindFirstArgsSchema;

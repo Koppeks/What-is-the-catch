@@ -10,6 +10,6 @@ export const DocumentIncludeSchema: z.ZodType<Prisma.DocumentInclude> = z.object
   runs: z.union([z.boolean(),z.lazy(() => AnalysisRunFindManyArgsSchema)]).optional(),
   documentRules: z.union([z.boolean(),z.lazy(() => DocumentTriggerFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => DocumentCountOutputTypeArgsSchema)]).optional(),
-}).strict()
+}).strict();
 
 export default DocumentIncludeSchema;

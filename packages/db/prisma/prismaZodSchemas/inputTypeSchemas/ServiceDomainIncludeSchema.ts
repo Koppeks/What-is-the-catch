@@ -6,6 +6,6 @@ import { DomainArgsSchema } from "../outputTypeSchemas/DomainArgsSchema"
 export const ServiceDomainIncludeSchema: z.ZodType<Prisma.ServiceDomainInclude> = z.object({
   service: z.union([z.boolean(),z.lazy(() => ServiceArgsSchema)]).optional(),
   domain: z.union([z.boolean(),z.lazy(() => DomainArgsSchema)]).optional(),
-}).strict()
+}).strict();
 
 export default ServiceDomainIncludeSchema;

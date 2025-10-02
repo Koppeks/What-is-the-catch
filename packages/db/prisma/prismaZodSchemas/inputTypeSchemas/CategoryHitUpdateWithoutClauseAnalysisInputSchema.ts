@@ -5,10 +5,10 @@ import { StringFieldUpdateOperationsInputSchema } from './StringFieldUpdateOpera
 import { NullableFloatFieldUpdateOperationsInputSchema } from './NullableFloatFieldUpdateOperationsInputSchema';
 import { ClauseCategoryUpdateOneRequiredWithoutCategoryHitNestedInputSchema } from './ClauseCategoryUpdateOneRequiredWithoutCategoryHitNestedInputSchema';
 
-export const CategoryHitUpdateWithoutClauseAnalysisInputSchema: z.ZodType<Prisma.CategoryHitUpdateWithoutClauseAnalysisInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const CategoryHitUpdateWithoutClauseAnalysisInputSchema: z.ZodType<Prisma.CategoryHitUpdateWithoutClauseAnalysisInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   confidence: z.union([ z.number(),z.lazy(() => NullableFloatFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  category: z.lazy(() => ClauseCategoryUpdateOneRequiredWithoutCategoryHitNestedInputSchema).optional()
-}).strict() as z.ZodType<Prisma.CategoryHitUpdateWithoutClauseAnalysisInput>;
+  category: z.lazy(() => ClauseCategoryUpdateOneRequiredWithoutCategoryHitNestedInputSchema).optional(),
+});
 
 export default CategoryHitUpdateWithoutClauseAnalysisInputSchema;

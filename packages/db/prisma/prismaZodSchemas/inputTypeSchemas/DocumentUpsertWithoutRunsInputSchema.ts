@@ -7,10 +7,10 @@ import { DocumentCreateWithoutRunsInputSchema } from './DocumentCreateWithoutRun
 import { DocumentUncheckedCreateWithoutRunsInputSchema } from './DocumentUncheckedCreateWithoutRunsInputSchema';
 import { DocumentWhereInputSchema } from './DocumentWhereInputSchema';
 
-export const DocumentUpsertWithoutRunsInputSchema: z.ZodType<Prisma.DocumentUpsertWithoutRunsInput> = z.object({
-  update: z.union([ z.lazy(() => DocumentUpdateWithoutRunsInputSchema),z.lazy(() => DocumentUncheckedUpdateWithoutRunsInputSchema) ]),
-  create: z.union([ z.lazy(() => DocumentCreateWithoutRunsInputSchema),z.lazy(() => DocumentUncheckedCreateWithoutRunsInputSchema) ]),
-  where: z.lazy(() => DocumentWhereInputSchema).optional()
-}).strict() as z.ZodType<Prisma.DocumentUpsertWithoutRunsInput>;
+export const DocumentUpsertWithoutRunsInputSchema: z.ZodType<Prisma.DocumentUpsertWithoutRunsInput> = z.strictObject({
+  update: z.union([ z.lazy(() => DocumentUpdateWithoutRunsInputSchema), z.lazy(() => DocumentUncheckedUpdateWithoutRunsInputSchema) ]),
+  create: z.union([ z.lazy(() => DocumentCreateWithoutRunsInputSchema), z.lazy(() => DocumentUncheckedCreateWithoutRunsInputSchema) ]),
+  where: z.lazy(() => DocumentWhereInputSchema).optional(),
+});
 
 export default DocumentUpsertWithoutRunsInputSchema;

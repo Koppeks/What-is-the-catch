@@ -1,13 +1,13 @@
 import { z } from 'zod';
 import type { Prisma } from '@prisma/client';
-import { userWhereInputSchema } from '../inputTypeSchemas/userWhereInputSchema'
-import { userOrderByWithRelationInputSchema } from '../inputTypeSchemas/userOrderByWithRelationInputSchema'
-import { userWhereUniqueInputSchema } from '../inputTypeSchemas/userWhereUniqueInputSchema'
+import { UserWhereInputSchema } from '../inputTypeSchemas/UserWhereInputSchema'
+import { UserOrderByWithRelationInputSchema } from '../inputTypeSchemas/UserOrderByWithRelationInputSchema'
+import { UserWhereUniqueInputSchema } from '../inputTypeSchemas/UserWhereUniqueInputSchema'
 import { UserScalarFieldEnumSchema } from '../inputTypeSchemas/UserScalarFieldEnumSchema'
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
-export const userSelectSchema: z.ZodType<Prisma.userSelect> = z.object({
+export const UserSelectSchema: z.ZodType<Prisma.UserSelect> = z.object({
   id: z.boolean().optional(),
   email: z.boolean().optional(),
   username: z.boolean().optional(),
@@ -18,14 +18,14 @@ export const userSelectSchema: z.ZodType<Prisma.userSelect> = z.object({
   createdAt: z.boolean().optional(),
 }).strict()
 
-export const userFindFirstOrThrowArgsSchema: z.ZodType<Prisma.userFindFirstOrThrowArgs> = z.object({
-  select: userSelectSchema.optional(),
-  where: userWhereInputSchema.optional(),
-  orderBy: z.union([ userOrderByWithRelationInputSchema.array(),userOrderByWithRelationInputSchema ]).optional(),
-  cursor: userWhereUniqueInputSchema.optional(),
+export const UserFindFirstOrThrowArgsSchema: z.ZodType<Prisma.UserFindFirstOrThrowArgs> = z.object({
+  select: UserSelectSchema.optional(),
+  where: UserWhereInputSchema.optional(), 
+  orderBy: z.union([ UserOrderByWithRelationInputSchema.array(), UserOrderByWithRelationInputSchema ]).optional(),
+  cursor: UserWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-  distinct: z.union([ UserScalarFieldEnumSchema,UserScalarFieldEnumSchema.array() ]).optional(),
-}).strict() as z.ZodType<Prisma.userFindFirstOrThrowArgs>;
+  distinct: z.union([ UserScalarFieldEnumSchema, UserScalarFieldEnumSchema.array() ]).optional(),
+}).strict();
 
-export default userFindFirstOrThrowArgsSchema;
+export default UserFindFirstOrThrowArgsSchema;

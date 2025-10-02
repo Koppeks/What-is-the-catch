@@ -25,9 +25,9 @@ export const DocumentTriggerSelectSchema: z.ZodType<Prisma.DocumentTriggerSelect
 export const DocumentTriggerUpsertArgsSchema: z.ZodType<Prisma.DocumentTriggerUpsertArgs> = z.object({
   select: DocumentTriggerSelectSchema.optional(),
   include: z.lazy(() => DocumentTriggerIncludeSchema).optional(),
-  where: DocumentTriggerWhereUniqueInputSchema,
-  create: z.union([ DocumentTriggerCreateInputSchema,DocumentTriggerUncheckedCreateInputSchema ]),
-  update: z.union([ DocumentTriggerUpdateInputSchema,DocumentTriggerUncheckedUpdateInputSchema ]),
-}).strict() as z.ZodType<Prisma.DocumentTriggerUpsertArgs>;
+  where: DocumentTriggerWhereUniqueInputSchema, 
+  create: z.union([ DocumentTriggerCreateInputSchema, DocumentTriggerUncheckedCreateInputSchema ]),
+  update: z.union([ DocumentTriggerUpdateInputSchema, DocumentTriggerUncheckedUpdateInputSchema ]),
+}).strict();
 
 export default DocumentTriggerUpsertArgsSchema;

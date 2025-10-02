@@ -37,7 +37,7 @@ export const TriggerSelectSchema: z.ZodType<Prisma.TriggerSelect> = z.object({
 export const TriggerDeleteArgsSchema: z.ZodType<Prisma.TriggerDeleteArgs> = z.object({
   select: TriggerSelectSchema.optional(),
   include: z.lazy(() => TriggerIncludeSchema).optional(),
-  where: TriggerWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.TriggerDeleteArgs>;
+  where: TriggerWhereUniqueInputSchema, 
+}).strict();
 
 export default TriggerDeleteArgsSchema;

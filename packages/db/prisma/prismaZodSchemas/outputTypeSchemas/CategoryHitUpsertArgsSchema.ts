@@ -23,9 +23,9 @@ export const CategoryHitSelectSchema: z.ZodType<Prisma.CategoryHitSelect> = z.ob
 export const CategoryHitUpsertArgsSchema: z.ZodType<Prisma.CategoryHitUpsertArgs> = z.object({
   select: CategoryHitSelectSchema.optional(),
   include: z.lazy(() => CategoryHitIncludeSchema).optional(),
-  where: CategoryHitWhereUniqueInputSchema,
-  create: z.union([ CategoryHitCreateInputSchema,CategoryHitUncheckedCreateInputSchema ]),
-  update: z.union([ CategoryHitUpdateInputSchema,CategoryHitUncheckedUpdateInputSchema ]),
-}).strict() as z.ZodType<Prisma.CategoryHitUpsertArgs>;
+  where: CategoryHitWhereUniqueInputSchema, 
+  create: z.union([ CategoryHitCreateInputSchema, CategoryHitUncheckedCreateInputSchema ]),
+  update: z.union([ CategoryHitUpdateInputSchema, CategoryHitUncheckedUpdateInputSchema ]),
+}).strict();
 
 export default CategoryHitUpsertArgsSchema;

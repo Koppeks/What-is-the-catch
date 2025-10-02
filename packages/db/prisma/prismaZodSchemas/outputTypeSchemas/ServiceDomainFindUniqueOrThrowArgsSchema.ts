@@ -19,7 +19,7 @@ export const ServiceDomainSelectSchema: z.ZodType<Prisma.ServiceDomainSelect> = 
 export const ServiceDomainFindUniqueOrThrowArgsSchema: z.ZodType<Prisma.ServiceDomainFindUniqueOrThrowArgs> = z.object({
   select: ServiceDomainSelectSchema.optional(),
   include: z.lazy(() => ServiceDomainIncludeSchema).optional(),
-  where: ServiceDomainWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.ServiceDomainFindUniqueOrThrowArgs>;
+  where: ServiceDomainWhereUniqueInputSchema, 
+}).strict();
 
 export default ServiceDomainFindUniqueOrThrowArgsSchema;

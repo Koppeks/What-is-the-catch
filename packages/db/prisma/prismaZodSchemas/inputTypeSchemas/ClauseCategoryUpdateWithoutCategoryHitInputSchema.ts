@@ -8,18 +8,18 @@ import { ClauseCategoryUpdatetriggerKeywordsInputSchema } from './ClauseCategory
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { TriggerUpdateManyWithoutClauseCategoryNestedInputSchema } from './TriggerUpdateManyWithoutClauseCategoryNestedInputSchema';
 
-export const ClauseCategoryUpdateWithoutCategoryHitInputSchema: z.ZodType<Prisma.ClauseCategoryUpdateWithoutCategoryHitInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const ClauseCategoryUpdateWithoutCategoryHitInputSchema: z.ZodType<Prisma.ClauseCategoryUpdateWithoutCategoryHitInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   slug: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   version: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   defaultScoring: z.union([ z.number(),z.lazy(() => FloatFieldUpdateOperationsInputSchema) ]).optional(),
   label: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   isActive: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
   triggerInstruction: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  triggerKeywords: z.union([ z.lazy(() => ClauseCategoryUpdatetriggerKeywordsInputSchema),z.string().array() ]).optional(),
+  triggerKeywords: z.union([ z.lazy(() => ClauseCategoryUpdatetriggerKeywordsInputSchema), z.string().array() ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  Trigger: z.lazy(() => TriggerUpdateManyWithoutClauseCategoryNestedInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseCategoryUpdateWithoutCategoryHitInput>;
+  Trigger: z.lazy(() => TriggerUpdateManyWithoutClauseCategoryNestedInputSchema).optional(),
+});
 
 export default ClauseCategoryUpdateWithoutCategoryHitInputSchema;

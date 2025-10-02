@@ -6,11 +6,11 @@ import { NullableFloatFieldUpdateOperationsInputSchema } from './NullableFloatFi
 import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSchema';
 import { InputJsonValueSchema } from './InputJsonValueSchema';
 
-export const TriggerHitUncheckedUpdateWithoutTriggerInputSchema: z.ZodType<Prisma.TriggerHitUncheckedUpdateWithoutTriggerInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const TriggerHitUncheckedUpdateWithoutTriggerInputSchema: z.ZodType<Prisma.TriggerHitUncheckedUpdateWithoutTriggerInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   clauseId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   confidence: z.union([ z.number(),z.lazy(() => NullableFloatFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  matches: z.union([ z.lazy(() => NullableJsonNullValueInputSchema),InputJsonValueSchema ]).optional(),
-}).strict() as z.ZodType<Prisma.TriggerHitUncheckedUpdateWithoutTriggerInput>;
+  matches: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
+});
 
 export default TriggerHitUncheckedUpdateWithoutTriggerInputSchema;

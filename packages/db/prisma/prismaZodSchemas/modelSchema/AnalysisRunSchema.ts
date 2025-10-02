@@ -11,7 +11,7 @@ import type { ClauseAnalysisWithRelations, ClauseAnalysisPartialWithRelations } 
 
 export const AnalysisRunSchema = z.object({
   status: AnalysisStatusSchema,
-  id: z.string().cuid(),
+  id: z.cuid(),
   documentId: z.string(),
   engineVersion: z.string(),
   startedAt: z.coerce.date(),

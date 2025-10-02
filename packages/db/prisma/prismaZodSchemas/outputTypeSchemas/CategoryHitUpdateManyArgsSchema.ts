@@ -5,9 +5,9 @@ import { CategoryHitUncheckedUpdateManyInputSchema } from '../inputTypeSchemas/C
 import { CategoryHitWhereInputSchema } from '../inputTypeSchemas/CategoryHitWhereInputSchema'
 
 export const CategoryHitUpdateManyArgsSchema: z.ZodType<Prisma.CategoryHitUpdateManyArgs> = z.object({
-  data: z.union([ CategoryHitUpdateManyMutationInputSchema,CategoryHitUncheckedUpdateManyInputSchema ]),
-  where: CategoryHitWhereInputSchema.optional(),
+  data: z.union([ CategoryHitUpdateManyMutationInputSchema, CategoryHitUncheckedUpdateManyInputSchema ]),
+  where: CategoryHitWhereInputSchema.optional(), 
   limit: z.number().optional(),
-}).strict() as z.ZodType<Prisma.CategoryHitUpdateManyArgs>;
+}).strict();
 
 export default CategoryHitUpdateManyArgsSchema;

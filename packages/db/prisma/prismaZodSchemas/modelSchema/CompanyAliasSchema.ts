@@ -9,7 +9,7 @@ import type { CompanyWithRelations, CompanyPartialWithRelations } from './Compan
 
 export const CompanyAliasSchema = z.object({
   kind: AliasKindSchema,
-  id: z.string().cuid(),
+  id: z.cuid(),
   companyId: z.string(),
   value: z.string(),
   valueNorm: z.string(),

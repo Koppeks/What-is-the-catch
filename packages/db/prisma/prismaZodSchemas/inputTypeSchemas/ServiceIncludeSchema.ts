@@ -8,6 +8,6 @@ export const ServiceIncludeSchema: z.ZodType<Prisma.ServiceInclude> = z.object({
   company: z.union([z.boolean(),z.lazy(() => CompanyArgsSchema)]).optional(),
   ServiceDomain: z.union([z.boolean(),z.lazy(() => ServiceDomainFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => ServiceCountOutputTypeArgsSchema)]).optional(),
-}).strict()
+}).strict();
 
 export default ServiceIncludeSchema;

@@ -29,7 +29,7 @@ export const DocumentSelectSchema: z.ZodType<Prisma.DocumentSelect> = z.object({
 export const DocumentCreateArgsSchema: z.ZodType<Prisma.DocumentCreateArgs> = z.object({
   select: DocumentSelectSchema.optional(),
   include: z.lazy(() => DocumentIncludeSchema).optional(),
-  data: z.union([ DocumentCreateInputSchema,DocumentUncheckedCreateInputSchema ]),
-}).strict() as z.ZodType<Prisma.DocumentCreateArgs>;
+  data: z.union([ DocumentCreateInputSchema, DocumentUncheckedCreateInputSchema ]),
+}).strict();
 
 export default DocumentCreateArgsSchema;

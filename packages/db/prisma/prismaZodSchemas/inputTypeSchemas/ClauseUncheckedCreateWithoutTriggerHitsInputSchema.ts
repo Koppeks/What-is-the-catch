@@ -6,8 +6,8 @@ import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { ClauseUncheckedCreateNestedManyWithoutParentInputSchema } from './ClauseUncheckedCreateNestedManyWithoutParentInputSchema';
 import { ClauseAnalysisUncheckedCreateNestedManyWithoutClauseInputSchema } from './ClauseAnalysisUncheckedCreateNestedManyWithoutClauseInputSchema';
 
-export const ClauseUncheckedCreateWithoutTriggerHitsInputSchema: z.ZodType<Prisma.ClauseUncheckedCreateWithoutTriggerHitsInput> = z.object({
-  id: z.string().cuid().optional(),
+export const ClauseUncheckedCreateWithoutTriggerHitsInputSchema: z.ZodType<Prisma.ClauseUncheckedCreateWithoutTriggerHitsInput> = z.strictObject({
+  id: z.cuid().optional(),
   documentId: z.string(),
   parentId: z.string().optional().nullable(),
   ordinalPath: z.string(),
@@ -15,11 +15,11 @@ export const ClauseUncheckedCreateWithoutTriggerHitsInputSchema: z.ZodType<Prism
   text: z.string(),
   order: z.number().int(),
   depth: z.number().int(),
-  meta: z.union([ z.lazy(() => NullableJsonNullValueInputSchema),InputJsonValueSchema ]).optional(),
+  meta: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   children: z.lazy(() => ClauseUncheckedCreateNestedManyWithoutParentInputSchema).optional(),
-  ClauseAnalysis: z.lazy(() => ClauseAnalysisUncheckedCreateNestedManyWithoutClauseInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseUncheckedCreateWithoutTriggerHitsInput>;
+  ClauseAnalysis: z.lazy(() => ClauseAnalysisUncheckedCreateNestedManyWithoutClauseInputSchema).optional(),
+});
 
 export default ClauseUncheckedCreateWithoutTriggerHitsInputSchema;

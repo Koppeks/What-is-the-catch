@@ -7,10 +7,10 @@ import { ClauseUncheckedUpdateWithoutParentInputSchema } from './ClauseUnchecked
 import { ClauseCreateWithoutParentInputSchema } from './ClauseCreateWithoutParentInputSchema';
 import { ClauseUncheckedCreateWithoutParentInputSchema } from './ClauseUncheckedCreateWithoutParentInputSchema';
 
-export const ClauseUpsertWithWhereUniqueWithoutParentInputSchema: z.ZodType<Prisma.ClauseUpsertWithWhereUniqueWithoutParentInput> = z.object({
+export const ClauseUpsertWithWhereUniqueWithoutParentInputSchema: z.ZodType<Prisma.ClauseUpsertWithWhereUniqueWithoutParentInput> = z.strictObject({
   where: z.lazy(() => ClauseWhereUniqueInputSchema),
-  update: z.union([ z.lazy(() => ClauseUpdateWithoutParentInputSchema),z.lazy(() => ClauseUncheckedUpdateWithoutParentInputSchema) ]),
-  create: z.union([ z.lazy(() => ClauseCreateWithoutParentInputSchema),z.lazy(() => ClauseUncheckedCreateWithoutParentInputSchema) ]),
-}).strict() as z.ZodType<Prisma.ClauseUpsertWithWhereUniqueWithoutParentInput>;
+  update: z.union([ z.lazy(() => ClauseUpdateWithoutParentInputSchema), z.lazy(() => ClauseUncheckedUpdateWithoutParentInputSchema) ]),
+  create: z.union([ z.lazy(() => ClauseCreateWithoutParentInputSchema), z.lazy(() => ClauseUncheckedCreateWithoutParentInputSchema) ]),
+});
 
 export default ClauseUpsertWithWhereUniqueWithoutParentInputSchema;

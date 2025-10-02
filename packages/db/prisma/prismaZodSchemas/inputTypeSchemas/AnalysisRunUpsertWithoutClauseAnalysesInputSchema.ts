@@ -7,10 +7,10 @@ import { AnalysisRunCreateWithoutClauseAnalysesInputSchema } from './AnalysisRun
 import { AnalysisRunUncheckedCreateWithoutClauseAnalysesInputSchema } from './AnalysisRunUncheckedCreateWithoutClauseAnalysesInputSchema';
 import { AnalysisRunWhereInputSchema } from './AnalysisRunWhereInputSchema';
 
-export const AnalysisRunUpsertWithoutClauseAnalysesInputSchema: z.ZodType<Prisma.AnalysisRunUpsertWithoutClauseAnalysesInput> = z.object({
-  update: z.union([ z.lazy(() => AnalysisRunUpdateWithoutClauseAnalysesInputSchema),z.lazy(() => AnalysisRunUncheckedUpdateWithoutClauseAnalysesInputSchema) ]),
-  create: z.union([ z.lazy(() => AnalysisRunCreateWithoutClauseAnalysesInputSchema),z.lazy(() => AnalysisRunUncheckedCreateWithoutClauseAnalysesInputSchema) ]),
-  where: z.lazy(() => AnalysisRunWhereInputSchema).optional()
-}).strict() as z.ZodType<Prisma.AnalysisRunUpsertWithoutClauseAnalysesInput>;
+export const AnalysisRunUpsertWithoutClauseAnalysesInputSchema: z.ZodType<Prisma.AnalysisRunUpsertWithoutClauseAnalysesInput> = z.strictObject({
+  update: z.union([ z.lazy(() => AnalysisRunUpdateWithoutClauseAnalysesInputSchema), z.lazy(() => AnalysisRunUncheckedUpdateWithoutClauseAnalysesInputSchema) ]),
+  create: z.union([ z.lazy(() => AnalysisRunCreateWithoutClauseAnalysesInputSchema), z.lazy(() => AnalysisRunUncheckedCreateWithoutClauseAnalysesInputSchema) ]),
+  where: z.lazy(() => AnalysisRunWhereInputSchema).optional(),
+});
 
 export default AnalysisRunUpsertWithoutClauseAnalysesInputSchema;

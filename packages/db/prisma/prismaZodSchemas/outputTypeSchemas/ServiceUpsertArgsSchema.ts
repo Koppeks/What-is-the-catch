@@ -28,9 +28,9 @@ export const ServiceSelectSchema: z.ZodType<Prisma.ServiceSelect> = z.object({
 export const ServiceUpsertArgsSchema: z.ZodType<Prisma.ServiceUpsertArgs> = z.object({
   select: ServiceSelectSchema.optional(),
   include: z.lazy(() => ServiceIncludeSchema).optional(),
-  where: ServiceWhereUniqueInputSchema,
-  create: z.union([ ServiceCreateInputSchema,ServiceUncheckedCreateInputSchema ]),
-  update: z.union([ ServiceUpdateInputSchema,ServiceUncheckedUpdateInputSchema ]),
-}).strict() as z.ZodType<Prisma.ServiceUpsertArgs>;
+  where: ServiceWhereUniqueInputSchema, 
+  create: z.union([ ServiceCreateInputSchema, ServiceUncheckedCreateInputSchema ]),
+  update: z.union([ ServiceUpdateInputSchema, ServiceUncheckedUpdateInputSchema ]),
+}).strict();
 
 export default ServiceUpsertArgsSchema;

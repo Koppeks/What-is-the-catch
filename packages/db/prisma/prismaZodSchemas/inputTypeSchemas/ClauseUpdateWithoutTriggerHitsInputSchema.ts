@@ -11,20 +11,20 @@ import { ClauseUpdateOneWithoutChildrenNestedInputSchema } from './ClauseUpdateO
 import { ClauseUpdateManyWithoutParentNestedInputSchema } from './ClauseUpdateManyWithoutParentNestedInputSchema';
 import { ClauseAnalysisUpdateManyWithoutClauseNestedInputSchema } from './ClauseAnalysisUpdateManyWithoutClauseNestedInputSchema';
 
-export const ClauseUpdateWithoutTriggerHitsInputSchema: z.ZodType<Prisma.ClauseUpdateWithoutTriggerHitsInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const ClauseUpdateWithoutTriggerHitsInputSchema: z.ZodType<Prisma.ClauseUpdateWithoutTriggerHitsInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   ordinalPath: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   title: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   text: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   order: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   depth: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
-  meta: z.union([ z.lazy(() => NullableJsonNullValueInputSchema),InputJsonValueSchema ]).optional(),
+  meta: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   document: z.lazy(() => DocumentUpdateOneRequiredWithoutClausesNestedInputSchema).optional(),
   parent: z.lazy(() => ClauseUpdateOneWithoutChildrenNestedInputSchema).optional(),
   children: z.lazy(() => ClauseUpdateManyWithoutParentNestedInputSchema).optional(),
-  ClauseAnalysis: z.lazy(() => ClauseAnalysisUpdateManyWithoutClauseNestedInputSchema).optional()
-}).strict() as z.ZodType<Prisma.ClauseUpdateWithoutTriggerHitsInput>;
+  ClauseAnalysis: z.lazy(() => ClauseAnalysisUpdateManyWithoutClauseNestedInputSchema).optional(),
+});
 
 export default ClauseUpdateWithoutTriggerHitsInputSchema;

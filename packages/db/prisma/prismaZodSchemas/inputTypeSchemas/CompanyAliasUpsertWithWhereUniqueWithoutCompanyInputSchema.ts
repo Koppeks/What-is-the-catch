@@ -7,10 +7,10 @@ import { CompanyAliasUncheckedUpdateWithoutCompanyInputSchema } from './CompanyA
 import { CompanyAliasCreateWithoutCompanyInputSchema } from './CompanyAliasCreateWithoutCompanyInputSchema';
 import { CompanyAliasUncheckedCreateWithoutCompanyInputSchema } from './CompanyAliasUncheckedCreateWithoutCompanyInputSchema';
 
-export const CompanyAliasUpsertWithWhereUniqueWithoutCompanyInputSchema: z.ZodType<Prisma.CompanyAliasUpsertWithWhereUniqueWithoutCompanyInput> = z.object({
+export const CompanyAliasUpsertWithWhereUniqueWithoutCompanyInputSchema: z.ZodType<Prisma.CompanyAliasUpsertWithWhereUniqueWithoutCompanyInput> = z.strictObject({
   where: z.lazy(() => CompanyAliasWhereUniqueInputSchema),
-  update: z.union([ z.lazy(() => CompanyAliasUpdateWithoutCompanyInputSchema),z.lazy(() => CompanyAliasUncheckedUpdateWithoutCompanyInputSchema) ]),
-  create: z.union([ z.lazy(() => CompanyAliasCreateWithoutCompanyInputSchema),z.lazy(() => CompanyAliasUncheckedCreateWithoutCompanyInputSchema) ]),
-}).strict() as z.ZodType<Prisma.CompanyAliasUpsertWithWhereUniqueWithoutCompanyInput>;
+  update: z.union([ z.lazy(() => CompanyAliasUpdateWithoutCompanyInputSchema), z.lazy(() => CompanyAliasUncheckedUpdateWithoutCompanyInputSchema) ]),
+  create: z.union([ z.lazy(() => CompanyAliasCreateWithoutCompanyInputSchema), z.lazy(() => CompanyAliasUncheckedCreateWithoutCompanyInputSchema) ]),
+});
 
 export default CompanyAliasUpsertWithWhereUniqueWithoutCompanyInputSchema;

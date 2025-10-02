@@ -6,12 +6,12 @@ import { DocumentScalarFieldEnumSchema } from '../inputTypeSchemas/DocumentScala
 import { DocumentScalarWhereWithAggregatesInputSchema } from '../inputTypeSchemas/DocumentScalarWhereWithAggregatesInputSchema'
 
 export const DocumentGroupByArgsSchema: z.ZodType<Prisma.DocumentGroupByArgs> = z.object({
-  where: DocumentWhereInputSchema.optional(),
-  orderBy: z.union([ DocumentOrderByWithAggregationInputSchema.array(),DocumentOrderByWithAggregationInputSchema ]).optional(),
-  by: DocumentScalarFieldEnumSchema.array(),
-  having: DocumentScalarWhereWithAggregatesInputSchema.optional(),
+  where: DocumentWhereInputSchema.optional(), 
+  orderBy: z.union([ DocumentOrderByWithAggregationInputSchema.array(), DocumentOrderByWithAggregationInputSchema ]).optional(),
+  by: DocumentScalarFieldEnumSchema.array(), 
+  having: DocumentScalarWhereWithAggregatesInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-}).strict() as z.ZodType<Prisma.DocumentGroupByArgs>;
+}).strict();
 
 export default DocumentGroupByArgsSchema;

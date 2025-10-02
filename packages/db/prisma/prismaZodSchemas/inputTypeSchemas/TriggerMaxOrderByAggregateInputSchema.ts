@@ -3,7 +3,7 @@ import type { Prisma } from '@prisma/client';
 import { z } from 'zod';
 import { SortOrderSchema } from './SortOrderSchema';
 
-export const TriggerMaxOrderByAggregateInputSchema: z.ZodType<Prisma.TriggerMaxOrderByAggregateInput> = z.object({
+export const TriggerMaxOrderByAggregateInputSchema: z.ZodType<Prisma.TriggerMaxOrderByAggregateInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   key: z.lazy(() => SortOrderSchema).optional(),
   label: z.lazy(() => SortOrderSchema).optional(),
@@ -16,7 +16,7 @@ export const TriggerMaxOrderByAggregateInputSchema: z.ZodType<Prisma.TriggerMaxO
   clauseCategoryId: z.lazy(() => SortOrderSchema).optional(),
   defaultSeverity: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
-  updatedAt: z.lazy(() => SortOrderSchema).optional()
-}).strict() as z.ZodType<Prisma.TriggerMaxOrderByAggregateInput>;
+  updatedAt: z.lazy(() => SortOrderSchema).optional(),
+});
 
 export default TriggerMaxOrderByAggregateInputSchema;

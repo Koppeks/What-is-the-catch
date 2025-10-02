@@ -5,9 +5,9 @@ import { ServiceDomainWhereUniqueInputSchema } from './ServiceDomainWhereUniqueI
 import { ServiceDomainUpdateWithoutDomainInputSchema } from './ServiceDomainUpdateWithoutDomainInputSchema';
 import { ServiceDomainUncheckedUpdateWithoutDomainInputSchema } from './ServiceDomainUncheckedUpdateWithoutDomainInputSchema';
 
-export const ServiceDomainUpdateWithWhereUniqueWithoutDomainInputSchema: z.ZodType<Prisma.ServiceDomainUpdateWithWhereUniqueWithoutDomainInput> = z.object({
+export const ServiceDomainUpdateWithWhereUniqueWithoutDomainInputSchema: z.ZodType<Prisma.ServiceDomainUpdateWithWhereUniqueWithoutDomainInput> = z.strictObject({
   where: z.lazy(() => ServiceDomainWhereUniqueInputSchema),
-  data: z.union([ z.lazy(() => ServiceDomainUpdateWithoutDomainInputSchema),z.lazy(() => ServiceDomainUncheckedUpdateWithoutDomainInputSchema) ]),
-}).strict() as z.ZodType<Prisma.ServiceDomainUpdateWithWhereUniqueWithoutDomainInput>;
+  data: z.union([ z.lazy(() => ServiceDomainUpdateWithoutDomainInputSchema), z.lazy(() => ServiceDomainUncheckedUpdateWithoutDomainInputSchema) ]),
+});
 
 export default ServiceDomainUpdateWithWhereUniqueWithoutDomainInputSchema;

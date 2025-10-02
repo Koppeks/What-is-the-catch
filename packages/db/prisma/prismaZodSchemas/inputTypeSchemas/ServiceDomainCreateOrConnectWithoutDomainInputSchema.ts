@@ -5,9 +5,9 @@ import { ServiceDomainWhereUniqueInputSchema } from './ServiceDomainWhereUniqueI
 import { ServiceDomainCreateWithoutDomainInputSchema } from './ServiceDomainCreateWithoutDomainInputSchema';
 import { ServiceDomainUncheckedCreateWithoutDomainInputSchema } from './ServiceDomainUncheckedCreateWithoutDomainInputSchema';
 
-export const ServiceDomainCreateOrConnectWithoutDomainInputSchema: z.ZodType<Prisma.ServiceDomainCreateOrConnectWithoutDomainInput> = z.object({
+export const ServiceDomainCreateOrConnectWithoutDomainInputSchema: z.ZodType<Prisma.ServiceDomainCreateOrConnectWithoutDomainInput> = z.strictObject({
   where: z.lazy(() => ServiceDomainWhereUniqueInputSchema),
-  create: z.union([ z.lazy(() => ServiceDomainCreateWithoutDomainInputSchema),z.lazy(() => ServiceDomainUncheckedCreateWithoutDomainInputSchema) ]),
-}).strict() as z.ZodType<Prisma.ServiceDomainCreateOrConnectWithoutDomainInput>;
+  create: z.union([ z.lazy(() => ServiceDomainCreateWithoutDomainInputSchema), z.lazy(() => ServiceDomainUncheckedCreateWithoutDomainInputSchema) ]),
+});
 
 export default ServiceDomainCreateOrConnectWithoutDomainInputSchema;

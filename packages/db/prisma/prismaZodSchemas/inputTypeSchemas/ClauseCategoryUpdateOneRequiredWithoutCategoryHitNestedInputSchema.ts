@@ -10,12 +10,12 @@ import { ClauseCategoryUpdateToOneWithWhereWithoutCategoryHitInputSchema } from 
 import { ClauseCategoryUpdateWithoutCategoryHitInputSchema } from './ClauseCategoryUpdateWithoutCategoryHitInputSchema';
 import { ClauseCategoryUncheckedUpdateWithoutCategoryHitInputSchema } from './ClauseCategoryUncheckedUpdateWithoutCategoryHitInputSchema';
 
-export const ClauseCategoryUpdateOneRequiredWithoutCategoryHitNestedInputSchema: z.ZodType<Prisma.ClauseCategoryUpdateOneRequiredWithoutCategoryHitNestedInput> = z.object({
-  create: z.union([ z.lazy(() => ClauseCategoryCreateWithoutCategoryHitInputSchema),z.lazy(() => ClauseCategoryUncheckedCreateWithoutCategoryHitInputSchema) ]).optional(),
+export const ClauseCategoryUpdateOneRequiredWithoutCategoryHitNestedInputSchema: z.ZodType<Prisma.ClauseCategoryUpdateOneRequiredWithoutCategoryHitNestedInput> = z.strictObject({
+  create: z.union([ z.lazy(() => ClauseCategoryCreateWithoutCategoryHitInputSchema), z.lazy(() => ClauseCategoryUncheckedCreateWithoutCategoryHitInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => ClauseCategoryCreateOrConnectWithoutCategoryHitInputSchema).optional(),
   upsert: z.lazy(() => ClauseCategoryUpsertWithoutCategoryHitInputSchema).optional(),
   connect: z.lazy(() => ClauseCategoryWhereUniqueInputSchema).optional(),
-  update: z.union([ z.lazy(() => ClauseCategoryUpdateToOneWithWhereWithoutCategoryHitInputSchema),z.lazy(() => ClauseCategoryUpdateWithoutCategoryHitInputSchema),z.lazy(() => ClauseCategoryUncheckedUpdateWithoutCategoryHitInputSchema) ]).optional(),
-}).strict() as z.ZodType<Prisma.ClauseCategoryUpdateOneRequiredWithoutCategoryHitNestedInput>;
+  update: z.union([ z.lazy(() => ClauseCategoryUpdateToOneWithWhereWithoutCategoryHitInputSchema), z.lazy(() => ClauseCategoryUpdateWithoutCategoryHitInputSchema), z.lazy(() => ClauseCategoryUncheckedUpdateWithoutCategoryHitInputSchema) ]).optional(),
+});
 
 export default ClauseCategoryUpdateOneRequiredWithoutCategoryHitNestedInputSchema;

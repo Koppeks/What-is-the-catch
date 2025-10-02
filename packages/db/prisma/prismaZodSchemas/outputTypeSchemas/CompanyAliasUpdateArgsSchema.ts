@@ -22,8 +22,8 @@ export const CompanyAliasSelectSchema: z.ZodType<Prisma.CompanyAliasSelect> = z.
 export const CompanyAliasUpdateArgsSchema: z.ZodType<Prisma.CompanyAliasUpdateArgs> = z.object({
   select: CompanyAliasSelectSchema.optional(),
   include: z.lazy(() => CompanyAliasIncludeSchema).optional(),
-  data: z.union([ CompanyAliasUpdateInputSchema,CompanyAliasUncheckedUpdateInputSchema ]),
-  where: CompanyAliasWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.CompanyAliasUpdateArgs>;
+  data: z.union([ CompanyAliasUpdateInputSchema, CompanyAliasUncheckedUpdateInputSchema ]),
+  where: CompanyAliasWhereUniqueInputSchema, 
+}).strict();
 
 export default CompanyAliasUpdateArgsSchema;

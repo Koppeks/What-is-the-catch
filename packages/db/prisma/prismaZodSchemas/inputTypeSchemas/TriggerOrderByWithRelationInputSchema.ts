@@ -8,26 +8,26 @@ import { ClauseCategoryOrderByWithRelationInputSchema } from './ClauseCategoryOr
 import { TriggerHitOrderByRelationAggregateInputSchema } from './TriggerHitOrderByRelationAggregateInputSchema';
 import { DocumentTriggerOrderByRelationAggregateInputSchema } from './DocumentTriggerOrderByRelationAggregateInputSchema';
 
-export const TriggerOrderByWithRelationInputSchema: z.ZodType<Prisma.TriggerOrderByWithRelationInput> = z.object({
+export const TriggerOrderByWithRelationInputSchema: z.ZodType<Prisma.TriggerOrderByWithRelationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   key: z.lazy(() => SortOrderSchema).optional(),
   label: z.lazy(() => SortOrderSchema).optional(),
-  description: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  description: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   patterns: z.lazy(() => SortOrderSchema).optional(),
   source: z.lazy(() => SortOrderSchema).optional(),
   state: z.lazy(() => SortOrderSchema).optional(),
-  mergedIntoId: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
-  reviewNotes: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
-  promotedAt: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  mergedIntoId: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
+  reviewNotes: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
+  promotedAt: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   clauseCategoryId: z.lazy(() => SortOrderSchema).optional(),
-  defaultSeverity: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  defaultSeverity: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional(),
   mergedInto: z.lazy(() => TriggerOrderByWithRelationInputSchema).optional(),
   mergeFrom: z.lazy(() => TriggerOrderByRelationAggregateInputSchema).optional(),
   clauseCategory: z.lazy(() => ClauseCategoryOrderByWithRelationInputSchema).optional(),
   hits: z.lazy(() => TriggerHitOrderByRelationAggregateInputSchema).optional(),
-  documentRules: z.lazy(() => DocumentTriggerOrderByRelationAggregateInputSchema).optional()
-}).strict() as z.ZodType<Prisma.TriggerOrderByWithRelationInput>;
+  documentRules: z.lazy(() => DocumentTriggerOrderByRelationAggregateInputSchema).optional(),
+});
 
 export default TriggerOrderByWithRelationInputSchema;

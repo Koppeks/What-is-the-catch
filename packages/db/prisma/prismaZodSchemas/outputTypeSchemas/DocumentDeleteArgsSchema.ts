@@ -28,7 +28,7 @@ export const DocumentSelectSchema: z.ZodType<Prisma.DocumentSelect> = z.object({
 export const DocumentDeleteArgsSchema: z.ZodType<Prisma.DocumentDeleteArgs> = z.object({
   select: DocumentSelectSchema.optional(),
   include: z.lazy(() => DocumentIncludeSchema).optional(),
-  where: DocumentWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.DocumentDeleteArgs>;
+  where: DocumentWhereUniqueInputSchema, 
+}).strict();
 
 export default DocumentDeleteArgsSchema;

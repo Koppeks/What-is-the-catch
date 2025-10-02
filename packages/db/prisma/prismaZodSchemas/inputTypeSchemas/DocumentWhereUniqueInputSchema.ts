@@ -16,24 +16,24 @@ import { AnalysisRunListRelationFilterSchema } from './AnalysisRunListRelationFi
 import { DocumentTriggerListRelationFilterSchema } from './DocumentTriggerListRelationFilterSchema';
 
 export const DocumentWhereUniqueInputSchema: z.ZodType<Prisma.DocumentWhereUniqueInput> = z.object({
-  id: z.string().cuid()
+  id: z.cuid(),
 })
-.and(z.object({
-  id: z.string().cuid().optional(),
-  AND: z.union([ z.lazy(() => DocumentWhereInputSchema),z.lazy(() => DocumentWhereInputSchema).array() ]).optional(),
+.and(z.strictObject({
+  id: z.cuid().optional(),
+  AND: z.union([ z.lazy(() => DocumentWhereInputSchema), z.lazy(() => DocumentWhereInputSchema).array() ]).optional(),
   OR: z.lazy(() => DocumentWhereInputSchema).array().optional(),
-  NOT: z.union([ z.lazy(() => DocumentWhereInputSchema),z.lazy(() => DocumentWhereInputSchema).array() ]).optional(),
-  name: z.union([ z.lazy(() => StringFilterSchema),z.string() ]).optional(),
-  locale: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
-  kind: z.union([ z.lazy(() => EnumDocumentKindNullableFilterSchema),z.lazy(() => DocumentKindSchema) ]).optional().nullable(),
-  type: z.union([ z.lazy(() => EnumTypeRequestFilterSchema),z.lazy(() => TypeRequestSchema) ]).optional(),
-  status: z.union([ z.lazy(() => EnumAnalysisStatusFilterSchema),z.lazy(() => AnalysisStatusSchema) ]).optional(),
-  sourceUrl: z.union([ z.lazy(() => StringNullableFilterSchema),z.string() ]).optional().nullable(),
-  updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
-  createdAt: z.union([ z.lazy(() => DateTimeFilterSchema),z.coerce.date() ]).optional(),
+  NOT: z.union([ z.lazy(() => DocumentWhereInputSchema), z.lazy(() => DocumentWhereInputSchema).array() ]).optional(),
+  name: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  locale: z.union([ z.lazy(() => StringNullableFilterSchema), z.string() ]).optional().nullable(),
+  kind: z.union([ z.lazy(() => EnumDocumentKindNullableFilterSchema), z.lazy(() => DocumentKindSchema) ]).optional().nullable(),
+  type: z.union([ z.lazy(() => EnumTypeRequestFilterSchema), z.lazy(() => TypeRequestSchema) ]).optional(),
+  status: z.union([ z.lazy(() => EnumAnalysisStatusFilterSchema), z.lazy(() => AnalysisStatusSchema) ]).optional(),
+  sourceUrl: z.union([ z.lazy(() => StringNullableFilterSchema), z.string() ]).optional().nullable(),
+  updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
+  createdAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
   clauses: z.lazy(() => ClauseListRelationFilterSchema).optional(),
   runs: z.lazy(() => AnalysisRunListRelationFilterSchema).optional(),
-  documentRules: z.lazy(() => DocumentTriggerListRelationFilterSchema).optional()
-}).strict()) as z.ZodType<Prisma.DocumentWhereUniqueInput>;
+  documentRules: z.lazy(() => DocumentTriggerListRelationFilterSchema).optional(),
+}));
 
 export default DocumentWhereUniqueInputSchema;

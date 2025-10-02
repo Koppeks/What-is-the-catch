@@ -26,12 +26,12 @@ export const DomainSelectSchema: z.ZodType<Prisma.DomainSelect> = z.object({
 export const DomainFindManyArgsSchema: z.ZodType<Prisma.DomainFindManyArgs> = z.object({
   select: DomainSelectSchema.optional(),
   include: z.lazy(() => DomainIncludeSchema).optional(),
-  where: DomainWhereInputSchema.optional(),
-  orderBy: z.union([ DomainOrderByWithRelationInputSchema.array(),DomainOrderByWithRelationInputSchema ]).optional(),
-  cursor: DomainWhereUniqueInputSchema.optional(),
+  where: DomainWhereInputSchema.optional(), 
+  orderBy: z.union([ DomainOrderByWithRelationInputSchema.array(), DomainOrderByWithRelationInputSchema ]).optional(),
+  cursor: DomainWhereUniqueInputSchema.optional(), 
   take: z.number().optional(),
   skip: z.number().optional(),
-  distinct: z.union([ DomainScalarFieldEnumSchema,DomainScalarFieldEnumSchema.array() ]).optional(),
-}).strict() as z.ZodType<Prisma.DomainFindManyArgs>;
+  distinct: z.union([ DomainScalarFieldEnumSchema, DomainScalarFieldEnumSchema.array() ]).optional(),
+}).strict();
 
 export default DomainFindManyArgsSchema;

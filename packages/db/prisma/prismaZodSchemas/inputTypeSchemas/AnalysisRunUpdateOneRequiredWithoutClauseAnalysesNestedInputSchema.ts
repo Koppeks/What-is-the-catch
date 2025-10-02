@@ -10,12 +10,12 @@ import { AnalysisRunUpdateToOneWithWhereWithoutClauseAnalysesInputSchema } from 
 import { AnalysisRunUpdateWithoutClauseAnalysesInputSchema } from './AnalysisRunUpdateWithoutClauseAnalysesInputSchema';
 import { AnalysisRunUncheckedUpdateWithoutClauseAnalysesInputSchema } from './AnalysisRunUncheckedUpdateWithoutClauseAnalysesInputSchema';
 
-export const AnalysisRunUpdateOneRequiredWithoutClauseAnalysesNestedInputSchema: z.ZodType<Prisma.AnalysisRunUpdateOneRequiredWithoutClauseAnalysesNestedInput> = z.object({
-  create: z.union([ z.lazy(() => AnalysisRunCreateWithoutClauseAnalysesInputSchema),z.lazy(() => AnalysisRunUncheckedCreateWithoutClauseAnalysesInputSchema) ]).optional(),
+export const AnalysisRunUpdateOneRequiredWithoutClauseAnalysesNestedInputSchema: z.ZodType<Prisma.AnalysisRunUpdateOneRequiredWithoutClauseAnalysesNestedInput> = z.strictObject({
+  create: z.union([ z.lazy(() => AnalysisRunCreateWithoutClauseAnalysesInputSchema), z.lazy(() => AnalysisRunUncheckedCreateWithoutClauseAnalysesInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => AnalysisRunCreateOrConnectWithoutClauseAnalysesInputSchema).optional(),
   upsert: z.lazy(() => AnalysisRunUpsertWithoutClauseAnalysesInputSchema).optional(),
   connect: z.lazy(() => AnalysisRunWhereUniqueInputSchema).optional(),
-  update: z.union([ z.lazy(() => AnalysisRunUpdateToOneWithWhereWithoutClauseAnalysesInputSchema),z.lazy(() => AnalysisRunUpdateWithoutClauseAnalysesInputSchema),z.lazy(() => AnalysisRunUncheckedUpdateWithoutClauseAnalysesInputSchema) ]).optional(),
-}).strict() as z.ZodType<Prisma.AnalysisRunUpdateOneRequiredWithoutClauseAnalysesNestedInput>;
+  update: z.union([ z.lazy(() => AnalysisRunUpdateToOneWithWhereWithoutClauseAnalysesInputSchema), z.lazy(() => AnalysisRunUpdateWithoutClauseAnalysesInputSchema), z.lazy(() => AnalysisRunUncheckedUpdateWithoutClauseAnalysesInputSchema) ]).optional(),
+});
 
 export default AnalysisRunUpdateOneRequiredWithoutClauseAnalysesNestedInputSchema;

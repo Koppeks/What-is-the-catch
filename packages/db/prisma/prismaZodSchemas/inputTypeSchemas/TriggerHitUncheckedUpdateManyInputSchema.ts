@@ -6,12 +6,12 @@ import { NullableFloatFieldUpdateOperationsInputSchema } from './NullableFloatFi
 import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSchema';
 import { InputJsonValueSchema } from './InputJsonValueSchema';
 
-export const TriggerHitUncheckedUpdateManyInputSchema: z.ZodType<Prisma.TriggerHitUncheckedUpdateManyInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const TriggerHitUncheckedUpdateManyInputSchema: z.ZodType<Prisma.TriggerHitUncheckedUpdateManyInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   clauseId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   triggerId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   confidence: z.union([ z.number(),z.lazy(() => NullableFloatFieldUpdateOperationsInputSchema) ]).optional().nullable(),
-  matches: z.union([ z.lazy(() => NullableJsonNullValueInputSchema),InputJsonValueSchema ]).optional(),
-}).strict() as z.ZodType<Prisma.TriggerHitUncheckedUpdateManyInput>;
+  matches: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
+});
 
 export default TriggerHitUncheckedUpdateManyInputSchema;

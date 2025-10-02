@@ -6,10 +6,10 @@ import { AccountStatusSchema } from '../inputTypeSchemas/AccountStatusSchema'
 // USER SCHEMA
 /////////////////////////////////////////
 
-export const userSchema = z.object({
+export const UserSchema = z.object({
   userRole: AvailableRolesSchema,
   subscriptionStatus: AccountStatusSchema,
-  id: z.string().cuid(),
+  id: z.cuid(),
   email: z.string(),
   username: z.string(),
   password: z.string(),
@@ -17,14 +17,14 @@ export const userSchema = z.object({
   createdAt: z.coerce.date(),
 })
 
-export type user = z.infer<typeof userSchema>
+export type User = z.infer<typeof UserSchema>
 
 /////////////////////////////////////////
 // USER PARTIAL SCHEMA
 /////////////////////////////////////////
 
-export const userPartialSchema = userSchema.partial()
+export const UserPartialSchema = UserSchema.partial()
 
-export type userPartial = z.infer<typeof userPartialSchema>
+export type UserPartial = z.infer<typeof UserPartialSchema>
 
-export default userSchema;
+export default UserSchema;

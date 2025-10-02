@@ -7,18 +7,18 @@ import { CompanyCountOrderByAggregateInputSchema } from './CompanyCountOrderByAg
 import { CompanyMaxOrderByAggregateInputSchema } from './CompanyMaxOrderByAggregateInputSchema';
 import { CompanyMinOrderByAggregateInputSchema } from './CompanyMinOrderByAggregateInputSchema';
 
-export const CompanyOrderByWithAggregationInputSchema: z.ZodType<Prisma.CompanyOrderByWithAggregationInput> = z.object({
+export const CompanyOrderByWithAggregationInputSchema: z.ZodType<Prisma.CompanyOrderByWithAggregationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   slug: z.lazy(() => SortOrderSchema).optional(),
   displayName: z.lazy(() => SortOrderSchema).optional(),
-  websiteUrl: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
-  countryCode: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
-  description: z.union([ z.lazy(() => SortOrderSchema),z.lazy(() => SortOrderInputSchema) ]).optional(),
+  websiteUrl: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
+  countryCode: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
+  description: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional(),
   _count: z.lazy(() => CompanyCountOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => CompanyMaxOrderByAggregateInputSchema).optional(),
-  _min: z.lazy(() => CompanyMinOrderByAggregateInputSchema).optional()
-}).strict() as z.ZodType<Prisma.CompanyOrderByWithAggregationInput>;
+  _min: z.lazy(() => CompanyMinOrderByAggregateInputSchema).optional(),
+});
 
 export default CompanyOrderByWithAggregationInputSchema;

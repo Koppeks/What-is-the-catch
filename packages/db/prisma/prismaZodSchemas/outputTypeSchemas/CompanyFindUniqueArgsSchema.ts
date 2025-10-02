@@ -27,7 +27,7 @@ export const CompanySelectSchema: z.ZodType<Prisma.CompanySelect> = z.object({
 export const CompanyFindUniqueArgsSchema: z.ZodType<Prisma.CompanyFindUniqueArgs> = z.object({
   select: CompanySelectSchema.optional(),
   include: z.lazy(() => CompanyIncludeSchema).optional(),
-  where: CompanyWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.CompanyFindUniqueArgs>;
+  where: CompanyWhereUniqueInputSchema, 
+}).strict();
 
 export default CompanyFindUniqueArgsSchema;

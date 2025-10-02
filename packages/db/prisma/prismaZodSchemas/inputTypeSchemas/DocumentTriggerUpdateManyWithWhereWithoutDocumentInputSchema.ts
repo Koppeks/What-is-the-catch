@@ -5,9 +5,9 @@ import { DocumentTriggerScalarWhereInputSchema } from './DocumentTriggerScalarWh
 import { DocumentTriggerUpdateManyMutationInputSchema } from './DocumentTriggerUpdateManyMutationInputSchema';
 import { DocumentTriggerUncheckedUpdateManyWithoutDocumentInputSchema } from './DocumentTriggerUncheckedUpdateManyWithoutDocumentInputSchema';
 
-export const DocumentTriggerUpdateManyWithWhereWithoutDocumentInputSchema: z.ZodType<Prisma.DocumentTriggerUpdateManyWithWhereWithoutDocumentInput> = z.object({
+export const DocumentTriggerUpdateManyWithWhereWithoutDocumentInputSchema: z.ZodType<Prisma.DocumentTriggerUpdateManyWithWhereWithoutDocumentInput> = z.strictObject({
   where: z.lazy(() => DocumentTriggerScalarWhereInputSchema),
-  data: z.union([ z.lazy(() => DocumentTriggerUpdateManyMutationInputSchema),z.lazy(() => DocumentTriggerUncheckedUpdateManyWithoutDocumentInputSchema) ]),
-}).strict() as z.ZodType<Prisma.DocumentTriggerUpdateManyWithWhereWithoutDocumentInput>;
+  data: z.union([ z.lazy(() => DocumentTriggerUpdateManyMutationInputSchema), z.lazy(() => DocumentTriggerUncheckedUpdateManyWithoutDocumentInputSchema) ]),
+});
 
 export default DocumentTriggerUpdateManyWithWhereWithoutDocumentInputSchema;

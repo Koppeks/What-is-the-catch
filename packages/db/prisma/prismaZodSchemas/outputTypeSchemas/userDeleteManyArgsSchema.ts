@@ -1,10 +1,10 @@
 import { z } from 'zod';
 import type { Prisma } from '@prisma/client';
-import { userWhereInputSchema } from '../inputTypeSchemas/userWhereInputSchema'
+import { UserWhereInputSchema } from '../inputTypeSchemas/UserWhereInputSchema'
 
-export const userDeleteManyArgsSchema: z.ZodType<Prisma.userDeleteManyArgs> = z.object({
-  where: userWhereInputSchema.optional(),
+export const UserDeleteManyArgsSchema: z.ZodType<Prisma.UserDeleteManyArgs> = z.object({
+  where: UserWhereInputSchema.optional(), 
   limit: z.number().optional(),
-}).strict() as z.ZodType<Prisma.userDeleteManyArgs>;
+}).strict();
 
-export default userDeleteManyArgsSchema;
+export default UserDeleteManyArgsSchema;

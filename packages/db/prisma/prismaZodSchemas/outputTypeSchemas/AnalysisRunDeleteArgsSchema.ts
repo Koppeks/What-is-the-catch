@@ -25,7 +25,7 @@ export const AnalysisRunSelectSchema: z.ZodType<Prisma.AnalysisRunSelect> = z.ob
 export const AnalysisRunDeleteArgsSchema: z.ZodType<Prisma.AnalysisRunDeleteArgs> = z.object({
   select: AnalysisRunSelectSchema.optional(),
   include: z.lazy(() => AnalysisRunIncludeSchema).optional(),
-  where: AnalysisRunWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.AnalysisRunDeleteArgs>;
+  where: AnalysisRunWhereUniqueInputSchema, 
+}).strict();
 
 export default AnalysisRunDeleteArgsSchema;

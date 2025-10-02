@@ -5,9 +5,9 @@ import { DocumentTriggerWhereUniqueInputSchema } from './DocumentTriggerWhereUni
 import { DocumentTriggerCreateWithoutDocumentInputSchema } from './DocumentTriggerCreateWithoutDocumentInputSchema';
 import { DocumentTriggerUncheckedCreateWithoutDocumentInputSchema } from './DocumentTriggerUncheckedCreateWithoutDocumentInputSchema';
 
-export const DocumentTriggerCreateOrConnectWithoutDocumentInputSchema: z.ZodType<Prisma.DocumentTriggerCreateOrConnectWithoutDocumentInput> = z.object({
+export const DocumentTriggerCreateOrConnectWithoutDocumentInputSchema: z.ZodType<Prisma.DocumentTriggerCreateOrConnectWithoutDocumentInput> = z.strictObject({
   where: z.lazy(() => DocumentTriggerWhereUniqueInputSchema),
-  create: z.union([ z.lazy(() => DocumentTriggerCreateWithoutDocumentInputSchema),z.lazy(() => DocumentTriggerUncheckedCreateWithoutDocumentInputSchema) ]),
-}).strict() as z.ZodType<Prisma.DocumentTriggerCreateOrConnectWithoutDocumentInput>;
+  create: z.union([ z.lazy(() => DocumentTriggerCreateWithoutDocumentInputSchema), z.lazy(() => DocumentTriggerUncheckedCreateWithoutDocumentInputSchema) ]),
+});
 
 export default DocumentTriggerCreateOrConnectWithoutDocumentInputSchema;

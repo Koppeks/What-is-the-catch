@@ -3,7 +3,7 @@ import type { Prisma } from '@prisma/client';
 import { z } from 'zod';
 import { NestedFloatFilterSchema } from './NestedFloatFilterSchema';
 
-export const FloatFilterSchema: z.ZodType<Prisma.FloatFilter> = z.object({
+export const FloatFilterSchema: z.ZodType<Prisma.FloatFilter> = z.strictObject({
   equals: z.number().optional(),
   in: z.number().array().optional(),
   notIn: z.number().array().optional(),
@@ -12,6 +12,6 @@ export const FloatFilterSchema: z.ZodType<Prisma.FloatFilter> = z.object({
   gt: z.number().optional(),
   gte: z.number().optional(),
   not: z.union([ z.number(),z.lazy(() => NestedFloatFilterSchema) ]).optional(),
-}).strict() as z.ZodType<Prisma.FloatFilter>;
+});
 
 export default FloatFilterSchema;

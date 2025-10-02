@@ -10,12 +10,12 @@ import { DocumentUpdateToOneWithWhereWithoutClausesInputSchema } from './Documen
 import { DocumentUpdateWithoutClausesInputSchema } from './DocumentUpdateWithoutClausesInputSchema';
 import { DocumentUncheckedUpdateWithoutClausesInputSchema } from './DocumentUncheckedUpdateWithoutClausesInputSchema';
 
-export const DocumentUpdateOneRequiredWithoutClausesNestedInputSchema: z.ZodType<Prisma.DocumentUpdateOneRequiredWithoutClausesNestedInput> = z.object({
-  create: z.union([ z.lazy(() => DocumentCreateWithoutClausesInputSchema),z.lazy(() => DocumentUncheckedCreateWithoutClausesInputSchema) ]).optional(),
+export const DocumentUpdateOneRequiredWithoutClausesNestedInputSchema: z.ZodType<Prisma.DocumentUpdateOneRequiredWithoutClausesNestedInput> = z.strictObject({
+  create: z.union([ z.lazy(() => DocumentCreateWithoutClausesInputSchema), z.lazy(() => DocumentUncheckedCreateWithoutClausesInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => DocumentCreateOrConnectWithoutClausesInputSchema).optional(),
   upsert: z.lazy(() => DocumentUpsertWithoutClausesInputSchema).optional(),
   connect: z.lazy(() => DocumentWhereUniqueInputSchema).optional(),
-  update: z.union([ z.lazy(() => DocumentUpdateToOneWithWhereWithoutClausesInputSchema),z.lazy(() => DocumentUpdateWithoutClausesInputSchema),z.lazy(() => DocumentUncheckedUpdateWithoutClausesInputSchema) ]).optional(),
-}).strict() as z.ZodType<Prisma.DocumentUpdateOneRequiredWithoutClausesNestedInput>;
+  update: z.union([ z.lazy(() => DocumentUpdateToOneWithWhereWithoutClausesInputSchema), z.lazy(() => DocumentUpdateWithoutClausesInputSchema), z.lazy(() => DocumentUncheckedUpdateWithoutClausesInputSchema) ]).optional(),
+});
 
 export default DocumentUpdateOneRequiredWithoutClausesNestedInputSchema;

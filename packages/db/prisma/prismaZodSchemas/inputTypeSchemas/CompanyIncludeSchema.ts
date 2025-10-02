@@ -10,6 +10,6 @@ export const CompanyIncludeSchema: z.ZodType<Prisma.CompanyInclude> = z.object({
   CompanyAlias: z.union([z.boolean(),z.lazy(() => CompanyAliasFindManyArgsSchema)]).optional(),
   Domain: z.union([z.boolean(),z.lazy(() => DomainFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => CompanyCountOutputTypeArgsSchema)]).optional(),
-}).strict()
+}).strict();
 
 export default CompanyIncludeSchema;

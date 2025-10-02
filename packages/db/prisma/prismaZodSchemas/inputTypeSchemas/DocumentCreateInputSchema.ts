@@ -8,8 +8,8 @@ import { ClauseCreateNestedManyWithoutDocumentInputSchema } from './ClauseCreate
 import { AnalysisRunCreateNestedManyWithoutDocumentInputSchema } from './AnalysisRunCreateNestedManyWithoutDocumentInputSchema';
 import { DocumentTriggerCreateNestedManyWithoutDocumentInputSchema } from './DocumentTriggerCreateNestedManyWithoutDocumentInputSchema';
 
-export const DocumentCreateInputSchema: z.ZodType<Prisma.DocumentCreateInput> = z.object({
-  id: z.string().cuid().optional(),
+export const DocumentCreateInputSchema: z.ZodType<Prisma.DocumentCreateInput> = z.strictObject({
+  id: z.cuid().optional(),
   name: z.string(),
   locale: z.string().optional().nullable(),
   kind: z.lazy(() => DocumentKindSchema).optional().nullable(),
@@ -20,7 +20,7 @@ export const DocumentCreateInputSchema: z.ZodType<Prisma.DocumentCreateInput> = 
   createdAt: z.coerce.date().optional(),
   clauses: z.lazy(() => ClauseCreateNestedManyWithoutDocumentInputSchema).optional(),
   runs: z.lazy(() => AnalysisRunCreateNestedManyWithoutDocumentInputSchema).optional(),
-  documentRules: z.lazy(() => DocumentTriggerCreateNestedManyWithoutDocumentInputSchema).optional()
-}).strict() as z.ZodType<Prisma.DocumentCreateInput>;
+  documentRules: z.lazy(() => DocumentTriggerCreateNestedManyWithoutDocumentInputSchema).optional(),
+});
 
 export default DocumentCreateInputSchema;

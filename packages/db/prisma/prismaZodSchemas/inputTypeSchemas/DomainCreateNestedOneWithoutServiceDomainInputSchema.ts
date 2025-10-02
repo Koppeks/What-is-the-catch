@@ -6,10 +6,10 @@ import { DomainUncheckedCreateWithoutServiceDomainInputSchema } from './DomainUn
 import { DomainCreateOrConnectWithoutServiceDomainInputSchema } from './DomainCreateOrConnectWithoutServiceDomainInputSchema';
 import { DomainWhereUniqueInputSchema } from './DomainWhereUniqueInputSchema';
 
-export const DomainCreateNestedOneWithoutServiceDomainInputSchema: z.ZodType<Prisma.DomainCreateNestedOneWithoutServiceDomainInput> = z.object({
-  create: z.union([ z.lazy(() => DomainCreateWithoutServiceDomainInputSchema),z.lazy(() => DomainUncheckedCreateWithoutServiceDomainInputSchema) ]).optional(),
+export const DomainCreateNestedOneWithoutServiceDomainInputSchema: z.ZodType<Prisma.DomainCreateNestedOneWithoutServiceDomainInput> = z.strictObject({
+  create: z.union([ z.lazy(() => DomainCreateWithoutServiceDomainInputSchema), z.lazy(() => DomainUncheckedCreateWithoutServiceDomainInputSchema) ]).optional(),
   connectOrCreate: z.lazy(() => DomainCreateOrConnectWithoutServiceDomainInputSchema).optional(),
-  connect: z.lazy(() => DomainWhereUniqueInputSchema).optional()
-}).strict() as z.ZodType<Prisma.DomainCreateNestedOneWithoutServiceDomainInput>;
+  connect: z.lazy(() => DomainWhereUniqueInputSchema).optional(),
+});
 
 export default DomainCreateNestedOneWithoutServiceDomainInputSchema;

@@ -8,13 +8,13 @@ import { NullableStringFieldUpdateOperationsInputSchema } from './NullableString
 import { DocumentUpdateOneRequiredWithoutDocumentRulesNestedInputSchema } from './DocumentUpdateOneRequiredWithoutDocumentRulesNestedInputSchema';
 import { TriggerUpdateOneRequiredWithoutDocumentRulesNestedInputSchema } from './TriggerUpdateOneRequiredWithoutDocumentRulesNestedInputSchema';
 
-export const DocumentTriggerUpdateInputSchema: z.ZodType<Prisma.DocumentTriggerUpdateInput> = z.object({
-  id: z.union([ z.string().cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
+export const DocumentTriggerUpdateInputSchema: z.ZodType<Prisma.DocumentTriggerUpdateInput> = z.strictObject({
+  id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   enabled: z.union([ z.boolean(),z.lazy(() => BoolFieldUpdateOperationsInputSchema) ]).optional(),
   minConfidence: z.union([ z.number(),z.lazy(() => NullableFloatFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   notes: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   document: z.lazy(() => DocumentUpdateOneRequiredWithoutDocumentRulesNestedInputSchema).optional(),
-  trigger: z.lazy(() => TriggerUpdateOneRequiredWithoutDocumentRulesNestedInputSchema).optional()
-}).strict() as z.ZodType<Prisma.DocumentTriggerUpdateInput>;
+  trigger: z.lazy(() => TriggerUpdateOneRequiredWithoutDocumentRulesNestedInputSchema).optional(),
+});
 
 export default DocumentTriggerUpdateInputSchema;

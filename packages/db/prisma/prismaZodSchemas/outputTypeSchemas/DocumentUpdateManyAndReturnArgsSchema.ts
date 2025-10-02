@@ -5,9 +5,9 @@ import { DocumentUncheckedUpdateManyInputSchema } from '../inputTypeSchemas/Docu
 import { DocumentWhereInputSchema } from '../inputTypeSchemas/DocumentWhereInputSchema'
 
 export const DocumentUpdateManyAndReturnArgsSchema: z.ZodType<Prisma.DocumentUpdateManyAndReturnArgs> = z.object({
-  data: z.union([ DocumentUpdateManyMutationInputSchema,DocumentUncheckedUpdateManyInputSchema ]),
-  where: DocumentWhereInputSchema.optional(),
+  data: z.union([ DocumentUpdateManyMutationInputSchema, DocumentUncheckedUpdateManyInputSchema ]),
+  where: DocumentWhereInputSchema.optional(), 
   limit: z.number().optional(),
-}).strict() as z.ZodType<Prisma.DocumentUpdateManyAndReturnArgs>;
+}).strict();
 
 export default DocumentUpdateManyAndReturnArgsSchema;

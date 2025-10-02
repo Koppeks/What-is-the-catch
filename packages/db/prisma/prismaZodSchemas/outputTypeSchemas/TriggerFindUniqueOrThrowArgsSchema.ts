@@ -37,7 +37,7 @@ export const TriggerSelectSchema: z.ZodType<Prisma.TriggerSelect> = z.object({
 export const TriggerFindUniqueOrThrowArgsSchema: z.ZodType<Prisma.TriggerFindUniqueOrThrowArgs> = z.object({
   select: TriggerSelectSchema.optional(),
   include: z.lazy(() => TriggerIncludeSchema).optional(),
-  where: TriggerWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.TriggerFindUniqueOrThrowArgs>;
+  where: TriggerWhereUniqueInputSchema, 
+}).strict();
 
 export default TriggerFindUniqueOrThrowArgsSchema;

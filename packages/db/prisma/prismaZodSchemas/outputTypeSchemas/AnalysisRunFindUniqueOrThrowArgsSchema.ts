@@ -25,7 +25,7 @@ export const AnalysisRunSelectSchema: z.ZodType<Prisma.AnalysisRunSelect> = z.ob
 export const AnalysisRunFindUniqueOrThrowArgsSchema: z.ZodType<Prisma.AnalysisRunFindUniqueOrThrowArgs> = z.object({
   select: AnalysisRunSelectSchema.optional(),
   include: z.lazy(() => AnalysisRunIncludeSchema).optional(),
-  where: AnalysisRunWhereUniqueInputSchema,
-}).strict() as z.ZodType<Prisma.AnalysisRunFindUniqueOrThrowArgs>;
+  where: AnalysisRunWhereUniqueInputSchema, 
+}).strict();
 
 export default AnalysisRunFindUniqueOrThrowArgsSchema;

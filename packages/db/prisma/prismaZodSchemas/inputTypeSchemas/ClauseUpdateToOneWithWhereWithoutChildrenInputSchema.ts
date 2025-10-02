@@ -5,9 +5,9 @@ import { ClauseWhereInputSchema } from './ClauseWhereInputSchema';
 import { ClauseUpdateWithoutChildrenInputSchema } from './ClauseUpdateWithoutChildrenInputSchema';
 import { ClauseUncheckedUpdateWithoutChildrenInputSchema } from './ClauseUncheckedUpdateWithoutChildrenInputSchema';
 
-export const ClauseUpdateToOneWithWhereWithoutChildrenInputSchema: z.ZodType<Prisma.ClauseUpdateToOneWithWhereWithoutChildrenInput> = z.object({
+export const ClauseUpdateToOneWithWhereWithoutChildrenInputSchema: z.ZodType<Prisma.ClauseUpdateToOneWithWhereWithoutChildrenInput> = z.strictObject({
   where: z.lazy(() => ClauseWhereInputSchema).optional(),
-  data: z.union([ z.lazy(() => ClauseUpdateWithoutChildrenInputSchema),z.lazy(() => ClauseUncheckedUpdateWithoutChildrenInputSchema) ]),
-}).strict() as z.ZodType<Prisma.ClauseUpdateToOneWithWhereWithoutChildrenInput>;
+  data: z.union([ z.lazy(() => ClauseUpdateWithoutChildrenInputSchema), z.lazy(() => ClauseUncheckedUpdateWithoutChildrenInputSchema) ]),
+});
 
 export default ClauseUpdateToOneWithWhereWithoutChildrenInputSchema;

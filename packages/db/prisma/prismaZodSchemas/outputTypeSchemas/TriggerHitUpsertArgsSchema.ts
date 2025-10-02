@@ -24,9 +24,9 @@ export const TriggerHitSelectSchema: z.ZodType<Prisma.TriggerHitSelect> = z.obje
 export const TriggerHitUpsertArgsSchema: z.ZodType<Prisma.TriggerHitUpsertArgs> = z.object({
   select: TriggerHitSelectSchema.optional(),
   include: z.lazy(() => TriggerHitIncludeSchema).optional(),
-  where: TriggerHitWhereUniqueInputSchema,
-  create: z.union([ TriggerHitCreateInputSchema,TriggerHitUncheckedCreateInputSchema ]),
-  update: z.union([ TriggerHitUpdateInputSchema,TriggerHitUncheckedUpdateInputSchema ]),
-}).strict() as z.ZodType<Prisma.TriggerHitUpsertArgs>;
+  where: TriggerHitWhereUniqueInputSchema, 
+  create: z.union([ TriggerHitCreateInputSchema, TriggerHitUncheckedCreateInputSchema ]),
+  update: z.union([ TriggerHitUpdateInputSchema, TriggerHitUncheckedUpdateInputSchema ]),
+}).strict();
 
 export default TriggerHitUpsertArgsSchema;

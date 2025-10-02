@@ -5,9 +5,9 @@ import { TriggerWhereUniqueInputSchema } from './TriggerWhereUniqueInputSchema';
 import { TriggerCreateWithoutHitsInputSchema } from './TriggerCreateWithoutHitsInputSchema';
 import { TriggerUncheckedCreateWithoutHitsInputSchema } from './TriggerUncheckedCreateWithoutHitsInputSchema';
 
-export const TriggerCreateOrConnectWithoutHitsInputSchema: z.ZodType<Prisma.TriggerCreateOrConnectWithoutHitsInput> = z.object({
+export const TriggerCreateOrConnectWithoutHitsInputSchema: z.ZodType<Prisma.TriggerCreateOrConnectWithoutHitsInput> = z.strictObject({
   where: z.lazy(() => TriggerWhereUniqueInputSchema),
-  create: z.union([ z.lazy(() => TriggerCreateWithoutHitsInputSchema),z.lazy(() => TriggerUncheckedCreateWithoutHitsInputSchema) ]),
-}).strict() as z.ZodType<Prisma.TriggerCreateOrConnectWithoutHitsInput>;
+  create: z.union([ z.lazy(() => TriggerCreateWithoutHitsInputSchema), z.lazy(() => TriggerUncheckedCreateWithoutHitsInputSchema) ]),
+});
 
 export default TriggerCreateOrConnectWithoutHitsInputSchema;

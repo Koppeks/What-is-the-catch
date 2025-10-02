@@ -7,10 +7,10 @@ import { CompanyCreateWithoutCompanyAliasInputSchema } from './CompanyCreateWith
 import { CompanyUncheckedCreateWithoutCompanyAliasInputSchema } from './CompanyUncheckedCreateWithoutCompanyAliasInputSchema';
 import { CompanyWhereInputSchema } from './CompanyWhereInputSchema';
 
-export const CompanyUpsertWithoutCompanyAliasInputSchema: z.ZodType<Prisma.CompanyUpsertWithoutCompanyAliasInput> = z.object({
-  update: z.union([ z.lazy(() => CompanyUpdateWithoutCompanyAliasInputSchema),z.lazy(() => CompanyUncheckedUpdateWithoutCompanyAliasInputSchema) ]),
-  create: z.union([ z.lazy(() => CompanyCreateWithoutCompanyAliasInputSchema),z.lazy(() => CompanyUncheckedCreateWithoutCompanyAliasInputSchema) ]),
-  where: z.lazy(() => CompanyWhereInputSchema).optional()
-}).strict() as z.ZodType<Prisma.CompanyUpsertWithoutCompanyAliasInput>;
+export const CompanyUpsertWithoutCompanyAliasInputSchema: z.ZodType<Prisma.CompanyUpsertWithoutCompanyAliasInput> = z.strictObject({
+  update: z.union([ z.lazy(() => CompanyUpdateWithoutCompanyAliasInputSchema), z.lazy(() => CompanyUncheckedUpdateWithoutCompanyAliasInputSchema) ]),
+  create: z.union([ z.lazy(() => CompanyCreateWithoutCompanyAliasInputSchema), z.lazy(() => CompanyUncheckedCreateWithoutCompanyAliasInputSchema) ]),
+  where: z.lazy(() => CompanyWhereInputSchema).optional(),
+});
 
 export default CompanyUpsertWithoutCompanyAliasInputSchema;
