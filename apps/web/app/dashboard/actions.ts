@@ -1,7 +1,6 @@
 ﻿"use server";
 
-import { TriggerHit } from "@prisma/client";
-import { ClausePartial, prisma, TriggerWithRelations } from "@repo/db";
+import { ClausePartial, prisma, TriggerHit } from "@repo/db";
 // import type { Trigger as TriggerModel } from "@repo/db";
 
 import util from "util";

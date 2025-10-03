@@ -13,6 +13,7 @@
       "@repo/db/*": ["packages/db/*"],
       "@repo/server": ["packages/server/index.ts"],
       "@repo/server/*": ["packages/server/*"],
+      "@repo/web/*": ["web/app/*"],
     }
   }
 }
