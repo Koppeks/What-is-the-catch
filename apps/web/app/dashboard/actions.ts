@@ -73,7 +73,6 @@ export async function analyzeActionForm(prev: FormState, formData: FormData): Pr
   const parsed = parseHierarchical(text);
   console.log(util.inspect(parsed, { showHidden: false, depth: null, colors: true }));
 
-
   const triggerRules = await prisma.clauseCategory.findMany({ where: { isActive: true } });
 
   const currentTriggers = evaluateTriggerRules(parsed, triggerRules);
