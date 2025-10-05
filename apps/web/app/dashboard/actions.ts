@@ -1,7 +1,7 @@
 ﻿"use server";
 
 import { ClausePartial, prisma, TriggerHit } from "@repo/db";
-// import type { Trigger as TriggerModel } from "@repo/db";
+import { inferCompanyName } from "@repo/server";
 
 import util from "util";
 
@@ -13,7 +13,8 @@ type Section = {
 };
 
 
-const HEADING_REGEX = /^\s*(\d+(?:\.\d+)*)(?:[.)\-:])?\s+(.+)$/gm;
+const HEADING_REGEX = /^\s*(?:\(?([0-9]+(?:\.[0-9]+)*|[a-zA-Z])\)?[.)\-:]?)\s+(.+)$/gm;
+
 
 function parseHierarchical(input: string): Section[] {
   const matches = [...input.matchAll(HEADING_REGEX)];
@@ -56,6 +57,18 @@ function parseHierarchical(input: string): Section[] {
   }
 }
 
+function findLegalNamePattern(text: string, contextWindow = 25): string[] {
+  const suffixPattern = "(?:Inc\\.|LLC|Ltd\\.?|S\\.A\\.|S\\.R\\.L\\.|Corporation|Company|GmbH|Platform)";
+  const companyPattern = `[A-Z][A-Za-z0-9&.,\\- ]{2,}${suffixPattern}`;
+  const beforePattern = `(?:\\b\\S+\\s+){0,${contextWindow}}`;
+  const afterPattern = `(?:\\s+\\S+){0,${contextWindow}}`;
+
+  const LEGAL_NAME_REGEX = new RegExp(`${beforePattern}(${companyPattern})${afterPattern}`, "gm");
+  const snippets = [...text.matchAll(LEGAL_NAME_REGEX)].map((match) => match[0].trim()).slice(0,12);
+  // console.log(snippets);
+  return snippets;
+}
+
 function evaluateTriggerRules(sections: Section[], rules: ClausePartial[]): TriggerHit[] {
 
   
@@ -71,7 +84,11 @@ export async function analyzeActionForm(prev: FormState, formData: FormData): Pr
   if (text.length < 20) return { ok: false, error: "Text must be at least 20 characters" };
 
   const parsed = parseHierarchical(text);
-  console.log(util.inspect(parsed, { showHidden: false, depth: null, colors: true }));
+  // console.log(util.inspect(parsed, { showHidden: false, depth: null, colors: true }));
+  const legalNamePosibilities = findLegalNamePattern(text);
+  const companyName = await inferCompanyName(legalNamePosibilities)
+
+  console.log(companyName)
 
   const triggerRules = await prisma.clauseCategory.findMany({ where: { isActive: true } });
 
