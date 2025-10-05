@@ -18,7 +18,9 @@
     "paths":{
       "@/*": ["./*"],
       "@repo/db" : ["../../packages/db/index.ts"],
-      "@repo/db/*": ["../../packages/db/*"]
+      "@repo/db/*": ["../../packages/db/*"],
+      "@repo/server": ["../../packages/server/index.ts"],
+      "@repo/server/*": ["../../packages/server/*"],
     }
   },
   "include": [
