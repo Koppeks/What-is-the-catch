@@ -31,6 +31,9 @@ The platform follows a **freemium model**:
 - **Language**: TypeScript 5.x
 - **Styling**: TailwindCSS + shadcn/ui components
 - **Auth**: NextAuth.js (planned)
+- **AI usage**: 
+  - ***Local*** Ollama service (llama3 model)
+  - ***API*** Preferable down the line add OpenAI API calls (GPT-5 model)
 
 ---
 
@@ -52,6 +55,22 @@ pnpm install
 .env link
 ```
 *.env file needs to be placed in /packages*
+
+### 4. Ollama usage
+
+- Go to [Ollama's website](https://ollama.com/).
+- Find and download the version you need for your OS.
+- Install it and run it for the first time.
+- Run llama3 (It will download needed packages):
+```
+ollama run llama3
+```
+- To see where the server was initialized run:
+```
+ollama serve
+```
+- You will see an *error* with something like: `listen TCP 127.0.0.1:11434`, that is your server.
+- Paste that in your env as: `OLLAMA_ROUTE_LOCAL="http://127.0.0.1:11434"`
 
 
 ### 4. Run Migrations
