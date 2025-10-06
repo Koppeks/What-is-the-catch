@@ -1,2 +1,2 @@
-export * from "./src/openAICalls";
+export * from "./src/LLMCalls";
 export * from "./src/passwordHandler";

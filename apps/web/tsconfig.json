@@ -21,6 +21,8 @@
       "@repo/db/*": ["../../packages/db/*"],
       "@repo/server": ["../../packages/server/index.ts"],
       "@repo/server/*": ["../../packages/server/*"],
+      "@repo/config": ["../../packages/config/env.ts"],
+      "@repo/config/*": ["../../packages/config/*"],
     }
   },
   "include": [

@@ -1,0 +1,12 @@
+{
+  "name": "@repo/config",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "pnpm@10.17.1",
+  "engines": {
+    "node": ">=20.11 <21"
+  },
+  "dependencies": {
+    "dotenv": "*"
+  }
+}
