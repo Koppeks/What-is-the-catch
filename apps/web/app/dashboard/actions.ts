@@ -1,7 +1,7 @@
 ﻿"use server";
 
 import { ClausePartial, prisma, TriggerHit } from "@repo/db";
-import { inferCompanyName } from "@repo/server";
+import { CreateCompany, inferCompanyName } from "@repo/server";
 
 import util from "util";
 
@@ -87,8 +87,10 @@ export async function analyzeActionForm(prev: FormState, formData: FormData): Pr
   // console.log(util.inspect(parsed, { showHidden: false, depth: null, colors: true }));
   const legalNamePosibilities = findLegalNamePattern(text);
   const companyName = await inferCompanyName(legalNamePosibilities)
+  const slug = companyName.replaceAll(" ", "_")
+  const targetCompany = await CreateCompany(companyName, slug)
 
-  console.log(companyName)
+  console.log(targetCompany)
 
   const triggerRules = await prisma.clauseCategory.findMany({ where: { isActive: true } });
 

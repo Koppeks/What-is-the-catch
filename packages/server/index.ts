@@ -1,2 +1,3 @@
 export * from "./src/LLMCalls";
-export * from "./src/passwordHandler";
+export * from "./src/PasswordHandler";
+export * from "./service/Company";
