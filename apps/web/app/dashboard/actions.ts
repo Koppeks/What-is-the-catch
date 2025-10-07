@@ -1,7 +1,7 @@
 ﻿"use server";
 
 import { ClausePartial, prisma, TriggerHit } from "@repo/db";
-import { CreateCompany, inferCompanyName } from "@repo/server";
+import { CreateCompany, inferCompanyName, inferCompanyWebsite } from "@repo/server";
 
 import util from "util";
 
@@ -69,6 +69,12 @@ function findLegalNamePattern(text: string, contextWindow = 25): string[] {
   return snippets;
 }
 
+function findWebsitePattern(text: string): string[] {
+  const websitePattern = /\b((https?:\/\/)?(www\.)?[\w-]+(\.[a-z]{2,})(\/[^\s]*)?)\b/gm;
+  const matches = [...text.matchAll(websitePattern)].map((match) => match[0].trim());
+  return matches;
+}
+
 function evaluateTriggerRules(sections: Section[], rules: ClausePartial[]): TriggerHit[] {
 
   
@@ -85,12 +91,17 @@ export async function analyzeActionForm(prev: FormState, formData: FormData): Pr
 
   const parsed = parseHierarchical(text);
   // console.log(util.inspect(parsed, { showHidden: false, depth: null, colors: true }));
+  
+  // Company name and slug.
   const legalNamePosibilities = findLegalNamePattern(text);
   const companyName = await inferCompanyName(legalNamePosibilities)
   const slug = companyName.replaceAll(" ", "_")
-  const targetCompany = await CreateCompany(companyName, slug)
 
-  console.log(targetCompany)
+  // Company website
+  const websitePosibilities = findWebsitePattern(text);
+  const companyWebsite = await inferCompanyWebsite(websitePosibilities)
+
+  const targetCompany = await CreateCompany(companyName, slug, companyWebsite)
 
   const triggerRules = await prisma.clauseCategory.findMany({ where: { isActive: true } });
 

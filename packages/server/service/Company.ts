@@ -1,8 +1,9 @@
 import { prisma } from "@repo/db"
 
-export const CreateCompany = async (companyName: string, slug: string): Promise<string> => {
+export const CreateCompany = async (companyName: string, slug: string, companyWebsite: string): Promise<string> => {
   const trimmedSlug = slug.trim()
   const trimmedName = companyName.trim()
+  const trimmedWebsite = companyWebsite.trim()
 
   if (!trimmedSlug) {
     throw new Error('Slug is required to get or create a company.')
@@ -14,8 +15,8 @@ export const CreateCompany = async (companyName: string, slug: string): Promise<
 
   const company = await prisma.company.upsert({
     where: { slug: trimmedSlug },
-    update: { displayName: trimmedName },
-    create: { slug: trimmedSlug, displayName: trimmedName },
+    update: { displayName: trimmedName, websiteUrl:trimmedWebsite },
+    create: { slug: trimmedSlug, displayName: trimmedName, websiteUrl:trimmedWebsite },
     select: { id: true },
   })
 
