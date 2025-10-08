@@ -20,6 +20,14 @@ export default function DashboardPage(){
         )}
         {state.ok && <p className="text-green-700">Saved!</p>}
       </form>
+
+      <div>
+        <h2>The result of the request:</h2>
+        <section>
+          {/* {state.result} */}
+        </section>
+      </div>
+
     </main>
   );
 }

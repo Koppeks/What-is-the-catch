@@ -1,7 +1,7 @@
 ﻿"use server";
 
 import { ClausePartial, prisma, TriggerHit } from "@repo/db";
-import { CreateCompany, inferCompanyName, inferCompanyWebsite } from "@repo/server";
+import { CreateCompany, inferCleanClauses, inferCompanyName, inferCompanyWebsite, initStripper } from "@repo/server";
 
 import util from "util";
 
@@ -14,7 +14,6 @@ type Section = {
 
 
 const HEADING_REGEX = /^\s*(?:\(?([0-9]+(?:\.[0-9]+)*|[a-zA-Z])\)?[.)\-:]?)\s+(.+)$/gm;
-
 
 function parseHierarchical(input: string): Section[] {
   const matches = [...input.matchAll(HEADING_REGEX)];
@@ -82,33 +81,36 @@ function evaluateTriggerRules(sections: Section[], rules: ClausePartial[]): Trig
   return []
 } 
 
-export type FormState = { ok: boolean; error?: string; triggers?: TriggerHit[] };
+export type FormState = { ok: boolean; error?: string; triggers?: TriggerHit[], result?: any};
 
 export async function analyzeActionForm(prev: FormState, formData: FormData): Promise<FormState> {
-  const text = String(formData.get("text") ?? "").trim();
+  const url = String(formData.get("text") ?? "").trim();
 
-  if (text.length < 20) return { ok: false, error: "Text must be at least 20 characters" };
+  // const parsed = parseHierarchical(text);
 
-  const parsed = parseHierarchical(text);
-  // console.log(util.inspect(parsed, { showHidden: false, depth: null, colors: true }));
+  const strip = await initStripper(url)
+
+  // const ollamaClauses = await inferCleanClauses(url)
+  console.log(util.inspect(strip, { showHidden: false, depth: null, colors: true }));
   
-  // Company name and slug.
-  const legalNamePosibilities = findLegalNamePattern(text);
-  const companyName = await inferCompanyName(legalNamePosibilities)
-  const slug = companyName.replaceAll(" ", "_")
+  // // Company name and slug.
+  // const legalNamePosibilities = findLegalNamePattern(text);
+  // const companyName = await inferCompanyName(legalNamePosibilities)
+  // const slug = companyName.replaceAll(" ", "_")
 
-  // Company website
-  const websitePosibilities = findWebsitePattern(text);
-  const companyWebsite = await inferCompanyWebsite(websitePosibilities)
+  // // Company website
+  // const websitePosibilities = findWebsitePattern(text);
+  // const companyWebsite = await inferCompanyWebsite(websitePosibilities)
 
-  const targetCompany = await CreateCompany(companyName, slug, companyWebsite)
+  // const targetCompany = await CreateCompany(companyName, slug, companyWebsite)
 
-  const triggerRules = await prisma.clauseCategory.findMany({ where: { isActive: true } });
+  // const triggerRules = await prisma.clauseCategory.findMany({ where: { isActive: true } });
 
-  const currentTriggers = evaluateTriggerRules(parsed, triggerRules);
+  // const currentTriggers = evaluateTriggerRules(parsed, triggerRules);
 
-  // console.log(util.inspect(triggerRules, { showHidden: false, depth: null, colors: true }));
-  // console.log(util.inspect(currentTriggers, { showHidden: false, depth: null, colors: true }));
+  // // console.log(util.inspect(triggerRules, { showHidden: false, depth: null, colors: true }));
+  // // console.log(util.inspect(currentTriggers, { showHidden: false, depth: null, colors: true }));
 
-  return { ok: true, triggers: currentTriggers };
+  // return { ok: true, triggers: currentTriggers };
+  return {ok: true, result: strip }
 }

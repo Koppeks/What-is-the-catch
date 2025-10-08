@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "bcryptjs": "*",
-    "openai": "*"
+    "openai": "*",
+    "cheerio" : "*",
+    "domhandler": "*"
   },
   "exports": {
     ".": {
