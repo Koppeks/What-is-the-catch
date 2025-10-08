@@ -2,8 +2,10 @@ import { Cheerio, load } from "cheerio";
 import type { Element as CheerioElement } from "domhandler";
 
 type Clause = {
-  title: string;
-  content: string;
+  id: string;          // e.g., "2", "2.1", "2.2.3"
+  title: string;       // heading text
+  text: string;        // current content
+  children: Clause[]; // nested subsections
 };
 
 export const initStripper = async (url: string) => {
@@ -40,46 +42,49 @@ const clauseFromHtml = (html: string): Clause[] => {
     : source("body");
 
   const sections = buildSectionsFromHeadings(source, root);
+  return sections
 
-    if (sections.length >= 2) {
-      return sections.map((s) => ({
-        title: s.title || inferTitle(s.text),
-        content: s.text
-      }));
-    }
-
-  const text = normalize(source.text());
-  return [{title: "", content: ""}]
-  //Or fallback here to handle text
 };
 
 // --- helpers ---
 
-function buildSectionsFromHeadings(source: ReturnType<typeof load>, $root: Cheerio<CheerioElement>) {
-  const hs = $root.find("h1,h2,h3,h4,h5,h6").toArray();
-  type Sec = { level: number; title: string; text: string; children: Sec[] };
-  if (hs.length === 0) return [] as Sec[];
+function buildSectionsFromHeadings(source: ReturnType<typeof load>, root: Cheerio<CheerioElement>): Clause[] {
+  const headingSection = root.find("h1,h2,h3,h4,h5,h6").toArray();
+  if (headingSection.length === 0) return [] as Clause[];
 
-  const flats = hs.map((h, i) => {
-    const sourceh = source(h);
-    const level = Number(h.tagName.slice(1) || 6);
+  const flats = headingSection.map((hs, i) => {
+    const id = `${i}`;
+    const sourceh = source(hs);
+    const level = Number(hs.tagName.slice(1) || 6);
     const title = sourceh.text().trim();
     const text = textUntilNextHeading(source, sourceh);
-    return { level, title, text, children: [] as Sec[] };
+    return {id, level, title, text, children: [] as Clause[] };
   });
 
   // Build hierarchy via heading levels (h1>h2>h3…)
-  const root: Sec[] = [];
-  const stack: Sec[] = [];
-  for (const f of flats) {
-    while (stack.length && stack[stack.length - 1].level >= f.level) stack.pop();
-    if (stack.length === 0) root.push(f);
-    else stack[stack.length - 1].children.push(f);
-    stack.push(f);
+  const main: Clause[] = [];
+  const stack: Clause[] = [];
+  const MAX_TITLE_LENGHT = 70;
+
+  for (const sectionUnit of flats) {
+    const level = sectionUnit.id.split(".").length;
+    let node: Clause;
+    if (sectionUnit.title.length > MAX_TITLE_LENGHT) node = { id: sectionUnit.id, title: "", text: normalize(sectionUnit.title), children: [] };
+    else node = { id: sectionUnit.id, title: sectionUnit.title, text: normalize(sectionUnit.text), children: [] };
+    // Pop to parent level
+    while (stack.length && depth(stack[stack.length - 1]) >= level) stack.pop();
+
+    if (stack.length === 0) {
+      main.push(node);
+    } else {
+      stack[stack.length - 1].children.push(node);
+    }
+
+    stack.push(node);
   }
 
   // Flatten to top-level clauses; you can keep hierarchy if you need it
-  return root.map(r => ({ level: r.level, title: r.title, text: normalize(r.text), children: r.children }));
+  return main
 }
 
 function textUntilNextHeading(source: ReturnType<typeof load>, root: Cheerio<CheerioElement>) {
@@ -95,11 +100,17 @@ function textUntilNextHeading(source: ReturnType<typeof load>, root: Cheerio<Che
   return parts.join("\n\n");
 }
 
-function normalize(s: string) {
-  return s.replace(/\r\n/g, "\n").replace(/[ \t]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
-}
+// function normalize(s: string) {
+//   return s.replace(/\r\n/g, "\n").replace(/[ \t]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+// }
 
 function inferTitle(text: string) {
   const firstSentence = (text.split(/\.\s|\n/)[0] || "").trim();
   return firstSentence.split(/\s+/).slice(0, 10).join(" ") || "Clause";
+}
+
+function depth(n: Clause) { return n.id.split(".").length; }
+
+function normalize(s: string) {
+  return s.replace(/\r\n/g, "\n").replace(/\n{2,}/g, "\n").trim();
 }
