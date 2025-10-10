@@ -81,11 +81,9 @@ model Clause {
     depth       Int // numerical root order 0=parent, 1=children, 2=grandChildren, n...
 
     meta        Json? @db.Json// Whatever
-    TriggerHits TriggerHit[]
 
     createdAt      DateTime         @default(now())
     updatedAt      DateTime         @updatedAt
-    ClauseAnalysis ClauseAnalysis[]
 
     @@index([documentId, depth, order])
     @@index([documentId, ordinalPath])
@@ -104,41 +102,6 @@ model AnalysisRun {
     overallRisk   Int @db.SmallInt @default(0)  // 0..100 summary for the doc
     notes         String
 
-    clauseAnalyses ClauseAnalysis[]
-}
-
-model ClauseAnalysis {
-    id    String      @id @default(cuid())
-    runId String
-    run   AnalysisRun @relation(fields: [runId], references: [id], onDelete: Cascade)
-
-    clauseId String
-    clause   Clause @relation(fields: [clauseId], references: [id], onDelete: Cascade)
-
-    severity        Severity      @default(NONE)
-    riskScore       Int           @default(0) // 0..100
-    // optional convenience: turn top hits into user-facing warnings
-    triggerWarnings String[] // e.g. ["Unilateral changes without notice"]
-    categoryHits    CategoryHit[]
-
-    @@index([runId])
-}
-
-model CategoryHit {
-    id               String         @id @default(cuid())
-    clauseAnalysisId String
-    clauseAnalysis   ClauseAnalysis @relation(fields: [clauseAnalysisId], references: [id], onDelete: Cascade)
-
-    categoryId String
-    category   ClauseCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
-
-    confidence Float? // model confidence for this hit
-    //confidence formula
-    //baseValue = 0.0(no match), 0.5(contain some words), 1.0 (exact regex)
-    //aiConfidence = from 0 to 100, turn in to 0.00 to 1.00
-    //confidence = (0.3 * baseValue) + (0.7 * aiConfidence)
-
-    @@unique([clauseAnalysisId, categoryId])
 }
 
 model Trigger {
@@ -164,7 +127,6 @@ model Trigger {
     clauseCategory   ClauseCategory @relation(fields: [clauseCategoryId], references: [id], onDelete: Restrict)
 
     defaultSeverity Severity?
-    hits            TriggerHit[]
 
     // explicit per-document settings
     documentRules DocumentTrigger[]
@@ -175,26 +137,6 @@ model Trigger {
     @@unique([key, state], map: "uniq_active_key_when_active")
     @@index([state, source])
     @@index([mergedIntoId])
-}
-
-model TriggerHit {
-    id String @id @default(cuid())
-
-    clauseId String
-    clause   Clause @relation(fields: [clauseId], references: [id], onDelete: Cascade)
-
-    triggerId String
-    trigger   Trigger @relation(fields: [triggerId], references: [id], onDelete: Cascade)
-
-    confidence Float? // model confidence for this hit
-    //confidence formula
-    //baseValue = 0.0(no match), 0.5(contain some words), 1.0 (exact regex)
-    //aiConfidence = from 0 to 100, turn in to 0.00 to 1.00
-    //confidence = (0.3 * baseValue) + (0.7 * aiConfidence)
-    matches    Json? @db.Json
-
-    @@index([clauseId])
-    @@index([triggerId])
 }
 
 model ClauseCategory {
@@ -210,8 +152,6 @@ model ClauseCategory {
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-
-    CategoryHit CategoryHit[]
 }
 
 model Company {

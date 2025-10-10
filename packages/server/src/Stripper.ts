@@ -53,7 +53,7 @@ function buildSectionsFromHeadings(source: ReturnType<typeof load>, root: Cheeri
   if (headingSection.length === 0) return [] as Clause[];
 
   const flats = headingSection.map((hs, i) => {
-    const id = `${i}`;
+    const id = `${i + 1}`;
     const sourceh = source(hs);
     const level = Number(hs.tagName.slice(1) || 6);
     const title = sourceh.text().trim();
