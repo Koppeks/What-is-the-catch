@@ -52,6 +52,9 @@ model DocumentTrigger {
     enabled       Boolean @default(true)
     minConfidence Float? // e.g. 0.6
     notes         String?
+    // Position where document contain trigger
+    from          Int
+    to            Int
 
     document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
     trigger  Trigger  @relation(fields: [triggerId], references: [id], onDelete: Cascade)
