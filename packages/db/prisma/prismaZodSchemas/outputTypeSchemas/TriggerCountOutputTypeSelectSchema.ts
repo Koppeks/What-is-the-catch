@@ -3,7 +3,6 @@ import type { Prisma } from '@prisma/client';
 
 export const TriggerCountOutputTypeSelectSchema: z.ZodType<Prisma.TriggerCountOutputTypeSelect> = z.object({
   mergeFrom: z.boolean().optional(),
-  hits: z.boolean().optional(),
   documentRules: z.boolean().optional(),
 }).strict();
 

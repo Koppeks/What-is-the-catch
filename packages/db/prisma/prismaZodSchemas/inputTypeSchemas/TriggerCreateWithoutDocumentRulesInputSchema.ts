@@ -8,7 +8,6 @@ import { SeveritySchema } from './SeveritySchema';
 import { TriggerCreateNestedOneWithoutMergeFromInputSchema } from './TriggerCreateNestedOneWithoutMergeFromInputSchema';
 import { TriggerCreateNestedManyWithoutMergedIntoInputSchema } from './TriggerCreateNestedManyWithoutMergedIntoInputSchema';
 import { ClauseCategoryCreateNestedOneWithoutTriggerInputSchema } from './ClauseCategoryCreateNestedOneWithoutTriggerInputSchema';
-import { TriggerHitCreateNestedManyWithoutTriggerInputSchema } from './TriggerHitCreateNestedManyWithoutTriggerInputSchema';
 
 export const TriggerCreateWithoutDocumentRulesInputSchema: z.ZodType<Prisma.TriggerCreateWithoutDocumentRulesInput> = z.strictObject({
   id: z.cuid().optional(),
@@ -26,7 +25,6 @@ export const TriggerCreateWithoutDocumentRulesInputSchema: z.ZodType<Prisma.Trig
   mergedInto: z.lazy(() => TriggerCreateNestedOneWithoutMergeFromInputSchema).optional(),
   mergeFrom: z.lazy(() => TriggerCreateNestedManyWithoutMergedIntoInputSchema).optional(),
   clauseCategory: z.lazy(() => ClauseCategoryCreateNestedOneWithoutTriggerInputSchema),
-  hits: z.lazy(() => TriggerHitCreateNestedManyWithoutTriggerInputSchema).optional(),
 });
 
 export default TriggerCreateWithoutDocumentRulesInputSchema;

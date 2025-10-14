@@ -3,10 +3,6 @@ import { JsonValueSchema } from '../inputTypeSchemas/JsonValueSchema'
 import type { JsonValueType } from '../inputTypeSchemas/JsonValueSchema';
 import { DocumentWithRelationsSchema, DocumentPartialWithRelationsSchema } from './DocumentSchema'
 import type { DocumentWithRelations, DocumentPartialWithRelations } from './DocumentSchema'
-import { TriggerHitWithRelationsSchema, TriggerHitPartialWithRelationsSchema } from './TriggerHitSchema'
-import type { TriggerHitWithRelations, TriggerHitPartialWithRelations } from './TriggerHitSchema'
-import { ClauseAnalysisWithRelationsSchema, ClauseAnalysisPartialWithRelationsSchema } from './ClauseAnalysisSchema'
-import type { ClauseAnalysisWithRelations, ClauseAnalysisPartialWithRelations } from './ClauseAnalysisSchema'
 
 /////////////////////////////////////////
 // CLAUSE SCHEMA
@@ -44,8 +40,6 @@ export type ClauseRelations = {
   document: DocumentWithRelations;
   parent?: ClauseWithRelations | null;
   children: ClauseWithRelations[];
-  TriggerHits: TriggerHitWithRelations[];
-  ClauseAnalysis: ClauseAnalysisWithRelations[];
 };
 
 export type ClauseWithRelations = Omit<z.infer<typeof ClauseSchema>, "meta"> & {
@@ -56,8 +50,6 @@ export const ClauseWithRelationsSchema: z.ZodType<ClauseWithRelations> = ClauseS
   document: z.lazy(() => DocumentWithRelationsSchema),
   parent: z.lazy(() => ClauseWithRelationsSchema).nullish(),
   children: z.lazy(() => ClauseWithRelationsSchema).array(),
-  TriggerHits: z.lazy(() => TriggerHitWithRelationsSchema).array(),
-  ClauseAnalysis: z.lazy(() => ClauseAnalysisWithRelationsSchema).array(),
 }))
 
 /////////////////////////////////////////
@@ -68,8 +60,6 @@ export type ClausePartialRelations = {
   document?: DocumentPartialWithRelations;
   parent?: ClausePartialWithRelations | null;
   children?: ClausePartialWithRelations[];
-  TriggerHits?: TriggerHitPartialWithRelations[];
-  ClauseAnalysis?: ClauseAnalysisPartialWithRelations[];
 };
 
 export type ClausePartialWithRelations = Omit<z.infer<typeof ClausePartialSchema>, "meta"> & {
@@ -80,8 +70,6 @@ export const ClausePartialWithRelationsSchema: z.ZodType<ClausePartialWithRelati
   document: z.lazy(() => DocumentPartialWithRelationsSchema),
   parent: z.lazy(() => ClausePartialWithRelationsSchema).nullish(),
   children: z.lazy(() => ClausePartialWithRelationsSchema).array(),
-  TriggerHits: z.lazy(() => TriggerHitPartialWithRelationsSchema).array(),
-  ClauseAnalysis: z.lazy(() => ClauseAnalysisPartialWithRelationsSchema).array(),
 })).partial()
 
 export type ClauseWithPartialRelations = Omit<z.infer<typeof ClauseSchema>, "meta"> & {
@@ -92,8 +80,6 @@ export const ClauseWithPartialRelationsSchema: z.ZodType<ClauseWithPartialRelati
   document: z.lazy(() => DocumentPartialWithRelationsSchema),
   parent: z.lazy(() => ClausePartialWithRelationsSchema).nullish(),
   children: z.lazy(() => ClausePartialWithRelationsSchema).array(),
-  TriggerHits: z.lazy(() => TriggerHitPartialWithRelationsSchema).array(),
-  ClauseAnalysis: z.lazy(() => ClauseAnalysisPartialWithRelationsSchema).array(),
 }).partial())
 
 export default ClauseSchema;

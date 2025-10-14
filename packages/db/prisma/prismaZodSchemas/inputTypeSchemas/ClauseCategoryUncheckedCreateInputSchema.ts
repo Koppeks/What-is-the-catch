@@ -3,7 +3,6 @@ import type { Prisma } from '@prisma/client';
 import { z } from 'zod';
 import { ClauseCategoryCreatetriggerKeywordsInputSchema } from './ClauseCategoryCreatetriggerKeywordsInputSchema';
 import { TriggerUncheckedCreateNestedManyWithoutClauseCategoryInputSchema } from './TriggerUncheckedCreateNestedManyWithoutClauseCategoryInputSchema';
-import { CategoryHitUncheckedCreateNestedManyWithoutCategoryInputSchema } from './CategoryHitUncheckedCreateNestedManyWithoutCategoryInputSchema';
 
 export const ClauseCategoryUncheckedCreateInputSchema: z.ZodType<Prisma.ClauseCategoryUncheckedCreateInput> = z.strictObject({
   id: z.cuid().optional(),
@@ -17,7 +16,6 @@ export const ClauseCategoryUncheckedCreateInputSchema: z.ZodType<Prisma.ClauseCa
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   Trigger: z.lazy(() => TriggerUncheckedCreateNestedManyWithoutClauseCategoryInputSchema).optional(),
-  CategoryHit: z.lazy(() => CategoryHitUncheckedCreateNestedManyWithoutCategoryInputSchema).optional(),
 });
 
 export default ClauseCategoryUncheckedCreateInputSchema;

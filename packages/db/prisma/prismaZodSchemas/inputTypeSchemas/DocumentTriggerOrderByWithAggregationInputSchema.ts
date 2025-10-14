@@ -16,6 +16,8 @@ export const DocumentTriggerOrderByWithAggregationInputSchema: z.ZodType<Prisma.
   enabled: z.lazy(() => SortOrderSchema).optional(),
   minConfidence: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   notes: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
+  from: z.lazy(() => SortOrderSchema).optional(),
+  to: z.lazy(() => SortOrderSchema).optional(),
   _count: z.lazy(() => DocumentTriggerCountOrderByAggregateInputSchema).optional(),
   _avg: z.lazy(() => DocumentTriggerAvgOrderByAggregateInputSchema).optional(),
   _max: z.lazy(() => DocumentTriggerMaxOrderByAggregateInputSchema).optional(),

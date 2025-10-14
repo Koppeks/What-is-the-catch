@@ -7,6 +7,7 @@ import { StringFilterSchema } from './StringFilterSchema';
 import { BoolFilterSchema } from './BoolFilterSchema';
 import { FloatNullableFilterSchema } from './FloatNullableFilterSchema';
 import { StringNullableFilterSchema } from './StringNullableFilterSchema';
+import { IntFilterSchema } from './IntFilterSchema';
 import { DocumentScalarRelationFilterSchema } from './DocumentScalarRelationFilterSchema';
 import { DocumentWhereInputSchema } from './DocumentWhereInputSchema';
 import { TriggerScalarRelationFilterSchema } from './TriggerScalarRelationFilterSchema';
@@ -35,6 +36,8 @@ export const DocumentTriggerWhereUniqueInputSchema: z.ZodType<Prisma.DocumentTri
   enabled: z.union([ z.lazy(() => BoolFilterSchema), z.boolean() ]).optional(),
   minConfidence: z.union([ z.lazy(() => FloatNullableFilterSchema), z.number() ]).optional().nullable(),
   notes: z.union([ z.lazy(() => StringNullableFilterSchema), z.string() ]).optional().nullable(),
+  from: z.union([ z.lazy(() => IntFilterSchema), z.number().int() ]).optional(),
+  to: z.union([ z.lazy(() => IntFilterSchema), z.number().int() ]).optional(),
   document: z.union([ z.lazy(() => DocumentScalarRelationFilterSchema), z.lazy(() => DocumentWhereInputSchema) ]).optional(),
   trigger: z.union([ z.lazy(() => TriggerScalarRelationFilterSchema), z.lazy(() => TriggerWhereInputSchema) ]).optional(),
 }));

@@ -4,8 +4,6 @@ import { TriggerStateSchema } from '../inputTypeSchemas/TriggerStateSchema'
 import { SeveritySchema } from '../inputTypeSchemas/SeveritySchema'
 import { ClauseCategoryWithRelationsSchema, ClauseCategoryPartialWithRelationsSchema } from './ClauseCategorySchema'
 import type { ClauseCategoryWithRelations, ClauseCategoryPartialWithRelations } from './ClauseCategorySchema'
-import { TriggerHitWithRelationsSchema, TriggerHitPartialWithRelationsSchema } from './TriggerHitSchema'
-import type { TriggerHitWithRelations, TriggerHitPartialWithRelations } from './TriggerHitSchema'
 import { DocumentTriggerWithRelationsSchema, DocumentTriggerPartialWithRelationsSchema } from './DocumentTriggerSchema'
 import type { DocumentTriggerWithRelations, DocumentTriggerPartialWithRelations } from './DocumentTriggerSchema'
 
@@ -48,7 +46,6 @@ export type TriggerRelations = {
   mergedInto?: TriggerWithRelations | null;
   mergeFrom: TriggerWithRelations[];
   clauseCategory: ClauseCategoryWithRelations;
-  hits: TriggerHitWithRelations[];
   documentRules: DocumentTriggerWithRelations[];
 };
 
@@ -58,7 +55,6 @@ export const TriggerWithRelationsSchema: z.ZodType<TriggerWithRelations> = Trigg
   mergedInto: z.lazy(() => TriggerWithRelationsSchema).nullish(),
   mergeFrom: z.lazy(() => TriggerWithRelationsSchema).array(),
   clauseCategory: z.lazy(() => ClauseCategoryWithRelationsSchema),
-  hits: z.lazy(() => TriggerHitWithRelationsSchema).array(),
   documentRules: z.lazy(() => DocumentTriggerWithRelationsSchema).array(),
 }))
 
@@ -70,7 +66,6 @@ export type TriggerPartialRelations = {
   mergedInto?: TriggerPartialWithRelations | null;
   mergeFrom?: TriggerPartialWithRelations[];
   clauseCategory?: ClauseCategoryPartialWithRelations;
-  hits?: TriggerHitPartialWithRelations[];
   documentRules?: DocumentTriggerPartialWithRelations[];
 };
 
@@ -80,7 +75,6 @@ export const TriggerPartialWithRelationsSchema: z.ZodType<TriggerPartialWithRela
   mergedInto: z.lazy(() => TriggerPartialWithRelationsSchema).nullish(),
   mergeFrom: z.lazy(() => TriggerPartialWithRelationsSchema).array(),
   clauseCategory: z.lazy(() => ClauseCategoryPartialWithRelationsSchema),
-  hits: z.lazy(() => TriggerHitPartialWithRelationsSchema).array(),
   documentRules: z.lazy(() => DocumentTriggerPartialWithRelationsSchema).array(),
 })).partial()
 
@@ -90,7 +84,6 @@ export const TriggerWithPartialRelationsSchema: z.ZodType<TriggerWithPartialRela
   mergedInto: z.lazy(() => TriggerPartialWithRelationsSchema).nullish(),
   mergeFrom: z.lazy(() => TriggerPartialWithRelationsSchema).array(),
   clauseCategory: z.lazy(() => ClauseCategoryPartialWithRelationsSchema),
-  hits: z.lazy(() => TriggerHitPartialWithRelationsSchema).array(),
   documentRules: z.lazy(() => DocumentTriggerPartialWithRelationsSchema).array(),
 }).partial())
 

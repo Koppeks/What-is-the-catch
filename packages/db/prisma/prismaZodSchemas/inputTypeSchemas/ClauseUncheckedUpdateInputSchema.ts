@@ -8,8 +8,6 @@ import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSc
 import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { ClauseUncheckedUpdateManyWithoutParentNestedInputSchema } from './ClauseUncheckedUpdateManyWithoutParentNestedInputSchema';
-import { TriggerHitUncheckedUpdateManyWithoutClauseNestedInputSchema } from './TriggerHitUncheckedUpdateManyWithoutClauseNestedInputSchema';
-import { ClauseAnalysisUncheckedUpdateManyWithoutClauseNestedInputSchema } from './ClauseAnalysisUncheckedUpdateManyWithoutClauseNestedInputSchema';
 
 export const ClauseUncheckedUpdateInputSchema: z.ZodType<Prisma.ClauseUncheckedUpdateInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -24,8 +22,6 @@ export const ClauseUncheckedUpdateInputSchema: z.ZodType<Prisma.ClauseUncheckedU
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   children: z.lazy(() => ClauseUncheckedUpdateManyWithoutParentNestedInputSchema).optional(),
-  TriggerHits: z.lazy(() => TriggerHitUncheckedUpdateManyWithoutClauseNestedInputSchema).optional(),
-  ClauseAnalysis: z.lazy(() => ClauseAnalysisUncheckedUpdateManyWithoutClauseNestedInputSchema).optional(),
 });
 
 export default ClauseUncheckedUpdateInputSchema;

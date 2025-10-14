@@ -15,6 +15,8 @@ export const DocumentTriggerSchema = z.object({
   enabled: z.boolean(),
   minConfidence: z.number().nullish(),
   notes: z.string().nullish(),
+  from: z.number().int(),
+  to: z.number().int(),
 })
 
 export type DocumentTrigger = z.infer<typeof DocumentTriggerSchema>

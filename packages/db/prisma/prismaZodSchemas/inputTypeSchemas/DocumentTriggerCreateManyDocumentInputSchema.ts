@@ -8,6 +8,8 @@ export const DocumentTriggerCreateManyDocumentInputSchema: z.ZodType<Prisma.Docu
   enabled: z.boolean().optional(),
   minConfidence: z.number().optional().nullable(),
   notes: z.string().optional().nullable(),
+  from: z.number().int(),
+  to: z.number().int(),
 });
 
 export default DocumentTriggerCreateManyDocumentInputSchema;

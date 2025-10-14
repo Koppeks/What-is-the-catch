@@ -2,8 +2,6 @@ import { z } from 'zod';
 import { AnalysisStatusSchema } from '../inputTypeSchemas/AnalysisStatusSchema'
 import { DocumentWithRelationsSchema, DocumentPartialWithRelationsSchema } from './DocumentSchema'
 import type { DocumentWithRelations, DocumentPartialWithRelations } from './DocumentSchema'
-import { ClauseAnalysisWithRelationsSchema, ClauseAnalysisPartialWithRelationsSchema } from './ClauseAnalysisSchema'
-import type { ClauseAnalysisWithRelations, ClauseAnalysisPartialWithRelations } from './ClauseAnalysisSchema'
 
 /////////////////////////////////////////
 // ANALYSIS RUN SCHEMA
@@ -36,14 +34,12 @@ export type AnalysisRunPartial = z.infer<typeof AnalysisRunPartialSchema>
 
 export type AnalysisRunRelations = {
   document: DocumentWithRelations;
-  clauseAnalyses: ClauseAnalysisWithRelations[];
 };
 
 export type AnalysisRunWithRelations = z.infer<typeof AnalysisRunSchema> & AnalysisRunRelations
 
 export const AnalysisRunWithRelationsSchema: z.ZodType<AnalysisRunWithRelations> = AnalysisRunSchema.merge(z.object({
   document: z.lazy(() => DocumentWithRelationsSchema),
-  clauseAnalyses: z.lazy(() => ClauseAnalysisWithRelationsSchema).array(),
 }))
 
 /////////////////////////////////////////
@@ -52,21 +48,18 @@ export const AnalysisRunWithRelationsSchema: z.ZodType<AnalysisRunWithRelations>
 
 export type AnalysisRunPartialRelations = {
   document?: DocumentPartialWithRelations;
-  clauseAnalyses?: ClauseAnalysisPartialWithRelations[];
 };
 
 export type AnalysisRunPartialWithRelations = z.infer<typeof AnalysisRunPartialSchema> & AnalysisRunPartialRelations
 
 export const AnalysisRunPartialWithRelationsSchema: z.ZodType<AnalysisRunPartialWithRelations> = AnalysisRunPartialSchema.merge(z.object({
   document: z.lazy(() => DocumentPartialWithRelationsSchema),
-  clauseAnalyses: z.lazy(() => ClauseAnalysisPartialWithRelationsSchema).array(),
 })).partial()
 
 export type AnalysisRunWithPartialRelations = z.infer<typeof AnalysisRunSchema> & AnalysisRunPartialRelations
 
 export const AnalysisRunWithPartialRelationsSchema: z.ZodType<AnalysisRunWithPartialRelations> = AnalysisRunSchema.merge(z.object({
   document: z.lazy(() => DocumentPartialWithRelationsSchema),
-  clauseAnalyses: z.lazy(() => ClauseAnalysisPartialWithRelationsSchema).array(),
 }).partial())
 
 export default AnalysisRunSchema;

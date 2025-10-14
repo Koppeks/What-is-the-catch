@@ -13,7 +13,6 @@ import { SeveritySchema } from './SeveritySchema';
 import { NullableEnumSeverityFieldUpdateOperationsInputSchema } from './NullableEnumSeverityFieldUpdateOperationsInputSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { TriggerUncheckedUpdateManyWithoutMergedIntoNestedInputSchema } from './TriggerUncheckedUpdateManyWithoutMergedIntoNestedInputSchema';
-import { TriggerHitUncheckedUpdateManyWithoutTriggerNestedInputSchema } from './TriggerHitUncheckedUpdateManyWithoutTriggerNestedInputSchema';
 
 export const TriggerUncheckedUpdateWithoutDocumentRulesInputSchema: z.ZodType<Prisma.TriggerUncheckedUpdateWithoutDocumentRulesInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -31,7 +30,6 @@ export const TriggerUncheckedUpdateWithoutDocumentRulesInputSchema: z.ZodType<Pr
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   mergeFrom: z.lazy(() => TriggerUncheckedUpdateManyWithoutMergedIntoNestedInputSchema).optional(),
-  hits: z.lazy(() => TriggerHitUncheckedUpdateManyWithoutTriggerNestedInputSchema).optional(),
 });
 
 export default TriggerUncheckedUpdateWithoutDocumentRulesInputSchema;

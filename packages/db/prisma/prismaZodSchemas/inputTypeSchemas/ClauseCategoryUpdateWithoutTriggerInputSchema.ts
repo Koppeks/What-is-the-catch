@@ -6,7 +6,6 @@ import { FloatFieldUpdateOperationsInputSchema } from './FloatFieldUpdateOperati
 import { BoolFieldUpdateOperationsInputSchema } from './BoolFieldUpdateOperationsInputSchema';
 import { ClauseCategoryUpdatetriggerKeywordsInputSchema } from './ClauseCategoryUpdatetriggerKeywordsInputSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
-import { CategoryHitUpdateManyWithoutCategoryNestedInputSchema } from './CategoryHitUpdateManyWithoutCategoryNestedInputSchema';
 
 export const ClauseCategoryUpdateWithoutTriggerInputSchema: z.ZodType<Prisma.ClauseCategoryUpdateWithoutTriggerInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -19,7 +18,6 @@ export const ClauseCategoryUpdateWithoutTriggerInputSchema: z.ZodType<Prisma.Cla
   triggerKeywords: z.union([ z.lazy(() => ClauseCategoryUpdatetriggerKeywordsInputSchema), z.string().array() ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  CategoryHit: z.lazy(() => CategoryHitUpdateManyWithoutCategoryNestedInputSchema).optional(),
 });
 
 export default ClauseCategoryUpdateWithoutTriggerInputSchema;

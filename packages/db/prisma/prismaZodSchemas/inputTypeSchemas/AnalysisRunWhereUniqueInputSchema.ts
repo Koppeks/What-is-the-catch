@@ -9,7 +9,6 @@ import { DateTimeFilterSchema } from './DateTimeFilterSchema';
 import { IntFilterSchema } from './IntFilterSchema';
 import { DocumentScalarRelationFilterSchema } from './DocumentScalarRelationFilterSchema';
 import { DocumentWhereInputSchema } from './DocumentWhereInputSchema';
-import { ClauseAnalysisListRelationFilterSchema } from './ClauseAnalysisListRelationFilterSchema';
 
 export const AnalysisRunWhereUniqueInputSchema: z.ZodType<Prisma.AnalysisRunWhereUniqueInput> = z.object({
   id: z.cuid(),
@@ -27,7 +26,6 @@ export const AnalysisRunWhereUniqueInputSchema: z.ZodType<Prisma.AnalysisRunWher
   overallRisk: z.union([ z.lazy(() => IntFilterSchema), z.number().int() ]).optional(),
   notes: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
   document: z.union([ z.lazy(() => DocumentScalarRelationFilterSchema), z.lazy(() => DocumentWhereInputSchema) ]).optional(),
-  clauseAnalyses: z.lazy(() => ClauseAnalysisListRelationFilterSchema).optional(),
 }));
 
 export default AnalysisRunWhereUniqueInputSchema;

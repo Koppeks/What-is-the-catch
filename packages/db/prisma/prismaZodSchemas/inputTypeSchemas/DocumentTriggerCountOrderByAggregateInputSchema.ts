@@ -10,6 +10,8 @@ export const DocumentTriggerCountOrderByAggregateInputSchema: z.ZodType<Prisma.D
   enabled: z.lazy(() => SortOrderSchema).optional(),
   minConfidence: z.lazy(() => SortOrderSchema).optional(),
   notes: z.lazy(() => SortOrderSchema).optional(),
+  from: z.lazy(() => SortOrderSchema).optional(),
+  to: z.lazy(() => SortOrderSchema).optional(),
 });
 
 export default DocumentTriggerCountOrderByAggregateInputSchema;

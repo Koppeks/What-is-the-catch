@@ -9,8 +9,6 @@ import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateO
 import { DocumentUpdateOneRequiredWithoutClausesNestedInputSchema } from './DocumentUpdateOneRequiredWithoutClausesNestedInputSchema';
 import { ClauseUpdateOneWithoutChildrenNestedInputSchema } from './ClauseUpdateOneWithoutChildrenNestedInputSchema';
 import { ClauseUpdateManyWithoutParentNestedInputSchema } from './ClauseUpdateManyWithoutParentNestedInputSchema';
-import { TriggerHitUpdateManyWithoutClauseNestedInputSchema } from './TriggerHitUpdateManyWithoutClauseNestedInputSchema';
-import { ClauseAnalysisUpdateManyWithoutClauseNestedInputSchema } from './ClauseAnalysisUpdateManyWithoutClauseNestedInputSchema';
 
 export const ClauseUpdateInputSchema: z.ZodType<Prisma.ClauseUpdateInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -25,8 +23,6 @@ export const ClauseUpdateInputSchema: z.ZodType<Prisma.ClauseUpdateInput> = z.st
   document: z.lazy(() => DocumentUpdateOneRequiredWithoutClausesNestedInputSchema).optional(),
   parent: z.lazy(() => ClauseUpdateOneWithoutChildrenNestedInputSchema).optional(),
   children: z.lazy(() => ClauseUpdateManyWithoutParentNestedInputSchema).optional(),
-  TriggerHits: z.lazy(() => TriggerHitUpdateManyWithoutClauseNestedInputSchema).optional(),
-  ClauseAnalysis: z.lazy(() => ClauseAnalysisUpdateManyWithoutClauseNestedInputSchema).optional(),
 });
 
 export default ClauseUpdateInputSchema;

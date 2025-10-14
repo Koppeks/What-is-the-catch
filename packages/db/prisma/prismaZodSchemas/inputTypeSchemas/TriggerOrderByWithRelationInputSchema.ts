@@ -5,7 +5,6 @@ import { SortOrderSchema } from './SortOrderSchema';
 import { SortOrderInputSchema } from './SortOrderInputSchema';
 import { TriggerOrderByRelationAggregateInputSchema } from './TriggerOrderByRelationAggregateInputSchema';
 import { ClauseCategoryOrderByWithRelationInputSchema } from './ClauseCategoryOrderByWithRelationInputSchema';
-import { TriggerHitOrderByRelationAggregateInputSchema } from './TriggerHitOrderByRelationAggregateInputSchema';
 import { DocumentTriggerOrderByRelationAggregateInputSchema } from './DocumentTriggerOrderByRelationAggregateInputSchema';
 
 export const TriggerOrderByWithRelationInputSchema: z.ZodType<Prisma.TriggerOrderByWithRelationInput> = z.strictObject({
@@ -26,7 +25,6 @@ export const TriggerOrderByWithRelationInputSchema: z.ZodType<Prisma.TriggerOrde
   mergedInto: z.lazy(() => TriggerOrderByWithRelationInputSchema).optional(),
   mergeFrom: z.lazy(() => TriggerOrderByRelationAggregateInputSchema).optional(),
   clauseCategory: z.lazy(() => ClauseCategoryOrderByWithRelationInputSchema).optional(),
-  hits: z.lazy(() => TriggerHitOrderByRelationAggregateInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerOrderByRelationAggregateInputSchema).optional(),
 });
 

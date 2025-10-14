@@ -12,7 +12,6 @@ import { NullableDateTimeFieldUpdateOperationsInputSchema } from './NullableDate
 import { SeveritySchema } from './SeveritySchema';
 import { NullableEnumSeverityFieldUpdateOperationsInputSchema } from './NullableEnumSeverityFieldUpdateOperationsInputSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
-import { TriggerHitUncheckedUpdateManyWithoutTriggerNestedInputSchema } from './TriggerHitUncheckedUpdateManyWithoutTriggerNestedInputSchema';
 import { DocumentTriggerUncheckedUpdateManyWithoutTriggerNestedInputSchema } from './DocumentTriggerUncheckedUpdateManyWithoutTriggerNestedInputSchema';
 
 export const TriggerUncheckedUpdateWithoutMergeFromInputSchema: z.ZodType<Prisma.TriggerUncheckedUpdateWithoutMergeFromInput> = z.strictObject({
@@ -30,7 +29,6 @@ export const TriggerUncheckedUpdateWithoutMergeFromInputSchema: z.ZodType<Prisma
   defaultSeverity: z.union([ z.lazy(() => SeveritySchema), z.lazy(() => NullableEnumSeverityFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  hits: z.lazy(() => TriggerHitUncheckedUpdateManyWithoutTriggerNestedInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerUncheckedUpdateManyWithoutTriggerNestedInputSchema).optional(),
 });
 

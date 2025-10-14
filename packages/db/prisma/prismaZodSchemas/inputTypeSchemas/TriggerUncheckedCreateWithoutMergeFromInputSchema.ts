@@ -5,7 +5,6 @@ import { TriggerCreatepatternsInputSchema } from './TriggerCreatepatternsInputSc
 import { TriggerSourceSchema } from './TriggerSourceSchema';
 import { TriggerStateSchema } from './TriggerStateSchema';
 import { SeveritySchema } from './SeveritySchema';
-import { TriggerHitUncheckedCreateNestedManyWithoutTriggerInputSchema } from './TriggerHitUncheckedCreateNestedManyWithoutTriggerInputSchema';
 import { DocumentTriggerUncheckedCreateNestedManyWithoutTriggerInputSchema } from './DocumentTriggerUncheckedCreateNestedManyWithoutTriggerInputSchema';
 
 export const TriggerUncheckedCreateWithoutMergeFromInputSchema: z.ZodType<Prisma.TriggerUncheckedCreateWithoutMergeFromInput> = z.strictObject({
@@ -23,7 +22,6 @@ export const TriggerUncheckedCreateWithoutMergeFromInputSchema: z.ZodType<Prisma
   defaultSeverity: z.lazy(() => SeveritySchema).optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  hits: z.lazy(() => TriggerHitUncheckedCreateNestedManyWithoutTriggerInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerUncheckedCreateNestedManyWithoutTriggerInputSchema).optional(),
 });
 

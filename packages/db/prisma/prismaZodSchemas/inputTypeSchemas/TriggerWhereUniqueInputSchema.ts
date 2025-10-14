@@ -18,7 +18,6 @@ import { TriggerNullableScalarRelationFilterSchema } from './TriggerNullableScal
 import { TriggerListRelationFilterSchema } from './TriggerListRelationFilterSchema';
 import { ClauseCategoryScalarRelationFilterSchema } from './ClauseCategoryScalarRelationFilterSchema';
 import { ClauseCategoryWhereInputSchema } from './ClauseCategoryWhereInputSchema';
-import { TriggerHitListRelationFilterSchema } from './TriggerHitListRelationFilterSchema';
 import { DocumentTriggerListRelationFilterSchema } from './DocumentTriggerListRelationFilterSchema';
 
 export const TriggerWhereUniqueInputSchema: z.ZodType<Prisma.TriggerWhereUniqueInput> = z.union([
@@ -71,7 +70,6 @@ export const TriggerWhereUniqueInputSchema: z.ZodType<Prisma.TriggerWhereUniqueI
   mergedInto: z.union([ z.lazy(() => TriggerNullableScalarRelationFilterSchema), z.lazy(() => TriggerWhereInputSchema) ]).optional().nullable(),
   mergeFrom: z.lazy(() => TriggerListRelationFilterSchema).optional(),
   clauseCategory: z.union([ z.lazy(() => ClauseCategoryScalarRelationFilterSchema), z.lazy(() => ClauseCategoryWhereInputSchema) ]).optional(),
-  hits: z.lazy(() => TriggerHitListRelationFilterSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerListRelationFilterSchema).optional(),
 }));
 

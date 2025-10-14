@@ -8,7 +8,6 @@ import { BoolFilterSchema } from './BoolFilterSchema';
 import { StringNullableListFilterSchema } from './StringNullableListFilterSchema';
 import { DateTimeFilterSchema } from './DateTimeFilterSchema';
 import { TriggerListRelationFilterSchema } from './TriggerListRelationFilterSchema';
-import { CategoryHitListRelationFilterSchema } from './CategoryHitListRelationFilterSchema';
 
 export const ClauseCategoryWhereUniqueInputSchema: z.ZodType<Prisma.ClauseCategoryWhereUniqueInput> = z.union([
   z.object({
@@ -37,7 +36,6 @@ export const ClauseCategoryWhereUniqueInputSchema: z.ZodType<Prisma.ClauseCatego
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
   updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
   Trigger: z.lazy(() => TriggerListRelationFilterSchema).optional(),
-  CategoryHit: z.lazy(() => CategoryHitListRelationFilterSchema).optional(),
 }));
 
 export default ClauseCategoryWhereUniqueInputSchema;

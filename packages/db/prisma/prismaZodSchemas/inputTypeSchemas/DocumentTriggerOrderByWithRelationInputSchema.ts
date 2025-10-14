@@ -13,6 +13,8 @@ export const DocumentTriggerOrderByWithRelationInputSchema: z.ZodType<Prisma.Doc
   enabled: z.lazy(() => SortOrderSchema).optional(),
   minConfidence: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   notes: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
+  from: z.lazy(() => SortOrderSchema).optional(),
+  to: z.lazy(() => SortOrderSchema).optional(),
   document: z.lazy(() => DocumentOrderByWithRelationInputSchema).optional(),
   trigger: z.lazy(() => TriggerOrderByWithRelationInputSchema).optional(),
 });

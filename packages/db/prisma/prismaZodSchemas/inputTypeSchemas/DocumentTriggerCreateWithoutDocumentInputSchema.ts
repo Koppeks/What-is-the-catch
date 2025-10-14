@@ -8,6 +8,8 @@ export const DocumentTriggerCreateWithoutDocumentInputSchema: z.ZodType<Prisma.D
   enabled: z.boolean().optional(),
   minConfidence: z.number().optional().nullable(),
   notes: z.string().optional().nullable(),
+  from: z.number().int(),
+  to: z.number().int(),
   trigger: z.lazy(() => TriggerCreateNestedOneWithoutDocumentRulesInputSchema),
 });
 

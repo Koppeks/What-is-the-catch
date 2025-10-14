@@ -2,7 +2,6 @@ import type { Prisma } from '@prisma/client';
 
 import { z } from 'zod';
 import { ClauseCategoryCreatetriggerKeywordsInputSchema } from './ClauseCategoryCreatetriggerKeywordsInputSchema';
-import { CategoryHitCreateNestedManyWithoutCategoryInputSchema } from './CategoryHitCreateNestedManyWithoutCategoryInputSchema';
 
 export const ClauseCategoryCreateWithoutTriggerInputSchema: z.ZodType<Prisma.ClauseCategoryCreateWithoutTriggerInput> = z.strictObject({
   id: z.cuid().optional(),
@@ -15,7 +14,6 @@ export const ClauseCategoryCreateWithoutTriggerInputSchema: z.ZodType<Prisma.Cla
   triggerKeywords: z.union([ z.lazy(() => ClauseCategoryCreatetriggerKeywordsInputSchema), z.string().array() ]).optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  CategoryHit: z.lazy(() => CategoryHitCreateNestedManyWithoutCategoryInputSchema).optional(),
 });
 
 export default ClauseCategoryCreateWithoutTriggerInputSchema;

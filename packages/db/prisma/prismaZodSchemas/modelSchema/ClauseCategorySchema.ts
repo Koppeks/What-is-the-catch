@@ -1,8 +1,6 @@
 import { z } from 'zod';
 import { TriggerWithRelationsSchema, TriggerPartialWithRelationsSchema } from './TriggerSchema'
 import type { TriggerWithRelations, TriggerPartialWithRelations } from './TriggerSchema'
-import { CategoryHitWithRelationsSchema, CategoryHitPartialWithRelationsSchema } from './CategoryHitSchema'
-import type { CategoryHitWithRelations, CategoryHitPartialWithRelations } from './CategoryHitSchema'
 
 /////////////////////////////////////////
 // CLAUSE CATEGORY SCHEMA
@@ -37,14 +35,12 @@ export type ClauseCategoryPartial = z.infer<typeof ClauseCategoryPartialSchema>
 
 export type ClauseCategoryRelations = {
   Trigger: TriggerWithRelations[];
-  CategoryHit: CategoryHitWithRelations[];
 };
 
 export type ClauseCategoryWithRelations = z.infer<typeof ClauseCategorySchema> & ClauseCategoryRelations
 
 export const ClauseCategoryWithRelationsSchema: z.ZodType<ClauseCategoryWithRelations> = ClauseCategorySchema.merge(z.object({
   Trigger: z.lazy(() => TriggerWithRelationsSchema).array(),
-  CategoryHit: z.lazy(() => CategoryHitWithRelationsSchema).array(),
 }))
 
 /////////////////////////////////////////
@@ -53,21 +49,18 @@ export const ClauseCategoryWithRelationsSchema: z.ZodType<ClauseCategoryWithRela
 
 export type ClauseCategoryPartialRelations = {
   Trigger?: TriggerPartialWithRelations[];
-  CategoryHit?: CategoryHitPartialWithRelations[];
 };
 
 export type ClauseCategoryPartialWithRelations = z.infer<typeof ClauseCategoryPartialSchema> & ClauseCategoryPartialRelations
 
 export const ClauseCategoryPartialWithRelationsSchema: z.ZodType<ClauseCategoryPartialWithRelations> = ClauseCategoryPartialSchema.merge(z.object({
   Trigger: z.lazy(() => TriggerPartialWithRelationsSchema).array(),
-  CategoryHit: z.lazy(() => CategoryHitPartialWithRelationsSchema).array(),
 })).partial()
 
 export type ClauseCategoryWithPartialRelations = z.infer<typeof ClauseCategorySchema> & ClauseCategoryPartialRelations
 
 export const ClauseCategoryWithPartialRelationsSchema: z.ZodType<ClauseCategoryWithPartialRelations> = ClauseCategorySchema.merge(z.object({
   Trigger: z.lazy(() => TriggerPartialWithRelationsSchema).array(),
-  CategoryHit: z.lazy(() => CategoryHitPartialWithRelationsSchema).array(),
 }).partial())
 
 export default ClauseCategorySchema;

@@ -7,7 +7,6 @@ import { BoolFieldUpdateOperationsInputSchema } from './BoolFieldUpdateOperation
 import { ClauseCategoryUpdatetriggerKeywordsInputSchema } from './ClauseCategoryUpdatetriggerKeywordsInputSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { TriggerUncheckedUpdateManyWithoutClauseCategoryNestedInputSchema } from './TriggerUncheckedUpdateManyWithoutClauseCategoryNestedInputSchema';
-import { CategoryHitUncheckedUpdateManyWithoutCategoryNestedInputSchema } from './CategoryHitUncheckedUpdateManyWithoutCategoryNestedInputSchema';
 
 export const ClauseCategoryUncheckedUpdateInputSchema: z.ZodType<Prisma.ClauseCategoryUncheckedUpdateInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -21,7 +20,6 @@ export const ClauseCategoryUncheckedUpdateInputSchema: z.ZodType<Prisma.ClauseCa
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   Trigger: z.lazy(() => TriggerUncheckedUpdateManyWithoutClauseCategoryNestedInputSchema).optional(),
-  CategoryHit: z.lazy(() => CategoryHitUncheckedUpdateManyWithoutCategoryNestedInputSchema).optional(),
 });
 
 export default ClauseCategoryUncheckedUpdateInputSchema;

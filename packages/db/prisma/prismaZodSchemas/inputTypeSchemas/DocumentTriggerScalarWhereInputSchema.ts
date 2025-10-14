@@ -5,6 +5,7 @@ import { StringFilterSchema } from './StringFilterSchema';
 import { BoolFilterSchema } from './BoolFilterSchema';
 import { FloatNullableFilterSchema } from './FloatNullableFilterSchema';
 import { StringNullableFilterSchema } from './StringNullableFilterSchema';
+import { IntFilterSchema } from './IntFilterSchema';
 
 export const DocumentTriggerScalarWhereInputSchema: z.ZodType<Prisma.DocumentTriggerScalarWhereInput> = z.strictObject({
   AND: z.union([ z.lazy(() => DocumentTriggerScalarWhereInputSchema), z.lazy(() => DocumentTriggerScalarWhereInputSchema).array() ]).optional(),
@@ -16,6 +17,8 @@ export const DocumentTriggerScalarWhereInputSchema: z.ZodType<Prisma.DocumentTri
   enabled: z.union([ z.lazy(() => BoolFilterSchema), z.boolean() ]).optional(),
   minConfidence: z.union([ z.lazy(() => FloatNullableFilterSchema), z.number() ]).optional().nullable(),
   notes: z.union([ z.lazy(() => StringNullableFilterSchema), z.string() ]).optional().nullable(),
+  from: z.union([ z.lazy(() => IntFilterSchema), z.number() ]).optional(),
+  to: z.union([ z.lazy(() => IntFilterSchema), z.number() ]).optional(),
 });
 
 export default DocumentTriggerScalarWhereInputSchema;

@@ -7,7 +7,6 @@ import { BoolFilterSchema } from './BoolFilterSchema';
 import { StringNullableListFilterSchema } from './StringNullableListFilterSchema';
 import { DateTimeFilterSchema } from './DateTimeFilterSchema';
 import { TriggerListRelationFilterSchema } from './TriggerListRelationFilterSchema';
-import { CategoryHitListRelationFilterSchema } from './CategoryHitListRelationFilterSchema';
 
 export const ClauseCategoryWhereInputSchema: z.ZodType<Prisma.ClauseCategoryWhereInput> = z.strictObject({
   AND: z.union([ z.lazy(() => ClauseCategoryWhereInputSchema), z.lazy(() => ClauseCategoryWhereInputSchema).array() ]).optional(),
@@ -24,7 +23,6 @@ export const ClauseCategoryWhereInputSchema: z.ZodType<Prisma.ClauseCategoryWher
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
   updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
   Trigger: z.lazy(() => TriggerListRelationFilterSchema).optional(),
-  CategoryHit: z.lazy(() => CategoryHitListRelationFilterSchema).optional(),
 });
 
 export default ClauseCategoryWhereInputSchema;

@@ -4,8 +4,6 @@ import { AnalysisRunIncludeSchema } from '../inputTypeSchemas/AnalysisRunInclude
 import { AnalysisRunCreateInputSchema } from '../inputTypeSchemas/AnalysisRunCreateInputSchema'
 import { AnalysisRunUncheckedCreateInputSchema } from '../inputTypeSchemas/AnalysisRunUncheckedCreateInputSchema'
 import { DocumentArgsSchema } from "../outputTypeSchemas/DocumentArgsSchema"
-import { ClauseAnalysisFindManyArgsSchema } from "../outputTypeSchemas/ClauseAnalysisFindManyArgsSchema"
-import { AnalysisRunCountOutputTypeArgsSchema } from "../outputTypeSchemas/AnalysisRunCountOutputTypeArgsSchema"
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
@@ -19,8 +17,6 @@ export const AnalysisRunSelectSchema: z.ZodType<Prisma.AnalysisRunSelect> = z.ob
   overallRisk: z.boolean().optional(),
   notes: z.boolean().optional(),
   document: z.union([z.boolean(),z.lazy(() => DocumentArgsSchema)]).optional(),
-  clauseAnalyses: z.union([z.boolean(),z.lazy(() => ClauseAnalysisFindManyArgsSchema)]).optional(),
-  _count: z.union([z.boolean(),z.lazy(() => AnalysisRunCountOutputTypeArgsSchema)]).optional(),
 }).strict()
 
 export const AnalysisRunCreateArgsSchema: z.ZodType<Prisma.AnalysisRunCreateArgs> = z.object({

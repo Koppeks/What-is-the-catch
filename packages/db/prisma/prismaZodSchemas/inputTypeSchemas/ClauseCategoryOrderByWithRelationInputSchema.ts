@@ -3,7 +3,6 @@ import type { Prisma } from '@prisma/client';
 import { z } from 'zod';
 import { SortOrderSchema } from './SortOrderSchema';
 import { TriggerOrderByRelationAggregateInputSchema } from './TriggerOrderByRelationAggregateInputSchema';
-import { CategoryHitOrderByRelationAggregateInputSchema } from './CategoryHitOrderByRelationAggregateInputSchema';
 
 export const ClauseCategoryOrderByWithRelationInputSchema: z.ZodType<Prisma.ClauseCategoryOrderByWithRelationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
@@ -17,7 +16,6 @@ export const ClauseCategoryOrderByWithRelationInputSchema: z.ZodType<Prisma.Clau
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional(),
   Trigger: z.lazy(() => TriggerOrderByRelationAggregateInputSchema).optional(),
-  CategoryHit: z.lazy(() => CategoryHitOrderByRelationAggregateInputSchema).optional(),
 });
 
 export default ClauseCategoryOrderByWithRelationInputSchema;

@@ -6,7 +6,6 @@ import { AnalysisStatusSchema } from './AnalysisStatusSchema';
 import { EnumAnalysisStatusFieldUpdateOperationsInputSchema } from './EnumAnalysisStatusFieldUpdateOperationsInputSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { IntFieldUpdateOperationsInputSchema } from './IntFieldUpdateOperationsInputSchema';
-import { ClauseAnalysisUncheckedUpdateManyWithoutRunNestedInputSchema } from './ClauseAnalysisUncheckedUpdateManyWithoutRunNestedInputSchema';
 
 export const AnalysisRunUncheckedUpdateWithoutDocumentInputSchema: z.ZodType<Prisma.AnalysisRunUncheckedUpdateWithoutDocumentInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -16,7 +15,6 @@ export const AnalysisRunUncheckedUpdateWithoutDocumentInputSchema: z.ZodType<Pri
   finishedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   overallRisk: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   notes: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
-  clauseAnalyses: z.lazy(() => ClauseAnalysisUncheckedUpdateManyWithoutRunNestedInputSchema).optional(),
 });
 
 export default AnalysisRunUncheckedUpdateWithoutDocumentInputSchema;

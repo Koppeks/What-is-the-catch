@@ -11,8 +11,6 @@ import { DocumentScalarRelationFilterSchema } from './DocumentScalarRelationFilt
 import { DocumentWhereInputSchema } from './DocumentWhereInputSchema';
 import { ClauseNullableScalarRelationFilterSchema } from './ClauseNullableScalarRelationFilterSchema';
 import { ClauseListRelationFilterSchema } from './ClauseListRelationFilterSchema';
-import { TriggerHitListRelationFilterSchema } from './TriggerHitListRelationFilterSchema';
-import { ClauseAnalysisListRelationFilterSchema } from './ClauseAnalysisListRelationFilterSchema';
 
 export const ClauseWhereUniqueInputSchema: z.ZodType<Prisma.ClauseWhereUniqueInput> = z.object({
   id: z.cuid(),
@@ -35,8 +33,6 @@ export const ClauseWhereUniqueInputSchema: z.ZodType<Prisma.ClauseWhereUniqueInp
   document: z.union([ z.lazy(() => DocumentScalarRelationFilterSchema), z.lazy(() => DocumentWhereInputSchema) ]).optional(),
   parent: z.union([ z.lazy(() => ClauseNullableScalarRelationFilterSchema), z.lazy(() => ClauseWhereInputSchema) ]).optional().nullable(),
   children: z.lazy(() => ClauseListRelationFilterSchema).optional(),
-  TriggerHits: z.lazy(() => TriggerHitListRelationFilterSchema).optional(),
-  ClauseAnalysis: z.lazy(() => ClauseAnalysisListRelationFilterSchema).optional(),
 }));
 
 export default ClauseWhereUniqueInputSchema;

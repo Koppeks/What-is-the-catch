@@ -4,8 +4,6 @@ import { z } from 'zod';
 import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSchema';
 import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { ClauseUncheckedCreateNestedManyWithoutParentInputSchema } from './ClauseUncheckedCreateNestedManyWithoutParentInputSchema';
-import { TriggerHitUncheckedCreateNestedManyWithoutClauseInputSchema } from './TriggerHitUncheckedCreateNestedManyWithoutClauseInputSchema';
-import { ClauseAnalysisUncheckedCreateNestedManyWithoutClauseInputSchema } from './ClauseAnalysisUncheckedCreateNestedManyWithoutClauseInputSchema';
 
 export const ClauseUncheckedCreateWithoutDocumentInputSchema: z.ZodType<Prisma.ClauseUncheckedCreateWithoutDocumentInput> = z.strictObject({
   id: z.cuid().optional(),
@@ -19,8 +17,6 @@ export const ClauseUncheckedCreateWithoutDocumentInputSchema: z.ZodType<Prisma.C
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   children: z.lazy(() => ClauseUncheckedCreateNestedManyWithoutParentInputSchema).optional(),
-  TriggerHits: z.lazy(() => TriggerHitUncheckedCreateNestedManyWithoutClauseInputSchema).optional(),
-  ClauseAnalysis: z.lazy(() => ClauseAnalysisUncheckedCreateNestedManyWithoutClauseInputSchema).optional(),
 });
 
 export default ClauseUncheckedCreateWithoutDocumentInputSchema;
