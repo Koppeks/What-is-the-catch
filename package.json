@@ -25,6 +25,7 @@
     "react-dom": "19.1.0",
     "resend": "6.1.0",
     "cheerio": "1.1.2",
+    "playwright": "1.56.0",
     "domhandler": "5.0.3",
     "zod": "4.1.11",
     "zod-prisma-types": "3.3.5"

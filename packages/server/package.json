@@ -10,7 +10,8 @@
     "bcryptjs": "*",
     "openai": "*",
     "cheerio" : "*",
-    "domhandler": "*"
+    "domhandler": "*",
+    "playwright": "*"
   },
   "exports": {
     ".": {

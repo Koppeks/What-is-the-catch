@@ -26,27 +26,58 @@ export const initStripper = async (url: string) => {
 };
 
 const clauseFromHtml = (html: string): Clause[] => {
-  const source = load(html);
+  const $ = load(html);
 
   // Remove junk from source
-  source(
+  $(
     "script,style,noscript,svg,nav,footer,header,aside,[aria-hidden=true],[role=dialog],.cookie,.consent"
   ).remove();
 
-  const root: Cheerio<CheerioElement> = source(
+  const root: Cheerio<CheerioElement> = $(
     "main,article,[role=main],.content,.terms,.policy,.container"
   ).first().length
-    ? source(
+    ? $(
         "main,article,[role=main],.content,.terms,.policy,.container"
       ).first()
-    : source("body");
+    : $("body");
 
-  const sections = buildSectionsFromHeadings(source, root);
+  const sections = buildSectionsFromHeadings($, root);
   return sections
 
 };
 
 // --- helpers ---
+
+type TriggerSets = Record<string, string[]>;
+
+export type TriggerHit = {
+  category: string;       // trigger group key
+  trigger: string;        // trigger text you provided
+  match: string;          // exact matched substring in the text
+  paragraph: string;      // full paragraph (trimmed)
+  paragraphIndex: number; // 0-based
+  paragraphStart: number; // absolute start offset (trimmed paragraph) in `text`
+  paragraphEnd: number;   // absolute end offset (trimmed paragraph) in `text`
+  matchStart: number;     // absolute start offset of the match in `text`
+  matchEnd: number;       // absolute end offset of the match in `text`
+};
+
+const paragraphSplitter = (text: string): { paragraph: string; start: number; end: number; }[] => {
+  // Split on blank lines, keep offsets
+  const out: { paragraph: string; start: number; end: number; }[] = [];
+  const parts = text.split(/\r?\n\s*\r?\n/g);
+  let cursor = 0;
+
+  for (const p of parts) {
+    // find this paragraph starting at or after cursor
+    const idx = text.indexOf(p, cursor);
+    const start = idx === -1 ? cursor : idx;
+    const end = start + p.length;
+    out.push({ paragraph: p, start, end });
+    cursor = end + 2; // skip presumed \n\n separator safely
+  }
+  return out;
+};
 
 function buildSectionsFromHeadings(source: ReturnType<typeof load>, root: Cheerio<CheerioElement>): Clause[] {
   const headingSection = root.find("h1,h2,h3,h4,h5,h6").toArray();
@@ -82,8 +113,6 @@ function buildSectionsFromHeadings(source: ReturnType<typeof load>, root: Cheeri
 
     stack.push(node);
   }
-
-  // Flatten to top-level clauses; you can keep hierarchy if you need it
   return main
 }
 
