@@ -55,7 +55,7 @@ export default function DashboardPage() {
           name="text"
           rows={8}
           className="border rounded p-2"
-          value={"https://www.youtube.com/t/terms?hl=en&override_hl=1"}
+          defaultValue={"https://www.youtube.com/t/terms?hl=en&override_hl=1"}
         />
         <button type="submit" className="rounded bg-black text-white p-2">
           Analyze

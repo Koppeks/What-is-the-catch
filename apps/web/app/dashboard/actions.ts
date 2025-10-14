@@ -1,7 +1,7 @@
 ﻿"use server";
 
-import { ClausePartial, prisma, TriggerHit } from "@repo/db";
-import { CreateCompany, inferCleanClauses, inferCompanyName, inferCompanyWebsite, initStripper } from "@repo/server";
+import { ClausePartial, prisma } from "@repo/db";
+import { CreateCompany, fetchAndInspect, hybridFetcher, inferCleanClauses, inferCompanyName, inferCompanyWebsite, initStripper } from "@repo/server";
 
 import util from "util";
 
@@ -74,43 +74,14 @@ function findWebsitePattern(text: string): string[] {
   return matches;
 }
 
-function evaluateTriggerRules(sections: Section[], rules: ClausePartial[]): TriggerHit[] {
-
-  
-
-  return []
-} 
-
-export type FormState = { ok: boolean; error?: string; triggers?: TriggerHit[], result?: any};
+export type FormState = { ok: boolean; error?: string; result?: any};
 
 export async function analyzeActionForm(prev: FormState, formData: FormData): Promise<FormState> {
   const url = String(formData.get("text") ?? "").trim();
 
-  // const parsed = parseHierarchical(text);
+  const content = hybridFetcher(url)
 
-  const strip = await initStripper(url)
+  const cheerioSome = await fetchAndInspect(url)
 
-  // const ollamaClauses = await inferCleanClauses(url)
-  console.log(util.inspect(strip, { showHidden: false, depth: null, colors: true }));
-  
-  // // Company name and slug.
-  // const legalNamePosibilities = findLegalNamePattern(text);
-  // const companyName = await inferCompanyName(legalNamePosibilities)
-  // const slug = companyName.replaceAll(" ", "_")
-
-  // // Company website
-  // const websitePosibilities = findWebsitePattern(text);
-  // const companyWebsite = await inferCompanyWebsite(websitePosibilities)
-
-  // const targetCompany = await CreateCompany(companyName, slug, companyWebsite)
-
-  // const triggerRules = await prisma.clauseCategory.findMany({ where: { isActive: true } });
-
-  // const currentTriggers = evaluateTriggerRules(parsed, triggerRules);
-
-  // // console.log(util.inspect(triggerRules, { showHidden: false, depth: null, colors: true }));
-  // // console.log(util.inspect(currentTriggers, { showHidden: false, depth: null, colors: true }));
-
-  // return { ok: true, triggers: currentTriggers };
-  return {ok: true, result: strip }
+  return {ok: true, result: cheerioSome }
 }
