@@ -37,12 +37,14 @@ model Document {
     kind          DocumentKind?
     type          TypeRequest
     status        AnalysisStatus    @default(PENDING)
-    blocks        Block[]
     runs          AnalysisRun[]
     documentRules DocumentTrigger[]
     sourceUrl     String?
     updatedAt     DateTime          @updatedAt
     createdAt     DateTime          @default(now())
+
+    Section Section[]
+    Block Block[]
 }
 
 model DocumentTrigger {
@@ -63,33 +65,54 @@ model DocumentTrigger {
     @@index([triggerId])
 }
 
-// Representation of a block of the document
-model Block {
+model Section {
     id String @id @default(cuid())
 
-    // Grouping
     documentId String
     document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
 
-    // Tree, with self reference
+    // The heading block that OPENS this section
+    headingBlockId String @unique
+    headingBlock   Block  @relation("SectionHeading", fields: [headingBlockId], references: [id], onDelete: Cascade)
+
+    // Tree (adjacency)
     parentId String?
-    parent   Block?  @relation("ClauseToChildren", fields: [parentId], references: [id], onDelete: Cascade)
-    children Block[] @relation("ClauseToChildren")
+    parent   Section?  @relation("SectionRecursive", fields: [parentId], references: [id], onDelete: Cascade)
+    children Section[] @relation("SectionRecursive")
 
-    // Payload
-    ordinalPath String // "22.1", "a", "b-4", "5-d"
-    title       String
-    text        String @db.Text
-    order       Int
-    depth       Int // numerical root order 0=parent, 1=children, 2=grandChildren, n...
 
-    meta        Json? @db.Json// Whatever
+    Block Block[]
+}
 
-    createdAt      DateTime         @default(now())
-    updatedAt      DateTime         @updatedAt
+// Representation of a block of the document
 
-    @@index([documentId, depth, order])
-    @@index([documentId, ordinalPath])
+model Block {
+  id          String   @id @default(cuid())
+  documentId  String
+  document    Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  // Belongs to exactly one section (the heading’s section or its parent)
+  sectionId String
+  section   Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  // Stream order within the document (for deterministic assembly)
+  order     Int
+
+  kind      BlockKind
+  level     Int?        // only for heading blocks (H1..H6 or inferred)
+  ordinalPath String?   // only if relevant (mostly for headings/lists)
+
+  title     String?     // only for headings (optional; heading text can also live in `text`)
+  text      String      @db.Text
+  html      String?     @db.Text
+  anchor    Json?       // { css, textQuote, offsets }
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([documentId, order])
+  @@index([sectionId, order])
+  Section Section[] @relation("SectionHeading")
 }
 
 model AnalysisRun {
@@ -293,4 +316,11 @@ enum DocumentKind {
     COOKIE 
     EULA 
     OTHER 
+}
+
+enum BlockKind {
+    HEADING
+    PARAGRAPH
+    LIST_ITEM
+    TABLE_ROW
 }
