@@ -10,9 +10,10 @@ import { EnumTypeRequestFieldUpdateOperationsInputSchema } from './EnumTypeReque
 import { AnalysisStatusSchema } from './AnalysisStatusSchema';
 import { EnumAnalysisStatusFieldUpdateOperationsInputSchema } from './EnumAnalysisStatusFieldUpdateOperationsInputSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
-import { BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema } from './BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema';
 import { AnalysisRunUncheckedUpdateManyWithoutDocumentNestedInputSchema } from './AnalysisRunUncheckedUpdateManyWithoutDocumentNestedInputSchema';
 import { DocumentTriggerUncheckedUpdateManyWithoutDocumentNestedInputSchema } from './DocumentTriggerUncheckedUpdateManyWithoutDocumentNestedInputSchema';
+import { SectionUncheckedUpdateManyWithoutDocumentNestedInputSchema } from './SectionUncheckedUpdateManyWithoutDocumentNestedInputSchema';
+import { BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema } from './BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema';
 
 export const DocumentUncheckedUpdateInputSchema: z.ZodType<Prisma.DocumentUncheckedUpdateInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -24,9 +25,10 @@ export const DocumentUncheckedUpdateInputSchema: z.ZodType<Prisma.DocumentUnchec
   sourceUrl: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  blocks: z.lazy(() => BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
   runs: z.lazy(() => AnalysisRunUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
+  Section: z.lazy(() => SectionUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
+  Block: z.lazy(() => BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
 });
 
 export default DocumentUncheckedUpdateInputSchema;

@@ -10,8 +10,9 @@ import { EnumTypeRequestFieldUpdateOperationsInputSchema } from './EnumTypeReque
 import { AnalysisStatusSchema } from './AnalysisStatusSchema';
 import { EnumAnalysisStatusFieldUpdateOperationsInputSchema } from './EnumAnalysisStatusFieldUpdateOperationsInputSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
-import { BlockUpdateManyWithoutDocumentNestedInputSchema } from './BlockUpdateManyWithoutDocumentNestedInputSchema';
 import { DocumentTriggerUpdateManyWithoutDocumentNestedInputSchema } from './DocumentTriggerUpdateManyWithoutDocumentNestedInputSchema';
+import { SectionUpdateManyWithoutDocumentNestedInputSchema } from './SectionUpdateManyWithoutDocumentNestedInputSchema';
+import { BlockUpdateManyWithoutDocumentNestedInputSchema } from './BlockUpdateManyWithoutDocumentNestedInputSchema';
 
 export const DocumentUpdateWithoutRunsInputSchema: z.ZodType<Prisma.DocumentUpdateWithoutRunsInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -23,8 +24,9 @@ export const DocumentUpdateWithoutRunsInputSchema: z.ZodType<Prisma.DocumentUpda
   sourceUrl: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  blocks: z.lazy(() => BlockUpdateManyWithoutDocumentNestedInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerUpdateManyWithoutDocumentNestedInputSchema).optional(),
+  Section: z.lazy(() => SectionUpdateManyWithoutDocumentNestedInputSchema).optional(),
+  Block: z.lazy(() => BlockUpdateManyWithoutDocumentNestedInputSchema).optional(),
 });
 
 export default DocumentUpdateWithoutRunsInputSchema;

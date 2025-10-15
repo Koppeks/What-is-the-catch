@@ -4,8 +4,9 @@ import { z } from 'zod';
 import { DocumentKindSchema } from './DocumentKindSchema';
 import { TypeRequestSchema } from './TypeRequestSchema';
 import { AnalysisStatusSchema } from './AnalysisStatusSchema';
-import { BlockUncheckedCreateNestedManyWithoutDocumentInputSchema } from './BlockUncheckedCreateNestedManyWithoutDocumentInputSchema';
 import { AnalysisRunUncheckedCreateNestedManyWithoutDocumentInputSchema } from './AnalysisRunUncheckedCreateNestedManyWithoutDocumentInputSchema';
+import { SectionUncheckedCreateNestedManyWithoutDocumentInputSchema } from './SectionUncheckedCreateNestedManyWithoutDocumentInputSchema';
+import { BlockUncheckedCreateNestedManyWithoutDocumentInputSchema } from './BlockUncheckedCreateNestedManyWithoutDocumentInputSchema';
 
 export const DocumentUncheckedCreateWithoutDocumentRulesInputSchema: z.ZodType<Prisma.DocumentUncheckedCreateWithoutDocumentRulesInput> = z.strictObject({
   id: z.cuid().optional(),
@@ -17,8 +18,9 @@ export const DocumentUncheckedCreateWithoutDocumentRulesInputSchema: z.ZodType<P
   sourceUrl: z.string().optional().nullable(),
   updatedAt: z.coerce.date().optional(),
   createdAt: z.coerce.date().optional(),
-  blocks: z.lazy(() => BlockUncheckedCreateNestedManyWithoutDocumentInputSchema).optional(),
   runs: z.lazy(() => AnalysisRunUncheckedCreateNestedManyWithoutDocumentInputSchema).optional(),
+  Section: z.lazy(() => SectionUncheckedCreateNestedManyWithoutDocumentInputSchema).optional(),
+  Block: z.lazy(() => BlockUncheckedCreateNestedManyWithoutDocumentInputSchema).optional(),
 });
 
 export default DocumentUncheckedCreateWithoutDocumentRulesInputSchema;

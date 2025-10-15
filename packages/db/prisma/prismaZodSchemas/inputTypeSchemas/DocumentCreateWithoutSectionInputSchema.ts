@@ -1,0 +1,26 @@
+import type { Prisma } from '@prisma/client';
+
+import { z } from 'zod';
+import { DocumentKindSchema } from './DocumentKindSchema';
+import { TypeRequestSchema } from './TypeRequestSchema';
+import { AnalysisStatusSchema } from './AnalysisStatusSchema';
+import { AnalysisRunCreateNestedManyWithoutDocumentInputSchema } from './AnalysisRunCreateNestedManyWithoutDocumentInputSchema';
+import { DocumentTriggerCreateNestedManyWithoutDocumentInputSchema } from './DocumentTriggerCreateNestedManyWithoutDocumentInputSchema';
+import { BlockCreateNestedManyWithoutDocumentInputSchema } from './BlockCreateNestedManyWithoutDocumentInputSchema';
+
+export const DocumentCreateWithoutSectionInputSchema: z.ZodType<Prisma.DocumentCreateWithoutSectionInput> = z.strictObject({
+  id: z.cuid().optional(),
+  name: z.string(),
+  locale: z.string().optional().nullable(),
+  kind: z.lazy(() => DocumentKindSchema).optional().nullable(),
+  type: z.lazy(() => TypeRequestSchema),
+  status: z.lazy(() => AnalysisStatusSchema).optional(),
+  sourceUrl: z.string().optional().nullable(),
+  updatedAt: z.coerce.date().optional(),
+  createdAt: z.coerce.date().optional(),
+  runs: z.lazy(() => AnalysisRunCreateNestedManyWithoutDocumentInputSchema).optional(),
+  documentRules: z.lazy(() => DocumentTriggerCreateNestedManyWithoutDocumentInputSchema).optional(),
+  Block: z.lazy(() => BlockCreateNestedManyWithoutDocumentInputSchema).optional(),
+});
+
+export default DocumentCreateWithoutSectionInputSchema;

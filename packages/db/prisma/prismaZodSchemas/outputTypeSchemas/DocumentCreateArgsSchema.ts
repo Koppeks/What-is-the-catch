@@ -3,9 +3,10 @@ import type { Prisma } from '@prisma/client';
 import { DocumentIncludeSchema } from '../inputTypeSchemas/DocumentIncludeSchema'
 import { DocumentCreateInputSchema } from '../inputTypeSchemas/DocumentCreateInputSchema'
 import { DocumentUncheckedCreateInputSchema } from '../inputTypeSchemas/DocumentUncheckedCreateInputSchema'
-import { BlockFindManyArgsSchema } from "../outputTypeSchemas/BlockFindManyArgsSchema"
 import { AnalysisRunFindManyArgsSchema } from "../outputTypeSchemas/AnalysisRunFindManyArgsSchema"
 import { DocumentTriggerFindManyArgsSchema } from "../outputTypeSchemas/DocumentTriggerFindManyArgsSchema"
+import { SectionFindManyArgsSchema } from "../outputTypeSchemas/SectionFindManyArgsSchema"
+import { BlockFindManyArgsSchema } from "../outputTypeSchemas/BlockFindManyArgsSchema"
 import { DocumentCountOutputTypeArgsSchema } from "../outputTypeSchemas/DocumentCountOutputTypeArgsSchema"
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
@@ -20,9 +21,10 @@ export const DocumentSelectSchema: z.ZodType<Prisma.DocumentSelect> = z.object({
   sourceUrl: z.boolean().optional(),
   updatedAt: z.boolean().optional(),
   createdAt: z.boolean().optional(),
-  blocks: z.union([z.boolean(),z.lazy(() => BlockFindManyArgsSchema)]).optional(),
   runs: z.union([z.boolean(),z.lazy(() => AnalysisRunFindManyArgsSchema)]).optional(),
   documentRules: z.union([z.boolean(),z.lazy(() => DocumentTriggerFindManyArgsSchema)]).optional(),
+  Section: z.union([z.boolean(),z.lazy(() => SectionFindManyArgsSchema)]).optional(),
+  Block: z.union([z.boolean(),z.lazy(() => BlockFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => DocumentCountOutputTypeArgsSchema)]).optional(),
 }).strict()
 

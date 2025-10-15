@@ -11,9 +11,10 @@ import { TypeRequestSchema } from './TypeRequestSchema';
 import { EnumAnalysisStatusFilterSchema } from './EnumAnalysisStatusFilterSchema';
 import { AnalysisStatusSchema } from './AnalysisStatusSchema';
 import { DateTimeFilterSchema } from './DateTimeFilterSchema';
-import { BlockListRelationFilterSchema } from './BlockListRelationFilterSchema';
 import { AnalysisRunListRelationFilterSchema } from './AnalysisRunListRelationFilterSchema';
 import { DocumentTriggerListRelationFilterSchema } from './DocumentTriggerListRelationFilterSchema';
+import { SectionListRelationFilterSchema } from './SectionListRelationFilterSchema';
+import { BlockListRelationFilterSchema } from './BlockListRelationFilterSchema';
 
 export const DocumentWhereUniqueInputSchema: z.ZodType<Prisma.DocumentWhereUniqueInput> = z.object({
   id: z.cuid(),
@@ -31,9 +32,10 @@ export const DocumentWhereUniqueInputSchema: z.ZodType<Prisma.DocumentWhereUniqu
   sourceUrl: z.union([ z.lazy(() => StringNullableFilterSchema), z.string() ]).optional().nullable(),
   updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
-  blocks: z.lazy(() => BlockListRelationFilterSchema).optional(),
   runs: z.lazy(() => AnalysisRunListRelationFilterSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerListRelationFilterSchema).optional(),
+  Section: z.lazy(() => SectionListRelationFilterSchema).optional(),
+  Block: z.lazy(() => BlockListRelationFilterSchema).optional(),
 }));
 
 export default DocumentWhereUniqueInputSchema;

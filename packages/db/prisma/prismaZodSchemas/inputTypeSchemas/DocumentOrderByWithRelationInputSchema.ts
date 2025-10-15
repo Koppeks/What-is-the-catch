@@ -3,9 +3,10 @@ import type { Prisma } from '@prisma/client';
 import { z } from 'zod';
 import { SortOrderSchema } from './SortOrderSchema';
 import { SortOrderInputSchema } from './SortOrderInputSchema';
-import { BlockOrderByRelationAggregateInputSchema } from './BlockOrderByRelationAggregateInputSchema';
 import { AnalysisRunOrderByRelationAggregateInputSchema } from './AnalysisRunOrderByRelationAggregateInputSchema';
 import { DocumentTriggerOrderByRelationAggregateInputSchema } from './DocumentTriggerOrderByRelationAggregateInputSchema';
+import { SectionOrderByRelationAggregateInputSchema } from './SectionOrderByRelationAggregateInputSchema';
+import { BlockOrderByRelationAggregateInputSchema } from './BlockOrderByRelationAggregateInputSchema';
 
 export const DocumentOrderByWithRelationInputSchema: z.ZodType<Prisma.DocumentOrderByWithRelationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
@@ -17,9 +18,10 @@ export const DocumentOrderByWithRelationInputSchema: z.ZodType<Prisma.DocumentOr
   sourceUrl: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
-  blocks: z.lazy(() => BlockOrderByRelationAggregateInputSchema).optional(),
   runs: z.lazy(() => AnalysisRunOrderByRelationAggregateInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerOrderByRelationAggregateInputSchema).optional(),
+  Section: z.lazy(() => SectionOrderByRelationAggregateInputSchema).optional(),
+  Block: z.lazy(() => BlockOrderByRelationAggregateInputSchema).optional(),
 });
 
 export default DocumentOrderByWithRelationInputSchema;

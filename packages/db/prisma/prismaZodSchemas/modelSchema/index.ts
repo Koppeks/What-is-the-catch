@@ -1,6 +1,7 @@
 export * from './UserSchema';
 export * from './DocumentSchema';
 export * from './DocumentTriggerSchema';
+export * from './SectionSchema';
 export * from './BlockSchema';
 export * from './AnalysisRunSchema';
 export * from './TriggerSchema';

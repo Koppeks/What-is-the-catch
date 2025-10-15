@@ -1,5 +1,6 @@
 export { DocumentArgsSchema } from './DocumentArgsSchema';
 export { DocumentTriggerArgsSchema } from './DocumentTriggerArgsSchema';
+export { SectionArgsSchema } from './SectionArgsSchema';
 export { BlockArgsSchema } from './BlockArgsSchema';
 export { AnalysisRunArgsSchema } from './AnalysisRunArgsSchema';
 export { TriggerArgsSchema } from './TriggerArgsSchema';
@@ -30,6 +31,13 @@ export { DocumentTriggerAggregateArgsSchema } from './DocumentTriggerAggregateAr
 export { DocumentTriggerGroupByArgsSchema } from './DocumentTriggerGroupByArgsSchema';
 export { DocumentTriggerFindUniqueArgsSchema } from './DocumentTriggerFindUniqueArgsSchema';
 export { DocumentTriggerFindUniqueOrThrowArgsSchema } from './DocumentTriggerFindUniqueOrThrowArgsSchema';
+export { SectionFindFirstArgsSchema } from './SectionFindFirstArgsSchema';
+export { SectionFindFirstOrThrowArgsSchema } from './SectionFindFirstOrThrowArgsSchema';
+export { SectionFindManyArgsSchema } from './SectionFindManyArgsSchema';
+export { SectionAggregateArgsSchema } from './SectionAggregateArgsSchema';
+export { SectionGroupByArgsSchema } from './SectionGroupByArgsSchema';
+export { SectionFindUniqueArgsSchema } from './SectionFindUniqueArgsSchema';
+export { SectionFindUniqueOrThrowArgsSchema } from './SectionFindUniqueOrThrowArgsSchema';
 export { BlockFindFirstArgsSchema } from './BlockFindFirstArgsSchema';
 export { BlockFindFirstOrThrowArgsSchema } from './BlockFindFirstOrThrowArgsSchema';
 export { BlockFindManyArgsSchema } from './BlockFindManyArgsSchema';
@@ -120,6 +128,15 @@ export { DocumentTriggerUpdateArgsSchema } from './DocumentTriggerUpdateArgsSche
 export { DocumentTriggerUpdateManyArgsSchema } from './DocumentTriggerUpdateManyArgsSchema';
 export { DocumentTriggerUpdateManyAndReturnArgsSchema } from './DocumentTriggerUpdateManyAndReturnArgsSchema';
 export { DocumentTriggerDeleteManyArgsSchema } from './DocumentTriggerDeleteManyArgsSchema';
+export { SectionCreateArgsSchema } from './SectionCreateArgsSchema';
+export { SectionUpsertArgsSchema } from './SectionUpsertArgsSchema';
+export { SectionCreateManyArgsSchema } from './SectionCreateManyArgsSchema';
+export { SectionCreateManyAndReturnArgsSchema } from './SectionCreateManyAndReturnArgsSchema';
+export { SectionDeleteArgsSchema } from './SectionDeleteArgsSchema';
+export { SectionUpdateArgsSchema } from './SectionUpdateArgsSchema';
+export { SectionUpdateManyArgsSchema } from './SectionUpdateManyArgsSchema';
+export { SectionUpdateManyAndReturnArgsSchema } from './SectionUpdateManyAndReturnArgsSchema';
+export { SectionDeleteManyArgsSchema } from './SectionDeleteManyArgsSchema';
 export { BlockCreateArgsSchema } from './BlockCreateArgsSchema';
 export { BlockUpsertArgsSchema } from './BlockUpsertArgsSchema';
 export { BlockCreateManyArgsSchema } from './BlockCreateManyArgsSchema';
