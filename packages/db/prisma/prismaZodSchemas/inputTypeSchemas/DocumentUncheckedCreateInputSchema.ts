@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { DocumentKindSchema } from './DocumentKindSchema';
 import { TypeRequestSchema } from './TypeRequestSchema';
 import { AnalysisStatusSchema } from './AnalysisStatusSchema';
-import { ClauseUncheckedCreateNestedManyWithoutDocumentInputSchema } from './ClauseUncheckedCreateNestedManyWithoutDocumentInputSchema';
+import { BlockUncheckedCreateNestedManyWithoutDocumentInputSchema } from './BlockUncheckedCreateNestedManyWithoutDocumentInputSchema';
 import { AnalysisRunUncheckedCreateNestedManyWithoutDocumentInputSchema } from './AnalysisRunUncheckedCreateNestedManyWithoutDocumentInputSchema';
 import { DocumentTriggerUncheckedCreateNestedManyWithoutDocumentInputSchema } from './DocumentTriggerUncheckedCreateNestedManyWithoutDocumentInputSchema';
 
@@ -18,7 +18,7 @@ export const DocumentUncheckedCreateInputSchema: z.ZodType<Prisma.DocumentUnchec
   sourceUrl: z.string().optional().nullable(),
   updatedAt: z.coerce.date().optional(),
   createdAt: z.coerce.date().optional(),
-  clauses: z.lazy(() => ClauseUncheckedCreateNestedManyWithoutDocumentInputSchema).optional(),
+  blocks: z.lazy(() => BlockUncheckedCreateNestedManyWithoutDocumentInputSchema).optional(),
   runs: z.lazy(() => AnalysisRunUncheckedCreateNestedManyWithoutDocumentInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerUncheckedCreateNestedManyWithoutDocumentInputSchema).optional(),
 });

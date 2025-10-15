@@ -2,8 +2,8 @@ import { z } from 'zod';
 import { DocumentKindSchema } from '../inputTypeSchemas/DocumentKindSchema'
 import { TypeRequestSchema } from '../inputTypeSchemas/TypeRequestSchema'
 import { AnalysisStatusSchema } from '../inputTypeSchemas/AnalysisStatusSchema'
-import { ClauseWithRelationsSchema, ClausePartialWithRelationsSchema } from './ClauseSchema'
-import type { ClauseWithRelations, ClausePartialWithRelations } from './ClauseSchema'
+import { BlockWithRelationsSchema, BlockPartialWithRelationsSchema } from './BlockSchema'
+import type { BlockWithRelations, BlockPartialWithRelations } from './BlockSchema'
 import { AnalysisRunWithRelationsSchema, AnalysisRunPartialWithRelationsSchema } from './AnalysisRunSchema'
 import type { AnalysisRunWithRelations, AnalysisRunPartialWithRelations } from './AnalysisRunSchema'
 import { DocumentTriggerWithRelationsSchema, DocumentTriggerPartialWithRelationsSchema } from './DocumentTriggerSchema'
@@ -40,7 +40,7 @@ export type DocumentPartial = z.infer<typeof DocumentPartialSchema>
 /////////////////////////////////////////
 
 export type DocumentRelations = {
-  clauses: ClauseWithRelations[];
+  blocks: BlockWithRelations[];
   runs: AnalysisRunWithRelations[];
   documentRules: DocumentTriggerWithRelations[];
 };
@@ -48,7 +48,7 @@ export type DocumentRelations = {
 export type DocumentWithRelations = z.infer<typeof DocumentSchema> & DocumentRelations
 
 export const DocumentWithRelationsSchema: z.ZodType<DocumentWithRelations> = DocumentSchema.merge(z.object({
-  clauses: z.lazy(() => ClauseWithRelationsSchema).array(),
+  blocks: z.lazy(() => BlockWithRelationsSchema).array(),
   runs: z.lazy(() => AnalysisRunWithRelationsSchema).array(),
   documentRules: z.lazy(() => DocumentTriggerWithRelationsSchema).array(),
 }))
@@ -58,7 +58,7 @@ export const DocumentWithRelationsSchema: z.ZodType<DocumentWithRelations> = Doc
 /////////////////////////////////////////
 
 export type DocumentPartialRelations = {
-  clauses?: ClausePartialWithRelations[];
+  blocks?: BlockPartialWithRelations[];
   runs?: AnalysisRunPartialWithRelations[];
   documentRules?: DocumentTriggerPartialWithRelations[];
 };
@@ -66,7 +66,7 @@ export type DocumentPartialRelations = {
 export type DocumentPartialWithRelations = z.infer<typeof DocumentPartialSchema> & DocumentPartialRelations
 
 export const DocumentPartialWithRelationsSchema: z.ZodType<DocumentPartialWithRelations> = DocumentPartialSchema.merge(z.object({
-  clauses: z.lazy(() => ClausePartialWithRelationsSchema).array(),
+  blocks: z.lazy(() => BlockPartialWithRelationsSchema).array(),
   runs: z.lazy(() => AnalysisRunPartialWithRelationsSchema).array(),
   documentRules: z.lazy(() => DocumentTriggerPartialWithRelationsSchema).array(),
 })).partial()
@@ -74,7 +74,7 @@ export const DocumentPartialWithRelationsSchema: z.ZodType<DocumentPartialWithRe
 export type DocumentWithPartialRelations = z.infer<typeof DocumentSchema> & DocumentPartialRelations
 
 export const DocumentWithPartialRelationsSchema: z.ZodType<DocumentWithPartialRelations> = DocumentSchema.merge(z.object({
-  clauses: z.lazy(() => ClausePartialWithRelationsSchema).array(),
+  blocks: z.lazy(() => BlockPartialWithRelationsSchema).array(),
   runs: z.lazy(() => AnalysisRunPartialWithRelationsSchema).array(),
   documentRules: z.lazy(() => DocumentTriggerPartialWithRelationsSchema).array(),
 }).partial())

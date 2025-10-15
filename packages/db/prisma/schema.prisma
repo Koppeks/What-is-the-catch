@@ -37,7 +37,7 @@ model Document {
     kind          DocumentKind?
     type          TypeRequest
     status        AnalysisStatus    @default(PENDING)
-    clauses       Clause[]
+    blocks        Block[]
     runs          AnalysisRun[]
     documentRules DocumentTrigger[]
     sourceUrl     String?
@@ -63,8 +63,8 @@ model DocumentTrigger {
     @@index([triggerId])
 }
 
-// Representation of a segment of the document
-model Clause {
+// Representation of a block of the document
+model Block {
     id String @id @default(cuid())
 
     // Grouping
@@ -73,8 +73,8 @@ model Clause {
 
     // Tree, with self reference
     parentId String?
-    parent   Clause?  @relation("ClauseToChildren", fields: [parentId], references: [id], onDelete: Cascade)
-    children Clause[] @relation("ClauseToChildren")
+    parent   Block?  @relation("ClauseToChildren", fields: [parentId], references: [id], onDelete: Cascade)
+    children Block[] @relation("ClauseToChildren")
 
     // Payload
     ordinalPath String // "22.1", "a", "b-4", "5-d"
