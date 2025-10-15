@@ -1,6 +1,6 @@
 ﻿"use server";
 
-import { ClausePartial, prisma } from "@repo/db";
+import { prisma } from "@repo/db";
 import { CreateCompany, fetchAndInspect, hybridFetcher, inferCleanClauses, inferCompanyName, inferCompanyWebsite, initStripper } from "@repo/server";
 
 import util from "util";
@@ -64,7 +64,6 @@ function findLegalNamePattern(text: string, contextWindow = 25): string[] {
 
   const LEGAL_NAME_REGEX = new RegExp(`${beforePattern}(${companyPattern})${afterPattern}`, "gm");
   const snippets = [...text.matchAll(LEGAL_NAME_REGEX)].map((match) => match[0].trim()).slice(0,12);
-  // console.log(snippets);
   return snippets;
 }
 
@@ -79,9 +78,13 @@ export type FormState = { ok: boolean; error?: string; result?: any};
 export async function analyzeActionForm(prev: FormState, formData: FormData): Promise<FormState> {
   const url = String(formData.get("text") ?? "").trim();
 
-  const content = hybridFetcher(url)
+  const content = await hybridFetcher(url)
+  console.log(content)
+  // Transform content to Machine-Readable Intermediate Representation (IR), simil Document model
 
-  const cheerioSome = await fetchAndInspect(url)
+  
 
-  return {ok: true, result: cheerioSome }
+  // const cheerioSome = await fetchAndInspect(url)
+
+  return {ok: true, result: content }
 }
