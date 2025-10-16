@@ -5,7 +5,6 @@ import { BlockKindSchema } from './BlockKindSchema';
 import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSchema';
 import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { SectionCreateNestedOneWithoutBlockInputSchema } from './SectionCreateNestedOneWithoutBlockInputSchema';
-import { SectionCreateNestedManyWithoutHeadingBlockInputSchema } from './SectionCreateNestedManyWithoutHeadingBlockInputSchema';
 
 export const BlockCreateWithoutDocumentInputSchema: z.ZodType<Prisma.BlockCreateWithoutDocumentInput> = z.strictObject({
   id: z.cuid().optional(),
@@ -20,7 +19,6 @@ export const BlockCreateWithoutDocumentInputSchema: z.ZodType<Prisma.BlockCreate
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   section: z.lazy(() => SectionCreateNestedOneWithoutBlockInputSchema),
-  Section: z.lazy(() => SectionCreateNestedManyWithoutHeadingBlockInputSchema).optional(),
 });
 
 export default BlockCreateWithoutDocumentInputSchema;

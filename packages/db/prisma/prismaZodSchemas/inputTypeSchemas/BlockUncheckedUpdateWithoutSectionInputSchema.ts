@@ -10,7 +10,6 @@ import { NullableStringFieldUpdateOperationsInputSchema } from './NullableString
 import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSchema';
 import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
-import { SectionUncheckedUpdateManyWithoutHeadingBlockNestedInputSchema } from './SectionUncheckedUpdateManyWithoutHeadingBlockNestedInputSchema';
 
 export const BlockUncheckedUpdateWithoutSectionInputSchema: z.ZodType<Prisma.BlockUncheckedUpdateWithoutSectionInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -25,7 +24,6 @@ export const BlockUncheckedUpdateWithoutSectionInputSchema: z.ZodType<Prisma.Blo
   anchor: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  Section: z.lazy(() => SectionUncheckedUpdateManyWithoutHeadingBlockNestedInputSchema).optional(),
 });
 
 export default BlockUncheckedUpdateWithoutSectionInputSchema;

@@ -1,15 +1,23 @@
 import type { Prisma } from '@prisma/client';
 
 import { z } from 'zod';
+import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSchema';
+import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { DocumentCreateNestedOneWithoutSectionInputSchema } from './DocumentCreateNestedOneWithoutSectionInputSchema';
-import { BlockCreateNestedOneWithoutSectionInputSchema } from './BlockCreateNestedOneWithoutSectionInputSchema';
 import { SectionCreateNestedOneWithoutChildrenInputSchema } from './SectionCreateNestedOneWithoutChildrenInputSchema';
 import { SectionCreateNestedManyWithoutParentInputSchema } from './SectionCreateNestedManyWithoutParentInputSchema';
 
 export const SectionCreateWithoutBlockInputSchema: z.ZodType<Prisma.SectionCreateWithoutBlockInput> = z.strictObject({
   id: z.cuid().optional(),
+  level: z.number().int(),
+  title: z.string().optional().nullable(),
+  ordinalPath: z.string().optional().nullable(),
+  headingText: z.string().optional().nullable(),
+  headingHtml: z.string().optional().nullable(),
+  headingAnchor: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
+  createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional(),
   document: z.lazy(() => DocumentCreateNestedOneWithoutSectionInputSchema),
-  headingBlock: z.lazy(() => BlockCreateNestedOneWithoutSectionInputSchema),
   parent: z.lazy(() => SectionCreateNestedOneWithoutChildrenInputSchema).optional(),
   children: z.lazy(() => SectionCreateNestedManyWithoutParentInputSchema).optional(),
 });

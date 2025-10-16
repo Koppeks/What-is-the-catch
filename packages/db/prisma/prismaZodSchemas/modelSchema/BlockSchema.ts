@@ -44,7 +44,6 @@ export type BlockPartial = z.infer<typeof BlockPartialSchema>
 export type BlockRelations = {
   document: DocumentWithRelations;
   section: SectionWithRelations;
-  Section: SectionWithRelations[];
 };
 
 export type BlockWithRelations = Omit<z.infer<typeof BlockSchema>, "anchor"> & {
@@ -54,7 +53,6 @@ export type BlockWithRelations = Omit<z.infer<typeof BlockSchema>, "anchor"> & {
 export const BlockWithRelationsSchema: z.ZodType<BlockWithRelations> = BlockSchema.merge(z.object({
   document: z.lazy(() => DocumentWithRelationsSchema),
   section: z.lazy(() => SectionWithRelationsSchema),
-  Section: z.lazy(() => SectionWithRelationsSchema).array(),
 }))
 
 /////////////////////////////////////////
@@ -64,7 +62,6 @@ export const BlockWithRelationsSchema: z.ZodType<BlockWithRelations> = BlockSche
 export type BlockPartialRelations = {
   document?: DocumentPartialWithRelations;
   section?: SectionPartialWithRelations;
-  Section?: SectionPartialWithRelations[];
 };
 
 export type BlockPartialWithRelations = Omit<z.infer<typeof BlockPartialSchema>, "anchor"> & {
@@ -74,7 +71,6 @@ export type BlockPartialWithRelations = Omit<z.infer<typeof BlockPartialSchema>,
 export const BlockPartialWithRelationsSchema: z.ZodType<BlockPartialWithRelations> = BlockPartialSchema.merge(z.object({
   document: z.lazy(() => DocumentPartialWithRelationsSchema),
   section: z.lazy(() => SectionPartialWithRelationsSchema),
-  Section: z.lazy(() => SectionPartialWithRelationsSchema).array(),
 })).partial()
 
 export type BlockWithPartialRelations = Omit<z.infer<typeof BlockSchema>, "anchor"> & {
@@ -84,7 +80,6 @@ export type BlockWithPartialRelations = Omit<z.infer<typeof BlockSchema>, "ancho
 export const BlockWithPartialRelationsSchema: z.ZodType<BlockWithPartialRelations> = BlockSchema.merge(z.object({
   document: z.lazy(() => DocumentPartialWithRelationsSchema),
   section: z.lazy(() => SectionPartialWithRelationsSchema),
-  Section: z.lazy(() => SectionPartialWithRelationsSchema).array(),
 }).partial())
 
 export default BlockSchema;

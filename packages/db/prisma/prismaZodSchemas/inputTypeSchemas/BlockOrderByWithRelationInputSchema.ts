@@ -5,7 +5,6 @@ import { SortOrderSchema } from './SortOrderSchema';
 import { SortOrderInputSchema } from './SortOrderInputSchema';
 import { DocumentOrderByWithRelationInputSchema } from './DocumentOrderByWithRelationInputSchema';
 import { SectionOrderByWithRelationInputSchema } from './SectionOrderByWithRelationInputSchema';
-import { SectionOrderByRelationAggregateInputSchema } from './SectionOrderByRelationAggregateInputSchema';
 
 export const BlockOrderByWithRelationInputSchema: z.ZodType<Prisma.BlockOrderByWithRelationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
@@ -23,7 +22,6 @@ export const BlockOrderByWithRelationInputSchema: z.ZodType<Prisma.BlockOrderByW
   updatedAt: z.lazy(() => SortOrderSchema).optional(),
   document: z.lazy(() => DocumentOrderByWithRelationInputSchema).optional(),
   section: z.lazy(() => SectionOrderByWithRelationInputSchema).optional(),
-  Section: z.lazy(() => SectionOrderByRelationAggregateInputSchema).optional(),
 });
 
 export default BlockOrderByWithRelationInputSchema;

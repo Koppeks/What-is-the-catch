@@ -5,8 +5,6 @@ import { BlockCreateInputSchema } from '../inputTypeSchemas/BlockCreateInputSche
 import { BlockUncheckedCreateInputSchema } from '../inputTypeSchemas/BlockUncheckedCreateInputSchema'
 import { DocumentArgsSchema } from "../outputTypeSchemas/DocumentArgsSchema"
 import { SectionArgsSchema } from "../outputTypeSchemas/SectionArgsSchema"
-import { SectionFindManyArgsSchema } from "../outputTypeSchemas/SectionFindManyArgsSchema"
-import { BlockCountOutputTypeArgsSchema } from "../outputTypeSchemas/BlockCountOutputTypeArgsSchema"
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
@@ -26,8 +24,6 @@ export const BlockSelectSchema: z.ZodType<Prisma.BlockSelect> = z.object({
   updatedAt: z.boolean().optional(),
   document: z.union([z.boolean(),z.lazy(() => DocumentArgsSchema)]).optional(),
   section: z.union([z.boolean(),z.lazy(() => SectionArgsSchema)]).optional(),
-  Section: z.union([z.boolean(),z.lazy(() => SectionFindManyArgsSchema)]).optional(),
-  _count: z.union([z.boolean(),z.lazy(() => BlockCountOutputTypeArgsSchema)]).optional(),
 }).strict()
 
 export const BlockCreateArgsSchema: z.ZodType<Prisma.BlockCreateArgs> = z.object({

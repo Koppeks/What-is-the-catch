@@ -6,8 +6,15 @@ import { SortOrderSchema } from './SortOrderSchema';
 export const SectionCountOrderByAggregateInputSchema: z.ZodType<Prisma.SectionCountOrderByAggregateInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
   documentId: z.lazy(() => SortOrderSchema).optional(),
-  headingBlockId: z.lazy(() => SortOrderSchema).optional(),
   parentId: z.lazy(() => SortOrderSchema).optional(),
+  level: z.lazy(() => SortOrderSchema).optional(),
+  title: z.lazy(() => SortOrderSchema).optional(),
+  ordinalPath: z.lazy(() => SortOrderSchema).optional(),
+  headingText: z.lazy(() => SortOrderSchema).optional(),
+  headingHtml: z.lazy(() => SortOrderSchema).optional(),
+  headingAnchor: z.lazy(() => SortOrderSchema).optional(),
+  createdAt: z.lazy(() => SortOrderSchema).optional(),
+  updatedAt: z.lazy(() => SortOrderSchema).optional(),
 });
 
 export default SectionCountOrderByAggregateInputSchema;

@@ -12,7 +12,6 @@ import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { DocumentUpdateOneRequiredWithoutBlockNestedInputSchema } from './DocumentUpdateOneRequiredWithoutBlockNestedInputSchema';
 import { SectionUpdateOneRequiredWithoutBlockNestedInputSchema } from './SectionUpdateOneRequiredWithoutBlockNestedInputSchema';
-import { SectionUpdateManyWithoutHeadingBlockNestedInputSchema } from './SectionUpdateManyWithoutHeadingBlockNestedInputSchema';
 
 export const BlockUpdateInputSchema: z.ZodType<Prisma.BlockUpdateInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -28,7 +27,6 @@ export const BlockUpdateInputSchema: z.ZodType<Prisma.BlockUpdateInput> = z.stri
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   document: z.lazy(() => DocumentUpdateOneRequiredWithoutBlockNestedInputSchema).optional(),
   section: z.lazy(() => SectionUpdateOneRequiredWithoutBlockNestedInputSchema).optional(),
-  Section: z.lazy(() => SectionUpdateManyWithoutHeadingBlockNestedInputSchema).optional(),
 });
 
 export default BlockUpdateInputSchema;

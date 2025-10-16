@@ -7,7 +7,6 @@ import { SectionUncheckedCreateInputSchema } from '../inputTypeSchemas/SectionUn
 import { SectionUpdateInputSchema } from '../inputTypeSchemas/SectionUpdateInputSchema'
 import { SectionUncheckedUpdateInputSchema } from '../inputTypeSchemas/SectionUncheckedUpdateInputSchema'
 import { DocumentArgsSchema } from "../outputTypeSchemas/DocumentArgsSchema"
-import { BlockArgsSchema } from "../outputTypeSchemas/BlockArgsSchema"
 import { SectionArgsSchema } from "../outputTypeSchemas/SectionArgsSchema"
 import { SectionFindManyArgsSchema } from "../outputTypeSchemas/SectionFindManyArgsSchema"
 import { BlockFindManyArgsSchema } from "../outputTypeSchemas/BlockFindManyArgsSchema"
@@ -18,10 +17,16 @@ import { SectionCountOutputTypeArgsSchema } from "../outputTypeSchemas/SectionCo
 export const SectionSelectSchema: z.ZodType<Prisma.SectionSelect> = z.object({
   id: z.boolean().optional(),
   documentId: z.boolean().optional(),
-  headingBlockId: z.boolean().optional(),
   parentId: z.boolean().optional(),
+  level: z.boolean().optional(),
+  title: z.boolean().optional(),
+  ordinalPath: z.boolean().optional(),
+  headingText: z.boolean().optional(),
+  headingHtml: z.boolean().optional(),
+  headingAnchor: z.boolean().optional(),
+  createdAt: z.boolean().optional(),
+  updatedAt: z.boolean().optional(),
   document: z.union([z.boolean(),z.lazy(() => DocumentArgsSchema)]).optional(),
-  headingBlock: z.union([z.boolean(),z.lazy(() => BlockArgsSchema)]).optional(),
   parent: z.union([z.boolean(),z.lazy(() => SectionArgsSchema)]).optional(),
   children: z.union([z.boolean(),z.lazy(() => SectionFindManyArgsSchema)]).optional(),
   Block: z.union([z.boolean(),z.lazy(() => BlockFindManyArgsSchema)]).optional(),

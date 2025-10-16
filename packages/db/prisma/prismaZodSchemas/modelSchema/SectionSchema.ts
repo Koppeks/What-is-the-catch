@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import { JsonValueSchema } from '../inputTypeSchemas/JsonValueSchema'
+import type { JsonValueType } from '../inputTypeSchemas/JsonValueSchema';
 import { DocumentWithRelationsSchema, DocumentPartialWithRelationsSchema } from './DocumentSchema'
 import type { DocumentWithRelations, DocumentPartialWithRelations } from './DocumentSchema'
 import { BlockWithRelationsSchema, BlockPartialWithRelationsSchema } from './BlockSchema'
@@ -11,8 +13,15 @@ import type { BlockWithRelations, BlockPartialWithRelations } from './BlockSchem
 export const SectionSchema = z.object({
   id: z.cuid(),
   documentId: z.string(),
-  headingBlockId: z.string(),
   parentId: z.string().nullish(),
+  level: z.number().int(),
+  title: z.string().nullish(),
+  ordinalPath: z.string().nullish(),
+  headingText: z.string().nullish(),
+  headingHtml: z.string().nullish(),
+  headingAnchor: JsonValueSchema.nullable(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
 })
 
 export type Section = z.infer<typeof SectionSchema>
@@ -31,17 +40,17 @@ export type SectionPartial = z.infer<typeof SectionPartialSchema>
 
 export type SectionRelations = {
   document: DocumentWithRelations;
-  headingBlock: BlockWithRelations;
   parent?: SectionWithRelations | null;
   children: SectionWithRelations[];
   Block: BlockWithRelations[];
 };
 
-export type SectionWithRelations = z.infer<typeof SectionSchema> & SectionRelations
+export type SectionWithRelations = Omit<z.infer<typeof SectionSchema>, "headingAnchor"> & {
+  headingAnchor?: JsonValueType | null;
+} & SectionRelations
 
 export const SectionWithRelationsSchema: z.ZodType<SectionWithRelations> = SectionSchema.merge(z.object({
   document: z.lazy(() => DocumentWithRelationsSchema),
-  headingBlock: z.lazy(() => BlockWithRelationsSchema),
   parent: z.lazy(() => SectionWithRelationsSchema).nullish(),
   children: z.lazy(() => SectionWithRelationsSchema).array(),
   Block: z.lazy(() => BlockWithRelationsSchema).array(),
@@ -53,27 +62,28 @@ export const SectionWithRelationsSchema: z.ZodType<SectionWithRelations> = Secti
 
 export type SectionPartialRelations = {
   document?: DocumentPartialWithRelations;
-  headingBlock?: BlockPartialWithRelations;
   parent?: SectionPartialWithRelations | null;
   children?: SectionPartialWithRelations[];
   Block?: BlockPartialWithRelations[];
 };
 
-export type SectionPartialWithRelations = z.infer<typeof SectionPartialSchema> & SectionPartialRelations
+export type SectionPartialWithRelations = Omit<z.infer<typeof SectionPartialSchema>, "headingAnchor"> & {
+  headingAnchor?: JsonValueType | null;
+} & SectionPartialRelations
 
 export const SectionPartialWithRelationsSchema: z.ZodType<SectionPartialWithRelations> = SectionPartialSchema.merge(z.object({
   document: z.lazy(() => DocumentPartialWithRelationsSchema),
-  headingBlock: z.lazy(() => BlockPartialWithRelationsSchema),
   parent: z.lazy(() => SectionPartialWithRelationsSchema).nullish(),
   children: z.lazy(() => SectionPartialWithRelationsSchema).array(),
   Block: z.lazy(() => BlockPartialWithRelationsSchema).array(),
 })).partial()
 
-export type SectionWithPartialRelations = z.infer<typeof SectionSchema> & SectionPartialRelations
+export type SectionWithPartialRelations = Omit<z.infer<typeof SectionSchema>, "headingAnchor"> & {
+  headingAnchor?: JsonValueType | null;
+} & SectionPartialRelations
 
 export const SectionWithPartialRelationsSchema: z.ZodType<SectionWithPartialRelations> = SectionSchema.merge(z.object({
   document: z.lazy(() => DocumentPartialWithRelationsSchema),
-  headingBlock: z.lazy(() => BlockPartialWithRelationsSchema),
   parent: z.lazy(() => SectionPartialWithRelationsSchema).nullish(),
   children: z.lazy(() => SectionPartialWithRelationsSchema).array(),
   Block: z.lazy(() => BlockPartialWithRelationsSchema).array(),

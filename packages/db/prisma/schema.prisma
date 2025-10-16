@@ -71,15 +71,19 @@ model Section {
     documentId String
     document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
 
-    // The heading block that OPENS this section
-    headingBlockId String @unique
-    headingBlock   Block  @relation("SectionHeading", fields: [headingBlockId], references: [id], onDelete: Cascade)
-
-    // Tree (adjacency)
     parentId String?
     parent   Section?  @relation("SectionRecursive", fields: [parentId], references: [id], onDelete: Cascade)
     children Section[] @relation("SectionRecursive")
 
+    level       Int
+    title       String?
+    ordinalPath String?
+    headingText String?   @db.Text
+    headingHtml String?   @db.Text
+    headingAnchor Json?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 
     Block Block[]
 }
@@ -91,7 +95,7 @@ model Block {
   documentId  String
   document    Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
 
-  // Belongs to exactly one section (the heading’s section or its parent)
+  // Belongs to exactly one section (the heading''''s section or its parent)
   sectionId String
   section   Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
 
@@ -99,20 +103,19 @@ model Block {
   order     Int
 
   kind      BlockKind
-  level     Int?        // only for heading blocks (H1..H6 or inferred)
-  ordinalPath String?   // only if relevant (mostly for headings/lists)
+  level     Int?
+  ordinalPath String?
 
-  title     String?     // only for headings (optional; heading text can also live in `text`)
+  title     String?
   text      String      @db.Text
   html      String?     @db.Text
-  anchor    Json?       // { css, textQuote, offsets }
+  anchor    Json?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([documentId, order])
   @@index([sectionId, order])
-  Section Section[] @relation("SectionHeading")
 }
 
 model AnalysisRun {
@@ -324,3 +327,4 @@ enum BlockKind {
     LIST_ITEM
     TABLE_ROW
 }
+

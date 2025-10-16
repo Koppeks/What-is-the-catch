@@ -13,7 +13,6 @@ import { DocumentScalarRelationFilterSchema } from './DocumentScalarRelationFilt
 import { DocumentWhereInputSchema } from './DocumentWhereInputSchema';
 import { SectionScalarRelationFilterSchema } from './SectionScalarRelationFilterSchema';
 import { SectionWhereInputSchema } from './SectionWhereInputSchema';
-import { SectionListRelationFilterSchema } from './SectionListRelationFilterSchema';
 
 export const BlockWhereInputSchema: z.ZodType<Prisma.BlockWhereInput> = z.strictObject({
   AND: z.union([ z.lazy(() => BlockWhereInputSchema), z.lazy(() => BlockWhereInputSchema).array() ]).optional(),
@@ -34,7 +33,6 @@ export const BlockWhereInputSchema: z.ZodType<Prisma.BlockWhereInput> = z.strict
   updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
   document: z.union([ z.lazy(() => DocumentScalarRelationFilterSchema), z.lazy(() => DocumentWhereInputSchema) ]).optional(),
   section: z.union([ z.lazy(() => SectionScalarRelationFilterSchema), z.lazy(() => SectionWhereInputSchema) ]).optional(),
-  Section: z.lazy(() => SectionListRelationFilterSchema).optional(),
 });
 
 export default BlockWhereInputSchema;
