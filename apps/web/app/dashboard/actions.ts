@@ -1,9 +1,8 @@
 ﻿"use server";
 
-import { prisma } from "@repo/db";
-import { CreateCompany, fetchAndInspect, hybridFetcher, inferCleanClauses, inferCompanyName, inferCompanyWebsite, initStripper } from "@repo/server";
-
-import util from "util";
+import { TypeRequest } from "@prisma/client";
+import { persistDocumentFromIR } from "@repo/db/prisma/src/analysis";
+import { CreateCompany, fetchAndInspect, htmlToIR, hybridFetcher, inferCleanClauses, inferCompanyName, inferCompanyWebsite, initStripper } from "@repo/server";
 
 type Section = {
   id: string;          // e.g., "2", "2.1", "2.2.3"
@@ -78,13 +77,31 @@ export type FormState = { ok: boolean; error?: string; result?: any};
 export async function analyzeActionForm(prev: FormState, formData: FormData): Promise<FormState> {
   const url = String(formData.get("text") ?? "").trim();
 
-  const content = await hybridFetcher(url)
-  console.log(content)
+  const content = await hybridFetcher(url);
+
   // Transform content to Machine-Readable Intermediate Representation (IR), simil Document model
+  const IR = await htmlToIR(content.htmlOrText);
 
-  
+  const headingTitle =
+    IR.sections[0]?.title ||
+    IR.blocks.find((block) => block.kind === "heading")?.text ||
+    null;
 
-  // const cheerioSome = await fetchAndInspect(url)
+  const derivedName = headingTitle || (() => {
+    try {
+      return new URL(content.finalUrl ?? url).hostname;
+    } catch {
+      return content.finalUrl ?? url;
+    }
+  })();
 
-  return {ok: true, result: content }
+  const { documentId } = await persistDocumentFromIR({
+    name: derivedName ?? "Untitled document",
+    type: TypeRequest.URL_SCRAPE,
+    locale: content.meta?.languageGuess ?? null,
+    sourceUrl: content.finalUrl ?? url,
+    ir: IR,
+  });
+
+  return { ok: true, result: { documentId, warnings: IR.warnings } };
 }
