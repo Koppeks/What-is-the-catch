@@ -1,7 +1,7 @@
 ﻿"use server";
 
 import { TypeRequest } from "@prisma/client";
-import { persistDocumentFromIR } from "@repo/db/prisma/src/analysis";
+import { getDocumentFromId, persistDocumentFromIR } from "@repo/db/prisma/src/analysis";
 import { CreateCompany, fetchAndInspect, htmlToIR, hybridFetcher, inferCleanClauses, inferCompanyName, inferCompanyWebsite, initStripper } from "@repo/server";
 
 type Section = {
@@ -105,3 +105,10 @@ export async function analyzeActionForm(prev: FormState, formData: FormData): Pr
 
   return { ok: true, result: { documentId, warnings: IR.warnings } };
 }
+
+export async function getDocumentWithId(prev: FormState, formData: FormData): Promise<FormState> {
+  const document = await getDocumentFromId(String(formData.get("id")));
+  if(!document) return {ok: false, error: "Document doesn't exist"};
+  return { ok: true, result: document };
+}
+
