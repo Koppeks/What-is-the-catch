@@ -1,3 +1,5 @@
+import { FormState } from "@/app/dashboard/actions";
+import { DocumentWithPartialRelations, DocumentWithRelations } from "../prismaZodSchemas";
 import { prisma } from "./client";
 import { BlockKind as PrismaBlockKind, TypeRequest, Prisma } from "@prisma/client";
 
@@ -187,5 +189,10 @@ export async function persistDocumentFromIR(args: PersistDocumentArgs): Promise<
   });
 }
 
+export async function getDocumentFromId(id: string): Promise<DocumentWithPartialRelations | undefined>{
+  const data = await prisma.document.findUnique({where: {id}, include: {section: {include: {blocks:true}}}}) 
+  if(!data) return undefined
+  return data
+}
 
 
