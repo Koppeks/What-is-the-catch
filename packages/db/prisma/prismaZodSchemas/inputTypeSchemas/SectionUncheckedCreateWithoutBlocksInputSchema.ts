@@ -5,7 +5,7 @@ import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSc
 import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { SectionUncheckedCreateNestedManyWithoutParentInputSchema } from './SectionUncheckedCreateNestedManyWithoutParentInputSchema';
 
-export const SectionUncheckedCreateWithoutBlockInputSchema: z.ZodType<Prisma.SectionUncheckedCreateWithoutBlockInput> = z.strictObject({
+export const SectionUncheckedCreateWithoutBlocksInputSchema: z.ZodType<Prisma.SectionUncheckedCreateWithoutBlocksInput> = z.strictObject({
   id: z.cuid().optional(),
   documentId: z.string(),
   parentId: z.string().optional().nullable(),
@@ -20,4 +20,4 @@ export const SectionUncheckedCreateWithoutBlockInputSchema: z.ZodType<Prisma.Sec
   children: z.lazy(() => SectionUncheckedCreateNestedManyWithoutParentInputSchema).optional(),
 });
 
-export default SectionUncheckedCreateWithoutBlockInputSchema;
+export default SectionUncheckedCreateWithoutBlocksInputSchema;

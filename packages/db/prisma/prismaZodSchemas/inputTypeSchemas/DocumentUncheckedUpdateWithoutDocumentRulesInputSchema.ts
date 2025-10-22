@@ -25,8 +25,8 @@ export const DocumentUncheckedUpdateWithoutDocumentRulesInputSchema: z.ZodType<P
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   runs: z.lazy(() => AnalysisRunUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
-  Section: z.lazy(() => SectionUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
-  Block: z.lazy(() => BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
+  section: z.lazy(() => SectionUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
+  blocks: z.lazy(() => BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
 });
 
 export default DocumentUncheckedUpdateWithoutDocumentRulesInputSchema;

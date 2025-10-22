@@ -21,7 +21,7 @@ export const SectionUncheckedUpdateWithoutChildrenInputSchema: z.ZodType<Prisma.
   headingAnchor: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  Block: z.lazy(() => BlockUncheckedUpdateManyWithoutSectionNestedInputSchema).optional(),
+  blocks: z.lazy(() => BlockUncheckedUpdateManyWithoutSectionNestedInputSchema).optional(),
 });
 
 export default SectionUncheckedUpdateWithoutChildrenInputSchema;

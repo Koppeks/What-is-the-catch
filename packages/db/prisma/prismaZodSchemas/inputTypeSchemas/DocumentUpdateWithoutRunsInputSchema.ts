@@ -25,8 +25,8 @@ export const DocumentUpdateWithoutRunsInputSchema: z.ZodType<Prisma.DocumentUpda
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   documentRules: z.lazy(() => DocumentTriggerUpdateManyWithoutDocumentNestedInputSchema).optional(),
-  Section: z.lazy(() => SectionUpdateManyWithoutDocumentNestedInputSchema).optional(),
-  Block: z.lazy(() => BlockUpdateManyWithoutDocumentNestedInputSchema).optional(),
+  section: z.lazy(() => SectionUpdateManyWithoutDocumentNestedInputSchema).optional(),
+  blocks: z.lazy(() => BlockUpdateManyWithoutDocumentNestedInputSchema).optional(),
 });
 
 export default DocumentUpdateWithoutRunsInputSchema;

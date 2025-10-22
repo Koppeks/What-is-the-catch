@@ -10,8 +10,8 @@ import { NullableStringFieldUpdateOperationsInputSchema } from './NullableString
 import { NullableJsonNullValueInputSchema } from './NullableJsonNullValueInputSchema';
 import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
-import { DocumentUpdateOneRequiredWithoutBlockNestedInputSchema } from './DocumentUpdateOneRequiredWithoutBlockNestedInputSchema';
-import { SectionUpdateOneRequiredWithoutBlockNestedInputSchema } from './SectionUpdateOneRequiredWithoutBlockNestedInputSchema';
+import { DocumentUpdateOneRequiredWithoutBlocksNestedInputSchema } from './DocumentUpdateOneRequiredWithoutBlocksNestedInputSchema';
+import { SectionUpdateOneRequiredWithoutBlocksNestedInputSchema } from './SectionUpdateOneRequiredWithoutBlocksNestedInputSchema';
 
 export const BlockUpdateInputSchema: z.ZodType<Prisma.BlockUpdateInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -25,8 +25,8 @@ export const BlockUpdateInputSchema: z.ZodType<Prisma.BlockUpdateInput> = z.stri
   anchor: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
-  document: z.lazy(() => DocumentUpdateOneRequiredWithoutBlockNestedInputSchema).optional(),
-  section: z.lazy(() => SectionUpdateOneRequiredWithoutBlockNestedInputSchema).optional(),
+  document: z.lazy(() => DocumentUpdateOneRequiredWithoutBlocksNestedInputSchema).optional(),
+  section: z.lazy(() => SectionUpdateOneRequiredWithoutBlocksNestedInputSchema).optional(),
 });
 
 export default BlockUpdateInputSchema;

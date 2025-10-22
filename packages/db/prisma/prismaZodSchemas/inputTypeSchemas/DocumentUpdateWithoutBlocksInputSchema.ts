@@ -14,7 +14,7 @@ import { AnalysisRunUpdateManyWithoutDocumentNestedInputSchema } from './Analysi
 import { DocumentTriggerUpdateManyWithoutDocumentNestedInputSchema } from './DocumentTriggerUpdateManyWithoutDocumentNestedInputSchema';
 import { SectionUpdateManyWithoutDocumentNestedInputSchema } from './SectionUpdateManyWithoutDocumentNestedInputSchema';
 
-export const DocumentUpdateWithoutBlockInputSchema: z.ZodType<Prisma.DocumentUpdateWithoutBlockInput> = z.strictObject({
+export const DocumentUpdateWithoutBlocksInputSchema: z.ZodType<Prisma.DocumentUpdateWithoutBlocksInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   name: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   locale: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
@@ -26,7 +26,7 @@ export const DocumentUpdateWithoutBlockInputSchema: z.ZodType<Prisma.DocumentUpd
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   runs: z.lazy(() => AnalysisRunUpdateManyWithoutDocumentNestedInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerUpdateManyWithoutDocumentNestedInputSchema).optional(),
-  Section: z.lazy(() => SectionUpdateManyWithoutDocumentNestedInputSchema).optional(),
+  section: z.lazy(() => SectionUpdateManyWithoutDocumentNestedInputSchema).optional(),
 });
 
-export default DocumentUpdateWithoutBlockInputSchema;
+export default DocumentUpdateWithoutBlocksInputSchema;

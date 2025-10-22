@@ -39,12 +39,11 @@ model Document {
     status        AnalysisStatus    @default(PENDING)
     runs          AnalysisRun[]
     documentRules DocumentTrigger[]
+    section Section[]
+    blocks Block[]
     sourceUrl     String?
     updatedAt     DateTime          @updatedAt
     createdAt     DateTime          @default(now())
-
-    Section Section[]
-    Block Block[]
 }
 
 model DocumentTrigger {
@@ -81,11 +80,10 @@ model Section {
     headingText String?   @db.Text
     headingHtml String?   @db.Text
     headingAnchor Json?
+    blocks Block[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-
-    Block Block[]
 }
 
 // Representation of a block of the document

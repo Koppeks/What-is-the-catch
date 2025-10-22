@@ -25,7 +25,7 @@ export const SectionUpdateInputSchema: z.ZodType<Prisma.SectionUpdateInput> = z.
   document: z.lazy(() => DocumentUpdateOneRequiredWithoutSectionNestedInputSchema).optional(),
   parent: z.lazy(() => SectionUpdateOneWithoutChildrenNestedInputSchema).optional(),
   children: z.lazy(() => SectionUpdateManyWithoutParentNestedInputSchema).optional(),
-  Block: z.lazy(() => BlockUpdateManyWithoutSectionNestedInputSchema).optional(),
+  blocks: z.lazy(() => BlockUpdateManyWithoutSectionNestedInputSchema).optional(),
 });
 
 export default SectionUpdateInputSchema;

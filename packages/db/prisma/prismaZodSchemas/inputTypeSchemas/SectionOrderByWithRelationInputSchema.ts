@@ -22,7 +22,7 @@ export const SectionOrderByWithRelationInputSchema: z.ZodType<Prisma.SectionOrde
   document: z.lazy(() => DocumentOrderByWithRelationInputSchema).optional(),
   parent: z.lazy(() => SectionOrderByWithRelationInputSchema).optional(),
   children: z.lazy(() => SectionOrderByRelationAggregateInputSchema).optional(),
-  Block: z.lazy(() => BlockOrderByRelationAggregateInputSchema).optional(),
+  blocks: z.lazy(() => BlockOrderByRelationAggregateInputSchema).optional(),
 });
 
 export default SectionOrderByWithRelationInputSchema;

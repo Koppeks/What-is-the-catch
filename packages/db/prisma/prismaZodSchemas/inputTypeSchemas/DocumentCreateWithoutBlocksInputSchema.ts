@@ -8,7 +8,7 @@ import { AnalysisRunCreateNestedManyWithoutDocumentInputSchema } from './Analysi
 import { DocumentTriggerCreateNestedManyWithoutDocumentInputSchema } from './DocumentTriggerCreateNestedManyWithoutDocumentInputSchema';
 import { SectionCreateNestedManyWithoutDocumentInputSchema } from './SectionCreateNestedManyWithoutDocumentInputSchema';
 
-export const DocumentCreateWithoutBlockInputSchema: z.ZodType<Prisma.DocumentCreateWithoutBlockInput> = z.strictObject({
+export const DocumentCreateWithoutBlocksInputSchema: z.ZodType<Prisma.DocumentCreateWithoutBlocksInput> = z.strictObject({
   id: z.cuid().optional(),
   name: z.string(),
   locale: z.string().optional().nullable(),
@@ -20,7 +20,7 @@ export const DocumentCreateWithoutBlockInputSchema: z.ZodType<Prisma.DocumentCre
   createdAt: z.coerce.date().optional(),
   runs: z.lazy(() => AnalysisRunCreateNestedManyWithoutDocumentInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerCreateNestedManyWithoutDocumentInputSchema).optional(),
-  Section: z.lazy(() => SectionCreateNestedManyWithoutDocumentInputSchema).optional(),
+  section: z.lazy(() => SectionCreateNestedManyWithoutDocumentInputSchema).optional(),
 });
 
-export default DocumentCreateWithoutBlockInputSchema;
+export default DocumentCreateWithoutBlocksInputSchema;

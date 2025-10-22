@@ -17,7 +17,7 @@ export const SectionUncheckedCreateWithoutChildrenInputSchema: z.ZodType<Prisma.
   headingAnchor: z.union([ z.lazy(() => NullableJsonNullValueInputSchema), InputJsonValueSchema ]).optional(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
-  Block: z.lazy(() => BlockUncheckedCreateNestedManyWithoutSectionInputSchema).optional(),
+  blocks: z.lazy(() => BlockUncheckedCreateNestedManyWithoutSectionInputSchema).optional(),
 });
 
 export default SectionUncheckedCreateWithoutChildrenInputSchema;

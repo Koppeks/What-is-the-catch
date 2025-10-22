@@ -26,7 +26,7 @@ export const DocumentUncheckedUpdateWithoutSectionInputSchema: z.ZodType<Prisma.
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   runs: z.lazy(() => AnalysisRunUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
-  Block: z.lazy(() => BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
+  blocks: z.lazy(() => BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
 });
 
 export default DocumentUncheckedUpdateWithoutSectionInputSchema;

@@ -26,8 +26,8 @@ export const DocumentSelectSchema: z.ZodType<Prisma.DocumentSelect> = z.object({
   createdAt: z.boolean().optional(),
   runs: z.union([z.boolean(),z.lazy(() => AnalysisRunFindManyArgsSchema)]).optional(),
   documentRules: z.union([z.boolean(),z.lazy(() => DocumentTriggerFindManyArgsSchema)]).optional(),
-  Section: z.union([z.boolean(),z.lazy(() => SectionFindManyArgsSchema)]).optional(),
-  Block: z.union([z.boolean(),z.lazy(() => BlockFindManyArgsSchema)]).optional(),
+  section: z.union([z.boolean(),z.lazy(() => SectionFindManyArgsSchema)]).optional(),
+  blocks: z.union([z.boolean(),z.lazy(() => BlockFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => DocumentCountOutputTypeArgsSchema)]).optional(),
 }).strict()
 

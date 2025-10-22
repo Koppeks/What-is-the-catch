@@ -7,7 +7,7 @@ import { DocumentCreateNestedOneWithoutSectionInputSchema } from './DocumentCrea
 import { SectionCreateNestedOneWithoutChildrenInputSchema } from './SectionCreateNestedOneWithoutChildrenInputSchema';
 import { SectionCreateNestedManyWithoutParentInputSchema } from './SectionCreateNestedManyWithoutParentInputSchema';
 
-export const SectionCreateWithoutBlockInputSchema: z.ZodType<Prisma.SectionCreateWithoutBlockInput> = z.strictObject({
+export const SectionCreateWithoutBlocksInputSchema: z.ZodType<Prisma.SectionCreateWithoutBlocksInput> = z.strictObject({
   id: z.cuid().optional(),
   level: z.number().int(),
   title: z.string().optional().nullable(),
@@ -22,4 +22,4 @@ export const SectionCreateWithoutBlockInputSchema: z.ZodType<Prisma.SectionCreat
   children: z.lazy(() => SectionCreateNestedManyWithoutParentInputSchema).optional(),
 });
 
-export default SectionCreateWithoutBlockInputSchema;
+export default SectionCreateWithoutBlocksInputSchema;

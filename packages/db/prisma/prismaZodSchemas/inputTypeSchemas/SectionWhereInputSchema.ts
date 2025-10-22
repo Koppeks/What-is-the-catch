@@ -30,7 +30,7 @@ export const SectionWhereInputSchema: z.ZodType<Prisma.SectionWhereInput> = z.st
   document: z.union([ z.lazy(() => DocumentScalarRelationFilterSchema), z.lazy(() => DocumentWhereInputSchema) ]).optional(),
   parent: z.union([ z.lazy(() => SectionNullableScalarRelationFilterSchema), z.lazy(() => SectionWhereInputSchema) ]).optional().nullable(),
   children: z.lazy(() => SectionListRelationFilterSchema).optional(),
-  Block: z.lazy(() => BlockListRelationFilterSchema).optional(),
+  blocks: z.lazy(() => BlockListRelationFilterSchema).optional(),
 });
 
 export default SectionWhereInputSchema;

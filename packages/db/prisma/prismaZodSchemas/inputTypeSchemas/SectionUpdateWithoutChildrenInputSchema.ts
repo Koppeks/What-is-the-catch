@@ -23,7 +23,7 @@ export const SectionUpdateWithoutChildrenInputSchema: z.ZodType<Prisma.SectionUp
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   document: z.lazy(() => DocumentUpdateOneRequiredWithoutSectionNestedInputSchema).optional(),
   parent: z.lazy(() => SectionUpdateOneWithoutChildrenNestedInputSchema).optional(),
-  Block: z.lazy(() => BlockUpdateManyWithoutSectionNestedInputSchema).optional(),
+  blocks: z.lazy(() => BlockUpdateManyWithoutSectionNestedInputSchema).optional(),
 });
 
 export default SectionUpdateWithoutChildrenInputSchema;

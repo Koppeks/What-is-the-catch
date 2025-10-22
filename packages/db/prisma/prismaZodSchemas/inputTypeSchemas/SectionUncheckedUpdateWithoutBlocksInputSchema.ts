@@ -9,7 +9,7 @@ import { InputJsonValueSchema } from './InputJsonValueSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { SectionUncheckedUpdateManyWithoutParentNestedInputSchema } from './SectionUncheckedUpdateManyWithoutParentNestedInputSchema';
 
-export const SectionUncheckedUpdateWithoutBlockInputSchema: z.ZodType<Prisma.SectionUncheckedUpdateWithoutBlockInput> = z.strictObject({
+export const SectionUncheckedUpdateWithoutBlocksInputSchema: z.ZodType<Prisma.SectionUncheckedUpdateWithoutBlocksInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   documentId: z.union([ z.string(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   parentId: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
@@ -24,4 +24,4 @@ export const SectionUncheckedUpdateWithoutBlockInputSchema: z.ZodType<Prisma.Sec
   children: z.lazy(() => SectionUncheckedUpdateManyWithoutParentNestedInputSchema).optional(),
 });
 
-export default SectionUncheckedUpdateWithoutBlockInputSchema;
+export default SectionUncheckedUpdateWithoutBlocksInputSchema;

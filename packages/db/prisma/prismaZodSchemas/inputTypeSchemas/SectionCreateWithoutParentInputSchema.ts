@@ -19,7 +19,7 @@ export const SectionCreateWithoutParentInputSchema: z.ZodType<Prisma.SectionCrea
   updatedAt: z.coerce.date().optional(),
   document: z.lazy(() => DocumentCreateNestedOneWithoutSectionInputSchema),
   children: z.lazy(() => SectionCreateNestedManyWithoutParentInputSchema).optional(),
-  Block: z.lazy(() => BlockCreateNestedManyWithoutSectionInputSchema).optional(),
+  blocks: z.lazy(() => BlockCreateNestedManyWithoutSectionInputSchema).optional(),
 });
 
 export default SectionCreateWithoutParentInputSchema;

@@ -11,7 +11,7 @@ import { DocumentUpdateOneRequiredWithoutSectionNestedInputSchema } from './Docu
 import { SectionUpdateOneWithoutChildrenNestedInputSchema } from './SectionUpdateOneWithoutChildrenNestedInputSchema';
 import { SectionUpdateManyWithoutParentNestedInputSchema } from './SectionUpdateManyWithoutParentNestedInputSchema';
 
-export const SectionUpdateWithoutBlockInputSchema: z.ZodType<Prisma.SectionUpdateWithoutBlockInput> = z.strictObject({
+export const SectionUpdateWithoutBlocksInputSchema: z.ZodType<Prisma.SectionUpdateWithoutBlocksInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
   level: z.union([ z.number().int(),z.lazy(() => IntFieldUpdateOperationsInputSchema) ]).optional(),
   title: z.union([ z.string(),z.lazy(() => NullableStringFieldUpdateOperationsInputSchema) ]).optional().nullable(),
@@ -26,4 +26,4 @@ export const SectionUpdateWithoutBlockInputSchema: z.ZodType<Prisma.SectionUpdat
   children: z.lazy(() => SectionUpdateManyWithoutParentNestedInputSchema).optional(),
 });
 
-export default SectionUpdateWithoutBlockInputSchema;
+export default SectionUpdateWithoutBlocksInputSchema;

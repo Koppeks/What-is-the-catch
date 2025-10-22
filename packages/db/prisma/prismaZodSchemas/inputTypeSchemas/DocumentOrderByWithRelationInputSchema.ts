@@ -20,8 +20,8 @@ export const DocumentOrderByWithRelationInputSchema: z.ZodType<Prisma.DocumentOr
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   runs: z.lazy(() => AnalysisRunOrderByRelationAggregateInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerOrderByRelationAggregateInputSchema).optional(),
-  Section: z.lazy(() => SectionOrderByRelationAggregateInputSchema).optional(),
-  Block: z.lazy(() => BlockOrderByRelationAggregateInputSchema).optional(),
+  section: z.lazy(() => SectionOrderByRelationAggregateInputSchema).optional(),
+  blocks: z.lazy(() => BlockOrderByRelationAggregateInputSchema).optional(),
 });
 
 export default DocumentOrderByWithRelationInputSchema;

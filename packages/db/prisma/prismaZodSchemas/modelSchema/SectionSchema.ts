@@ -42,7 +42,7 @@ export type SectionRelations = {
   document: DocumentWithRelations;
   parent?: SectionWithRelations | null;
   children: SectionWithRelations[];
-  Block: BlockWithRelations[];
+  blocks: BlockWithRelations[];
 };
 
 export type SectionWithRelations = Omit<z.infer<typeof SectionSchema>, "headingAnchor"> & {
@@ -53,7 +53,7 @@ export const SectionWithRelationsSchema: z.ZodType<SectionWithRelations> = Secti
   document: z.lazy(() => DocumentWithRelationsSchema),
   parent: z.lazy(() => SectionWithRelationsSchema).nullish(),
   children: z.lazy(() => SectionWithRelationsSchema).array(),
-  Block: z.lazy(() => BlockWithRelationsSchema).array(),
+  blocks: z.lazy(() => BlockWithRelationsSchema).array(),
 }))
 
 /////////////////////////////////////////
@@ -64,7 +64,7 @@ export type SectionPartialRelations = {
   document?: DocumentPartialWithRelations;
   parent?: SectionPartialWithRelations | null;
   children?: SectionPartialWithRelations[];
-  Block?: BlockPartialWithRelations[];
+  blocks?: BlockPartialWithRelations[];
 };
 
 export type SectionPartialWithRelations = Omit<z.infer<typeof SectionPartialSchema>, "headingAnchor"> & {
@@ -75,7 +75,7 @@ export const SectionPartialWithRelationsSchema: z.ZodType<SectionPartialWithRela
   document: z.lazy(() => DocumentPartialWithRelationsSchema),
   parent: z.lazy(() => SectionPartialWithRelationsSchema).nullish(),
   children: z.lazy(() => SectionPartialWithRelationsSchema).array(),
-  Block: z.lazy(() => BlockPartialWithRelationsSchema).array(),
+  blocks: z.lazy(() => BlockPartialWithRelationsSchema).array(),
 })).partial()
 
 export type SectionWithPartialRelations = Omit<z.infer<typeof SectionSchema>, "headingAnchor"> & {
@@ -86,7 +86,7 @@ export const SectionWithPartialRelationsSchema: z.ZodType<SectionWithPartialRela
   document: z.lazy(() => DocumentPartialWithRelationsSchema),
   parent: z.lazy(() => SectionPartialWithRelationsSchema).nullish(),
   children: z.lazy(() => SectionPartialWithRelationsSchema).array(),
-  Block: z.lazy(() => BlockPartialWithRelationsSchema).array(),
+  blocks: z.lazy(() => BlockPartialWithRelationsSchema).array(),
 }).partial())
 
 export default SectionSchema;

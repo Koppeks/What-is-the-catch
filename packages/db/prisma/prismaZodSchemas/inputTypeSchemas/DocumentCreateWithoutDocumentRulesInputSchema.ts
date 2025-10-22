@@ -19,8 +19,8 @@ export const DocumentCreateWithoutDocumentRulesInputSchema: z.ZodType<Prisma.Doc
   updatedAt: z.coerce.date().optional(),
   createdAt: z.coerce.date().optional(),
   runs: z.lazy(() => AnalysisRunCreateNestedManyWithoutDocumentInputSchema).optional(),
-  Section: z.lazy(() => SectionCreateNestedManyWithoutDocumentInputSchema).optional(),
-  Block: z.lazy(() => BlockCreateNestedManyWithoutDocumentInputSchema).optional(),
+  section: z.lazy(() => SectionCreateNestedManyWithoutDocumentInputSchema).optional(),
+  blocks: z.lazy(() => BlockCreateNestedManyWithoutDocumentInputSchema).optional(),
 });
 
 export default DocumentCreateWithoutDocumentRulesInputSchema;

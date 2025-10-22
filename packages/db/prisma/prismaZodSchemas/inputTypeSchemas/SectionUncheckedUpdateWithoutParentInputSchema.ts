@@ -22,7 +22,7 @@ export const SectionUncheckedUpdateWithoutParentInputSchema: z.ZodType<Prisma.Se
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   children: z.lazy(() => SectionUncheckedUpdateManyWithoutParentNestedInputSchema).optional(),
-  Block: z.lazy(() => BlockUncheckedUpdateManyWithoutSectionNestedInputSchema).optional(),
+  blocks: z.lazy(() => BlockUncheckedUpdateManyWithoutSectionNestedInputSchema).optional(),
 });
 
 export default SectionUncheckedUpdateWithoutParentInputSchema;

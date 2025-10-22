@@ -30,8 +30,8 @@ export const DocumentWhereInputSchema: z.ZodType<Prisma.DocumentWhereInput> = z.
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
   runs: z.lazy(() => AnalysisRunListRelationFilterSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerListRelationFilterSchema).optional(),
-  Section: z.lazy(() => SectionListRelationFilterSchema).optional(),
-  Block: z.lazy(() => BlockListRelationFilterSchema).optional(),
+  section: z.lazy(() => SectionListRelationFilterSchema).optional(),
+  blocks: z.lazy(() => BlockListRelationFilterSchema).optional(),
 });
 
 export default DocumentWhereInputSchema;

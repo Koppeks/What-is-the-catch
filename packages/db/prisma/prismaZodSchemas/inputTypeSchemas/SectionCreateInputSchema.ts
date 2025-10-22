@@ -21,7 +21,7 @@ export const SectionCreateInputSchema: z.ZodType<Prisma.SectionCreateInput> = z.
   document: z.lazy(() => DocumentCreateNestedOneWithoutSectionInputSchema),
   parent: z.lazy(() => SectionCreateNestedOneWithoutChildrenInputSchema).optional(),
   children: z.lazy(() => SectionCreateNestedManyWithoutParentInputSchema).optional(),
-  Block: z.lazy(() => BlockCreateNestedManyWithoutSectionInputSchema).optional(),
+  blocks: z.lazy(() => BlockCreateNestedManyWithoutSectionInputSchema).optional(),
 });
 
 export default SectionCreateInputSchema;
