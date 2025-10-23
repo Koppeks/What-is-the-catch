@@ -1,6 +1,6 @@
 import { CheerioAPI } from "cheerio";
 import { createHash } from "node:crypto";
-import { DomHealth } from "./AnalyzerInit";
+import { DomHealth } from "./AnalyzeDocument";
 
 export const assessDomHealth = ($: CheerioAPI, html: string): DomHealth => {
   const rawCharCount = html.length;

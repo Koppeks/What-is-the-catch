@@ -126,6 +126,7 @@ export interface ParseResult {
   blocks: BlockDraft[];
   sections: SectionDraft[];   // hierarchical via parentHeadingOrder
   warnings: string[];
+  bodyText: string;
 }
 
 // ---------- Public API ----------
@@ -154,8 +155,171 @@ export async function htmlToIR(htmlOrText: string, opts?: { sourceUrl?: string; 
     blocks.unshift(synthetic);
   }
 
+  const bodyBlocks = blocks.filter((block) => block.kind !== "heading" && block.text);
+  const bodyFromBlocks = bodyBlocks.map((block) => block.text.trim()).filter(Boolean).join("\n\n").trim();
+  const fallbackBody = normalizeMultilineText($(root).text());
+  const bodyText = bodyFromBlocks || fallbackBody;
+
   const { sections, warnings } = blocksToSections(blocks);
-  return { blocks, sections, warnings };
+  return { blocks, sections, warnings, bodyText };
+}
+
+function normalizeText(value: string): string {
+  return value.replace(/\s+/g, " ").trim();
+}
+
+function normalizeMultilineText(value: string): string {
+  return value
+    .replace(/\r\n?/g, "\n")
+    .replace(/\u00a0/g, " ")
+    .replace(/[^\S\n]+/g, " ")
+    .replace(/\n[ \t]+/g, "\n")
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+type HeadingExtraction = {
+  heading: string;
+  body?: string;
+  headingHtml?: string | null;
+  bodyHtml?: string | null;
+};
+
+function extractHeadingAndBody($: CheerioAPI, el: DomElement, normalizedText: string): HeadingExtraction {
+  const fromStrong = extractHeadingFromStrong($, el);
+  if (fromStrong) return fromStrong;
+
+  const hasExplicitBreak = $(el).find("br").length > 0;
+
+  const rawText = $(el).text().replace(/\r\n?/g, "\n");
+  const raw = hasExplicitBreak ? rawText : rawText.replace(/([A-Za-z])\n([a-z])/g, "$1$2");
+  const trimmed = raw.trim();
+
+  if (trimmed.includes("\n")) {
+    const [firstLine, ...rest] = trimmed.split(/\n+/);
+    const headingCandidate = normalizeText(firstLine);
+    const bodyCandidate = normalizeText(rest.join(" "));
+    if (headingCandidate && bodyCandidate && headingCandidate.length <= 160 && bodyCandidate.length >= 15) {
+      return { heading: headingCandidate, body: bodyCandidate };
+    }
+  }
+
+  const doubleSpaceMatch = trimmed.match(/^(.{1,200}?)(?: {2,}|\u00a0{2,})(.+)$/);
+  if (doubleSpaceMatch) {
+    const headingCandidate = normalizeText(doubleSpaceMatch[1]);
+    const bodyCandidate = normalizeText(doubleSpaceMatch[2]);
+    if (
+      headingCandidate &&
+      bodyCandidate &&
+      headingCandidate.length <= 160 &&
+      bodyCandidate.length >= 15 &&
+      (
+        looksLikeTitleCase(headingCandidate) ||
+        headingCandidate.split(/\s+/).filter(Boolean).length <= 5 ||
+        isLikelyHeadingFromNumbering(headingCandidate)
+      )
+    ) {
+      return { heading: headingCandidate, body: bodyCandidate };
+    }
+  }
+
+  const punctuationSplit = normalizedText.match(/^(.{1,140}?[:.])\s+(.{20,})$/);
+  if (punctuationSplit) {
+    const headingCandidate = normalizeText(punctuationSplit[1]);
+    const bodyCandidate = normalizeText(punctuationSplit[2]);
+    if (headingCandidate && bodyCandidate && headingCandidate.split(" ").length <= 12) {
+      return { heading: headingCandidate, body: bodyCandidate };
+    }
+  }
+
+  const numberingSplit = normalizedText.match(
+    /^((?:\(?[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)*\)?[\.)\-:]?)\s+[^\s]+(?:\s+[^\s]+){0,5})(\s+.+)$/
+  );
+  if (numberingSplit) {
+    const headingCandidate = normalizeText(numberingSplit[1]);
+    const bodyCandidate = normalizeText(numberingSplit[2]);
+    if (
+      headingCandidate &&
+      bodyCandidate &&
+      headingCandidate.split(" ").length <= 12 &&
+      isLikelyHeadingFromNumbering(headingCandidate)
+    ) {
+      return { heading: headingCandidate, body: bodyCandidate };
+    }
+  }
+
+  return { heading: normalizedText };
+}
+
+function extractHeadingFromStrong($: CheerioAPI, el: DomElement): HeadingExtraction | null {
+  const contents = $(el).contents().toArray();
+  if (!contents.length) return null;
+
+  const first = contents[0];
+  if (isTag(first) && isStrongTag(first.name)) {
+    const heading = normalizeText($(first).text());
+    const headingHtml = $.html(first) ?? null;
+
+    const trailingNodes = contents.slice(1);
+    const trailingText = normalizeText(trailingNodes.map((node) => $(node).text()).join(" "));
+    const bodyHtml = nodesToHtml($, trailingNodes);
+
+    return {
+      heading,
+      body: trailingText || undefined,
+      headingHtml,
+      bodyHtml: bodyHtml || null,
+    };
+  }
+
+  return null;
+}
+
+function nodesToHtml($: CheerioAPI, nodes: AnyNode[]): string {
+  return nodes.map((node) => $.html(node) ?? "").join("").trim();
+}
+
+function isStrongTag(name?: string): boolean {
+  const lower = name?.toLowerCase();
+  return lower === "strong" || lower === "b";
+}
+
+const numberingMarker = /^\s*(?:\(?[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)*\)?[\.)\-:]?)\s+/;
+
+function stripHeadingMarker(text: string): string {
+  return text.replace(numberingMarker, "").trim();
+}
+
+function lowercaseRatio(text: string): number {
+  const words = text.split(/\s+/).filter(Boolean);
+  if (!words.length) return 0;
+  const lowercase = words.filter((word) => /^[a-z]/.test(word)).length;
+  return lowercase / words.length;
+}
+
+function looksLikeTitleCase(text: string): boolean {
+  const words = text.split(/\s+/).filter(Boolean);
+  if (!words.length) return false;
+  let capitalized = 0;
+  for (const word of words) {
+    const clean = word.replace(/[^A-Za-z]/g, "");
+    if (!clean) continue;
+    if (/^[A-Z]/.test(clean)) capitalized += 1;
+  }
+  return capitalized / words.length >= 0.5;
+}
+
+function isLikelyHeadingFromNumbering(text: string): boolean {
+  if (!numberingMarker.test(text)) return false;
+  const stripped = stripHeadingMarker(text);
+  if (!stripped) return false;
+  if (stripped.length > 80) return false;
+  const wordCount = stripped.split(/\s+/).filter(Boolean).length;
+  if (wordCount === 0 || wordCount > 8) return false;
+  if (/[,:;]/.test(stripped)) return false;
+  if (lowercaseRatio(stripped) > 0.5) return false;
+  return true;
 }
 
 // ---------- DOM → Blocks ----------
@@ -179,9 +343,10 @@ export function domToBlocks($: CheerioAPI, root: DomElement): BlockDraft[] {
     // Headings h1..h6
     if (/^h[1-6]$/.test(tag)) {
       const level = Number(tag[1]);
-      const text = $(el).text().replace(/\s+/g, " ").trim();
+      const text = normalizeText($(el).text());
       if (text) {
-        push({ kind: "heading", level, ordinalPath: null, title: text, text, html: $.html(el), anchor: mkAnchor($, el) });
+        const anchor = mkAnchor($, el);
+        push({ kind: "heading", level, ordinalPath: null, title: text, text, html: $.html(el), anchor });
       }
       return; // don't descend further
     }
@@ -194,7 +359,7 @@ export function domToBlocks($: CheerioAPI, root: DomElement): BlockDraft[] {
         return;
       }
 
-      const text = $(el).text().replace(/\s+/g, " ").trim();
+      const text = normalizeText($(el).text());
       if (text) {
         const words = text.split(/\s+/).length;
         const headingish = looksLikeHeading($, el, text);
@@ -202,8 +367,30 @@ export function domToBlocks($: CheerioAPI, root: DomElement): BlockDraft[] {
 
         // If looks like a faux heading (short + starts with numbering or bold first child), emit as heading
         if (headingish) {
-          const level = inferLevelFromNumbering(text) ?? 2;
-          push({ kind: "heading", level, ordinalPath: null, title: text, text, html: $.html(el), anchor: mkAnchor($, el) });
+          const anchor = mkAnchor($, el);
+          const extraction = extractHeadingAndBody($, el, text);
+          const headingText = normalizeText(extraction.heading);
+          if (headingText) {
+            const level = inferLevelFromNumbering(headingText) ?? inferLevelFromNumbering(text) ?? 2;
+            push({
+              kind: "heading",
+              level,
+              ordinalPath: null,
+              title: headingText,
+              text: headingText,
+              html: extraction.headingHtml ?? null,
+              anchor,
+            });
+          }
+
+          if (extraction.body) {
+            push({
+              kind: "paragraph",
+              text: extraction.body,
+              html: extraction.bodyHtml ?? null,
+              anchor,
+            });
+          }
         } else {
           push({ kind: "paragraph", text, html: $.html(el), anchor: mkAnchor($, el) });
         }
@@ -213,18 +400,18 @@ export function domToBlocks($: CheerioAPI, root: DomElement): BlockDraft[] {
 
     // Lists
     if (tag === "li") {
-      const text = $(el).text().replace(/\s+/g, " ").trim();
+      const text = normalizeText($(el).text());
       if (text) push({ kind: "list_item", text, html: $.html(el), anchor: mkAnchor($, el) });
     }
 
     if (tag === "tr") {
-      const cells = $(el).find("th,td").map((_, c) => $(c).text().replace(/\s+/g, " ").trim()).get();
+      const cells = $(el).find("th,td").map((_, c) => normalizeText($(c).text())).get();
       const text = cells.join(" | ");
       if (text) push({ kind: "table_row", text, html: $.html(el), anchor: mkAnchor($, el) });
     }
 
     if (tag === "dt" || tag === "dd") {
-      const text = $(el).text().replace(/\s+/g, " ").trim();
+      const text = normalizeText($(el).text());
       if (text) push({ kind: "definition", text, html: $.html(el), anchor: mkAnchor($, el) });
     }
 
@@ -237,11 +424,8 @@ export function domToBlocks($: CheerioAPI, root: DomElement): BlockDraft[] {
 }
 
 function looksLikeHeading($: CheerioAPI, el: DomElement, text: string): boolean {
-  // numbering / short-line heuristic
-  if (
-    text.length <= 140 &&
-    /^(\d+(?:\.\d+)*|[IVXLC]+|\([a-zivx]+\)|[A-Z])[\.)\-:]?\s+/.test(text)
-  ) {
+  // numbering / short-line heuristic with stricter sentence checks
+  if (text.length <= 140 && isLikelyHeadingFromNumbering(text)) {
     return true;
   }
 
