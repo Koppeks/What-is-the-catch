@@ -1,6 +1,7 @@
 import { load } from "cheerio";
+import {RequestResponse} from "@repo/types"
 
-export const fetchBody = async (url: string) => {
+export const fetchBody = async (url: string): Promise<RequestResponse> => {
   const res = await fetch(url, {
     method: "GET",
     headers: {
@@ -14,12 +15,31 @@ export const fetchBody = async (url: string) => {
 
   const html = await res.text();
   const $ = load(html);
+
+  //Can remove anything from the html
   $("script, style, link[rel='stylesheet'], noscript, meta").remove();
-  const body = $("body").clone().toString();
+  $("h1, h2, h3, h4, h5, h6, [role='heading']").remove()
+  $("nav").remove()
+
   const sanitizedHtml = $.html();
 
-  const plainTextBody = body.replace(/<[^>]*>/g, '');
+  const body = $("body").clone();
+  const bodyHtml = body.html()
 
-  return { html: sanitizedHtml, plainTextBody };
+  if(!bodyHtml) return {ok: false, error: "No body was present"}
+
+    const plainTextBody = bodyHtml
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/(p|div|li|section|article)>/gi, "\n")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{2,}/g, "\n")
+    .replace(/[ \t]{2,}/g, " ")
+    .trim();
+
+  return { ok:true, result: {html: sanitizedHtml, plainTextBody} };
 };
 
+const manualRemoveTags = () => {
+
+}
