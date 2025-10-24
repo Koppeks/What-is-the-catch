@@ -1,8 +1,9 @@
 "use client";
 
 import { useActionState } from "react";
-import { analyzeUrl, getDocumentWithId, type FormState } from "./actions";
+import { analyzeUrl, getDocumentWithId } from "./actions";
 import { DocumentWithPartialRelations } from "@repo/db";
+import {RequestResponse} from "@repo/types"
 
 type ClauseTreeBlockKind = "HEADING" | "PARAGRAPH" | "LIST_ITEM" | "TABLE_ROW";
 
@@ -204,7 +205,7 @@ function ClauseTree({ document }: { document: DocumentWithPartialRelations }) {
 }
 
 export default function DashboardPage() {
-  const initialFormState: FormState = { ok: false };
+  const initialFormState: RequestResponse = { ok: false };
   const [formState, formAction] = useActionState(analyzeUrl, initialFormState);
   const [documentState, formDocumentAction] = useActionState(getDocumentWithId, initialFormState);
   const document = documentState.result ? (documentState.result as DocumentWithPartialRelations | undefined) : null;

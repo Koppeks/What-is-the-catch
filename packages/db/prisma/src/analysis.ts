@@ -1,4 +1,4 @@
-import { FormState } from "@/app/dashboard/actions";
+import { FinalResponse } from "@/app/dashboard/actions";
 import { DocumentWithPartialRelations, DocumentWithRelations } from "../prismaZodSchemas";
 import { prisma } from "./client";
 import { BlockKind as PrismaBlockKind, TypeRequest, Prisma } from "@prisma/client";

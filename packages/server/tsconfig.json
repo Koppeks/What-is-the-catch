@@ -7,6 +7,8 @@
       "@repo/db/*": ["../../packages/db/*"],
       "@repo/server": ["../../packages/server/index.ts"],
       "@repo/server/*": ["../../packages/server/*"],
+      "@repo/types": ["../../packages/types/index.ts"],
+      "@repo/types/*": ["../../packages/types/*"],
       "@repo/config": ["../../packages/config/env.ts"],
       "@repo/config/*": ["../../packages/config/*"],
     }

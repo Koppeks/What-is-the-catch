@@ -1,7 +1,8 @@
 ﻿"use server";
 
 import { getDocumentFromId } from "@repo/db/prisma/src/analysis";
-import { fetchBody, stripContent } from "@repo/server";
+import { fetchBody } from "@repo/server";
+import { RequestResponse } from "@repo/types";
 
 type Section = {
   id: string;          // e.g., "2", "2.1", "2.2.3"
@@ -71,19 +72,17 @@ function findWebsitePattern(text: string): string[] {
   return matches;
 }
 
-export type FormState = { ok: boolean; error?: string; result?: any};
 
-export async function analyzeUrl(prev: FormState, formData: FormData): Promise<FormState> {
+export async function analyzeUrl(prev: RequestResponse, formData: FormData): Promise<RequestResponse> {
   const url = String(formData.get("text") ?? "").trim();
-
-  const urlContent = await fetchBody(url)
-
-  console.log(urlContent.plainTextBody)
+  const res = await fetchBody(url)
+  
+  console.log(res.result.urlContent.plainTextBody)
 
   return {ok: true, result: ""}
 }
 
-export async function getDocumentWithId(prev: FormState, formData: FormData): Promise<FormState> {
+export async function getDocumentWithId(prev: RequestResponse, formData: FormData): Promise<RequestResponse> {
   const document = await getDocumentFromId(String(formData.get("id")));
   if(!document) return {ok: false, error: "Document doesn't exist"};
   return { ok: true, result: document };
