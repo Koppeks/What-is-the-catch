@@ -73,6 +73,9 @@ function findWebsitePattern(text: string): string[] {
 export async function analyzeUrl(prev: RequestResponse, formData: FormData): Promise<RequestResponse> {
   const url = String(formData.get("text") ?? "").trim();
   const res = await fetchBody(url)
+
+  
+
   // console.log(res.result.plainTextBody)
   return {ok: true, result: res.result.plainTextBody}
 }
