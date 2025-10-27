@@ -16,6 +16,9 @@
   "dependencies": {
     "@react-email/render": "*",
     "diff": "*",
+    "tailwindcss" : "*",
+    "@tailwindcss/postcss" : "*",
+    "postcss" : "*",
     "next": "*",
     "node-cron": "*",
     "react": "*",

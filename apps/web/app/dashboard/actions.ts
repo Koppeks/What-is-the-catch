@@ -11,7 +11,6 @@ type Section = {
   children: Section[]; // nested subsections
 };
 
-
 const HEADING_REGEX = /^\s*(?:\(?([0-9]+(?:\.[0-9]+)*|[a-zA-Z])\)?[.)\-:]?)\s+(.+)$/gm;
 
 function parseHierarchical(input: string): Section[] {
@@ -46,7 +45,6 @@ function parseHierarchical(input: string): Section[] {
 
     stack.push(node);
   }
-
   return root;
 
   function depth(n: Section) { return n.id.split(".").length; }
@@ -72,14 +70,11 @@ function findWebsitePattern(text: string): string[] {
   return matches;
 }
 
-
 export async function analyzeUrl(prev: RequestResponse, formData: FormData): Promise<RequestResponse> {
   const url = String(formData.get("text") ?? "").trim();
   const res = await fetchBody(url)
-  
-  console.log(res.result.urlContent.plainTextBody)
-
-  return {ok: true, result: ""}
+  // console.log(res.result.plainTextBody)
+  return {ok: true, result: res.result.plainTextBody}
 }
 
 export async function getDocumentWithId(prev: RequestResponse, formData: FormData): Promise<RequestResponse> {

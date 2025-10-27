@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { analyzeUrl, getDocumentWithId } from "./actions";
 import { DocumentWithPartialRelations } from "@repo/db";
-import {RequestResponse} from "@repo/types"
+import { RequestResponse } from "@repo/types";
 
 type ClauseTreeBlockKind = "HEADING" | "PARAGRAPH" | "LIST_ITEM" | "TABLE_ROW";
 
@@ -25,7 +25,9 @@ type ClauseTreeSection = {
   blocks: ClauseTreeBlock[];
 };
 
-function normalizeOrdinalPath(value: string | null | undefined): (string | number)[] {
+function normalizeOrdinalPath(
+  value: string | null | undefined
+): (string | number)[] {
   if (!value) return [];
   return value.split(".").map((segment) => {
     const numeric = Number(segment);
@@ -33,7 +35,10 @@ function normalizeOrdinalPath(value: string | null | undefined): (string | numbe
   });
 }
 
-function compareOrdinalPath(a: string | null | undefined, b: string | null | undefined): number {
+function compareOrdinalPath(
+  a: string | null | undefined,
+  b: string | null | undefined
+): number {
   const aSegments = normalizeOrdinalPath(a);
   const bSegments = normalizeOrdinalPath(b);
 
@@ -65,10 +70,16 @@ function ClauseTree({ document }: { document: DocumentWithPartialRelations }) {
     .map((section): ClauseTreeSection | null => {
       if (!section || typeof section.id !== "string") return null;
 
-      const createdAt = section.createdAt instanceof Date ? section.createdAt : undefined;
-      const ordinalPathFromSection = typeof section.ordinalPath === "string" ? section.ordinalPath : undefined;
-      const level = typeof section.level === "number" ? section.level : undefined;
-      const explicitTitle = typeof section.title === "string" ? section.title : undefined;
+      const createdAt =
+        section.createdAt instanceof Date ? section.createdAt : undefined;
+      const ordinalPathFromSection =
+        typeof section.ordinalPath === "string"
+          ? section.ordinalPath
+          : undefined;
+      const level =
+        typeof section.level === "number" ? section.level : undefined;
+      const explicitTitle =
+        typeof section.title === "string" ? section.title : undefined;
 
       const rawBlocks = Array.isArray(section.blocks) ? section.blocks : [];
       const blocks: ClauseTreeBlock[] = rawBlocks
@@ -104,7 +115,8 @@ function ClauseTree({ document }: { document: DocumentWithPartialRelations }) {
         .sort((a, b) => a.order - b.order);
 
       const headingBlock = blocks.find((block) => block.kind === "HEADING");
-      const effectiveOrdinalPath = ordinalPathFromSection ?? headingBlock?.ordinalPath ?? undefined;
+      const effectiveOrdinalPath =
+        ordinalPathFromSection ?? headingBlock?.ordinalPath ?? undefined;
       const ordinalLabel = effectiveOrdinalPath ?? null;
       const sectionHeading =
         explicitTitle ??
@@ -143,7 +155,9 @@ function ClauseTree({ document }: { document: DocumentWithPartialRelations }) {
       .filter(Boolean)
       .map((paragraph, index) => <p key={`${key}-p-${index}`}>{paragraph}</p>);
     const paragraphNodes =
-      paragraphs.length > 0 ? paragraphs : [<p key={`${key}-p-0`}>{block.text}</p>];
+      paragraphs.length > 0
+        ? paragraphs
+        : [<p key={`${key}-p-0`}>{block.text}</p>];
 
     const blockKind = block.kind ?? "PARAGRAPH";
 
@@ -157,13 +171,18 @@ function ClauseTree({ document }: { document: DocumentWithPartialRelations }) {
       case "LIST_ITEM":
         return (
           <div key={key} className="flex items-start gap-2 pl-2">
-            <span aria-hidden className="select-none text-slate-500">&bull;</span>
+            <span aria-hidden className="select-none text-slate-500">
+              &bull;
+            </span>
             <span>{block.text}</span>
           </div>
         );
       case "TABLE_ROW":
         return (
-          <div key={key} className="overflow-x-auto rounded bg-slate-100 p-2 text-xs text-slate-800">
+          <div
+            key={key}
+            className="overflow-x-auto rounded bg-slate-100 p-2 text-xs text-slate-800"
+          >
             <pre className="whitespace-pre-wrap">{block.text}</pre>
           </div>
         );
@@ -189,7 +208,9 @@ function ClauseTree({ document }: { document: DocumentWithPartialRelations }) {
                     {section.ordinalLabel}
                   </p>
                 )}
-                <h4 className="font-semibold text-slate-900">{section.heading}</h4>
+                <h4 className="font-semibold text-slate-900">
+                  {section.heading}
+                </h4>
               </div>
               {section.blocks.length > 0 && (
                 <div className="space-y-3 text-sm leading-6 text-slate-700">
@@ -206,57 +227,81 @@ function ClauseTree({ document }: { document: DocumentWithPartialRelations }) {
 
 export default function DashboardPage() {
   const initialFormState: RequestResponse = { ok: false };
-  const [formState, formAction] = useActionState(analyzeUrl, initialFormState);
-  const [documentState, formDocumentAction] = useActionState(getDocumentWithId, initialFormState);
-  const document = documentState.result ? (documentState.result as DocumentWithPartialRelations | undefined) : null;
+  const [analyzeResult, analyzeAction] = useActionState(
+    analyzeUrl,
+    initialFormState
+  );
+  const [documentState, formDocumentAction] = useActionState(
+    getDocumentWithId,
+    initialFormState
+  );
+  const document = documentState.result
+    ? (documentState.result as DocumentWithPartialRelations | undefined)
+    : null;
 
   // function removeDocument () {
   //   formDocumentAction(null) // workarround to reset useActionState
   // }
 
   return (
-    <main className="p-6">
-      <form action={formAction} className="grid gap-3 max-w-xl">
-        <textarea
-          name="text"
-          rows={8}
-          className="border rounded p-2"
-          defaultValue={"https://www.youtube.com/t/terms?hl=en&override_hl=1"}
-        />
-        <button type="submit" className="rounded bg-black text-white p-2">
-          Analyze
-        </button>
+    <main className="p-6 w-screen flex">
+      <div className="flex-1 justify-items-stretch align-middle m-6 flex flex-col gap-3">
+        <form action={analyzeAction} className="grid gap-3 bg-gray-100 p-3">
+          <h2 className="text-xl font-semibold">Copy and paste the URL</h2>
+          <input
+            className="border rounded p-2"
+            name="text"
+            defaultValue={"https://www.youtube.com/t/terms?hl=en&override_hl=1"}
+          />
+          <button
+            type="submit"
+            className="rounded cursor-pointer bg-blue-500 text-white p-2"
+          >
+            Analyze
+          </button>
 
-        {!formState.ok && formState.error && (
-          <p className="text-red-600">{formState.error}</p>
-        )}
-        {formState.ok && <p className="text-green-700">Saved!</p>}
-      </form>
-
-      <div className="mt-8 space-y-4">
-        <h2 className="text-xl font-semibold">Search documents in the DB:</h2>
-        <section className="space-y-4">
-          {document != null ? (
-            <>
-              {/* <p onClick={removeDocument}>x</p> */}
-              <ClauseTree document={document} />
-            </>
-          ) : (
-            <form action={formDocumentAction} className="grid gap-3 max-w-xl">
-              <input
-                name="id"
-                defaultValue={"cmgu0lylk0000w5ucajeuz565"}
-              />
-              <button type="submit" className="rounded bg-black text-white p-2">
-                Search Document
-              </button>
-
-              {!documentState.ok && documentState.error && (
-                <p className="text-red-600">{documentState.error}</p>
-              )}
-            </form>
+          {!analyzeResult.ok && analyzeResult.error && (
+            <p className="text-red-600">{analyzeResult.error}</p>
           )}
-        </section>
+        </form>
+
+        <div className="grid gap-3 bg-gray-100 p-3">
+          <h2 className="text-xl font-semibold">Search documents in the DB:</h2>
+          <section className="space-y-4">
+            {document != null ? (
+              <>
+                {/* <p onClick={removeDocument}>x</p> */}
+                <ClauseTree document={document} />
+              </>
+            ) : (
+              <form action={formDocumentAction} className="grid gap-2 ">
+                <input
+                  className="border rounded p-2"
+                  name="id"
+                  defaultValue={"cmgu0lylk0000w5ucajeuz565"}
+                />
+                <button
+                  type="submit"
+                  className="rounded cursor-pointer bg-blue-500 text-white p-2"
+                >
+                  Search Document
+                </button>
+
+                {!documentState.ok && documentState.error && (
+                  <p className="text-red-600">{documentState.error}</p>
+                )}
+              </form>
+            )}
+          </section>
+        </div>
+      </div>
+      <div className="flex-1 justify-items-stretch align-middle m-6 ">
+        {analyzeResult.ok && (
+          <>
+            <p className="text-green-700">Saved!</p>
+            <p className="text-gray-800 w-full">{analyzeResult.result}</p>
+          </>
+        )}
       </div>
     </main>
   );

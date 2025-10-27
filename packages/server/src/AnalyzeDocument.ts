@@ -35,6 +35,8 @@ export const fetchBody = async (url: string): Promise<RequestResponse> => {
     .replace(/[ \t]+\n/g, "\n")
     .replace(/\n{2,}/g, "\n")
     .replace(/[ \t]{2,}/g, " ")
+    .replace(/&nbsp;?/gi, " ")
+    .replace(/\u00a0/g, " ")
     .trim();
 
   return { ok:true, result: {html: sanitizedHtml, plainTextBody} };
