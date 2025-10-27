@@ -16,8 +16,8 @@ import { SeveritySchema } from './SeveritySchema';
 import { DateTimeFilterSchema } from './DateTimeFilterSchema';
 import { TriggerNullableScalarRelationFilterSchema } from './TriggerNullableScalarRelationFilterSchema';
 import { TriggerListRelationFilterSchema } from './TriggerListRelationFilterSchema';
-import { ClauseCategoryScalarRelationFilterSchema } from './ClauseCategoryScalarRelationFilterSchema';
-import { ClauseCategoryWhereInputSchema } from './ClauseCategoryWhereInputSchema';
+import { HitterScalarRelationFilterSchema } from './HitterScalarRelationFilterSchema';
+import { HitterWhereInputSchema } from './HitterWhereInputSchema';
 import { DocumentTriggerListRelationFilterSchema } from './DocumentTriggerListRelationFilterSchema';
 
 export const TriggerWhereUniqueInputSchema: z.ZodType<Prisma.TriggerWhereUniqueInput> = z.union([
@@ -63,13 +63,13 @@ export const TriggerWhereUniqueInputSchema: z.ZodType<Prisma.TriggerWhereUniqueI
   mergedIntoId: z.union([ z.lazy(() => StringNullableFilterSchema), z.string() ]).optional().nullable(),
   reviewNotes: z.union([ z.lazy(() => StringNullableFilterSchema), z.string() ]).optional().nullable(),
   promotedAt: z.union([ z.lazy(() => DateTimeNullableFilterSchema), z.coerce.date() ]).optional().nullable(),
-  clauseCategoryId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
+  hitterId: z.union([ z.lazy(() => StringFilterSchema), z.string() ]).optional(),
   defaultSeverity: z.union([ z.lazy(() => EnumSeverityNullableFilterSchema), z.lazy(() => SeveritySchema) ]).optional().nullable(),
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
   updatedAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
   mergedInto: z.union([ z.lazy(() => TriggerNullableScalarRelationFilterSchema), z.lazy(() => TriggerWhereInputSchema) ]).optional().nullable(),
   mergeFrom: z.lazy(() => TriggerListRelationFilterSchema).optional(),
-  clauseCategory: z.union([ z.lazy(() => ClauseCategoryScalarRelationFilterSchema), z.lazy(() => ClauseCategoryWhereInputSchema) ]).optional(),
+  hitters: z.union([ z.lazy(() => HitterScalarRelationFilterSchema), z.lazy(() => HitterWhereInputSchema) ]).optional(),
   documentRules: z.lazy(() => DocumentTriggerListRelationFilterSchema).optional(),
 }));
 

@@ -11,8 +11,6 @@ import { AnalysisStatusSchema } from './AnalysisStatusSchema';
 import { EnumAnalysisStatusFieldUpdateOperationsInputSchema } from './EnumAnalysisStatusFieldUpdateOperationsInputSchema';
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { AnalysisRunUncheckedUpdateManyWithoutDocumentNestedInputSchema } from './AnalysisRunUncheckedUpdateManyWithoutDocumentNestedInputSchema';
-import { SectionUncheckedUpdateManyWithoutDocumentNestedInputSchema } from './SectionUncheckedUpdateManyWithoutDocumentNestedInputSchema';
-import { BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema } from './BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema';
 
 export const DocumentUncheckedUpdateWithoutDocumentRulesInputSchema: z.ZodType<Prisma.DocumentUncheckedUpdateWithoutDocumentRulesInput> = z.strictObject({
   id: z.union([ z.cuid(),z.lazy(() => StringFieldUpdateOperationsInputSchema) ]).optional(),
@@ -25,8 +23,6 @@ export const DocumentUncheckedUpdateWithoutDocumentRulesInputSchema: z.ZodType<P
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   createdAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   runs: z.lazy(() => AnalysisRunUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
-  section: z.lazy(() => SectionUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
-  blocks: z.lazy(() => BlockUncheckedUpdateManyWithoutDocumentNestedInputSchema).optional(),
 });
 
 export default DocumentUncheckedUpdateWithoutDocumentRulesInputSchema;

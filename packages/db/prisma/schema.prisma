@@ -39,8 +39,6 @@ model Document {
     status        AnalysisStatus    @default(PENDING)
     runs          AnalysisRun[]
     documentRules DocumentTrigger[]
-    section Section[]
-    blocks Block[]
     sourceUrl     String?
     updatedAt     DateTime          @updatedAt
     createdAt     DateTime          @default(now())
@@ -62,58 +60,6 @@ model DocumentTrigger {
 
     @@unique([documentId, triggerId])
     @@index([triggerId])
-}
-
-model Section {
-    id String @id @default(cuid())
-
-    documentId String
-    document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
-
-    parentId String?
-    parent   Section?  @relation("SectionRecursive", fields: [parentId], references: [id], onDelete: Cascade)
-    children Section[] @relation("SectionRecursive")
-
-    level       Int
-    title       String?
-    ordinalPath String?
-    headingText String?   @db.Text
-    headingHtml String?   @db.Text
-    headingAnchor Json?
-    blocks Block[]
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-}
-
-// Representation of a block of the document
-
-model Block {
-  id          String   @id @default(cuid())
-  documentId  String
-  document    Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
-
-  // Belongs to exactly one section (the heading''''s section or its parent)
-  sectionId String
-  section   Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
-
-  // Stream order within the document (for deterministic assembly)
-  order     Int
-
-  kind      BlockKind
-  level     Int?
-  ordinalPath String?
-
-  title     String?
-  text      String      @db.Text
-  html      String?     @db.Text
-  anchor    Json?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([documentId, order])
-  @@index([sectionId, order])
 }
 
 model AnalysisRun {
@@ -150,8 +96,8 @@ model Trigger {
     promotedAt   DateTime?
 
     // Rename ClauseType → ClauseCategory (see model below)
-    clauseCategoryId String
-    clauseCategory   ClauseCategory @relation(fields: [clauseCategoryId], references: [id], onDelete: Restrict)
+    hitterId String
+    hitters   Hitter @relation(fields: [hitterId], references: [id], onDelete: Restrict)
 
     defaultSeverity Severity?
 
@@ -166,19 +112,33 @@ model Trigger {
     @@index([mergedIntoId])
 }
 
-model ClauseCategory {
-    id                 String    @id @default(cuid())
-    slug               String    @unique // e.g MODIFICATION_RIGHTS
-    version            String    @default("0.0.1")
-    defaultScoring     Float     @default(0.5)
-    label              String // Modification rights
-    isActive           Boolean   @default(true)
-    Trigger            Trigger[]
-    triggerInstruction String
-    triggerKeywords    String[]
+model Hitter {
+  id             String  @id @default(cuid())
+  slug           String  @unique          // e.g. "MODIFICATION_RIGHTS"
+  version        String  @default("0.0.1")
+  defaultScoring Float   @default(0.5)
+  isActive       Boolean @default(true)
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  // relations
+  locales        HitterLocale[]
+  Trigger        Trigger[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model HitterLocale {
+  id                 String   @id @default(cuid())
+  hitterId           String
+  locale             Locale
+  label              String            // localized label
+  triggerInstruction String            // localized instruction
+  triggerKeywords    String[]          // localized keywords
+
+  hitter Hitter @relation(fields: [hitterId], references: [id], onDelete: Cascade)
+
+  @@unique([hitterId, locale])
+  @@index([locale])
 }
 
 model Company {
@@ -319,10 +279,11 @@ enum DocumentKind {
     OTHER 
 }
 
-enum BlockKind {
-    HEADING
-    PARAGRAPH
-    LIST_ITEM
-    TABLE_ROW
+enum Locale {
+  en
+  es
+  pt
+  fr
+  de
+  it
 }
-

@@ -19,7 +19,7 @@ export const TriggerUncheckedCreateInputSchema: z.ZodType<Prisma.TriggerUnchecke
   mergedIntoId: z.string().optional().nullable(),
   reviewNotes: z.string().optional().nullable(),
   promotedAt: z.coerce.date().optional().nullable(),
-  clauseCategoryId: z.string(),
+  hitterId: z.string(),
   defaultSeverity: z.lazy(() => SeveritySchema).optional().nullable(),
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),

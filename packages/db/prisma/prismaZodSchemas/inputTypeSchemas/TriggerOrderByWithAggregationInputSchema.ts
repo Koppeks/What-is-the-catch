@@ -18,7 +18,7 @@ export const TriggerOrderByWithAggregationInputSchema: z.ZodType<Prisma.TriggerO
   mergedIntoId: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   reviewNotes: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   promotedAt: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
-  clauseCategoryId: z.lazy(() => SortOrderSchema).optional(),
+  hitterId: z.lazy(() => SortOrderSchema).optional(),
   defaultSeverity: z.union([ z.lazy(() => SortOrderSchema), z.lazy(() => SortOrderInputSchema) ]).optional(),
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   updatedAt: z.lazy(() => SortOrderSchema).optional(),

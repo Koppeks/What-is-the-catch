@@ -27,7 +27,7 @@ export const TriggerScalarWhereWithAggregatesInputSchema: z.ZodType<Prisma.Trigg
   mergedIntoId: z.union([ z.lazy(() => StringNullableWithAggregatesFilterSchema), z.string() ]).optional().nullable(),
   reviewNotes: z.union([ z.lazy(() => StringNullableWithAggregatesFilterSchema), z.string() ]).optional().nullable(),
   promotedAt: z.union([ z.lazy(() => DateTimeNullableWithAggregatesFilterSchema), z.coerce.date() ]).optional().nullable(),
-  clauseCategoryId: z.union([ z.lazy(() => StringWithAggregatesFilterSchema), z.string() ]).optional(),
+  hitterId: z.union([ z.lazy(() => StringWithAggregatesFilterSchema), z.string() ]).optional(),
   defaultSeverity: z.union([ z.lazy(() => EnumSeverityNullableWithAggregatesFilterSchema), z.lazy(() => SeveritySchema) ]).optional().nullable(),
   createdAt: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema), z.coerce.date() ]).optional(),
   updatedAt: z.union([ z.lazy(() => DateTimeWithAggregatesFilterSchema), z.coerce.date() ]).optional(),

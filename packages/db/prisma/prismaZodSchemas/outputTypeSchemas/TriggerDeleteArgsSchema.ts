@@ -4,7 +4,7 @@ import { TriggerIncludeSchema } from '../inputTypeSchemas/TriggerIncludeSchema'
 import { TriggerWhereUniqueInputSchema } from '../inputTypeSchemas/TriggerWhereUniqueInputSchema'
 import { TriggerArgsSchema } from "../outputTypeSchemas/TriggerArgsSchema"
 import { TriggerFindManyArgsSchema } from "../outputTypeSchemas/TriggerFindManyArgsSchema"
-import { ClauseCategoryArgsSchema } from "../outputTypeSchemas/ClauseCategoryArgsSchema"
+import { HitterArgsSchema } from "../outputTypeSchemas/HitterArgsSchema"
 import { DocumentTriggerFindManyArgsSchema } from "../outputTypeSchemas/DocumentTriggerFindManyArgsSchema"
 import { TriggerCountOutputTypeArgsSchema } from "../outputTypeSchemas/TriggerCountOutputTypeArgsSchema"
 // Select schema needs to be in file to prevent circular imports
@@ -21,13 +21,13 @@ export const TriggerSelectSchema: z.ZodType<Prisma.TriggerSelect> = z.object({
   mergedIntoId: z.boolean().optional(),
   reviewNotes: z.boolean().optional(),
   promotedAt: z.boolean().optional(),
-  clauseCategoryId: z.boolean().optional(),
+  hitterId: z.boolean().optional(),
   defaultSeverity: z.boolean().optional(),
   createdAt: z.boolean().optional(),
   updatedAt: z.boolean().optional(),
   mergedInto: z.union([z.boolean(),z.lazy(() => TriggerArgsSchema)]).optional(),
   mergeFrom: z.union([z.boolean(),z.lazy(() => TriggerFindManyArgsSchema)]).optional(),
-  clauseCategory: z.union([z.boolean(),z.lazy(() => ClauseCategoryArgsSchema)]).optional(),
+  hitters: z.union([z.boolean(),z.lazy(() => HitterArgsSchema)]).optional(),
   documentRules: z.union([z.boolean(),z.lazy(() => DocumentTriggerFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => TriggerCountOutputTypeArgsSchema)]).optional(),
 }).strict()

@@ -14,7 +14,7 @@ import { NullableEnumSeverityFieldUpdateOperationsInputSchema } from './Nullable
 import { DateTimeFieldUpdateOperationsInputSchema } from './DateTimeFieldUpdateOperationsInputSchema';
 import { TriggerUpdateOneWithoutMergeFromNestedInputSchema } from './TriggerUpdateOneWithoutMergeFromNestedInputSchema';
 import { TriggerUpdateManyWithoutMergedIntoNestedInputSchema } from './TriggerUpdateManyWithoutMergedIntoNestedInputSchema';
-import { ClauseCategoryUpdateOneRequiredWithoutTriggerNestedInputSchema } from './ClauseCategoryUpdateOneRequiredWithoutTriggerNestedInputSchema';
+import { HitterUpdateOneRequiredWithoutTriggerNestedInputSchema } from './HitterUpdateOneRequiredWithoutTriggerNestedInputSchema';
 import { DocumentTriggerUpdateManyWithoutTriggerNestedInputSchema } from './DocumentTriggerUpdateManyWithoutTriggerNestedInputSchema';
 
 export const TriggerUpdateInputSchema: z.ZodType<Prisma.TriggerUpdateInput> = z.strictObject({
@@ -32,7 +32,7 @@ export const TriggerUpdateInputSchema: z.ZodType<Prisma.TriggerUpdateInput> = z.
   updatedAt: z.union([ z.coerce.date(),z.lazy(() => DateTimeFieldUpdateOperationsInputSchema) ]).optional(),
   mergedInto: z.lazy(() => TriggerUpdateOneWithoutMergeFromNestedInputSchema).optional(),
   mergeFrom: z.lazy(() => TriggerUpdateManyWithoutMergedIntoNestedInputSchema).optional(),
-  clauseCategory: z.lazy(() => ClauseCategoryUpdateOneRequiredWithoutTriggerNestedInputSchema).optional(),
+  hitters: z.lazy(() => HitterUpdateOneRequiredWithoutTriggerNestedInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerUpdateManyWithoutTriggerNestedInputSchema).optional(),
 });
 

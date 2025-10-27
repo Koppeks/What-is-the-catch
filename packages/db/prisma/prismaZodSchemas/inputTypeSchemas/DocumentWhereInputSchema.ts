@@ -12,8 +12,6 @@ import { AnalysisStatusSchema } from './AnalysisStatusSchema';
 import { DateTimeFilterSchema } from './DateTimeFilterSchema';
 import { AnalysisRunListRelationFilterSchema } from './AnalysisRunListRelationFilterSchema';
 import { DocumentTriggerListRelationFilterSchema } from './DocumentTriggerListRelationFilterSchema';
-import { SectionListRelationFilterSchema } from './SectionListRelationFilterSchema';
-import { BlockListRelationFilterSchema } from './BlockListRelationFilterSchema';
 
 export const DocumentWhereInputSchema: z.ZodType<Prisma.DocumentWhereInput> = z.strictObject({
   AND: z.union([ z.lazy(() => DocumentWhereInputSchema), z.lazy(() => DocumentWhereInputSchema).array() ]).optional(),
@@ -30,8 +28,6 @@ export const DocumentWhereInputSchema: z.ZodType<Prisma.DocumentWhereInput> = z.
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
   runs: z.lazy(() => AnalysisRunListRelationFilterSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerListRelationFilterSchema).optional(),
-  section: z.lazy(() => SectionListRelationFilterSchema).optional(),
-  blocks: z.lazy(() => BlockListRelationFilterSchema).optional(),
 });
 
 export default DocumentWhereInputSchema;

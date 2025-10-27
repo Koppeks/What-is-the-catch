@@ -5,8 +5,6 @@ import { SortOrderSchema } from './SortOrderSchema';
 import { SortOrderInputSchema } from './SortOrderInputSchema';
 import { AnalysisRunOrderByRelationAggregateInputSchema } from './AnalysisRunOrderByRelationAggregateInputSchema';
 import { DocumentTriggerOrderByRelationAggregateInputSchema } from './DocumentTriggerOrderByRelationAggregateInputSchema';
-import { SectionOrderByRelationAggregateInputSchema } from './SectionOrderByRelationAggregateInputSchema';
-import { BlockOrderByRelationAggregateInputSchema } from './BlockOrderByRelationAggregateInputSchema';
 
 export const DocumentOrderByWithRelationInputSchema: z.ZodType<Prisma.DocumentOrderByWithRelationInput> = z.strictObject({
   id: z.lazy(() => SortOrderSchema).optional(),
@@ -20,8 +18,6 @@ export const DocumentOrderByWithRelationInputSchema: z.ZodType<Prisma.DocumentOr
   createdAt: z.lazy(() => SortOrderSchema).optional(),
   runs: z.lazy(() => AnalysisRunOrderByRelationAggregateInputSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerOrderByRelationAggregateInputSchema).optional(),
-  section: z.lazy(() => SectionOrderByRelationAggregateInputSchema).optional(),
-  blocks: z.lazy(() => BlockOrderByRelationAggregateInputSchema).optional(),
 });
 
 export default DocumentOrderByWithRelationInputSchema;

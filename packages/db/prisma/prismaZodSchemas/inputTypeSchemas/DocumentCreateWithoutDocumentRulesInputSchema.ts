@@ -5,8 +5,6 @@ import { DocumentKindSchema } from './DocumentKindSchema';
 import { TypeRequestSchema } from './TypeRequestSchema';
 import { AnalysisStatusSchema } from './AnalysisStatusSchema';
 import { AnalysisRunCreateNestedManyWithoutDocumentInputSchema } from './AnalysisRunCreateNestedManyWithoutDocumentInputSchema';
-import { SectionCreateNestedManyWithoutDocumentInputSchema } from './SectionCreateNestedManyWithoutDocumentInputSchema';
-import { BlockCreateNestedManyWithoutDocumentInputSchema } from './BlockCreateNestedManyWithoutDocumentInputSchema';
 
 export const DocumentCreateWithoutDocumentRulesInputSchema: z.ZodType<Prisma.DocumentCreateWithoutDocumentRulesInput> = z.strictObject({
   id: z.cuid().optional(),
@@ -19,8 +17,6 @@ export const DocumentCreateWithoutDocumentRulesInputSchema: z.ZodType<Prisma.Doc
   updatedAt: z.coerce.date().optional(),
   createdAt: z.coerce.date().optional(),
   runs: z.lazy(() => AnalysisRunCreateNestedManyWithoutDocumentInputSchema).optional(),
-  section: z.lazy(() => SectionCreateNestedManyWithoutDocumentInputSchema).optional(),
-  blocks: z.lazy(() => BlockCreateNestedManyWithoutDocumentInputSchema).optional(),
 });
 
 export default DocumentCreateWithoutDocumentRulesInputSchema;

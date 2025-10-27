@@ -18,7 +18,7 @@ async function main() {
     },
   });
 
-  await prisma.clauseCategory.createMany({
+  await prisma.hitter.createMany({
     data: [
       {
         slug: "AGE_LIMIT",

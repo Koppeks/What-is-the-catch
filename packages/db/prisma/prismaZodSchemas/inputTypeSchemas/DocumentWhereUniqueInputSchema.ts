@@ -13,8 +13,6 @@ import { AnalysisStatusSchema } from './AnalysisStatusSchema';
 import { DateTimeFilterSchema } from './DateTimeFilterSchema';
 import { AnalysisRunListRelationFilterSchema } from './AnalysisRunListRelationFilterSchema';
 import { DocumentTriggerListRelationFilterSchema } from './DocumentTriggerListRelationFilterSchema';
-import { SectionListRelationFilterSchema } from './SectionListRelationFilterSchema';
-import { BlockListRelationFilterSchema } from './BlockListRelationFilterSchema';
 
 export const DocumentWhereUniqueInputSchema: z.ZodType<Prisma.DocumentWhereUniqueInput> = z.object({
   id: z.cuid(),
@@ -34,8 +32,6 @@ export const DocumentWhereUniqueInputSchema: z.ZodType<Prisma.DocumentWhereUniqu
   createdAt: z.union([ z.lazy(() => DateTimeFilterSchema), z.coerce.date() ]).optional(),
   runs: z.lazy(() => AnalysisRunListRelationFilterSchema).optional(),
   documentRules: z.lazy(() => DocumentTriggerListRelationFilterSchema).optional(),
-  section: z.lazy(() => SectionListRelationFilterSchema).optional(),
-  blocks: z.lazy(() => BlockListRelationFilterSchema).optional(),
 }));
 
 export default DocumentWhereUniqueInputSchema;

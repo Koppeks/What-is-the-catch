@@ -6,8 +6,6 @@ import { DocumentUncheckedUpdateInputSchema } from '../inputTypeSchemas/Document
 import { DocumentWhereUniqueInputSchema } from '../inputTypeSchemas/DocumentWhereUniqueInputSchema'
 import { AnalysisRunFindManyArgsSchema } from "../outputTypeSchemas/AnalysisRunFindManyArgsSchema"
 import { DocumentTriggerFindManyArgsSchema } from "../outputTypeSchemas/DocumentTriggerFindManyArgsSchema"
-import { SectionFindManyArgsSchema } from "../outputTypeSchemas/SectionFindManyArgsSchema"
-import { BlockFindManyArgsSchema } from "../outputTypeSchemas/BlockFindManyArgsSchema"
 import { DocumentCountOutputTypeArgsSchema } from "../outputTypeSchemas/DocumentCountOutputTypeArgsSchema"
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
@@ -24,8 +22,6 @@ export const DocumentSelectSchema: z.ZodType<Prisma.DocumentSelect> = z.object({
   createdAt: z.boolean().optional(),
   runs: z.union([z.boolean(),z.lazy(() => AnalysisRunFindManyArgsSchema)]).optional(),
   documentRules: z.union([z.boolean(),z.lazy(() => DocumentTriggerFindManyArgsSchema)]).optional(),
-  section: z.union([z.boolean(),z.lazy(() => SectionFindManyArgsSchema)]).optional(),
-  blocks: z.union([z.boolean(),z.lazy(() => BlockFindManyArgsSchema)]).optional(),
   _count: z.union([z.boolean(),z.lazy(() => DocumentCountOutputTypeArgsSchema)]).optional(),
 }).strict()
 
